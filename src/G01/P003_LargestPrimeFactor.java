@@ -7,7 +7,8 @@ import java.util.Arrays;
 import org.junit.Test;
 
 /**
- * Strategy: The largest factor a number can have is the square root.
+ * Strategy: Brute force. 
+ * The largest factor a number can have is the square root.
  * Find all the even factors and then find all of the odd factor.
  * @author Harold Almon
  *

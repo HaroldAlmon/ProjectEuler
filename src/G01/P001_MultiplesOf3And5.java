@@ -5,7 +5,8 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 /**
- * Strategy: Instead of doing a modulus check on every
+ * Strategy: Brute force.
+ * Instead of doing a modulus check on every
  * number, sum all the numbers by adding 3 and then
  * adding 5.
  * This solution might be faster than checking every

@@ -4,7 +4,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 /**
- * Strategy: Use a for-loop since we do not know the term
+ * Strategy: Brute force.
+ * Use a for-loop since we do not know the term
  * of the Fibonacci number we re seeking. 
  * @author Harold
  *

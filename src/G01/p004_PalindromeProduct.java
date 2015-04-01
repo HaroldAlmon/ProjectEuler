@@ -3,7 +3,9 @@ package G01;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 /**
- * 
+ * Strategy: Brute force.
+ * Multiply two numbers together and test of the product is
+ * a palidrome. Track the largest palinfrome.
  * @author Harold Almon
  *
  */

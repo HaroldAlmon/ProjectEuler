@@ -7,8 +7,4 @@ This site is not meant for getting solutions to problems that you
 have not solved.  That is pointless.  Keep in mind that these are
 my solutions and the may not be the most efficient or best solution
 but they produce the correct answers.
-
-Checkout my solution to problem 81.  There is probably a better
-dynamic programming solution but what I have works and the solution
-is very fast.
 #

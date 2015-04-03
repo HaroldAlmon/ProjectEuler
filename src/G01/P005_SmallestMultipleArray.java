@@ -1,5 +1,9 @@
 package G01;
 
+/**
+ * Strategy: Simple Mathematics.
+ * @author Harold Almon
+ */
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
@@ -17,7 +21,7 @@ public class P005_SmallestMultipleArray {
 		// factorCount the *count* of the factor N in position int[N] for a number.
 		// If 2*3*3 are factors then factorCount[2] = 1, factorCount[2] = 3;
 		
-		// This would be faster with a HashMap.
+		// This might be faster with a HashMap.
 		int[] factorCount = new int[20];
 		int[] finalCount = new int[20];
 		int[] factors;

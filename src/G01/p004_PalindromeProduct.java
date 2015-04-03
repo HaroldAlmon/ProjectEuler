@@ -9,7 +9,7 @@ import org.junit.Test;
  * @author Harold Almon
  *
  */
-public class p004_PalindromeProduct {
+public class P004_PalindromeProduct {
 	@Test
 	public void test1() {
 		int result = product(3);
@@ -18,7 +18,7 @@ public class p004_PalindromeProduct {
 	}
 
 	public static void main( String[] args ) {
-		p004_PalindromeProduct main = new p004_PalindromeProduct();
+		P004_PalindromeProduct main = new P004_PalindromeProduct();
 		int result = main.product(4);
 		System.out.printf("Maximum product=%d", result );
 	}

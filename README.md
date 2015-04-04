@@ -7,4 +7,7 @@ This site is not meant for getting solutions to problems that you
 have not solved.  That is pointless.  Keep in mind that these are
 my solutions and the may not be the most efficient or best solution
 but they produce the correct answers.
+
+You may find one or more solutions for a problem because I sometimes
+try array or hashmap solitions to the same problem.
 #

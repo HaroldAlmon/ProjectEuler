@@ -7,14 +7,13 @@ import org.junit.Test;
  * Multiply two numbers together and test of the product is
  * a palidrome. Track the largest palinfrome.
  * @author Harold Almon
- *
  */
 public class P004_PalindromeProduct {
 	@Test
-	public void test1() {
+	public void PalindromeProduct() {
 		int result = product(3);
-		assertEquals(result, 906609);
-		System.out.printf("Result=%d\n", result);
+		assertEquals("Incorrect product, ", result, 906609);
+		System.out.printf("Result = %d\n", result);
 	}
 
 	public static void main( String[] args ) {
@@ -43,7 +42,7 @@ public class P004_PalindromeProduct {
 
 		return result;
 	}
-	
+
 	private boolean isPal(int n) {
 		String word = Integer.toString(n);
 		int left = 0;

@@ -13,7 +13,7 @@ import org.junit.Test;
  * This solution might be faster than checking every
  * number with division by 3 and 5 but I have not tested the
  * difference.
- * @author halmon
+ * @author Harold Almon
  */
 public class P001_MultiplesOf3And5 {
 	public static void main(String[] args) {

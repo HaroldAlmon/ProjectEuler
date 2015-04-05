@@ -1,5 +1,6 @@
 package G01;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
@@ -29,7 +30,7 @@ public class P003_LargestPrimeFactor {
 	long[] getFactorsLong(long value) {
 		// Each position of a[] stores a factor.  Factors are not always unique (e.g. 2*2*7).
 	    long[] factors = new long[100];
-	    int i = 0, oddNum;
+	    int i = 0, factor;
 	    long product = value;
 	    
 	    // Find all the factors that are 2. Need to find these
@@ -40,21 +41,21 @@ public class P003_LargestPrimeFactor {
 	    }
 	    
 	    // Now find the other factors starting at 3...
-	    oddNum = 3;
+	    factor = 3;
 
 	    // The largest possible factor of a number is the square root,
 	    // so when you go larger than that, you can stop.
-	    while (oddNum <= Math.sqrt(product) + 1) {
-	        if (product % oddNum == 0) {
+	    while (factor <= Math.sqrt(product) + 1) {
+	        if (product % factor == 0) {
 	        	
 	        	// Store the factor in the array...
-	            factors[i++] = oddNum;
+	            factors[i++] = factor;
 	            
 	            // Remove the factors from the number...
-	            product /= oddNum;
+	            product /= factor;
 	        } else {
 	        	// Try the next odd number that might be a factor...
-	            oddNum += 2;
+	            factor += 2;
 	        }
 	    }
 	    
@@ -64,9 +65,7 @@ public class P003_LargestPrimeFactor {
 	        factors[i++] = product;
 	    }
 	    
-	    // Copy the factors to a new array...
 	    long[] trimmedCopy = Arrays.copyOf(factors, i);
-	    //System.out.println(Arrays.toString(b));
 	    return trimmedCopy;
 	}
 
@@ -101,10 +100,10 @@ public class P003_LargestPrimeFactor {
 	    return trimmedCopy;
 	}
 
-	@Test
-	public void test1() {
+	@Test(timeout=100)
+	public void GetLargestPrimeFactor() {
 		long result = getMaxFactor(600851475143L);
-		assertTrue(result == 6857);
-		System.out.println(result);
+		assertEquals("Maximum factor is incorrect, ", 6857, result);
+		System.out.printf("Result = ", result);
 	}
 }

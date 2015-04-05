@@ -1,5 +1,6 @@
 package G01;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -39,8 +40,9 @@ public class P001_MultiplesOf3And5 {
 		
 		return result;
 	}
-	@Test
-	public void test1() {
-		assertTrue( run(1000) == 233168 );
+
+	@Test(timeout=100)
+	public void CountMultiplesOfThreeAndFive() {
+		assertEquals( "Incorrect mutiples count, ", 233168, run(1000) );
 	}
 }

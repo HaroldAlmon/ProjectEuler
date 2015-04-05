@@ -1,5 +1,6 @@
 package G01;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -7,14 +8,10 @@ import org.junit.Test;
  * Strategy: Brute force.
  * Use a for-loop since we do not know the term
  * of the Fibonacci number we re seeking. 
- * @author Harold
+ * @author Harold Almon
  *
  */
 public class P002_EvenFibonacciNumbers {
-	public static void main(String[] args) {
-		System.out.printf("Result: %d", new P002_EvenFibonacciNumbers().run());
-
-	}
 	long run() {
 		long result = 2;
 		int num1 = 1;
@@ -28,11 +25,11 @@ public class P002_EvenFibonacciNumbers {
 			num2 = sum;
 			sum = num1 + num2;
 		}
-		
 		return result;
 	}
-	@Test
+
+	@Test(timeout=100)
 	public void test1() {
-		assertTrue( run() == 4613732 );
+		assertEquals( 4613732, run() );
 	}
 }

@@ -9,5 +9,5 @@ my solutions and the may not be the most efficient or best solution
 but they produce the correct answers.
 
 You may find one or more solutions for a problem because I sometimes
-try array or hashmap solitions to the same problem.
+try an array or hashmap solution to the same problem.
 #

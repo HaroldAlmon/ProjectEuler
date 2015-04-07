@@ -9,7 +9,7 @@ import org.junit.Test;
  * @author Harold Almon
  */
 public class P004_PalindromeProduct {
-	@Test
+	@Test(timeout=500)
 	public void PalindromeProduct() {
 		int result = product(3);
 		assertEquals("Incorrect product, ", result, 906609);

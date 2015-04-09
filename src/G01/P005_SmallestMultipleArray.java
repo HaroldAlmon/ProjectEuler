@@ -48,7 +48,7 @@ public class P005_SmallestMultipleArray {
 			}
 			Arrays.fill(factorCount, 0);
 			
-			System.out.printf("Factors of %d: %s\n", divisor, Arrays.toString(factors));
+			//System.out.printf("Factors of %d: %s\n", divisor, Arrays.toString(factors));
 		};
 		
 		long result = 1;
@@ -56,26 +56,16 @@ public class P005_SmallestMultipleArray {
 		// Take the factors and multiply them together to get the result...
 		for(int factIdx = 0; factIdx < maxDivisor; factIdx++) {
 			if(finalCount[factIdx] != 0 ) {
-				System.out.printf("Factor %d count %d\n", factIdx, finalCount[factIdx]);
+				//System.out.printf("Factor %d count %d\n", factIdx, finalCount[factIdx]);
 				result *= (long) Math.pow(factIdx, finalCount[factIdx]);
 			}
 		}
-		System.out.println("Total = " + result);
+		System.out.println("Result = " + result);
 		return result;
 	}
 	
 	@Test
-	public void test1() {
-		assertTrue( run(20) == 232792560 );
-	}
-	
-	@Test
-	public void test2() {
-		assertTrue( run(10) == 2520);
-	}
-	
-	@Test
-	public void test3() {
-		assertTrue( run(15) == 360360);
+	public void NumbersTo20() {
+		assertEquals( "Incorrect product, ", 232792560, run(20) );
 	}
 }

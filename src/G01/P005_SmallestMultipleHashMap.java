@@ -1,5 +1,6 @@
 package G01;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
@@ -58,32 +59,32 @@ public class P005_SmallestMultipleHashMap {
 			}
 			factorCount.clear();
 			
-			System.out.printf("Factors of %d: %s\n", divisor, Arrays.toString(factors));
+			//System.out.printf("Factors of %d: %s\n", divisor, Arrays.toString(factors));
 		};
 		
 		long result = 1;
 
 		// Take the factors out of the finalCount map and multiply them together to get the result...
 		for (Integer factor : finalCount.keySet()) {
-			System.out.printf("Factor %d count=%d\n", factor, finalCount.get(factor));
+			//System.out.printf("Factor %d count=%d\n", factor, finalCount.get(factor));
 			result *= (long) Math.pow(factor, finalCount.get(factor));
 		}
-		System.out.println("Total = " + result);
+		System.out.printf("Result(%d) = %d\n", maxDivisor, result);
 		return result;
 	}
 	
 	@Test
-	public void test1() {
-		assertTrue( run(20) == 232792560 );
+	public void ProductOf20() {
+		assertEquals( "Incorrect product, ", 232792560 , run(20));
 	}
 	
 	@Test
-	public void test2() {
-		assertTrue( run(10) == 2520);
+	public void ProductOf10() {
+		assertEquals( "Incorrect product, ", 2520 , run(10));
 	}
 	
 	@Test
-	public void test3() {
-		assertTrue( run(15) == 360360);
+	public void ProductOf15() {
+		assertEquals( "Incorrect product, ", 360360 , run(15));
 	}
 }

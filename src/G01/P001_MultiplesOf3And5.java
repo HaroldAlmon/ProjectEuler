@@ -10,7 +10,7 @@ import org.junit.Test;
  * Instead of doing a modulus check on every
  * number, sum all the numbers by adding 3 and then
  * adding 5.
- * This solution might be faster than checking every
+ * This solution might be slower or faster than checking every
  * number with division by 3 and 5 but I have not tested the
  * difference.
  * @author Harold Almon

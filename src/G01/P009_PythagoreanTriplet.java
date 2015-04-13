@@ -1,5 +1,7 @@
 package G01;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 // Assume x + y + r = sum;
@@ -20,8 +22,10 @@ public class P009_PythagoreanTriplet {
 		return result;
 	}
 
-	@Test
+	@Test(timeout = 500)
 	public void test1() {
-		System.out.printf("product = %d\n",product(1000));
+		int result = product(1000);
+		System.out.printf("Result = %d\n", result);
+		assertEquals(31875000, result);
 	}
 }

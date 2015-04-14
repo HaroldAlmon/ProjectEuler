@@ -14,6 +14,7 @@ public class P015_LatticePaths {
 	 *  is only one way to place the d's in the remaining
 	 *  slots.  So, just count the number of ways to
 	 *  place the r's in 2n slots.
+	 *  @author Harold Almon
 	 * @param lattticeSize - The width and height of the lattice
 	 * @return The number of paths through the lattice.
 	 */

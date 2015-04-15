@@ -13,13 +13,10 @@ import org.junit.Test;
 public class P036_DoubleBasePalindromes {
 
 	/**
-	 * @param args
+	 * @author Harold Almon
+	 * @param None
 	 */
-	public static void main(String[] args) {
-		System.out.printf("Total: %d\n", new P036_DoubleBasePalindromes().run());
-	}
-	
-	long run() {
+	long getSum() {
 		long result = 0;
 		int counter = 1;
 		while(counter < 1_000_000) {
@@ -47,7 +44,7 @@ public class P036_DoubleBasePalindromes {
 
 	@Test
 	public void CountPalindromesLessThanOneMillion() {
-		long result = run();
+		long result = getSum();
 		System.out.printf("Result = %d\n", result);
 		assertEquals("Incorrect sum", 872187, result);
 	}

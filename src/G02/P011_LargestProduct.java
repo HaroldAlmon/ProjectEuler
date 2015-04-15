@@ -74,11 +74,11 @@ public class P011_LargestProduct {
 		return result;
 	}
 
-	private int maximumOfTheRows(int[][] x, int result) {
+	private int maximumOfTheRows(int[][] matrix, int result) {
 		int product;
-		for (int row = 0; row < x.length; row++) {
-			for (int col = 0; col < x[0].length - 4; col++) {
-				product = x[row][col] * x[row][col+1] * x[row][col+2] * x[row][col+3];
+		for (int row = 0; row < matrix.length; row++) {
+			for (int col = 0; col < matrix[0].length - 4; col++) {
+				product = matrix[row][col] * matrix[row][col+1] * matrix[row][col+2] * matrix[row][col+3];
 				if(product > result)
 					result = product;
 			}

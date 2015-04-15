@@ -6,21 +6,9 @@ import org.junit.Test;
 
 /**
  * 
- * @author halmon
+ * @author Harold Almon
  * 1/29/2015
  *
- *Double-base palindromes
-
-
-Problem 36
-
-
-The decimal number, 585 = 10010010012 (binary), is palindromic in both bases.
-
-Find the sum of all numbers, less than one million, which are palindromic in base 10 and base 2.
-
-(Please note that the palindromic number, in either base, may not include leading zeros.)
-
  */
 public class P036_DoubleBasePalindromes {
 
@@ -34,12 +22,12 @@ public class P036_DoubleBasePalindromes {
 	long run() {
 		long result = 0;
 		int counter = 1;
-		while(counter < 1000000) {
+		while(counter < 1_000_000) {
 			String intStr = Integer.toString(counter);
 			String binStr = Integer.toString(counter, 2);
 			if (isPalindrome( intStr ) && isPalindrome( binStr ) ) {
 				result += counter;
-				System.out.printf("Match for: %s and %s\n", intStr, binStr);
+				//System.out.printf("Match for: %s and %s\n", intStr, binStr);
 			}
 			counter += 1;
 		}
@@ -58,9 +46,10 @@ public class P036_DoubleBasePalindromes {
 	}
 
 	@Test
-	public void test1() {
+	public void CountPalindromesLessThanOneMillion() {
 		long result = run();
-		assertTrue(result == 872187);
+		System.out.printf("Result = %d\n", result);
+		assertEquals("Incorrect sum", 872187, result);
 	}
 
 }

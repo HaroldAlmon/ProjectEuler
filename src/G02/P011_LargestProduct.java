@@ -1,7 +1,7 @@
 package G02;
 
-import static org.junit.Assert.assertEquals;
 import static G01.Formatter.errorText;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 public class P011_LargestProduct {
@@ -38,30 +38,18 @@ public class P011_LargestProduct {
 		return result;
 	}
 
-	private int maximumOfTheRisingDiagonals(int[][] matrix, int result) {
+	private int maximumOfTheRows(int[][] matrix, int result) {
 		int product;
-		for (int col = 0; col < matrix[0].length - 4; col++) {
-			for (int row = 0; row < matrix.length - 4; row++) {
-				product = matrix[row+3][col] * matrix[row+2][col+1] * matrix[row+1][col+2] * matrix[row][col+3];
-				if(product > result)
-					result = product;
-			}
-		}
-		return result;
-	}
-
-	private int maximumOfTheFallingDiagonals(int[][] matrix, int result) {
-		int product;
-		for (int row = 0; row < matrix.length - 4; row++) {
+		for (int row = 0; row < matrix.length; row++) {
 			for (int col = 0; col < matrix[0].length - 4; col++) {
-				product = matrix[row][col] * matrix[row+1][col+1] * matrix[row+2][col+2] * matrix[row+3][col+3];
+				product = matrix[row][col] * matrix[row][col+1] * matrix[row][col+2] * matrix[row][col+3];
 				if(product > result)
 					result = product;
 			}
 		}
 		return result;
 	}
-
+	
 	private int maximumOfTheColumns(int[][] matrix, int result) {
 		int product;
 		for (int col = 0; col < matrix[0].length; col++) {
@@ -73,12 +61,24 @@ public class P011_LargestProduct {
 		}
 		return result;
 	}
-
-	private int maximumOfTheRows(int[][] matrix, int result) {
+	
+	private int maximumOfTheFallingDiagonals(int[][] matrix, int result) {
 		int product;
-		for (int row = 0; row < matrix.length; row++) {
+		for (int row = 0; row < matrix.length - 4; row++) {
 			for (int col = 0; col < matrix[0].length - 4; col++) {
-				product = matrix[row][col] * matrix[row][col+1] * matrix[row][col+2] * matrix[row][col+3];
+				product = matrix[row][col] * matrix[row+1][col+1] * matrix[row+2][col+2] * matrix[row+3][col+3];
+				if(product > result)
+					result = product;
+			}
+		}
+		return result;
+	}
+	
+	private int maximumOfTheRisingDiagonals(int[][] matrix, int result) {
+		int product;
+		for (int col = 0; col < matrix[0].length - 4; col++) {
+			for (int row = 0; row < matrix.length - 4; row++) {
+				product = matrix[row+3][col] * matrix[row+2][col+1] * matrix[row+1][col+2] * matrix[row][col+3];
 				if(product > result)
 					result = product;
 			}

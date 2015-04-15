@@ -1,8 +1,11 @@
 package G02;
 
+import static org.junit.Assert.assertEquals;
+import static G01.Formatter.errorText;
+
 import org.junit.Test;
 public class P011_LargestProduct {
-	int[][] x = {
+	private static int[][] matrix = {
 			{8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8},
 			{49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0},
 			{81, 49, 31, 73, 55, 79, 14, 29, 93, 71, 40, 67, 53, 88, 30, 3, 49, 13, 36, 65},
@@ -27,39 +30,19 @@ public class P011_LargestProduct {
 
 	public int getSum() {
 		int result = 0;
-		int product = 0;
-		
-		// go right then down (sum the rows)
-		for (int i = 0; i < x.length; i++) {
-			for (int j = 0; j < x[0].length - 4; j++) {
-				product = x[i][j] * x[i][j+1] * x[i][j+2] * x[i][j+3];
-				if(product > result)
-					result = product;
-			}
-		}
-		
-		// go down then right (sum the columns)
-		for (int j = 0; j < x[0].length; j++) {
-			for (int i = 0; i < x.length - 4; i++) {
-				product = x[i][j] * x[i+1][j] * x[i+2][j] * x[i+3][j];
-				if(product > result)
-					result = product;
-			}
-		}
-		
-		// sum the falling diagonals
-		for (int i = 0; i < x.length - 4; i++) {
-			for (int j = 0; j < x[0].length - 4; j++) {
-				product = x[i][j] * x[i+1][j+1] * x[i+2][j+2] * x[i+3][j+3];
-				if(product > result)
-					result = product;
-			}
-		}
-		
-		// sum the rising diagonals
-		for (int j = 0; j < x[0].length - 4; j++) {
-			for (int i = 0; i < x.length - 4; i++) {
-				product = x[i+3][j] * x[i+2][j+1] * x[i+1][j+2] * x[i][j+3];
+	
+		result = maximumOfTheRows(matrix, result);
+		result = maximumOfTheColumns(matrix, result);
+		result = maximumOfTheFallingDiagonals(matrix, result);
+		result = maximumOfTheRisingDiagonals(matrix, result);
+		return result;
+	}
+
+	private int maximumOfTheRisingDiagonals(int[][] matrix, int result) {
+		int product;
+		for (int col = 0; col < matrix[0].length - 4; col++) {
+			for (int row = 0; row < matrix.length - 4; row++) {
+				product = matrix[row+3][col] * matrix[row+2][col+1] * matrix[row+1][col+2] * matrix[row][col+3];
 				if(product > result)
 					result = product;
 			}
@@ -67,9 +50,47 @@ public class P011_LargestProduct {
 		return result;
 	}
 
-	@Test
-	public void test1() {
-		System.out.printf("%d",getSum());
+	private int maximumOfTheFallingDiagonals(int[][] matrix, int result) {
+		int product;
+		for (int row = 0; row < matrix.length - 4; row++) {
+			for (int col = 0; col < matrix[0].length - 4; col++) {
+				product = matrix[row][col] * matrix[row+1][col+1] * matrix[row+2][col+2] * matrix[row+3][col+3];
+				if(product > result)
+					result = product;
+			}
+		}
+		return result;
+	}
+
+	private int maximumOfTheColumns(int[][] matrix, int result) {
+		int product;
+		for (int col = 0; col < matrix[0].length; col++) {
+			for (int row = 0; row < matrix.length - 4; row++) {
+				product = matrix[row][col] * matrix[row+1][col] * matrix[row+2][col] * matrix[row+3][col];
+				if(product > result)
+					result = product;
+			}
+		}
+		return result;
+	}
+
+	private int maximumOfTheRows(int[][] x, int result) {
+		int product;
+		for (int row = 0; row < x.length; row++) {
+			for (int col = 0; col < x[0].length - 4; col++) {
+				product = x[row][col] * x[row][col+1] * x[row][col+2] * x[row][col+3];
+				if(product > result)
+					result = product;
+			}
+		}
+		return result;
+	}
+
+	@Test(timeout = 500)
+	public void GetSum() {
+		int result = getSum();
+		System.out.printf("Result = %d", result);
+		assertEquals(errorText("Incorrect  sum"), 70600674, result);
 	}
 	
 }

@@ -5,31 +5,35 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 /**
- * Strategy: Brute force.
- * Use a for-loop since we do not know the term
- * of the Fibonacci number we re seeking. 
+ * Strategy: Brute force. Simple mathematics.
+ * Use a loop since we do not know the term
+ * of the Fibonacci number we are seeking. 
  * @author Harold Almon
  *
  */
 public class P002_EvenFibonacciNumbers {
-	long run() {
-		long result = 2;
-		int num1 = 1;
-		int num2 = 2;
-		int sum = 3;
-		while (sum < 4000000) {
-			if( sum % 2 == 0) {
-				result += sum;				
+	long sumOfEvenFibonacciNumbers(int upperLimit) {
+		long sumOfEvenFibonacciNumbers = 2;
+		int fibo1 = 1;
+		int fibo2 = 2;
+		int nextFibo = 3;
+		while (nextFibo < upperLimit) {
+			if( isEven(nextFibo) ) {
+				sumOfEvenFibonacciNumbers += nextFibo;				
 			}
-			num1 = num2;
-			num2 = sum;
-			sum = num1 + num2;
+			fibo1 = fibo2;
+			fibo2 = nextFibo;
+			nextFibo = fibo1 + fibo2;
 		}
-		return result;
+		return sumOfEvenFibonacciNumbers;
+	}
+	
+	private boolean isEven(int n) {
+		return n %2 == 0;
 	}
 
-	@Test(timeout=100)
-	public void test1() {
-		assertEquals( 4613732, run() );
+	@Test(timeout=500)
+	public void LessThanFourMillion() {
+		assertEquals( "Incorrect sum", 4613732, sumOfEvenFibonacciNumbers(4_000_000) );
 	}
 }

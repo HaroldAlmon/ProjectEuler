@@ -1,18 +1,12 @@
 package G01;
 
-import static org.junit.Assert.assertTrue;
-import org.junit.Before;
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class P007_10001PrimeArrays {
 	static int testNo = 1;
-
-	public static void main(String[] args) {
-		P007_10001PrimeArrays main = new P007_10001PrimeArrays();
-		System.out.print( "prime=" + main.run(20));
-	}
 	
-	private long run(int limit) {
+	private long findPrimeNumber(int limit) {
 		int candidate;
 		int primeCount;
 		
@@ -43,13 +37,8 @@ public class P007_10001PrimeArrays {
 		return primes[limit - 1];
 	}
 
-	@Before
-	public void before() {
-		System.out.printf("Running unit test...%d\n", testNo);
-		testNo += 1;
-	}
 	@Test
 	public void test1() {
-		assertTrue( run(10_001) == 104_743 );
+		assertEquals( "", 104_743, findPrimeNumber(10_001) );
 	}
 }

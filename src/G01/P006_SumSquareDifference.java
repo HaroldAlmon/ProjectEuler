@@ -1,6 +1,5 @@
 package G01;
 
-import static G01.Formatter.errorText;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
@@ -9,12 +8,7 @@ import org.junit.Test;
  * @author Harold Almon
  */
 public class P006_SumSquareDifference {
-	public static void main(String[] args) {
-		P006_SumSquareDifference main = new P006_SumSquareDifference();
-		main.run(100);
-	}
-	
-	private long run(int maxNum) {
+	private long sumSquareDifference(int maxNum) {
 		long result = 0;
 		result = squareSum(maxNum) - sumSquares(maxNum);
 		
@@ -40,8 +34,8 @@ public class P006_SumSquareDifference {
 	}
 	
 	@Test
-	public void test1() {
-		assertEquals( errorText("Incorrect sum"), 25164150, run(100) );
+	public void Sum100() {
+		assertEquals( "Incorrect sum", 25164150, sumSquareDifference(100) );
 	}
 	
 }

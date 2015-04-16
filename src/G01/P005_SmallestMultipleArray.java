@@ -5,17 +5,10 @@ package G01;
  * @author Harold Almon
  */
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import java.util.Arrays;
-
 import org.junit.Test;
 
 public class P005_SmallestMultipleArray {
-	public static void main(String[] args) {
-		new P005_SmallestMultipleArray().run(20);
-	}
-
 	long run(int maxDivisor) {
 		P003_LargestPrimeFactor maxFactor = new P003_LargestPrimeFactor();
 		
@@ -67,6 +60,6 @@ public class P005_SmallestMultipleArray {
 	
 	@Test
 	public void NumbersTo20() {
-		assertEquals( "Incorrect product, ", 232792560, run(20) );
+		assertEquals( "Incorrect product", 232792560, run(20) );
 	}
 }

@@ -12,7 +12,7 @@ public class P004_PalindromeProduct {
 	@Test(timeout=500)
 	public void PalindromeProduct() {
 		int result = product(3);
-		assertEquals("Incorrect product, ", result, 906609);
+		assertEquals("Incorrect product", result, 906609);
 		System.out.printf("Result = %d\n", result);
 	}
 
@@ -44,11 +44,11 @@ public class P004_PalindromeProduct {
 	}
 
 	private boolean isPal(int n) {
-		String word = Integer.toString(n);
+		String number = Integer.toString(n);
 		int left = 0;
-		int right = word.length() - 1;
+		int right = number.length() - 1;
 		for (; left < right; left++, right--) {
-			if (word.charAt(left) != word.charAt(right)) 
+			if (number.charAt(left) != number.charAt(right)) 
 				return false;
 		}
 		return true;

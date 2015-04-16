@@ -103,7 +103,7 @@ public class P003_LargestPrimeFactor {
 	@Test(timeout=100)
 	public void GetLargestPrimeFactor() {
 		long result = getMaxFactor(600851475143L);
-		assertEquals("Maximum factor is incorrect, ", 6857, result);
+		assertEquals("Maximum factor is incorrect", 6857, result);
 		System.out.printf("Result = ", result);
 	}
 }

@@ -9,37 +9,54 @@ import static G01.Formatter.errorText;
 // ProjectEuler.net problem 12
 public class P012_TriangularNumber {
  
-	long getNumber(int factors) {
-		int n = 2;
-		long sum = 3;
-		int count = 0;
+	long getNumber(int divisorLimit) {
+		int naturalNumber = 2;
+		int triangleNumber = 3;
+		int numberOfDivisors = 0;
 		while (true) {
-			count = getCount(sum);
-			if (count > 500) 
+			numberOfDivisors = divisorCount(triangleNumber);
+			if (numberOfDivisors > divisorLimit) 
 				break;
-			n += 1;
-			sum += n;
+			naturalNumber = nextNaturalNumber(naturalNumber);
+			triangleNumber = nextTriangleNumber(triangleNumber, naturalNumber);
 		};
-		System.out.printf("no. of factors = %d, Triangle seq no. = %d\n",count , n);
-		return sum;
+		System.out.printf("no. of divisors = %d, Triangle seq no. = %d\n", numberOfDivisors , naturalNumber);
+		return triangleNumber;
 	}
-	int getCount(long n) {
-		int result = 0;
-		int limit = (int) (n/2);
-		for (int i = 2; i <= limit; i++) {
-			if (n % i == 0) 
+	
+	private int nextNaturalNumber(int naturalNumber) {
+		return naturalNumber + 1;
+	}
+	
+	private int nextTriangleNumber(int triangleNumber, int naturalNumber) {
+		return triangleNumber + naturalNumber;
+	}
+	
+	int divisorCount(int triangleNumber) {
+		int divisorTotal = 0;
+		int maxDivisor = (int) (triangleNumber/2);
+		for (int n = 2; n <= maxDivisor; n++) {
+			if (isDivisorOfTriangleNumber(triangleNumber, n)) 
 			{
-				result += 2;
-				limit = (int) (n / i) - 1;
+				divisorTotal += 2;
+				maxDivisor = newDivisorLimit(triangleNumber, n);
 			}
 		}
-		return result + 2;
+		return divisorTotal + 2;
+	}
+	
+	private int newDivisorLimit(int n, int i) {
+		return (n / i) - 1;
+	}
+	
+	private boolean isDivisorOfTriangleNumber(long n, int i) {
+		return n % i == 0;
 	}
 
-	@Test(timeout = 2_000)
+	@Test(timeout = 3_000)
 	public void test1() {
 		long result = getNumber(500);
 		System.out.printf("Result = %d", result);
-		assertEquals( errorText("Incorrect count"), 76576500, result );
+		assertEquals( errorText("Incorrect sum"), 76576500, result );
 	}
 }

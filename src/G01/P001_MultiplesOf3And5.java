@@ -41,6 +41,6 @@ public class P001_MultiplesOf3And5 {
 	public void CountMultiplesOfThreeAndFive() {
 		int result = run(1000);
 		System.out.printf("%s\n", result);
-		assertEquals( "Incorrect mutiples count, ", 233168, result );
+		assertEquals( "Incorrect mutiples count", 233168, result );
 	}
 }

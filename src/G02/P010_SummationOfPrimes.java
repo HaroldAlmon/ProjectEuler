@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static G01.Formatter.errorText;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 public class P010_SummationOfPrimes {
 	static int testNo = 1;
@@ -18,8 +17,6 @@ public class P010_SummationOfPrimes {
 		primeCount = 1;
 		candidate = 3;
 		
-		//System.out.printf("limit = %d\n", limit);
-
 		while (candidate < candidateLimit) {
 
 			boolean isPrime = true;		
@@ -42,7 +39,7 @@ public class P010_SummationOfPrimes {
 			}
 			candidate = nextCandidate(candidate);
 		}
-		System.out.printf("Result(%d) = %d, no. of primes %d\n", candidateLimit, primeSum, primeCount);
+		System.out.printf("Result(%d) = %d, no. of primes %d%n", candidateLimit, primeSum, primeCount);
 		return primeSum;
 	}
 
@@ -55,14 +52,14 @@ public class P010_SummationOfPrimes {
 
 	@Before
 	public void before() {
-		System.out.printf("Running unit test...%d\n", testNo);
+		System.out.printf("Running unit test...%d%n", testNo);
 		testNo += 1;
 	}
 	
 	@Test(timeout = 300_000)
 	public void TwoMillionPrimes() {
 		// takes ~133 seconds on an i7 laptop
-		assertEquals( errorText("Incorrect sum"), 142913828922L, sumOfPrimesLessThan(2_000_000) );
+		assertEquals( "Incorrect sum", 142913828922L, sumOfPrimesLessThan(2_000_000) );
 
 	}
 	

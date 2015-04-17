@@ -89,8 +89,8 @@ public class P011_LargestProduct {
 	@Test(timeout = 500)
 	public void GetSum() {
 		int result = getSum();
-		System.out.printf("Result = %d", result);
-		assertEquals(errorText("Incorrect  sum"), 70600674, result);
+		System.out.printf("Result = %d%n", result);
+		assertEquals("Incorrect  sum", 70600674, result);
 	}
 	
 }

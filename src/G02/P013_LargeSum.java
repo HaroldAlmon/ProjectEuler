@@ -2,6 +2,8 @@ package G02;
 
 import java.math.BigInteger;
 
+import org.junit.Test;
+
 public class P013_LargeSum {
 static String[] nums = {
 	 "37107287533902102798797998220837590246510135740250",
@@ -105,18 +107,18 @@ static String[] nums = {
 	 "20849603980134001723930671666823555245252804609722",
 	 "53503534226472524250874054075591789781264330331690",
 };
-	
-	public static void main(String[] args) {
-		P013_LargeSum main = new P013_LargeSum();
-		System.out.printf(main.run().substring(0, 10));
+	@Test(timeout = 500)
+	public void Sum() {
+		String sum = largeSum().substring(0, 10);
+		System.out.printf("Result = %s%n", sum);
 	}
 
-	private String run() {
-		BigInteger result = new BigInteger("0");
+	private String largeSum() {
+		BigInteger sum = new BigInteger("0");
 		for (int i = 0; i < nums.length; i++) {
-			result = result.add(new BigInteger(nums[i]));
+			sum = sum.add(new BigInteger(nums[i]));
 		}
 
-		return result.toString();
+		return sum.toString();
 	}
 }

@@ -8,7 +8,6 @@ import static G01.Formatter.errorText;
 
 // ProjectEuler.net problem 12
 public class P012_TriangularNumber {
- 
 	long getNumber(int divisorLimit) {
 		int naturalNumber = 2;
 		int triangleNumber = 3;
@@ -20,7 +19,7 @@ public class P012_TriangularNumber {
 			naturalNumber = nextNaturalNumber(naturalNumber);
 			triangleNumber = nextTriangleNumber(triangleNumber, naturalNumber);
 		};
-		System.out.printf("no. of divisors = %d, Triangle seq no. = %d\n", numberOfDivisors , naturalNumber);
+		System.out.printf("no. of divisors = %d, Triangle seq no. = %d%n", numberOfDivisors , naturalNumber);
 		return triangleNumber;
 	}
 	

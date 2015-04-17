@@ -3,11 +3,11 @@ package G02;
 import org.junit.Test;
 
 public class P014_CollatzSequence {
-	public long getLength(int limit) {
+	public long getLength(int upperLimit) {
 		long result = 0;
 		long longest = 0;
 		int length;
-		for (long num = 2; num < limit - 1; num++) {
+		for (long num = 2; num < upperLimit - 1; num++) {
 			length = 1;
 			long n = num;
 			while (n != 1) {

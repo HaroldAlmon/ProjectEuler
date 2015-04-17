@@ -6,26 +6,44 @@ import org.junit.Test;
 
 // Assume x + y + r = sum;
 public class P009_PythagoreanTriplet {
-	public int product(int sum) {
-		int result = 0;
-		int x,y,r;
-		for (x = 3; x <= sum - 2; x++) {
-			for (y = x + 1; y <= sum - 2; y++) {
-				r = sum - x - y;
-				if (x*x + y *y == r*r) {
-					result = x* y*r;
-					System.out.printf("Triplet (x, y, r) = (%d,%d,%d)\n", x,y,r);
-					return result;
-				}
+	public int pythagoreanTriplet(int tripletSum) {
+		int tripletProduct = enumerateAllXValues(tripletSum);
+		return tripletProduct;
+	}
+
+	private int enumerateAllXValues(int tripletSum) {
+		int tripletProduct = 0;
+		int x;
+		for (x = 3; x <= tripletSum - 2; x++) {
+			tripletProduct = enumerateAllYValues(tripletSum, x);
+			if (tripletProduct !=  0)
+				break;
+		}
+		return tripletProduct;
+		
+	}
+	private int enumerateAllYValues(int tripletSum, int x) {
+		int r;
+		int tripletProduct;
+		for (int y = x + 1; y <= tripletSum - 2; y++) {
+			r = tripletSum - x - y;
+			if ( isTriplet(x, r, y) ) {
+				tripletProduct = x*y*r;
+				System.out.printf("Triplet (x, y, r) = (%d,%d,%d)%n", x,y,r);
+				return tripletProduct;
 			}
 		}
-		return result;
+		return 0;
+	}
+
+	private boolean isTriplet(int x, int r, int y) {
+		return x*x + y*y == r*r;
 	}
 
 	@Test(timeout = 500)
-	public void test1() {
-		int result = product(1000);
-		System.out.printf("Result = %d\n", result);
-		assertEquals(31875000, result);
+	public void PythagoreanTriplet() {
+		int result = pythagoreanTriplet(1000);
+		System.out.printf("Result = %d%n", result);
+		assertEquals("Incorrect product", 31875000, result);
 	}
 }

@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class P008_LargestProduct {
-	 static String s = 
+	 static String veryLongNumber = 
 	 "73167176531330624919225119674426574742355349194934"+
 	 "96983520312774506326239578318016984801869478851843"+
 	 "85861560789112949495459501737958331952853208805511"+
@@ -28,36 +28,37 @@ public class P008_LargestProduct {
 	 "71636269561882670428252483600823257530420752963450";
 	 
 	
-	 @Test
-	 public void test1() {
-		 assertEquals( product(s, 13), 23514624000L );
+	 @Test(timeout = 500)
+	 public void MaximumProduct() {
+		 assertEquals( "Incorrect product", maximumProduct(veryLongNumber, 13), 23514624000L );
 	 }
 
-	 public static void main(String[] args) {
-		int size = 13;
-		P008_LargestProduct main = new P008_LargestProduct();
-		System.out.printf("Max Prod = %d\n", main.product(s, size));
-	}
-	
-	public long product(String longNum, int size) {
-		long result = 0;
+	public long maximumProduct(String veryLongNumber, int digitsLength) {
+		long maximumProduct = 0;
 		long product = 0;
-		for (int i = 0; i < longNum.length() - size - 1; i++) {
-			product = multiply(longNum.substring(i, i+size));
-			if (product > result) {
-				result = product;
+		for (int posInLongNum = 0; posInLongNum < veryLongNumber.length() - digitsLength - 1; posInLongNum++) {
+			product = multiplyDigits( getDigits(veryLongNumber, posInLongNum, digitsLength) );
+			if (product > maximumProduct) {
+				maximumProduct = product;
 			}
 		}
 		//System.out.printf("%s",s);
-		return result;
+		return maximumProduct;
 	}
 	
-	private long multiply(String s) {
+	private String getDigits(String veryLongNumber, int start, int digitsLength) {
+		return veryLongNumber.substring(start, start + digitsLength);
+	}
+	
+	private long multiplyDigits(String number) {
 		long result = 1;
-		for (int i = 0; i < s.length(); i++) {
-			result *= Integer.parseInt(s.substring(i,i+1));
-			
+		for (int characterPosition = 0; characterPosition < number.length(); characterPosition++) {
+			result *= getCharacterInString(number, characterPosition);
 		}
 		return result;
+	}
+
+	private int getCharacterInString(String s, int characterPosition) {
+		return Integer.parseInt(s.substring(characterPosition,characterPosition+1));
 	}
 }

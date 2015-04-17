@@ -17,21 +17,19 @@ import org.junit.Test;
 public class P003_LargestPrimeFactor {
 	public static void main(String[] args) {
 		long product = 2520 ;
-		System.out.println("Factors: " + Arrays.toString(new P003_LargestPrimeFactor().getFactorsLong(product) ));
+		System.out.println("Factors: " + Arrays.toString(new P003_LargestPrimeFactor().getLongFactors(product) ));
 	}
 	
 	long getMaxFactor(long product) {
-		long[] result = new P003_LargestPrimeFactor().getFactorsLong(product);
+		long[] result = new P003_LargestPrimeFactor().getLongFactors(product);
 
 		return result[result.length-1];
 	}
 	
-	// 64 bit max version...
-	long[] getFactorsLong(long value) {
-		// Each position of a[] stores a factor.  Factors are not always unique (e.g. 2*2*7).
+	long[] getLongFactors(long longNumber) {
 	    long[] factors = new long[100];
 	    int i = 0, factor;
-	    long product = value;
+	    long product = longNumber;
 	    
 	    // Find all the factors that are 2. Need to find these
 	    // because we need to test for odd factors later.
@@ -69,12 +67,10 @@ public class P003_LargestPrimeFactor {
 	    return trimmedCopy;
 	}
 
-	// 32 bit max version...
-	// Return an array with all of the factors for a number.
-	int[] getFactors(final int value) {
+	int[] getFactors(final int intNumber) {
 	    int[] factors = new int[100];
 	    int i = 0, oddNum;
-	    int product = value;
+	    int product = intNumber;
 	    
 	    while (product % 2 == 0) {
 	        factors[i++] = 2;
@@ -104,6 +100,6 @@ public class P003_LargestPrimeFactor {
 	public void GetLargestPrimeFactor() {
 		long result = getMaxFactor(600851475143L);
 		assertEquals("Maximum factor is incorrect", 6857, result);
-		System.out.printf("Result = ", result);
+		System.out.printf("Result = %d%n", result);
 	}
 }

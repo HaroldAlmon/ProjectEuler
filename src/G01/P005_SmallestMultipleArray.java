@@ -9,7 +9,7 @@ import java.util.Arrays;
 import org.junit.Test;
 
 public class P005_SmallestMultipleArray {
-	long run(int maxDivisor) {
+	long largestPrimeFactor(int maxDivisor) {
 		P003_LargestPrimeFactor maxFactor = new P003_LargestPrimeFactor();
 		
 		// factorCount the *count* of the factor N in position int[N] for a number.
@@ -60,6 +60,6 @@ public class P005_SmallestMultipleArray {
 	
 	@Test
 	public void NumbersTo20() {
-		assertEquals( "Incorrect product", 232792560, run(20) );
+		assertEquals( "Incorrect product", 232792560, largestPrimeFactor(20) );
 	}
 }

@@ -1,69 +1,61 @@
 package G01;
 
-import static org.junit.Assert.assertTrue;
-
+import static org.junit.Assert.assertEquals;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-/* 10001st prime, Problem 7
-By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
-What is the 10 001st prime number? */
-
 public class P007_10001PrimeLinkList {
 	static int testNo = 1;
+	private long findprimeNumber(int upperLimit) {
+		int oddNumber;
+		List<Integer> primeNumberList = new LinkedList<>();
+		primeNumberList.add(2);
+		primeNumberList.add(3);
+		oddNumber = 5;
 
-	public static void main(String[] args) {
-		P007_10001PrimeLinkList main = new P007_10001PrimeLinkList();
-		System.out.print( "prime=" + main.run(10_001));
-	}
-	
-	private long run(int limit) {
-		int candidate;
-		List<Integer> primes = new LinkedList<>();
-		primes.add(2);
-		primes.add(3);
-		candidate = 5;
-
-		while (primes.size() < limit) {
+		while (primeNumberList.size() < upperLimit) {
 			boolean isPrime = true;
 			
 			// Boxing takes longer, use an array instead
-			Iterator<Integer> primeIter = primes.iterator();
+			Iterator<Integer> primeIter = primeNumberList.iterator();
 			while(primeIter.hasNext()) {
-				if ( (candidate % (primeIter.next())) == 0 ) {
+				if ( (oddNumber % ( primeIter.next()) ) == 0 ) {
 					isPrime = false;
 					break;
 				}
 			}
 			if (isPrime == true) {
-				primes.add(candidate);
+				primeNumberList.add(oddNumber);
 			}
-			candidate += 2;
+			oddNumber = nextOddNumber(oddNumber);
 		}
 
-		return primes.get(limit - 1);
+		return primeNumberList.get(upperLimit - 1);
+	}
+
+	private int nextOddNumber(int oddNumber) {
+		return oddNumber + 2;
 	}
 
 	@Before
 	public void before() {
-		System.out.printf("Running unit test...%d\n", testNo);
+		System.out.printf("Running unit test...%d%n", testNo);
 		testNo += 1;
 	}
 
 	@Test
-	public void test1() {
-		assertTrue( run(10_001) == 104_743 );
+	public void FindprimeNumber10_001() {
+		assertEquals( "Incorrect prime number", 104_743, findprimeNumber(10_001) );
 	}
 	
 	@Test
-	public void test2() {
-		assertTrue( run(6) == 13 );
+	public void FindprimeNumber6() {
+		assertEquals( "Incorrect prime number", 13, findprimeNumber(6) );
 	}
 	
 	@BeforeClass

@@ -1,7 +1,6 @@
 package G01;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 /**
@@ -29,7 +28,7 @@ public class P002_EvenFibonacciNumbers {
 	}
 	
 	private boolean isEven(int n) {
-		return n %2 == 0;
+		return n % 2 == 0;
 	}
 
 	@Test(timeout=500)

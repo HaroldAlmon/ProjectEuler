@@ -12,35 +12,43 @@ import org.junit.Test;
  * @author Harold Almon
  */
 public class P001_MultiplesOf3And5 {
-	int run(int upperLimit) {
-		int result = 0;
-		
-		int multipleOf3 = 3;
-		int multipleOf5 = 5;
+	int multiplesOf3And5(int upperLimit) {
+		int sumOfMultiples = 0;
 
-		while (multipleOf3 < upperLimit ) {
-			result += multipleOf3;
-			multipleOf3 += 3;
-		}
-		
-		while (multipleOf5 < upperLimit ) {
-			result = addToResultIfNotMultipleOfThree(result, multipleOf5);
-			multipleOf5 += 5;
-		}
-		return result;
+		sumOfMultiples = addMultiplesof3(upperLimit, sumOfMultiples);
+		sumOfMultiples = addMultiplesOf5(upperLimit, sumOfMultiples);
+		return sumOfMultiples;
 	}
 
-	private int addToResultIfNotMultipleOfThree(int result, int multOf5) {
-		if( multOf5 % 3 != 0) {
-			result += multOf5;
+	private int addMultiplesOf5(int upperLimit, int sumOfMultiples) {
+		int multipleOf5 = 5;		
+		while (multipleOf5 < upperLimit ) {
+			sumOfMultiples = addTosumOfMultiplesIfNotMultipleOfThree(sumOfMultiples, multipleOf5);
+			multipleOf5 += 5;
 		}
-		return result;
+		return sumOfMultiples;
+	}
+
+	private int addMultiplesof3(int upperLimit, int sumOfMultiples) {
+		int multipleOf3 = 3;
+		while (multipleOf3 < upperLimit ) {
+			sumOfMultiples += multipleOf3;
+			multipleOf3 += 3;
+		}
+		return sumOfMultiples;
+	}
+
+	private int addTosumOfMultiplesIfNotMultipleOfThree(int sumOfMultiples, int multOf5) {
+		if( multOf5 % 3 != 0) {
+			sumOfMultiples += multOf5;
+		}
+		return sumOfMultiples;
 	}
 
 	@Test(timeout=100)
-	public void CountMultiplesOfThreeAndFive() {
-		int result = run(1000);
-		System.out.printf("%s\n", result);
-		assertEquals( "Incorrect mutiples count", 233168, result );
+	public void MultiplesOf3And5() {
+		int sumOfMultiples = multiplesOf3And5(1000);
+		System.out.printf("%s%n", sumOfMultiples);
+		assertEquals( "Incorrect mutiples count", 233168, sumOfMultiples );
 	}
 }

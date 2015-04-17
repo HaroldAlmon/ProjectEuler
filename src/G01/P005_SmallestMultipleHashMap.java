@@ -1,90 +1,100 @@
 package G01;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.TreeMap;
-
+import java.util.Map;
 import org.junit.Test;
 public class P005_SmallestMultipleHashMap {
 	public static void main(String[] args) {
-		new P005_SmallestMultipleHashMap().run(20);
+		new P005_SmallestMultipleHashMap().smallestMultiple(20);
 	}
 
-	long run(int maxDivisor) {
+	long smallestMultiple(int maxDivisor) {
 		P003_LargestPrimeFactor maxFactor = new P003_LargestPrimeFactor();
-		
-		// Holds the *count* of the factor n in position int[n] for a number.
-		// If 2*2*2 are factors then factorCount[2] = 3;
-		
-		HashMap<Integer, Integer> factorCount = new HashMap<>();
+		HashMap<Integer, Integer> factorCounts = new HashMap<>();
 
-		// Use a TreeMap instead of a HashMap so I can retrieve the keys in a sorted order.
-		// Each entry contains the factor and the number of times the factor appears.
-		// 2*3*3=18 would be represented by (2,1), (3,2).
-		TreeMap<Integer, Integer> finalCount = new TreeMap<>();
-		int[] factors;
+		Map<Integer, Integer> maximumFactorCount = new HashMap<>();
+		int[] factorsForDivisor;
 
-		for(int divisor=2; divisor<=maxDivisor; divisor += 1) {
-			factors = maxFactor.getFactors(divisor);
-			
-			// Count the identical factors in the current number...
-			for(int factIdx = 0; factIdx < factors.length; factIdx++) {
-				if (factorCount.containsKey( factors[factIdx] )) {
-					
-					// Increment the factor count.  There is hidden unboxing and boxing here.
-					factorCount.put(factors[factIdx], factorCount.get(factors[factIdx]) + 1);
-				} else {
-					
-					
-					// A new factor, set the count to 1...
-					factorCount.put(factors[factIdx], 1);
-				};
-			}
-			
-			// Copy the factor count to the final count if we have a bigger total...
-			for(Integer factor : factorCount.keySet()) {
-				if(finalCount.containsKey(factor)) {
-
-					// Only copy the total if the total exceeds the existing factor count...
-					if(factorCount.get(factor) > finalCount.get(factor)) {
-						finalCount.put(factor, factorCount.get(factor));
-					}
-				} else {
-					// If the factor is not in the final count then copy the total into the final count.
-					finalCount.put(factor, factorCount.get(factor));
-				}
-			}
-			factorCount.clear();
-			
-			//System.out.printf("Factors of %d: %s\n", divisor, Arrays.toString(factors));
+		for(int divisor=2; divisor <= maxDivisor; divisor += 1) {
+			factorsForDivisor = maxFactor.getFactors(divisor);
+			countIdenticalFactors(factorCounts, factorsForDivisor);
+			checkEachFactorCount(factorCounts, maximumFactorCount);
+			factorCounts.clear();
 		};
 		
-		long result = 1;
+		long productOfFactors = 1;
 
-		// Take the factors out of the finalCount map and multiply them together to get the result...
-		for (Integer factor : finalCount.keySet()) {
-			//System.out.printf("Factor %d count=%d\n", factor, finalCount.get(factor));
-			result *= (long) Math.pow(factor, finalCount.get(factor));
+		productOfFactors = mutiplyFactors(maximumFactorCount, productOfFactors);
+		System.out.printf("Result(%d) = %d%n", maxDivisor, productOfFactors);
+		return productOfFactors;
+	}
+
+	private void checkEachFactorCount(
+			HashMap<Integer, Integer> factorCounts,
+			Map<Integer, Integer> maximumFactorCount) {
+		for(Integer factor : factorCounts.keySet()) {
+			maximizeFactorCount(factorCounts, maximumFactorCount, factor);
 		}
-		System.out.printf("Result(%d) = %d\n", maxDivisor, result);
-		return result;
+	}
+
+	private void maximizeFactorCount(
+			HashMap<Integer, Integer> factorCounts,
+			Map<Integer, Integer> maximumFactorCount, 
+			Integer factor) {
+		if(maximumFactorCount.containsKey(factor)) {
+			if(factorCounts.get(factor) > maximumFactorCount.get(factor)) {
+				setNewMaximumFactorCount(factorCounts, maximumFactorCount, factor);
+			}
+		} else {
+			setNewMaximumFactorCount(factorCounts, maximumFactorCount, factor);
+		}
+	}
+
+	private void setNewMaximumFactorCount(
+			HashMap<Integer, Integer> factorCounts,
+			Map<Integer, Integer> maximumFactorCount, Integer factor) {
+		maximumFactorCount.put(factor, factorCounts.get(factor));
+	}
+
+	private long mutiplyFactors(Map<Integer, Integer> maximumFactorCount, long productOfFactors) {
+		for (Integer factor : maximumFactorCount.keySet()) {
+			productOfFactors *= (long) Math.pow(factor, maximumFactorCount.get(factor));
+		}
+		return productOfFactors;
+	}
+
+	private void countIdenticalFactors(	Map<Integer, Integer> factorCounts, int[] factors) {
+		for(int factorIdx = 0; factorIdx < factors.length; factorIdx++) {
+			if (factorCounts.containsKey( factors[factorIdx] )) {
+				incrementFactorCount(factorCounts, factors, factorIdx);
+			} else {
+				setFactorCoutToOne(factorCounts, factors, factorIdx);
+			};
+		}
+	}
+
+	private void setFactorCoutToOne(Map<Integer, Integer> factorCounts, int[] factors, int factorIdx) {
+		factorCounts.put(factors[factorIdx], 1);
+	}
+
+	private void incrementFactorCount(Map<Integer, Integer> factorCountForDivisorFactor, int[] factors,	int factIdx) {
+		factorCountForDivisorFactor.put(factors[factIdx], factorCountForDivisorFactor.get(factors[factIdx]) + 1);
 	}
 	
 	@Test
 	public void ProductOf20() {
-		assertEquals( "Incorrect product, ", 232792560 , run(20));
+		assertEquals( "Incorrect product", 232792560 , smallestMultiple(20));
 	}
 	
 	@Test
 	public void ProductOf10() {
-		assertEquals( "Incorrect product, ", 2520 , run(10));
+		assertEquals( "Incorrect product", 2520 , smallestMultiple(10));
 	}
 	
 	@Test
 	public void ProductOf15() {
-		assertEquals( "Incorrect product, ", 360360 , run(15));
+		assertEquals( "Incorrect product", 360360 , smallestMultiple(15));
 	}
 }

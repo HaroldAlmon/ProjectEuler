@@ -4,8 +4,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 /**
  * Strategy: Brute force.
- * Multiply two numbers together and test of the product is
- * a palidrome. Track the largest palindrome.
  * @author Harold Almon
  */
 public class P004_PalindromeProduct {
@@ -19,21 +17,31 @@ public class P004_PalindromeProduct {
 	private int largestPalindromeProduct(int numLen) {
 		int upperLimit = (int) Math.pow(10, numLen) - 1;
 		int largestProduct = 0;
-		int product = 0;
-		
+	
+		largestProduct = reverseEnumerateNum1(upperLimit, largestProduct);
+		return largestProduct;
+	}
+
+	private int reverseEnumerateNum1(int upperLimit, int largestProduct) {
 		for (int num1 = upperLimit; num1 > upperLimit/10  ; num1--) {
-			for (int num2 = upperLimit; num2 > upperLimit/10; num2--) {
-				product = num1 * num2;
-				if (isPalindrome(product) )
-				{
-					if (product > largestProduct) {
-						largestProduct = product;
-						break;
-					}
+			largestProduct = reverseEnumerateNum2(upperLimit, largestProduct, num1);
+		}
+		return largestProduct;
+	}
+
+	private int reverseEnumerateNum2(int upperLimit, int largestProduct,
+			int num1) {
+		int product;
+		for (int num2 = upperLimit; num2 > upperLimit/10; num2--) {
+			product = num1 * num2;
+			if (isPalindrome(product) )
+			{
+				if (product > largestProduct) {
+					largestProduct = product;
+					break;
 				}
 			}
 		}
-
 		return largestProduct;
 	}
 

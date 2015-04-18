@@ -9,57 +9,59 @@ import java.util.Arrays;
 import org.junit.Test;
 
 public class P005_SmallestMultipleArray {
-	long largestPrimeFactor(int maxDivisor) {
-		P003_LargestPrimeFactor maxFactor = new P003_LargestPrimeFactor();
+	public long smallestMultiple(int maxDivisor) {
+		P003_LargestPrimeFactor p003_LargestPrimeFactor = new P003_LargestPrimeFactor();
 		
-		// factorCount the *count* of the factor N in position int[N] for a number.
-		// If 2*3*3 are factors then factorCount[2] = 1, factorCount[2] = 3;
-		
-		// This might be faster with a HashMap.
+		// If 2*3*3 are factors then factorCount[2] = 1, factorCount[3] = 3;
 		int[] factorCount = new int[20];
-		int[] finalCount = new int[20];
+		int[] finalFactorCount = new int[20];
 		int[] factors;
+		long productOfFactors;
 		
-		// Get all of the prime factors of all the numbers from 2 thru N
-		// Note that the prime factors will repeat like 2*2*3.
 		for(int divisor=2; divisor<=maxDivisor; divisor += 1) {
-			factors = maxFactor.getFactors(divisor);
-			
-			// Count the identical factors in the current number...
-			for(int factIdx = 0; factIdx < factors.length; factIdx++) {
-				factorCount[factors[factIdx]] += 1;
-			}
-			
-			// Copy the factor count to the final count if we have a bigger total.
-			// This causes some numbers to drop out of the final product. e.g. 4
-			// is not include because 12 = 2 * 2 * 3 that includes 4 as a sub-product.
-			// So if the final product includes 2 * 2 and (* 3) then that number is
-			// divisible by both 4 and 12.
-			for(int factIdx = 0; factIdx < maxDivisor; factIdx++) {
-				if(factorCount[factIdx] > finalCount[factIdx]) {
-					finalCount[factIdx] = factorCount[factIdx];
-				}
-			}
-			Arrays.fill(factorCount, 0);
-			
-			//System.out.printf("Factors of %d: %s\n", divisor, Arrays.toString(factors));
+			factors = p003_LargestPrimeFactor.getFactors(divisor);
+			factorCount = countIdenticalFactors(factorCount, factors);
+			maximizeFactors(maxDivisor, factorCount, finalFactorCount);
+			zeroFactorCountArray(factorCount);
 		};
-		
-		long result = 1;
 
-		// Take the factors and multiply them together to get the result...
+		productOfFactors = multiplyFactors(maxDivisor, finalFactorCount );
+		System.out.println("Result = " + productOfFactors);
+		return productOfFactors;
+	}
+
+	private void zeroFactorCountArray(int[] factorCount) {
+		Arrays.fill(factorCount, 0);
+	}
+
+	private void maximizeFactors(int maxDivisor, int[] factorCount, int[] finalFactorCount) {
 		for(int factIdx = 0; factIdx < maxDivisor; factIdx++) {
-			if(finalCount[factIdx] != 0 ) {
-				//System.out.printf("Factor %d count %d\n", factIdx, finalCount[factIdx]);
-				result *= (long) Math.pow(factIdx, finalCount[factIdx]);
+			if(factorCount[factIdx] > finalFactorCount[factIdx]) {
+				finalFactorCount[factIdx] = factorCount[factIdx];
 			}
 		}
-		System.out.println("Result = " + result);
-		return result;
+	}
+
+	private long multiplyFactors(int maxDivisor, int[] finalFactorCount ) {
+		long productOfFactors = 1;
+		
+		for(int factIdx = 0; factIdx < maxDivisor; factIdx++) {
+			if(finalFactorCount[factIdx] != 0 ) {
+				productOfFactors *= (long) Math.pow(factIdx, finalFactorCount[factIdx]);
+			}
+		}
+		return productOfFactors;
+	}
+
+	private int[] countIdenticalFactors(int[] factorCount, int[] factors) {
+		for(int factIdx = 0; factIdx < factors.length; factIdx++) {
+			factorCount[ factors[factIdx] ] += 1;
+		}
+		return factorCount;
 	}
 	
 	@Test
 	public void NumbersTo20() {
-		assertEquals( "Incorrect product", 232792560, largestPrimeFactor(20) );
+		assertEquals( "Incorrect product", 232792560, smallestMultiple(20) );
 	}
 }

@@ -34,9 +34,8 @@ public class P017_NumberLetterCounts {
 		}
 	};
 	
+	@SuppressWarnings("serial")
 	static List<Integer> tens = new ArrayList<Integer>() {
-		private static final long serialVersionUID = -8959837928924148297L;
-
 		{ 
 			add("twenty".length());
 			add("thirty".length());
@@ -82,7 +81,7 @@ public class P017_NumberLetterCounts {
 		Land1to99 = L1to99 + Land * 99;
 		
 		// 100 - 999
-		System.out.printf("AND 1 to 99 = %d\n", Land1to99);
+		System.out.printf("AND 1 to 99 = %d%n", Land1to99);
 		for( int i : P017_NumberLetterCounts.digitLen)
 			result += (i + Lhundred) * 100 + Land1to99;
 		

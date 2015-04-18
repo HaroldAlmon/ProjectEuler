@@ -65,11 +65,11 @@ public class P010_SummationOfPrimes {
 	
 	@Test(timeout = 500)
 	public void SixPrimes() {
-		assertEquals( errorText("Incorrect sum"), sumOfPrimesLessThan(6), 10 );
+		assertEquals( "Incorrect sum", sumOfPrimesLessThan(6), 10 );
 	}
 	
 	@Test(timeout = 500)
 	public void TenPrimes() {
-		assertEquals( errorText("Incorrect sum"), sumOfPrimesLessThan(10), 17 );
+		assertEquals("Incorrect sum", sumOfPrimesLessThan(10), 17 );
 	}
 }

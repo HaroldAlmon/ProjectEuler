@@ -5,6 +5,7 @@ import java.math.BigInteger;
 import org.junit.Test;
 public class P015_LatticePaths {
 	/**
+	 * Strategy: Discrete Mathematics
 	 * This problem can be reduced to a combination.
 	 * If you think of the solution as a sequence
 	 * of 2n slots and the directions as two choices
@@ -14,21 +15,22 @@ public class P015_LatticePaths {
 	 *  is only one way to place the d's in the remaining
 	 *  slots.  So, just count the number of ways to
 	 *  place the r's in 2n slots.
-	 *  @author Harold Almon
-	 * @param lattticeSize - The width and height of the lattice
+	 * @author Harold Almon
+	 * @param latticeSize - The width and height of the lattice
 	 * @return The number of paths through the lattice.
 	 */
-	public String getPaths(int lattticeSize) {
+	public String latticePaths(int latticeSize) {
 		String result;
-		BigInteger nx2Factorial = factorial(2*lattticeSize);
-		BigInteger nFactorial = factorial(lattticeSize);
+
+		BigInteger nx2Factorial = factorial(2*latticeSize);
+		BigInteger nFactorial = factorial(latticeSize);
 
 		// Here is the combination calculation where N=2n and R=n.
 		//              (2n)!        (2n)!
 		//  C(N,R) = -----------  = ------- 
 		//           (2n-n)! * n!   n! * n!
 		result = nx2Factorial.divide(nFactorial).divide(nFactorial).toString();
-		System.out.printf("%s\n", result);
+		System.out.printf("Result = %s%n", result);
 		return result;
 	}
 	
@@ -39,9 +41,9 @@ public class P015_LatticePaths {
 		return result;
 	}
 
-	@Test
-	public void test1() {
-		assertTrue( getPaths(20).equals("137846528820") );
-		assertTrue( getPaths(2).equals("6") );
+	@Test(timeout = 500)
+	public void Lattice20x20() {
+		assertTrue( latticePaths(20).equals("137846528820") );
+		assertTrue( latticePaths(2).equals("6") );
 	}
 }

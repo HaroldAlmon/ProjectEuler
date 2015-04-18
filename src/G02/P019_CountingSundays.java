@@ -42,7 +42,6 @@ public class P019_CountingSundays {
 				month = 1;
 				year += 1;
 			}
-			//System.out.printf("year = %d, month = %d, dow = %d\n", year, month, dow);
 
 			daysThisMonth = daysPerMonth.get(month);
 			if (month == 2) {
@@ -66,6 +65,6 @@ public class P019_CountingSundays {
 	
 	@Test
 	public void test1(){
-		System.out.printf( "Result = %d\n", getCount() );
+		System.out.printf( "Result = %d%n", getCount() );
 	}
 }

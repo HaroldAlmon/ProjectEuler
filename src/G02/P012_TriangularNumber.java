@@ -8,7 +8,7 @@ import static G01.Formatter.errorText;
 
 // ProjectEuler.net problem 12
 public class P012_TriangularNumber {
-	long getNumber(int divisorLimit) {
+	long triangularNumber(int divisorLimit) {
 		int naturalNumber = 2;
 		int triangleNumber = 3;
 		int numberOfDivisors = 0;
@@ -54,8 +54,8 @@ public class P012_TriangularNumber {
 
 	@Test(timeout = 3_000)
 	public void test1() {
-		long result = getNumber(500);
-		System.out.printf("Result = %d", result);
-		assertEquals( errorText("Incorrect sum"), 76576500, result );
+		long result = triangularNumber(500);
+		System.out.printf("Result = %d%n", result);
+		assertEquals( "Incorrect sum", 76576500, result );
 	}
 }

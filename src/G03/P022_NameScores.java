@@ -40,7 +40,7 @@ public class P022_NameScores {
 	@Test
 	public void test1() throws IOException {
 		int result = getScore("src/g03/p022_names.txt");
-		System.out.printf("result = %s\n",result);
+		System.out.printf("result = %s%n",result);
 		assertTrue(871198282 == result);
 	}
 }

@@ -11,11 +11,12 @@ public class P020_FactorialDigitSum {
 		BigInteger product = new BigInteger("1");
 		BigInteger multiplier = new BigInteger("2");
 		BigInteger one = new BigInteger("1");
+		
 		for (int i = 2; i <= n; i++) {
 			product = product.multiply(multiplier);
 			multiplier = multiplier.add(one);
 		}
-		//System.out.printf("total = %s\n", product);
+		
 		int sum = 0;
 		String factorial = product.toString();
 		for (int i = 0; i < factorial.length(); i++) {
@@ -23,11 +24,10 @@ public class P020_FactorialDigitSum {
 		}
 		return sum;
 	}
-	@Test
+	@Test(timeout = 500)
 	public void test1() {
 		int result = getTotal(100);
-		System.out.printf("sum = %d\n", result);
+		System.out.printf("sum = %d%n", result);
 		assertTrue(648 == result);
-		;
 	}
 }

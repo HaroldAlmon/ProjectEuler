@@ -1,10 +1,7 @@
 package G02;
 
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
-
-import static G01.Formatter.errorText;
 
 // ProjectEuler.net problem 12
 public class P012_TriangularNumber {

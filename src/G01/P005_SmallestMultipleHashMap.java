@@ -6,10 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 import org.junit.Test;
 public class P005_SmallestMultipleHashMap {
-	public static void main(String[] args) {
-		new P005_SmallestMultipleHashMap().smallestMultiple(20);
-	}
-
 	long smallestMultiple(int maxDivisor) {
 		P003_LargestPrimeFactor maxFactor = new P003_LargestPrimeFactor();
 		HashMap<Integer, Integer> factorCounts = new HashMap<>();
@@ -27,7 +23,7 @@ public class P005_SmallestMultipleHashMap {
 		long productOfFactors = 1;
 
 		productOfFactors = mutiplyFactors(maximumFactorCount, productOfFactors);
-		System.out.printf("Result(%d) = %d%n", maxDivisor, productOfFactors);
+		System.out.printf("smallestMultiple(%d) = %d%n", maxDivisor, productOfFactors);
 		return productOfFactors;
 	}
 
@@ -84,17 +80,17 @@ public class P005_SmallestMultipleHashMap {
 	}
 	
 	@Test
-	public void ProductOf20() {
+	public void NumberDivisibleBy1To20() {
 		assertEquals( "Incorrect product", 232792560 , smallestMultiple(20));
 	}
 	
 	@Test
-	public void ProductOf10() {
+	public void NumberDivisibleBy1To10() {
 		assertEquals( "Incorrect product", 2520 , smallestMultiple(10));
 	}
 	
 	@Test
-	public void ProductOf15() {
+	public void NumberDivisibleBy1To15() {
 		assertEquals( "Incorrect product", 360360 , smallestMultiple(15));
 	}
 }

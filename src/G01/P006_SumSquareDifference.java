@@ -12,7 +12,7 @@ public class P006_SumSquareDifference {
 		long result = 0;
 		result = squareSum(maxNum) - sumSquares(maxNum);
 		
-		System.out.printf("result(%d) = %d%n", maxNum, result);
+		System.out.printf("sumSquareDifference(%d) = %d%n", maxNum, result);
 		
 		return result;
 	}

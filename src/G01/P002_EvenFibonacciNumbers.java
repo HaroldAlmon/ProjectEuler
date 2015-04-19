@@ -5,17 +5,18 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 /**
  * Strategy: Brute force. Simple mathematics.
- * Use a loop since we do not know the term
- * of the Fibonacci number we are seeking. 
  * @author Harold Almon
  *
  */
 public class P002_EvenFibonacciNumbers {
-	long sumOfEvenFibonacciNumbers(int upperLimit) {
-		long sumOfEvenFibonacciNumbers = 2;
+	int sumOfEvenFibonacciNumbersBelow(int upperLimit) {
+		int sumOfEvenFibonacciNumbers = 2;
 		int fibo1 = 1;
 		int fibo2 = 2;
 		int nextFibo = 3;
+		/* Use a loop since we do not know the term
+		 * of the Fibonacci number we are seeking. 
+		 */
 		while (nextFibo < upperLimit) {
 			if( isEven(nextFibo) ) {
 				sumOfEvenFibonacciNumbers += nextFibo;				
@@ -32,7 +33,9 @@ public class P002_EvenFibonacciNumbers {
 	}
 
 	@Test(timeout=500)
-	public void LessThanFourMillion() {
-		assertEquals( "Incorrect sum", 4613732, sumOfEvenFibonacciNumbers(4_000_000) );
+	public void SumOfEvenTermsLessThanFourMillion() {
+		int result = sumOfEvenFibonacciNumbersBelow(4_000_000);
+		System.out.printf("sumOfEvenFibonacciNumbersBelow(4_000_000)=%s%n", result);
+		assertEquals( "Incorrect sum of even Fibonacci numbers that do not exceed 4 million", 4613732, result );
 	}
 }

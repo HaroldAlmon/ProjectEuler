@@ -15,26 +15,21 @@ import org.junit.Test;
  *
  */
 public class P003_LargestPrimeFactor {
-	public static void main(String[] args) {
-		long product = 2520 ;
-		System.out.println("Factors: " + Arrays.toString(new P003_LargestPrimeFactor().getLongFactors(product) ));
-	}
-	
-	long getMaxFactor(long product) {
-		long[] result = new P003_LargestPrimeFactor().getLongFactors(product);
-
+	public long largestFactor(long product) {
+		long[] result = getLongFactors(product);
 		return result[result.length-1];
 	}
 	
-	long[] getLongFactors(long longNumber) {
+	private long[] getLongFactors(long longNumber) {
 	    long[] factors = new long[100];
-	    int i = 0, factor;
+	    int freePosition = 0, factor;
 	    long product = longNumber;
 	    
 	    // Find all the factors that are 2. Need to find these
 	    // because we need to test for odd factors later.
 	    while (product % 2 == 0) {
-	        factors[i++] = 2;
+	        factors[freePosition] = 2;
+	        freePosition += 1;
 	        product /= 2;
 	    }
 	    
@@ -47,7 +42,7 @@ public class P003_LargestPrimeFactor {
 	        if (product % factor == 0) {
 	        	
 	        	// Store the factor in the array...
-	            factors[i++] = factor;
+	            factors[freePosition++] = factor;
 	            
 	            // Remove the factors from the number...
 	            product /= factor;
@@ -60,10 +55,10 @@ public class P003_LargestPrimeFactor {
 	    // Do not include 1 as a factor.  This happens with prime numbers
 	    // like 13 that only have 1 factor. So 13/13 leaves a 1 in num.
 	    if (product > 1) {
-	        factors[i++] = product;
+	        factors[freePosition++] = product;
 	    }
 	    
-	    long[] trimmedCopy = Arrays.copyOf(factors, i);
+	    long[] trimmedCopy = Arrays.copyOf(factors, freePosition);
 	    return trimmedCopy;
 	}
 
@@ -97,9 +92,9 @@ public class P003_LargestPrimeFactor {
 	}
 
 	@Test(timeout=100)
-	public void GetLargestPrimeFactor() {
-		long result = getMaxFactor(600851475143L);
-		assertEquals("Maximum factor is incorrect", 6857, result);
-		System.out.printf("Result = %d%n", result);
+	public void GetLargestPrimeFactorOf600851475143() {
+		long result = largestFactor(600851475143L);
+		System.out.printf("largestFactor(600851475143) = %d%n", result);
+		assertEquals("Maximum prime factor of 600851475143", 6857, result);
 	}
 }

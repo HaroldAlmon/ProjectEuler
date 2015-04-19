@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 /**
- * Strategy: Brute force.
+ * Strategy: Brute force. Simple mathematics.
  * 
  * This solution might be slower or faster than checking every
  * number with division by 3 and 5 but I have not tested the
@@ -46,12 +46,17 @@ public class P001_MultiplesOf3And5 {
 		return sumOfMultiples;
 	}
 
-
-
 	@Test(timeout=100)
-	public void MultiplesOf3And5() {
+	public void SumOfMultiplesOf3And5Below1000() {
 		int sumOfMultiples = multiplesOf3And5(1000);
-		System.out.printf("%s%n", sumOfMultiples);
-		assertEquals( "Incorrect mutiples count", 233168, sumOfMultiples );
+		System.out.printf("multiplesOf3And5(1000) = %s%n", sumOfMultiples);
+		assertEquals( "Incorrect sum of multiples of 3 or 5 below 1000", 233168, sumOfMultiples );
+	}
+	
+	@Test(timeout=100)
+	public void SumOfMultiplesOf3And5Below10_000() {
+		int sumOfMultiples = multiplesOf3And5(10_000);
+		System.out.printf("multiplesOf3And5(10_000) = %s%n", sumOfMultiples);
+		assertEquals( "Incorrect sum of multiples of 3 or 5 below 10_000", 23331668, sumOfMultiples );
 	}
 }

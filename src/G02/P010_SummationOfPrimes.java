@@ -1,8 +1,6 @@
 package G02;
 
 import static org.junit.Assert.assertEquals;
-import static G01.Formatter.errorText;
-
 import org.junit.Before;
 import org.junit.Test;
 public class P010_SummationOfPrimes {
@@ -21,7 +19,6 @@ public class P010_SummationOfPrimes {
 
 			boolean isPrime = true;		
 			for(int i = 0; i < primeCount; i++) {
-				//if ( candidate % primes[i] == 0 ) {
 				if ( isRemainderOfDivisionZero(candidate, primes[i]) ) {
 					isPrime = false;
 					break;

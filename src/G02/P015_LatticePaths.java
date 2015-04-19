@@ -25,9 +25,9 @@ public class P015_LatticePaths {
 		BigInteger nx2Factorial = factorial(2*latticeSize);
 		BigInteger nFactorial = factorial(latticeSize);
 
-		// Here is the combination calculation where N=2n and R=n.
+		// Here is the combination calculation where n=2n and r=n.
 		//              (2n)!        (2n)!
-		//  C(N,R) = -----------  = ------- 
+		//  C(n,r) = -----------  = ------- 
 		//           (2n-n)! * n!   n! * n!
 		result = nx2Factorial.divide(nFactorial).divide(nFactorial).toString();
 		System.out.printf("Result = %s%n", result);
@@ -44,6 +44,10 @@ public class P015_LatticePaths {
 	@Test(timeout = 500)
 	public void Lattice20x20() {
 		assertTrue( latticePaths(20).equals("137846528820") );
+	}
+	
+	@Test(timeout = 500)
+	public void Lattice6x6() {
 		assertTrue( latticePaths(2).equals("6") );
 	}
 }

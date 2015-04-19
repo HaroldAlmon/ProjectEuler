@@ -1,6 +1,5 @@
 package G02;
 
-import static G01.Formatter.errorText;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;

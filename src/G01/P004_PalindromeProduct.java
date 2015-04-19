@@ -1,6 +1,7 @@
 package G01;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 /**
  * Strategy: Brute force.
@@ -8,14 +9,31 @@ import org.junit.Test;
  */
 public class P004_PalindromeProduct {
 	@Test(timeout=500)
-	public void PalindromeProduct() {
+	public void LargestPalindromeProductOfTwo3DigitNumbers() throws Exception {
 		int result = largestPalindromeProduct(3);
-		assertEquals("Incorrect product", result, 906609);
-		System.out.printf("Result = %d%n", result);
+		System.out.printf("largestPalindromeProduct(3) = %d%n", result);
+		assertEquals("Incorrect palindrome product of two 3-digit numbers", 906609, result);
+	}
+	
+	@Test(timeout=16_000)
+	public void LargestPalindromeProductOfTwo4DigitNumbers() throws Exception {
+		int result = largestPalindromeProduct(4);
+		System.out.printf("largestPalindromeProduct(4) = %d%n", result);
+		assertEquals("Incorrect palindrome product of two 4-digit numbers", 99000099, result);
+	}
+	
+	
+	@Test(timeout=100, expected=Exception.class)
+	public void LengthLessThan1ThrowsException() throws Exception {
+		int result = largestPalindromeProduct(-1);
+		System.out.printf("largestPalindromeProduct = %d%n", result);
+		assertEquals("Incorrect palindrome product of invalid input", 0, result);
 	}
 
-	private int largestPalindromeProduct(int numLen) {
-		int upperLimit = (int) Math.pow(10, numLen) - 1;
+	public int largestPalindromeProduct(int numberLength) throws Exception {
+	if (numberLength < 1) 
+			throw new Exception("Number length must be greater than zero");
+		int upperLimit = (int) Math.pow(10, numberLength) - 1;
 		int largestProduct = 0;
 	
 		largestProduct = reverseEnumerateNum1(upperLimit, largestProduct);

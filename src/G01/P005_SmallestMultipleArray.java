@@ -12,7 +12,7 @@ public class P005_SmallestMultipleArray {
 	public long smallestMultiple(int maxDivisor) {
 		P003_LargestPrimeFactor p003_LargestPrimeFactor = new P003_LargestPrimeFactor();
 		
-		// If 2*3*3 are factors then factorCount[2] = 1, factorCount[3] = 3;
+		// If 2*3*3 are factors then factorCount[2] = 1, factorCount[3] = 2;
 		int[] factorCount = new int[20];
 		int[] finalFactorCount = new int[20];
 		int[] factors;
@@ -26,7 +26,7 @@ public class P005_SmallestMultipleArray {
 		};
 
 		productOfFactors = multiplyFactors(maxDivisor, finalFactorCount );
-		System.out.println("Result = " + productOfFactors);
+		System.out.printf("smallestMultiple(%d) = %d%n", maxDivisor, productOfFactors);
 		return productOfFactors;
 	}
 
@@ -61,7 +61,7 @@ public class P005_SmallestMultipleArray {
 	}
 	
 	@Test
-	public void NumbersTo20() {
+	public void NumberDivisibleBy1To20() {
 		assertEquals( "Incorrect product", 232792560, smallestMultiple(20) );
 	}
 }

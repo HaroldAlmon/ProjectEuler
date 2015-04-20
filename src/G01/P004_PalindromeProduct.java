@@ -1,6 +1,7 @@
 package G01;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 /**
@@ -27,7 +28,8 @@ public class P004_PalindromeProduct {
 	public void LengthLessThan1ThrowsException() throws Exception {
 		int result = largestPalindromeProduct(-1);
 		System.out.printf("largestPalindromeProduct = %d%n", result);
-		assertEquals("Incorrect palindrome product of invalid input", 0, result);
+		fail("Should not reach this position because the bad input should have caused an exception.");
+		assertEquals("Should not reach this position because the bad input should have caused an exception.", 0, result);
 	}
 
 	public int largestPalindromeProduct(int numberLength) throws Exception {
@@ -47,8 +49,7 @@ public class P004_PalindromeProduct {
 		return largestProduct;
 	}
 
-	private int reverseEnumerateNum2(int upperLimit, int largestProduct,
-			int num1) {
+	private int reverseEnumerateNum2(int upperLimit, int largestProduct, int num1) {
 		int product;
 		for (int num2 = upperLimit; num2 > upperLimit/10; num2--) {
 			product = num1 * num2;

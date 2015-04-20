@@ -32,13 +32,13 @@ public class P001_MultiplesOf3And5 {
 	private int addMultiplesOf5(int upperLimit, int sumOfMultiples) {
 		int multipleOf5 = 5;		
 		while (multipleOf5 < upperLimit ) {
-			sumOfMultiples = addToSumOfMultiplesIfNotMultipleOfThree(sumOfMultiples, multipleOf5);
+			sumOfMultiples = addToSumIfNotMultipleOfThree(sumOfMultiples, multipleOf5);
 			multipleOf5 += 5;
 		}
 		return sumOfMultiples;
 	}
 
-	private int addToSumOfMultiplesIfNotMultipleOfThree(int sumOfMultiples, int multOf5) {
+	private int addToSumIfNotMultipleOfThree(int sumOfMultiples, int multOf5) {
 		if( multOf5 % 3 != 0) {
 			sumOfMultiples += multOf5;
 		}

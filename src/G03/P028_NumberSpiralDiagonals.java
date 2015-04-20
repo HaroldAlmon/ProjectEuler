@@ -1,104 +1,121 @@
 package G03;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.Arrays;
 
 import org.junit.Test;
 /**
- * Straegy: Dynamic programming, simple mathematics.
- * @author Harold
- *
+ * Strategy: Dynamic programming, simple mathematics.
+ * @author Harold Almon
  */
 
 public class P028_NumberSpiralDiagonals {
-	// I used this data in testing, it's used for the solution.
-	int[][] matrix = {
-	{21, 22, 23, 24, 25},
-	{20,  7,  8,  9, 10},
-	{19,  6,  1,  2, 11},
-	{18,  5,  4,  3, 12},
-	{17, 16, 15, 14, 13}
-	};
-	public int getSum(int matrixSize) {
-		// Dynamic array creation...
+	int[][] matrix;
+	int num = 2;
+
+	public int sumOfDiagonals(int matrixSize) {
+		dynamicallyCreateArray(matrixSize);
+		populateMatrix(matrix);
+		return calculateSum(matrix);
+	}
+
+	private void dynamicallyCreateArray(int matrixSize) {
 		matrix = new int[matrixSize][];
 		for (int i = 0; i < matrix.length; i++) {
 			matrix[i] = new int[matrixSize];
 		}
-		populateMatrix(matrix);
-		return calcSum(matrix);
-	}
-	
-	@SuppressWarnings("unused")
-	private void printMatrix(int[][] matrix) {
-		for (int i = 0; i < matrix.length; i++) {
-			System.out.printf("%s\n",Arrays.toString(matrix[i]));
-		}
-		System.out.println("");
 	}
 
-	
-	private int calcSum(int[][] matrix) {
+	private int calculateSum(int[][] matrix) {
 		int result = -1;
-		
-		for (int i = 0; i < matrix.length; i++) {
-			result += matrix[i][i];
-		}
-		
+
+		result = sumFallingDiagonal(matrix, result);
+		result = sumRisingDiagonal(matrix, result);
+		return result;
+	}
+
+	private int sumRisingDiagonal(int[][] matrix, int result) {
 		for (int i = 0; i < matrix.length; i++) {
 			result += matrix[matrix.length - i - 1][i];
 		}
 		return result;
 	}
+
+	private int sumFallingDiagonal(int[][] matrix, int result) {
+		for (int i = 0; i < matrix.length; i++) {
+			result += matrix[i][i];
+		}
+		return result;
+	}
 	
 	private void populateMatrix(int[][] matrix) {
+		int row;
+		int col;
+		
 		int centre = matrix.length/2;
 		matrix[centre][centre] = 1;
-		int row = centre;
-		int col = centre+1;
-		int num = 2;
-		for (int i = 1; i <= centre; i++) {
-			// Down...
-			for (; row <= centre + i; row++) {
-				matrix[row][col] = num;
-				//printMatrix(matrix);
-				num += 1;
-			}
+		row = centre;
+		col = centre+1;
+
+		for (int offsetFromCentre = 1; offsetFromCentre <= centre; offsetFromCentre++) {
+			row = populateMatrixGoingDown(row, col, centre, offsetFromCentre);
+			col = populateMatrixGoingLeft(row, col, centre, offsetFromCentre);
 			row--;
-			
-			//System.out.printf("row=%d, col=%d\n",row, col);
-			
-			// Left...
-			col--;
-			for (; col >= centre - i ; col--) {
-				matrix[row][col] = num;
-				//printMatrix(matrix);
-				num += 1;
-			}
+			row = populateMatrixGoingUp(row, col, centre, offsetFromCentre);
 			col++;
-			row--;
-			
-			//System.out.printf("row=%d, col=%d\n",row, col);
-			
-			// Up...
-			for (; row >= centre - i; row--) {
-				matrix[row][col] = num;
-				//printMatrix(matrix);
-				num += 1;
-			}
-			row++;
-			col++;
-			
-			// Right...
-			for (; col <= centre + i ; col++) {
-				matrix[row][col] = num;
-				//printMatrix(matrix);
-				num += 1;
-			}
-			//System.out.printf("row=%d, col=%d\n",row, col);		
+			col = populateMatrixGoingRight(row, col, centre, offsetFromCentre);
 		}
 	}
-	@Test
-	public void test1() {
-		System.out.printf("Result=%d\n",getSum(1001));
+	
+	private int populateMatrixGoingDown(int row, int col, int centre, int offsetFromCentre) {
+		for (; row <= centre + offsetFromCentre; row++) {
+			matrix[row][col] = num;
+			num += 1;
+		}
+		row--;
+		return row;
+	}
+	
+	private int populateMatrixGoingLeft(int row, int col, int centre, int offsetFromCentre) {
+		col--;
+		for (; col >= centre - offsetFromCentre ; col--) {
+			matrix[row][col] = num;
+			num += 1;
+		}
+		col++;
+		return col;
+	}
+	
+	private int populateMatrixGoingUp(int row, int col, int centre, int offsetFromCentre) {
+		for (; row >= centre - offsetFromCentre; row--) {
+			matrix[row][col] = num;
+			num += 1;
+		}
+		row++;
+		return row;
+	}
+	
+	private int populateMatrixGoingRight(int row, int col, int centre, int offsetFromCentre) {
+		for (; col <= centre + offsetFromCentre ; col++) {
+			matrix[row][col] = num;
+			num += 1;
+		}
+		return col;
+	}
+		
+	@SuppressWarnings("unused")
+	private void printMatrix(int[][] matrix) {
+		for (int i = 0; i < matrix.length; i++) {
+			System.out.printf("%s%n",Arrays.toString(matrix[i]));
+		}
+		System.out.println("");
+	}
+
+	@Test(timeout = 500)
+	public void SumOfDiagonals() {
+		int sum = sumOfDiagonals(101);
+		System.out.printf("sumOfDiagonals(101)=%d%n", sum);
+		assertEquals("Incorrect sum of diagonals", 692101, sum);
 	}
 }

@@ -3,7 +3,11 @@ package G01;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-
+/**
+ * Strategy: Brute Force.
+ * @author Harold Almon
+ *
+ */
 // Assume x + y + r = sum;
 public class P009_PythagoreanTriplet {
 	public int pythagoreanTriplet(int tripletSum) {
@@ -43,7 +47,7 @@ public class P009_PythagoreanTriplet {
 	@Test(timeout = 500)
 	public void PythagoreanTriplet() {
 		int result = pythagoreanTriplet(1000);
-		System.out.printf("Result = %d%n", result);
+		System.out.printf("pythagoreanTriplet(1000) = %d%n", result);
 		assertEquals("Incorrect product", 31875000, result);
 	}
 }

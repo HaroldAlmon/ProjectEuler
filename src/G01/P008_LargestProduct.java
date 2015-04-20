@@ -3,7 +3,10 @@ package G01;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-
+/**
+ * Strategy: Simple Mathematics.
+ * @author Harold Almon
+ */
 public class P008_LargestProduct {
 	 static String veryLongNumber = 
 	 "73167176531330624919225119674426574742355349194934"+
@@ -26,14 +29,15 @@ public class P008_LargestProduct {
 	 "84580156166097919133875499200524063689912560717606"+
 	 "05886116467109405077541002256983155200055935729725"+
 	 "71636269561882670428252483600823257530420752963450";
-	 
 	
 	 @Test(timeout = 500)
 	 public void MaximumProduct() {
-		 assertEquals( "Incorrect product", maximumProduct(veryLongNumber, 13), 23514624000L );
+		long product = maximumProductOfDigits(veryLongNumber, 13);
+		System.out.printf("maximumProduct(13) = %d%n", product);
+		assertEquals( "Incorrect product", product, 23514624000L );
 	 }
 
-	public long maximumProduct(String veryLongNumber, int digitsLength) {
+	public long maximumProductOfDigits(String veryLongNumber, int digitsLength) {
 		long maximumProduct = 0;
 		long product = 0;
 		for (int posInLongNum = 0; posInLongNum < veryLongNumber.length() - digitsLength - 1; posInLongNum++) {
@@ -42,7 +46,6 @@ public class P008_LargestProduct {
 				maximumProduct = product;
 			}
 		}
-		//System.out.printf("%s",s);
 		return maximumProduct;
 	}
 	

@@ -27,7 +27,7 @@ public class P007_10001PrimeArrays {
 				}
 			}
 
-			if (isPrime == true) {
+			if (isPrime) {
 				primes[primeCount] = oddNumber;
 				primeCount += 1;
 			}
@@ -41,7 +41,7 @@ public class P007_10001PrimeArrays {
 	}
 
 	@Test
-	public void FindprimeNumber10_001() {
+	public void FindprimeNumber() {
 		assertEquals( "Incorrect prime number", 104_743, findPrimeNumber(10_001) );
 	}
 }

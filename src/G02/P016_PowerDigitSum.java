@@ -10,23 +10,34 @@ import java.math.BigInteger;
 import org.junit.Test;
 
 public class P016_PowerDigitSum {
-	public int powerDigitSum(int power) {
-		BigInteger sum = new BigInteger("2");
+	public int sumOfDigits(int power) {
+		BigInteger sumOfPowers = new BigInteger("2");
 		BigInteger two = new BigInteger("2");
 		int result = 0;	
 
-		for(int i = 0; i < power - 1; i++)
-			sum = sum.multiply(two);
+		sumOfPowers = calculatePowerOfTwo(power, sumOfPowers, two);
 
-		String s = sum.toString();
+		String digits = sumOfPowers.toString();
+		result = sumOfDigits(digits);
+		return result;
+	}
+
+	private int sumOfDigits(String s) {
+		int result = 0;
 		for (int index = 0; index < s.length(); index++)
 			result += Character.getNumericValue(s.charAt(index));
 		return result;
 	}
+
+	private BigInteger calculatePowerOfTwo(int power, BigInteger sum, BigInteger two) {
+		for(int i = 0; i < power - 1; i++)
+			sum = sum.multiply(two);
+		return sum;
+	}
 	
 	@Test(timeout = 500)
 	public void Sum() {
-		int powerDigitSum = powerDigitSum(1000);
+		int powerDigitSum = sumOfDigits(1000);
 		System.out.printf("Result = %d%n", powerDigitSum);
 		assertEquals( "Incorrect sum", powerDigitSum, 1366 );
 	}

@@ -1,11 +1,10 @@
 package G02;
 
-import static org.junit.Assert.assertTrue;
-
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-public class P018_PyramidMax {
-	public int getMax() {
+public class P018_MaximumPathSumI {
+	public int maximumPathSum() {
 		int[][] pyramid = { 
 				{75}, 
 				{95,64}, 
@@ -33,9 +32,9 @@ public class P018_PyramidMax {
 		return pyramid[0][0];
 	}
 	@Test
-	public void test1() {
-		int result = getMax();
-		System.out.printf("max = %d\n", result);
-		assertTrue(result == 1074);
+	public void MaximumPathSum() {
+		int result = maximumPathSum();
+		System.out.printf("maximumPathSum() = %d%n", result);
+		assertEquals(1074, result);
 	}
 }

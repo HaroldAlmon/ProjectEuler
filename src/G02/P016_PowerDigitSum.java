@@ -10,7 +10,7 @@ import java.math.BigInteger;
 import org.junit.Test;
 
 public class P016_PowerDigitSum {
-	public int sum(int power) {
+	public int powerDigitSum(int power) {
 		BigInteger sum = new BigInteger("2");
 		BigInteger two = new BigInteger("2");
 		int result = 0;	
@@ -26,8 +26,8 @@ public class P016_PowerDigitSum {
 	
 	@Test(timeout = 500)
 	public void Sum() {
-		int sum = sum(1000);
-		System.out.printf("Result = %d%n", sum);
-		assertEquals( "Incorrect sum", sum, 1366 );
+		int powerDigitSum = powerDigitSum(1000);
+		System.out.printf("Result = %d%n", powerDigitSum);
+		assertEquals( "Incorrect sum", powerDigitSum, 1366 );
 	}
 }

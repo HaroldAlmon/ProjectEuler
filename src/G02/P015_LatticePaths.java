@@ -42,12 +42,12 @@ public class P015_LatticePaths {
 	}
 
 	@Test(timeout = 500)
-	public void Lattice20x20() {
+	public void CountLattice20x20() {
 		assertTrue( latticePaths(20).equals("137846528820") );
 	}
 	
 	@Test(timeout = 500)
-	public void Lattice6x6() {
+	public void CountLattice6x6() {
 		assertTrue( latticePaths(2).equals("6") );
 	}
 }

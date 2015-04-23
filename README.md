@@ -1,4 +1,4 @@
-# EulerProject
+# ProjectEuler
 This is a place where I can save my solutions to the ProjectEuler problems.
 I am making an effort to use meaning variable names and few comments
 so that you can easily understand the code.

@@ -3,7 +3,7 @@ package G02;
 import org.junit.Test;
 
 public class P014_CollatzSequence {
-	public long getLength(int upperLimit) {
+	public long numberProducingLongestChain(int upperLimit) {
 		long result = 0;
 		long longest = 0;
 		int length;
@@ -24,8 +24,8 @@ public class P014_CollatzSequence {
 		}
 		return result;
 	}
-	@Test
-	public void test1() {
-		System.out.printf("%d",getLength(1_000_000));
+	@Test(timeout = 20_000)
+	public void NumberProducingLongestChain() {
+		System.out.printf("%d%n",numberProducingLongestChain(1_000_000));
 	}
 }

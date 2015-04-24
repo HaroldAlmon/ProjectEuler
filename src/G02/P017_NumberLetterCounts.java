@@ -1,5 +1,7 @@
 package G02;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,7 +68,7 @@ public class P017_NumberLetterCounts {
 	
 	int Land1to99 = 0;
 	
-	public int numberLetterCounts() {
+	public int countLetters() {
 		int result = 0;
 
 		L1to99 = sum1To99();
@@ -100,7 +102,9 @@ public class P017_NumberLetterCounts {
 	}
 
 	@Test
-	public void test1() {
-		System.out.printf("Count = %d", numberLetterCounts());
+	public void CountLetters() {
+		int letterCount = countLetters();
+		System.out.printf("Count = %d%n", letterCount);
+		assertEquals( 43945, letterCount );
 	}
 }

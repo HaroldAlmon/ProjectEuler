@@ -12,7 +12,6 @@ public class P006_SumSquareDifference {
 		long result = 0;
 		result = squareSum(maxNum) - sumSquares(maxNum);
 		
-		System.out.printf("sumSquareDifference(%d) = %d%n", maxNum, result);
 		
 		return result;
 	}
@@ -34,8 +33,10 @@ public class P006_SumSquareDifference {
 	}
 	
 	@Test
-	public void Sum100() {
-		assertEquals( "Incorrect sum", 25164150, sumSquareDifference(100) );
+	public void SumSquareDifference() {
+		long sum = sumSquareDifference(100);
+		System.out.printf("sumSquareDifference(%d) = %d%n", 100, sum);
+		assertEquals( "Incorrect sum", 25164150, sum );
 	}
 	
 }

@@ -5,10 +5,9 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 /**
  * Strategy: Brute Force.
+ * Assume x + y + r = sum;
  * @author Harold Almon
- *
  */
-// Assume x + y + r = sum;
 public class P009_PythagoreanTriplet {
 	public int pythagoreanTriplet(int tripletSum) {
 		int tripletProduct = enumerateAllXValues(tripletSum);

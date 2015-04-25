@@ -27,7 +27,7 @@ public class P011_LargestProduct {
 			{1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48} 
 	};
 
-	public int getSum() {
+	public int largestProduct() {
 		int result = 0;
 	
 		result = maximumOfTheRows(matrix, result);
@@ -86,10 +86,10 @@ public class P011_LargestProduct {
 	}
 
 	@Test(timeout = 500)
-	public void GetSum() {
-		int result = getSum();
-		System.out.printf("Result = %d%n", result);
-		assertEquals("Incorrect  sum", 70600674, result);
+	public void LargestProduct() {
+		int result = largestProduct();
+		System.out.printf("largestProduct() = %d%n", result);
+		assertEquals("Incorrect product", 70600674, result);
 	}
 	
 }

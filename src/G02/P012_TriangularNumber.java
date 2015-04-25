@@ -52,7 +52,7 @@ public class P012_TriangularNumber {
 	@Test(timeout = 3_000)
 	public void test1() {
 		long result = triangularNumber(500);
-		System.out.printf("Result = %d%n", result);
+		System.out.printf("triangularNumber(500) = %d%n", result);
 		assertEquals( "Incorrect sum", 76576500, result );
 	}
 }

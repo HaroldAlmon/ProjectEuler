@@ -14,7 +14,7 @@ public class P013_LargeSum {
 	@Test(timeout = 500)
 	public void Sum() {
 		String sum = largeSum().substring(0, 10);
-		System.out.printf("Result = %s%n", sum);
+		System.out.printf("largeSum() = %s%n", sum);
 		assertEquals( sum, "5537376230" );
 	}
 

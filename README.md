@@ -13,7 +13,8 @@ try an array or hashmap solution to the same problem.
 
 After reading an article called __"Why Comments Are Stupid, a Real Example"__
 by John Somnez, I decided to start a re-factoring project that is eating 
-up all my spare time.
+up all my spare time.  You should read the original article in chapter nineteen
+of the book **Code Complete** and chapter four of the book **Clean Code**.
 
 At this point, I have re-factored about 60% of the code on this site.
 Once that is done, I can get back to working on ProjectEuler solutions again.

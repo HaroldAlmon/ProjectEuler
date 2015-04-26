@@ -68,7 +68,7 @@ public class P017_NumberLetterCounts {
 	
 	int Land1to99 = 0;
 	
-	public int countLetters() {
+	public int numberLetterCounts() {
 		int result = 0;
 
 		L1to99 = sum1To99();
@@ -103,8 +103,8 @@ public class P017_NumberLetterCounts {
 
 	@Test
 	public void CountLetters() {
-		int letterCount = countLetters();
-		System.out.printf("Count = %d%n", letterCount);
+		int letterCount = numberLetterCounts();
+		System.out.printf("countLetters() = %d%n", letterCount);
 		assertEquals( 43945, letterCount );
 	}
 }

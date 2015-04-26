@@ -1,7 +1,11 @@
 package G02;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
 import java.math.BigInteger;
+
+import org.junit.Ignore;
 import org.junit.Test;
 public class P015_LatticePaths {
 	/**
@@ -43,10 +47,14 @@ public class P015_LatticePaths {
 
 	@Test(timeout = 500)
 	public void CountLattice20x20() {
-		assertTrue( latticePaths(20).equals("137846528820") );
+		long count = Long.parseLong( latticePaths(20) );
+		System.out.printf("CountLattice20x20(%s)%n", count);
+		assertEquals( Long.parseLong("137846528820"), count );
+
 	}
 	
 	@Test(timeout = 500)
+	@Ignore
 	public void CountLattice6x6() {
 		assertTrue( latticePaths(2).equals("6") );
 	}

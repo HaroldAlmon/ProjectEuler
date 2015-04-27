@@ -13,10 +13,11 @@ public class P020_FactorialDigitSum {
 
 		factorial = calculateFactorial(upperLimit, factorial);
 		factorialString = factorial.toString();
-		sumOfDigits = calculateSumOdDigits(factorialString, sumOfDigits);
+		sumOfDigits = calculateSumOfDigits(factorialString, sumOfDigits);
 		return sumOfDigits;
 	}
-	private int calculateSumOdDigits(String factorialString, int sumOfDigits) {
+
+	private int calculateSumOfDigits(String factorialString, int sumOfDigits) {
 		for (int position = 0; position < factorialString.length(); position++) {
 			sumOfDigits += Character.getNumericValue(factorialString.charAt(position));
 		}
@@ -31,6 +32,7 @@ public class P020_FactorialDigitSum {
 		}
 		return factorial;
 	}
+
 	@Test(timeout = 500)
 	public void FactorialDigitSum() {
 		int sumOfDigits = factorialDigitSum(100);

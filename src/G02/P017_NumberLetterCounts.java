@@ -2,7 +2,7 @@ package G02;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
@@ -10,36 +10,28 @@ import org.junit.Test;
 public class P017_NumberLetterCounts {
 	int Land = "and".length();
 	
-	@SuppressWarnings("serial")
-	static List<Integer> digitLen = new ArrayList<Integer>() {
-		{
-			// TODO: USe Arrays.asList() instead
-			add("one".length());
-			add("two".length());
-			add("three".length());
-			add("four".length());
-			add("five".length());
-			add("six".length());
-			add("seven".length());
-			add("eight".length());
-			add("nine".length());
-		};
-	};
-	
-	@SuppressWarnings("serial")
-	static List<Integer> tens = new ArrayList<Integer>() {
-		{ 
-			// TODO: USe Arrays.asList() instead
-			add("twenty".length());
-			add("thirty".length());
-			add("forty".length());
-			add("fifty".length());
-			add("sixty".length() );
-			add("seventy".length());
-			add("eighty".length());
-			add("ninety".length());
-		}
-	};
+	static List<Integer> digitLen = Arrays.asList( new Integer[] {
+		"one".length(),
+		"two".length(),
+		"three".length(),
+		"four".length(),
+		"five".length(),
+		"six".length(),
+		"seven".length(),
+		"eight".length(),
+		"nine".length()
+	});
+
+	static List<Integer> tens = Arrays.asList(new Integer[] {
+		"twenty".length(),
+		"thirty".length(),
+		"forty".length(),
+		"fifty".length(),
+		"sixty".length(),
+		"seventy".length(),
+		"eighty".length(),
+		"ninety".length()
+	});
 
 	int L1to9 = sum1to9(digitLen);
 
@@ -104,7 +96,7 @@ public class P017_NumberLetterCounts {
 	@Test
 	public void CountLetters() {
 		int letterCount = numberLetterCounts();
-		System.out.printf("countLetters() = %d%n", letterCount);
+		System.out.printf("numberLetterCounts() = %d%n", letterCount);
 		assertEquals( 43945, letterCount );
 	}
 }

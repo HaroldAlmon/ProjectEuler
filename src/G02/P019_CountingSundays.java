@@ -2,13 +2,12 @@ package G02;
 
 import java.util.HashMap;
 import java.util.Map;
-
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 /**
  * Strategy: Simple mathemmatics.
  * @author Harold Almon
- *
  */
 
 public class P019_CountingSundays {
@@ -30,10 +29,9 @@ public class P019_CountingSundays {
 	}};
 	int year = 1901;
 	int month = 1;
-	// Day Of the Week...
-	int dow = 3;
+	int dayOfTheWeek = 3;
 
-	public int getCount() {
+	public int countSundays() {
 		int daysThisMonth;
 		int result = 0;
 
@@ -50,11 +48,11 @@ public class P019_CountingSundays {
 					daysThisMonth = 29;
 				}
 			}
-			dow += daysThisMonth % 7;
-			if (dow > 7) {
-				dow %= 7;
+			dayOfTheWeek += daysThisMonth % 7;
+			if (dayOfTheWeek > 7) {
+				dayOfTheWeek %= 7;
 			}
-			if (dow == 1) {
+			if (dayOfTheWeek == 1) {
 				result += 1;
 
 			}
@@ -63,8 +61,10 @@ public class P019_CountingSundays {
 		return result;
 	}
 	
-	@Test
-	public void test1(){
-		System.out.printf( "Result = %d%n", getCount() );
+	@Test(timeout = 500)
+	public void CountSundays(){
+		int noOfSundays = countSundays();
+		System.out.printf( "Number of Sundays = %d%n", noOfSundays );
+		assertEquals(171, noOfSundays);
 	}
 }

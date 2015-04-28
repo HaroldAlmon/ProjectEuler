@@ -16,6 +16,6 @@ by John Somnez, I decided to start a re-factoring project that is eating
 up all my spare time.  You should read the original article in chapter nineteen
 of the book **Code Complete** and chapter four of the book **Clean Code**.
 
-At this point, I have re-factored about 60% of the code on this site.
+At this point, I have re-factored about 80% of the code on this site.
 Once that is done, I can get back to working on ProjectEuler solutions again.
 #

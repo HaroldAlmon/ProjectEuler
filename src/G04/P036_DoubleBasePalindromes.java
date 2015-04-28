@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- * 
+ * Strategy: Brute Force
  * @author Harold Almon
  * 1/29/2015
  *
@@ -16,17 +16,19 @@ public class P036_DoubleBasePalindromes {
 	 * @author Harold Almon
 	 * @param None
 	 */
-	long getSum() {
+	long doubleBasePalindromes(int upperLimit) {
+		final boolean FALSE = false;
 		long result = 0;
-		int counter = 1;
-		while(counter < 1_000_000) {
-			String intStr = Integer.toString(counter);
-			String binStr = Integer.toString(counter, 2);
-			if (isPalindrome( intStr ) && isPalindrome( binStr ) ) {
-				result += counter;
-				//System.out.printf("Match for: %s and %s\n", intStr, binStr);
+		int palindromeCandidate = 1;
+		while(palindromeCandidate < upperLimit) {
+			String intString = Integer.toString(palindromeCandidate);
+			String binaryString = Integer.toString(palindromeCandidate, 2);
+			if (isPalindrome( intString ) && isPalindrome( binaryString ) ) {
+				result += palindromeCandidate;
+				if(FALSE) 
+					System.out.printf("Match for: %s and %s%n", intString, binaryString);
 			}
-			counter += 1;
+			palindromeCandidate += 1;
 		}
 		return result;
 	}
@@ -42,11 +44,11 @@ public class P036_DoubleBasePalindromes {
 		return true;
 	}
 
-	@Test
+	@Test(timeout = 2_000)
 	public void CountPalindromesLessThanOneMillion() {
-		long result = getSum();
-		System.out.printf("Result = %d\n", result);
-		assertEquals("Incorrect sum", 872187, result);
+		long sum = doubleBasePalindromes(1_000_000);
+		System.out.printf("doubleBasePalindromes(1_000_000) = %d%n", sum);
+		assertEquals("Incorrect sum", 872187, sum);
 	}
 
 }

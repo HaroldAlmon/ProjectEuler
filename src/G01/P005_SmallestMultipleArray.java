@@ -60,7 +60,7 @@ public class P005_SmallestMultipleArray {
 		return factorCount;
 	}
 	
-	@Test
+	@Test(timeout = 500)
 	public void NumberDivisibleBy1To20() {
 		assertEquals( "Incorrect product", 232792560, smallestMultiple(20) );
 	}

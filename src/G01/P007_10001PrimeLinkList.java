@@ -48,12 +48,12 @@ public class P007_10001PrimeLinkList {
 		testNo += 1;
 	}
 
-	@Test
+	@Test(timeout = 5_000)
 	public void FindprimeNumber10_001() {
 		assertEquals( "Incorrect prime number", 104_743, findprimeNumber(10_001) );
 	}
 	
-	@Test
+	@Test(timeout = 500)
 	public void FindprimeNumber6() {
 		assertEquals( "Incorrect prime number", 13, findprimeNumber(6) );
 	}

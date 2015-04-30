@@ -1,42 +1,48 @@
 package G02;
-
+/**
+ * Strategy: Brute Force.
+ * @author Harold Almon
+ */
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 public class P010_SummationOfPrimes {
 	static int testNo = 1;
-	private long sumOfPrimesLessThan(int candidateLimit) {
-		int candidate;
+
+	private long sumOfPrimes(int upperLimit) {
+		int primeCandidate;
 		int primeCount;
 		long primeSum = 2;
 		long primes[] = new long[200_000];
 		
 		primes[0] = 2;
 		primeCount = 1;
-		candidate = 3;
+		primeCandidate = 3;
 		
-		while (candidate < candidateLimit) {
-
+		while (primeCandidate < upperLimit) {
 			boolean isPrime = true;		
 			for(int i = 0; i < primeCount; i++) {
-				if ( isRemainderOfDivisionZero(candidate, primes[i]) ) {
+				if ( isRemainderOfDivisionZero(primeCandidate, primes[i]) ) {
 					isPrime = false;
 					break;
 				}
 			}
+
 			if (isPrime == true) {
-				primeSum += candidate;
+				primeSum += primeCandidate;
 				try {
-					primes[primeCount] = candidate;
+					primes[primeCount] = primeCandidate;
 				} catch (Exception e) {
 					e.printStackTrace();
 					System.out.printf("sum = %d\n", primeSum);
 				}
 				primeCount += 1;
 			}
-			candidate = nextCandidate(candidate);
+			primeCandidate = nextCandidate(primeCandidate);
 		}
-		System.out.printf("Result(%d) = %d, no. of primes %d%n", candidateLimit, primeSum, primeCount);
+		System.out.printf("Result(%d) = %d, no. of primes %d%n", upperLimit, primeSum, primeCount);
 		return primeSum;
 	}
 
@@ -56,17 +62,20 @@ public class P010_SummationOfPrimes {
 	@Test(timeout = 300_000)
 	public void TwoMillionPrimes() {
 		// takes ~133 seconds on an i7 laptop
-		assertEquals( "Incorrect sum", 142913828922L, sumOfPrimesLessThan(2_000_000) );
+		long primeSum = sumOfPrimes(2_000_000);
+		assertEquals( "Incorrect sum", 142913828922L, primeSum );
 
 	}
 	
 	@Test(timeout = 500)
 	public void SixPrimes() {
-		assertEquals( "Incorrect sum", sumOfPrimesLessThan(6), 10 );
+		long primeSum = sumOfPrimes(6);
+		assertEquals( "Incorrect sum", 10, primeSum );
 	}
 	
 	@Test(timeout = 500)
 	public void TenPrimes() {
-		assertEquals("Incorrect sum", sumOfPrimesLessThan(10), 17 );
+		long primeSum = sumOfPrimes(10);
+		assertEquals("Incorrect sum", 17, primeSum);
 	}
 }

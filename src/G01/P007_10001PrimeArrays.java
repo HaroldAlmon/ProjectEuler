@@ -1,39 +1,42 @@
 package G01;
-
+/**
+ * Strategy: 
+ * @author Harold Almon
+ */
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class P007_10001PrimeArrays {
 	static int testNo = 1;
 	
-	private long findPrimeNumber(int limit) {
-		int oddNumber;
+	private long findPrimeNumber(int upperLimit) {
+		int oddPrimeCandidate;
 		int primeCount;
 		
-		long primes[] = new long[limit];
+		long primes[] = new long[upperLimit];
 		
 		primes[0] = 2;
 		primeCount = 1;
-		oddNumber = 3;
+		oddPrimeCandidate = 3;
 
-		while (primeCount < limit) {
+		while (primeCount < upperLimit) {
 			boolean isPrime = true;
 			// Check the candidate to see if it is divisible by 
 			// any of the known primes calculated so far.
 			for(int i = 0; i < primeCount; i++) {
-				if ( oddNumber % primes[i] == 0 ) {
+				if ( oddPrimeCandidate % primes[i] == 0 ) {
 					isPrime = false;
 					break;
 				}
 			}
 
 			if (isPrime) {
-				primes[primeCount] = oddNumber;
+				primes[primeCount] = oddPrimeCandidate;
 				primeCount += 1;
 			}
-			oddNumber = nextoddNumber(oddNumber);
+			oddPrimeCandidate = nextoddNumber(oddPrimeCandidate);
 		}
-		return primes[limit - 1];
+		return primes[upperLimit - 1];
 	}
 
 	private int nextoddNumber(int oddNumber) {

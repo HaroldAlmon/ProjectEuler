@@ -79,17 +79,17 @@ public class P005_SmallestMultipleHashMap {
 		factorCountForDivisorFactor.put(factors[factIdx], factorCountForDivisorFactor.get(factors[factIdx]) + 1);
 	}
 	
-	@Test
+	@Test(timeout = 500)
 	public void NumberDivisibleBy1To20() {
 		assertEquals( "Incorrect product", 232792560 , smallestMultiple(20));
 	}
 	
-	@Test
+	@Test(timeout = 500)
 	public void NumberDivisibleBy1To10() {
 		assertEquals( "Incorrect product", 2520 , smallestMultiple(10));
 	}
 	
-	@Test
+	@Test(timeout = 500)
 	public void NumberDivisibleBy1To15() {
 		assertEquals( "Incorrect product", 360360 , smallestMultiple(15));
 	}

@@ -26,13 +26,16 @@ public class P009_PythagoreanTriplet {
 		
 	}
 	private int enumerateAllYValues(int tripletSum, int x) {
+		final boolean FALSE = false;
 		int r;
 		int tripletProduct;
+
 		for (int y = x + 1; y <= tripletSum - 2; y++) {
 			r = tripletSum - x - y;
 			if ( isTriplet(x, r, y) ) {
 				tripletProduct = x*y*r;
-				System.out.printf("Triplet (x, y, r) = (%d,%d,%d)%n", x,y,r);
+				if (FALSE)
+					System.out.printf("Triplet (x, y, r) = (%d,%d,%d)%n", x,y,r);
 				return tripletProduct;
 			}
 		}

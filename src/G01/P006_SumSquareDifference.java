@@ -32,7 +32,7 @@ public class P006_SumSquareDifference {
 		return result * result;
 	}
 	
-	@Test
+	@Test(timeout = 500)
 	public void SumSquareDifference() {
 		long sum = sumSquareDifference(100);
 		System.out.printf("sumSquareDifference(%d) = %d%n", 100, sum);

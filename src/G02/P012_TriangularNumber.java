@@ -1,10 +1,14 @@
 package G02;
-
+/*
+ * Strategy: Simple Mathematics.
+ * @author Harold Almon
+ */
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 // ProjectEuler.net problem 12
 public class P012_TriangularNumber {
+	private final boolean FALSE = false;
 	long triangularNumber(int divisorLimit) {
 		int naturalNumber = 2;
 		int triangleNumber = 3;
@@ -16,7 +20,8 @@ public class P012_TriangularNumber {
 			naturalNumber = nextNaturalNumber(naturalNumber);
 			triangleNumber = nextTriangleNumber(triangleNumber, naturalNumber);
 		};
-		System.out.printf("no. of divisors = %d, Triangle seq no. = %d%n", numberOfDivisors , naturalNumber);
+		if(FALSE) 
+			System.out.printf("no. of divisors = %d, Triangle seq no. = %d%n", numberOfDivisors , naturalNumber);
 		return triangleNumber;
 	}
 	
@@ -45,14 +50,14 @@ public class P012_TriangularNumber {
 		return (n / i) - 1;
 	}
 	
-	private boolean isDivisorOfTriangleNumber(long n, int i) {
-		return n % i == 0;
+	private boolean isDivisorOfTriangleNumber(long triangleNumber, int i) {
+		return triangleNumber % i == 0;
 	}
 
 	@Test(timeout = 3_000)
-	public void test1() {
-		long result = triangularNumber(500);
-		System.out.printf("triangularNumber(500) = %d%n", result);
-		assertEquals( "Incorrect sum", 76576500, result );
+	public void TriangularNumber() {
+		long triangleNumber = triangularNumber(500);
+		System.out.printf("triangularNumber(500) = %d%n", triangleNumber);
+		assertEquals( 76576500, triangleNumber );
 	}
 }

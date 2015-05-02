@@ -1,5 +1,7 @@
 package G02;
-
+/**
+ * @author Harold Almon
+ */
 import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
@@ -8,9 +10,9 @@ import java.util.List;
 import org.junit.Test;
 
 public class P017_NumberLetterCounts {
-	int Land = "and".length();
+	int lengthOfand = "and".length();
 	
-	static List<Integer> digitLen = Arrays.asList( new Integer[] {
+	static List<Integer> digitLengths = Arrays.asList( new Integer[] {
 		"one".length(),
 		"two".length(),
 		"three".length(),
@@ -33,14 +35,21 @@ public class P017_NumberLetterCounts {
 		"ninety".length()
 	});
 
-	int L1to9 = sum1to9(digitLen);
+	int lengthOf1to9 = sum1to9(digitLengths);
 
-	private int sum1to9(List<Integer> digitLen) {
-		List<Integer> d = digitLen;
-		return d.get(0)+d.get(1)+d.get(2)+d.get(3)+d.get(4)+d.get(5)+d.get(6)+d.get(7)+d.get(8);
+	private int sum1to9(List<Integer> digitLengths) {
+		return digitLengths.get(0) +
+				digitLengths.get(1) +
+				digitLengths.get(2) +
+				digitLengths.get(3) +
+				digitLengths.get(4) +
+				digitLengths.get(5) +
+				digitLengths.get(6) +
+				digitLengths.get(7) +
+				digitLengths.get(8);
 	}
 
-	int L10to19= 
+	int lengthOf10to19 = 
 		"ten".length() +
 		"eleven".length() +
 		"twelve".length() +
@@ -52,44 +61,47 @@ public class P017_NumberLetterCounts {
 		"eighteen".length() +
 		"nineteen".length();
 	
-	int L1to19 = L1to9 + L10to19;
-	int L1to99 = 0;
+	int lengthOf1to19 = lengthOf1to9 + lengthOf10to19;
+	int lengthOf1to99 = 0;
 	
-	int Lhundred = "hundred".length();
-	int Lthousand = "thousand".length();
+	int lengthOfhundred = "hundred".length();
+	int lengthOfthousand = "thousand".length();
 	
-	int Land1to99 = 0;
-	
+	int lengthOfand1to99 = 0;
+
+	/**
+	 * @return int The sum of all the letters of the numbers from 1 to 1000 (one thousand) inclusive, written out in words.
+	 */
 	public int numberLetterCounts() {
 		int result = 0;
 
-		L1to99 = sum1To99();
-		Land1to99 = sumAnd1To99();
+		lengthOf1to99 = sum1To99();
+		lengthOfand1to99 = sumAnd1To99();
 
-		result = L1to99;
-		result += sum100to999(result);
+		result = lengthOf1to99;
+		result += sumOf100to999(result);
 		result += lengthOf1000(result);
 		return result;
 	}
 	private int sumAnd1To99() {
-		return L1to99 + Land * 99;
+		return lengthOf1to99 + lengthOfand * 99;
 	}
 	private int sum1To99() {
-		return L1to19 + sum20to99();
+		return lengthOf1to19 + sum20to99();
 	}
 	private int lengthOf1000(int result) {
-		result += digitLen.get(0) + Lthousand;
+		result += digitLengths.get(0) + lengthOfthousand;
 		return result;
 	}
-	private int sum100to999(int result) {
-		for( int i : digitLen)
-			result += (i + Lhundred) * 100 + Land1to99;
+	private int sumOf100to999(int result) {
+		for( int i : digitLengths)
+			result += (i + lengthOfhundred) * 100 + lengthOfand1to99;
 		return result;
 	}
 	private int sum20to99() {
 		int L20to99 = 0;
 		for( int i : P017_NumberLetterCounts.tens)
-			L20to99 += i * 10 + L1to9;
+			L20to99 += i * 10 + lengthOf1to9;
 		return L20to99;
 	}
 

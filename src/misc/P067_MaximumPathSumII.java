@@ -1,7 +1,9 @@
 package misc;
 /**
  * Strategy: Dynamic Programming
+ * blah blah
  * @author Harold Almon
+ * Try to create a confict
  */
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;

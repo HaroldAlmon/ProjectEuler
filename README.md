@@ -15,7 +15,7 @@ After reading an article called __"Why Comments Are Stupid, a Real Example"__
 by John Somnez, I decided to start a re-factoring project. The goal is to
 make my code easier to read and maintain by making the code self-documenting.
 
-If you are interested in re-refactoring your code, you should read the original 
-article in chapter nineteen of the book **Code Complete** and chapter four 
+If you are interested in re-refactoring your code, you should read two related 
+articles in chapter nineteen of the book **Code Complete** and chapter four 
 of the book **Clean Code** especially **page 55**.
 #

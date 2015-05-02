@@ -1,7 +1,7 @@
 package misc;
 /**
  * Strategy: Dynamic Programming
- * @author Harold Brown
+ * @author Harold Almon
  */
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;

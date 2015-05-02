@@ -70,6 +70,9 @@ public class P011_LargestProduct {
 		int maximumProduct = largestProduct();
 		System.out.printf("largestProduct() = %d%n", maximumProduct);
 		assertEquals("Incorrect product", 70600674, maximumProduct);
+		int product = largestProduct();
+		System.out.printf("largestProduct() = %d%n", product);
+		assertEquals("Incorrect product", 70600674, product);
 	}
 	
 	private static int[][] matrix = {

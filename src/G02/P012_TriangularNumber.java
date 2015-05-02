@@ -3,9 +3,9 @@ package G02;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-// ProjectEuler.net problem 12
 public class P012_TriangularNumber {
 	long triangularNumber(int divisorLimit) {
+		final boolean FALSE = false;
 		int naturalNumber = 2;
 		int triangleNumber = 3;
 		int numberOfDivisors = 0;
@@ -16,7 +16,8 @@ public class P012_TriangularNumber {
 			naturalNumber = nextNaturalNumber(naturalNumber);
 			triangleNumber = nextTriangleNumber(triangleNumber, naturalNumber);
 		};
-		System.out.printf("no. of divisors = %d, Triangle seq no. = %d%n", numberOfDivisors , naturalNumber);
+		if(FALSE)
+			System.out.printf("no. of divisors = %d, Triangle seq no. = %d%n", numberOfDivisors , naturalNumber);
 		return triangleNumber;
 	}
 	
@@ -50,7 +51,7 @@ public class P012_TriangularNumber {
 	}
 
 	@Test(timeout = 3_000)
-	public void test1() {
+	public void TriangularNumber() {
 		long result = triangularNumber(500);
 		System.out.printf("triangularNumber(500) = %d%n", result);
 		assertEquals( "Incorrect sum", 76576500, result );

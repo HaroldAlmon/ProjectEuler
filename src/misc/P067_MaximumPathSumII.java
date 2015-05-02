@@ -6,8 +6,8 @@ package misc;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-public class P067_PyramidMax {
-	public int pyramidMax() {
+public class P067_MaximumPathSumII {
+	public int maximumPathSumII() {
 		for (int row = pyramid.length - 2; row >= 0; row--) {
 			for(int col = 0; col < pyramid[row].length; col++ ) {
 				pyramid[row][col] += Math.max( pyramid[row+1][col], pyramid[row+1][col+1] );
@@ -16,10 +16,10 @@ public class P067_PyramidMax {
 		return pyramid[0][0];
 	}
 
-	@Test
-	public void test1() {
-		int maximumPath = pyramidMax();
-		System.out.printf("Result = %d%n", maximumPath);
+	@Test(timeout = 500)
+	public void MaximumPathSumII() {
+		int maximumPath = maximumPathSumII();
+		System.out.printf("maximumPathSumII() = %d%n", maximumPath);
 		assertEquals("Incorrect sum", 7273, maximumPath);
 	}
 	

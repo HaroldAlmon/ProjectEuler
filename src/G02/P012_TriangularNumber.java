@@ -56,14 +56,8 @@ public class P012_TriangularNumber {
 
 	@Test(timeout = 3_000)
 	public void TriangularNumber() {
-<<<<<<< HEAD
 		long triangleNumber = triangularNumber(500);
 		System.out.printf("triangularNumber(500) = %d%n", triangleNumber);
 		assertEquals( 76576500, triangleNumber );
-=======
-		long result = triangularNumber(500);
-		System.out.printf("triangularNumber(500) = %d%n", result);
-		assertEquals( "Incorrect sum", 76576500, result );
->>>>>>> refactor
 	}
 }

@@ -3,14 +3,7 @@ package G01;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-/**
- * Strategy: Brute force. Simple mathematics.
- * 
- * This solution might be slower or faster than checking every
- * number with division by 3 and 5 but I have not tested the
- * difference.
- * @author Harold Almon
- */
+/** Strategy: Brute force. Simple mathematics. */
 public class P001_MultiplesOf3And5 {
 	public int multiplesOf3And5(int upperLimit) {
 		int sumOfMultiples = 0;

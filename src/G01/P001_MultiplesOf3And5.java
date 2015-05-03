@@ -18,9 +18,13 @@ public class P001_MultiplesOf3And5 {
 	
 	private int calculateSumBelowLimit(int upperLimit, int divisor) {
 		int result = 0;
-		int adjustedLimit = (upperLimit-1)/divisor;
-
 		// This is a variation of the sum(1..n) formula.
+		//
+		// Sum(1...kn) = k * n * (n + 1)
+		//                   -----------
+		//                        2
+		// Also the formula includes n, the problem does not.
+		int adjustedLimit = (upperLimit-1)/divisor;
 		result = adjustedLimit * (adjustedLimit + 1) / 2 * divisor ;
 		return result;
 	}

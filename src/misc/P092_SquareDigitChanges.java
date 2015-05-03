@@ -1,14 +1,12 @@
 package misc;
 
-import static org.junit.Assert.assertTrue;
-
+import static org.junit.Assert.assertEquals;
 import java.util.HashSet;
 import java.util.Set;
-
 import org.junit.Test;
 
 public class P092_SquareDigitChanges {
-	public int getTotal(int number) {
+	public int squareDigitChanges(int number) {
 		int result = 0;
 		
 		for (int i = 1; i < number; i++) {
@@ -64,11 +62,11 @@ public class P092_SquareDigitChanges {
 		return loopNums.contains(number);
 	}
 	
-	@Test
-	public void test2() {
+	@Test(timeout = 10_000)
+	public void SquareDigitChanges() {
 		//8581146
-		int result = getTotal( 10_000_000 );
-		System.out.printf("Result = %d",result);
-		assertTrue( 8581146 == result);
+		int result = squareDigitChanges( 10_000_000 );
+		System.out.printf("squareDigitChanges( 10_000_000 ) = %d%n",result);
+		assertEquals( result, 8581146 );
 	}
 }

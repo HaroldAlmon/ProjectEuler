@@ -17,5 +17,5 @@ make my code easier to read and maintain by making the code self-documenting.
 
 If you are interested in re-refactoring your code, you should read two related 
 articles in chapter nineteen of the book **Code Complete** and chapter four 
-of the book **Clean Code** especially **page 55**.
+of the book **Clean Code**.
 #

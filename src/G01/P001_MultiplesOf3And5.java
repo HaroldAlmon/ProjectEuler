@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Ignore;
 import org.junit.Test;
 
-/** Strategy: Simple mathematics. Time complexity is O(1) */
+/** Strategy: Mathematics. Time complexity is O(1) */
 public class P001_MultiplesOf3And5 {
 	public int multiplesOf3And5(int upperLimit) {
 		int sumOfMultiples = 0;		
@@ -24,8 +24,8 @@ public class P001_MultiplesOf3And5 {
 		//                   -----------
 		//                        2
 		// Also the formula includes n, the problem does not.
-		int adjustedLimit = (upperLimit-1)/divisor;
-		result = adjustedLimit * (adjustedLimit + 1) / 2 * divisor ;
+		int n = (upperLimit-1)/divisor;
+		result = divisor * n * (n + 1) / 2  ;
 		return result;
 	}
 

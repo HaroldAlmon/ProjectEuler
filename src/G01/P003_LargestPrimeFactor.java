@@ -4,13 +4,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.Arrays;
 import org.junit.Test;
 
-/**
- * Strategy: Brute force. 
- * The largest factor a number can have is the square root.
- * Find all the even factors and then find all of the odd factor.
- * @author Harold Almon
- *
- */
+/** Strategy: Brute Force. */
 public class P003_LargestPrimeFactor {
 	public long largestPrimeFactor(long product) {
 		long[] result = getLongFactors(product);
@@ -19,33 +13,25 @@ public class P003_LargestPrimeFactor {
 	
 	private long[] getLongFactors(long longNumber) {
 	    long[] factors = new long[100];
-	    int freePosition = 0, factor;
+	    int freePosition = 0, candidateFactor;
 	    long product = longNumber;
 	    
-	    // Find all the factors that are 2. Need to find these
-	    // because we need to test for odd factors later.
+	    // Find all the factors of 2.
 	    while (product % 2 == 0) {
 	        factors[freePosition] = 2;
 	        freePosition += 1;
 	        product /= 2;
 	    }
 	    
-	    // Now find the other factors starting at 3...
-	    factor = 3;
+	    candidateFactor = 3;
 
-	    // The largest possible factor of a number is the square root,
-	    // so when you go larger than that, you can stop.
-	    while (factor <= Math.sqrt(product) + 1) {
-	        if (product % factor == 0) {
-	        	
-	        	// Store the factor in the array...
-	            factors[freePosition++] = factor;
-	            
-	            // Remove the factors from the number...
-	            product /= factor;
+	    // The largest possible factor of a number is the square root.
+	    while (candidateFactor <= Math.sqrt(product) + 1) {
+	        if (product % candidateFactor == 0) {
+	        	factors[freePosition++] = candidateFactor;
+	            product = removeFactorFromProduct(candidateFactor, product);
 	        } else {
-	        	// Try the next odd number that might be a factor...
-	            factor += 2;
+	            candidateFactor += 2;
 	        }
 	    }
 	    
@@ -59,23 +45,28 @@ public class P003_LargestPrimeFactor {
 	    return trimmedCopy;
 	}
 
+	private long removeFactorFromProduct(int candidateFactor, long product) {
+		product /= candidateFactor;
+		return product;
+	}
+
 	int[] getFactors(final int intNumber) {
 	    int[] factors = new int[100];
-	    int i = 0, oddNum;
+	    int i = 0, candidateFactor;
 	    int product = intNumber;
 	    
 	    while (product % 2 == 0) {
 	        factors[i++] = 2;
 	        product /= 2;
 	    }
-	    oddNum = 3;
+	    candidateFactor = 3;
 
-	    while (oddNum <= Math.sqrt(product) + 1) {
-	        if (product % oddNum == 0) {
-	            factors[i++] = oddNum;
-	            product /= oddNum;
+	    while (candidateFactor <= Math.sqrt(product) + 1) {
+	        if (product % candidateFactor == 0) {
+	            factors[i++] = candidateFactor;
+	            product = removeFactorFromProduct(candidateFactor, product);
 	        } else {
-	            oddNum += 2;
+	            candidateFactor += 2;
 	        }
 	    }
 	    
@@ -86,6 +77,11 @@ public class P003_LargestPrimeFactor {
 	    int[] trimmedCopy = Arrays.copyOf(factors, i);
 
 	    return trimmedCopy;
+	}
+
+	private int removeFactorFromProduct(int candidateFactor, int product) {
+		product /= candidateFactor;
+		return product;
 	}
 
 	@Test(timeout=100)

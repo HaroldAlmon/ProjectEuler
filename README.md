@@ -12,8 +12,7 @@ You may find one or more solutions for a problem because I sometimes
 try an array or hashmap solution to the same problem.
 
 After reading an article called __"Why Comments Are Stupid, a Real Example"__
-by John Somnez, I decided to start a re-factoring project. The goal is to
-make my code easier to read and maintain by making the code self-documenting.
+by John Somnez, I refactored must of my ProjectEuler code.
 
 If you are interested in re-refactoring your code, you should read two related 
 articles in chapter nineteen of the book **Code Complete** and chapter four 

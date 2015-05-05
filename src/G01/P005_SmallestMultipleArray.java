@@ -1,13 +1,8 @@
 package G01;
-
-/**
- * Strategy: Simple Mathematics.
- * @author Harold Almon
- */
 import static org.junit.Assert.assertEquals;
 import java.util.Arrays;
 import org.junit.Test;
-
+/** Strategy: Simple Mathematics. */
 public class P005_SmallestMultipleArray {
 	public long smallestMultiple(int maxDivisor) {
 		P003_LargestPrimeFactor p003_LargestPrimeFactor = new P003_LargestPrimeFactor();

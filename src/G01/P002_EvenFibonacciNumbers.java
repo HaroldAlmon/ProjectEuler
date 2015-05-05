@@ -1,13 +1,9 @@
 package G01;
 
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
-/**
- * Strategy: Brute force. Simple mathematics.
- * @author Harold Almon
- *
- */
+
+/** Strategy: Simple mathematics. */
 public class P002_EvenFibonacciNumbers {
 	int sumOfEvenFibonacciNumbersBelow(int upperLimit) {
 		int sumOfEvenFibonacciNumbers = 2;
@@ -15,8 +11,7 @@ public class P002_EvenFibonacciNumbers {
 		int fibo2 = 2;
 		int nextFibo = 3;
 		/* Use a loop since we do not know the term
-		 * of the Fibonacci number we are seeking. 
-		 */
+		 * of the Fibonacci number we are seeking. */
 		while (nextFibo < upperLimit) {
 			if( isEven(nextFibo) ) {
 				sumOfEvenFibonacciNumbers += nextFibo;				

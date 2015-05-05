@@ -5,10 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.Arrays;
 
 import org.junit.Test;
-/**
- * Strategy: Dynamic programming, simple mathematics.
- * @author Harold Almon
- */
+/** Strategy: Dynamic programming, simple mathematics. */
 
 public class P028_NumberSpiralDiagonals {
 	int[][] matrix;

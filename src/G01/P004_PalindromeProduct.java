@@ -4,10 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import org.junit.Test;
-/**
- * Strategy: Brute force.
- * @author Harold Almon
- */
+/** Strategy: Brute Force. */
 public class P004_PalindromeProduct {
 	@Test(timeout=500)
 	public void LargestPalindromeProductOfTwo3DigitNumbers() throws Exception {

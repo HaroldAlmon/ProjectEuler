@@ -5,10 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.Arrays;
 
 import org.junit.Test;
-/**
- * Strategy: Dynamic programming, simple mathematics.
- * @author Harold Almon
- */
+/** Strategy: Dynamic programming, simple mathematics. */
 
 public class P028_NumberSpiralDiagonals {
 	int[][] matrix;
@@ -30,19 +27,21 @@ public class P028_NumberSpiralDiagonals {
 	private int calculateSum(int[][] matrix) {
 		int result = -1;
 
-		result = sumFallingDiagonal(matrix, result);
-		result = sumRisingDiagonal(matrix, result);
+		result += sumFallingDiagonal(matrix);
+		result += sumRisingDiagonal(matrix);
 		return result;
 	}
 
-	private int sumRisingDiagonal(int[][] matrix, int result) {
+	private int sumRisingDiagonal(int[][] matrix) {
+		int result = 0;
 		for (int i = 0; i < matrix.length; i++) {
 			result += matrix[matrix.length - i - 1][i];
 		}
 		return result;
 	}
 
-	private int sumFallingDiagonal(int[][] matrix, int result) {
+	private int sumFallingDiagonal(int[][] matrix) {
+		int result = 0;
 		for (int i = 0; i < matrix.length; i++) {
 			result += matrix[i][i];
 		}

@@ -1,10 +1,8 @@
 package G03;
-import javax.lang.model.type.NoType;
-
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-public class P025_LexicographicPermutations {
+public class P024_LexicographicPermutations {
 
 	private String lexicographicPermutations(int noOfDigits) {
 		int[] digits = new int[noOfDigits];

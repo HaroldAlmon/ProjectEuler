@@ -1,5 +1,5 @@
 package G01;
-
+/** Strategy: Brute Force. */
 import static org.junit.Assert.assertEquals;
 
 import java.util.HashMap;

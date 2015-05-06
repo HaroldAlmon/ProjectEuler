@@ -11,7 +11,7 @@ public class P028_NumberSpiralDiagonals {
 	int[][] matrix;
 	int num = 2;
 
-	public int sumOfDiagonals(int matrixSize) {
+	public int diagonalsSum(int matrixSize) {
 		dynamicallyCreateArray(matrixSize);
 		populateMatrix(matrix);
 		return calculateSum(matrix);
@@ -113,7 +113,7 @@ public class P028_NumberSpiralDiagonals {
 
 	@Test(timeout = 500)
 	public void SumOfDiagonals() {
-		int sum = sumOfDiagonals(101);
+		int sum = diagonalsSum(101);
 		System.out.printf("sumOfDiagonals(101)=%d%n", sum);
 		assertEquals("Incorrect sum of diagonals", 692101, sum);
 	}

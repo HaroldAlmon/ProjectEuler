@@ -5,7 +5,7 @@ import org.junit.Test;
 
 /** Strategy: Simple mathematics. */
 public class P002_EvenFibonacciNumbers {
-	int sumOfEvenFibonacciNumbersBelow(int upperLimit) {
+	int sumOfEvenFibonacciNumbers(int upperLimit) {
 		int sumOfEvenFibonacciNumbers = 2;
 		int fibo1 = 1;
 		int fibo2 = 2;
@@ -29,7 +29,7 @@ public class P002_EvenFibonacciNumbers {
 
 	@Test(timeout=500)
 	public void SumOfEvenTermsLessThanFourMillion() {
-		int result = sumOfEvenFibonacciNumbersBelow(4_000_000);
+		int result = sumOfEvenFibonacciNumbers(4_000_000);
 		System.out.printf("sumOfEvenFibonacciNumbersBelow(4_000_000)=%s%n", result);
 		assertEquals( "Incorrect sum of even Fibonacci numbers that do not exceed 4 million", 4613732, result );
 	}

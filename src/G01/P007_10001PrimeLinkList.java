@@ -8,10 +8,10 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
+/** Strategy: Brute Force. */
 public class P007_10001PrimeLinkList {
 	static int testNo = 1;
-	private long findprimeNumber(int upperLimit) {
+	private long primeNumber(int upperLimit) {
 		int oddNumber;
 		List<Integer> primeNumberList = new LinkedList<>();
 		primeNumberList.add(2);
@@ -43,28 +43,28 @@ public class P007_10001PrimeLinkList {
 	}
 
 	@Before
-	public void before() {
+	public void Before() {
 		System.out.printf("Running unit test...%d%n", testNo);
 		testNo += 1;
 	}
 
 	@Test(timeout = 5_000)
-	public void FindprimeNumber10_001() {
-		assertEquals( "Incorrect prime number", 104_743, findprimeNumber(10_001) );
+	public void PrimeNumber10_001() {
+		assertEquals( "Incorrect prime number", 104_743, primeNumber(10_001) );
 	}
 	
 	@Test(timeout = 500)
-	public void FindprimeNumber6() {
-		assertEquals( "Incorrect prime number", 13, findprimeNumber(6) );
+	public void PrimeNumber6() {
+		assertEquals( "Incorrect prime number", 13, primeNumber(6) );
 	}
 	
 	@BeforeClass
-	public static void beforeClass() {
+	public static void BeforeClass() {
 		System.out.println("Starting unit test.");
 	}
 	
 	@AfterClass
-	public static void afterClass() {
+	public static void AfterClass() {
 		System.out.println("Unit test completed.");
 	}
 }

@@ -3,10 +3,7 @@ package G01;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-/**
- * Strategy: Simple mathematics.
- * @author Harold Almon
- */
+/** Strategy: Simple mathematics. */
 public class P006_SumSquareDifference {
 	private long sumSquareDifference(int maxNum) {
 		long result = 0;

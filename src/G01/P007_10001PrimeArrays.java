@@ -1,15 +1,12 @@
 package G01;
-/**
- * Strategy: 
- * @author Harold Almon
- */
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
+/** Strategy: Brute Force. */
 public class P007_10001PrimeArrays {
 	static int testNo = 1;
 	
-	private long findPrimeNumber(int upperLimit) {
+	private long primeNumber(int upperLimit) {
 		int oddPrimeCandidate;
 		int primeCount;
 		
@@ -44,7 +41,7 @@ public class P007_10001PrimeArrays {
 	}
 
 	@Test
-	public void FindprimeNumber() {
-		assertEquals( "Incorrect prime number", 104_743, findPrimeNumber(10_001) );
+	public void PrimeNumber() {
+		assertEquals( "Incorrect prime number", 104_743, primeNumber(10_001) );
 	}
 }

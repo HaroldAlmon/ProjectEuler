@@ -1,8 +1,5 @@
 package misc;
-/**
- * Strategy: Dynamic Programming
- * @author Harold Almon
- */
+/** Strategy: Dynamic Programming */
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
@@ -10,7 +7,10 @@ public class P067_MaximumPathSumII {
 	public int maximumPathSumII() {
 		for (int row = pyramid.length - 2; row >= 0; row--) {
 			for(int col = 0; col < pyramid[row].length; col++ ) {
-				pyramid[row][col] += Math.max( pyramid[row+1][col], pyramid[row+1][col+1] );
+				int nextRowLeftColumn, nextRowRightColumn;
+				nextRowLeftColumn = pyramid[row+1][col];
+				nextRowRightColumn = pyramid[row+1][col+1];
+				pyramid[row][col] += Math.max( nextRowLeftColumn, nextRowRightColumn );
 			}
 		}
 		return pyramid[0][0];

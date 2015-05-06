@@ -3,10 +3,8 @@ package G01;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-/**
- * Strategy: Simple Mathematics.
- * @author Harold Almon
- */
+
+/** Strategy: Simple Mathematics. */
 public class P008_LargestProduct {
 	 @Test(timeout = 500)
 	 public void MaximumProduct() {

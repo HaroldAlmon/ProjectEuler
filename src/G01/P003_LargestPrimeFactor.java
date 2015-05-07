@@ -7,11 +7,11 @@ import org.junit.Test;
 /** Strategy: Brute Force. */
 public class P003_LargestPrimeFactor {
 	public long largestPrimeFactor(long product) {
-		long[] result = getLongFactors(product);
-		return result[result.length-1];
+		long[] factors = factors(product);
+		return factors[factors.length-1];
 	}
 	
-	private long[] getLongFactors(long longNumber) {
+	private long[] factors(long longNumber) {
 	    long[] factors = new long[100];
 	    int freePosition = 0, candidateFactor;
 	    long product = longNumber;
@@ -50,7 +50,7 @@ public class P003_LargestPrimeFactor {
 		return product;
 	}
 
-	int[] getFactors(final int intNumber) {
+	int[] factors(final int intNumber) {
 	    int[] factors = new int[100];
 	    int i = 0, candidateFactor;
 	    int product = intNumber;

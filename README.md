@@ -17,4 +17,6 @@ by John Somnez, I refactored must of my ProjectEuler code.
 If you are interested in re-refactoring your code, you should read two related 
 articles in chapter nineteen of the book **Code Complete** and chapter four 
 of the book **Clean Code**.
+
+UPDATE: Just add a couple of solutions written in Ruby.
 #

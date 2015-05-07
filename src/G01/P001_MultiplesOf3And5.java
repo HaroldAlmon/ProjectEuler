@@ -8,12 +8,12 @@ import org.junit.Test;
 /** Strategy: Mathematics. Time complexity is O(1) */
 public class P001_MultiplesOf3And5 {
 	public int multiplesOf3And5(int upperLimit) {
-		int sumOfMultiples = 0;		
+		int MultiplesSum = 0;		
 		
-		sumOfMultiples += calculateSumBelowLimit(upperLimit, 3);
-		sumOfMultiples += calculateSumBelowLimit(upperLimit, 5);
-		sumOfMultiples -= calculateSumBelowLimit(upperLimit, 15);
-		return sumOfMultiples;
+		MultiplesSum += calculateSumBelowLimit(upperLimit, 3);
+		MultiplesSum += calculateSumBelowLimit(upperLimit, 5);
+		MultiplesSum -= calculateSumBelowLimit(upperLimit, 15);
+		return MultiplesSum;
 	}
 	
 	private int calculateSumBelowLimit(int upperLimit, int divisor) {

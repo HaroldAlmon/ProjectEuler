@@ -14,4 +14,5 @@ upper_limit = 1000
 sum_of_multiples += calculate_sum_below_limit(upper_limit, 3)
 sum_of_multiples += calculate_sum_below_limit(upper_limit, 5)
 sum_of_multiples -= calculate_sum_below_limit(upper_limit, 15)
+
 puts "sum_of_multiples(1000) = #{sum_of_multiples}"

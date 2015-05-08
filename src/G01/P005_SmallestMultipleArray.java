@@ -11,18 +11,18 @@ public class P005_SmallestMultipleArray {
 		int[] factorCount = new int[20];
 		int[] finalFactorCount = new int[20];
 		int[] factors;
-		long productOfFactors;
-		
+		long factorsProduct;
+
 		for(int divisor=2; divisor<=maxDivisor; divisor += 1) {
-			factors = p003_LargestPrimeFactor.getFactors(divisor);
+			factors = p003_LargestPrimeFactor.factors(divisor);
 			factorCount = countIdenticalFactors(factorCount, factors);
 			maximizeFactors(maxDivisor, factorCount, finalFactorCount);
 			zeroFactorCountArray(factorCount);
 		};
 
-		productOfFactors = multiplyFactors(maxDivisor, finalFactorCount );
-		System.out.printf("smallestMultiple(%d) = %d%n", maxDivisor, productOfFactors);
-		return productOfFactors;
+		factorsProduct = multiplyFactors(maxDivisor, finalFactorCount );
+		System.out.printf("smallestMultiple(%d) = %d%n", maxDivisor, factorsProduct);
+		return factorsProduct;
 	}
 
 	private void zeroFactorCountArray(int[] factorCount) {

@@ -9,7 +9,8 @@ my solutions and the may not be the most efficient or best solution
 but they produce the correct answers.
 
 You may find one or more solutions for a problem because I sometimes
-try an array or hashmap solution to the same problem.
+try an array or hashmap solution to the same problem.  Most solutions
+are written in Java although I just started providing solutions ih Ruby.
 
 **UPDATE: Just add a couple of solutions written in Ruby.**
 #

@@ -1,11 +1,13 @@
 package G01;
 
 import static org.junit.Assert.assertEquals;
-
-import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
+
+import common.FastTest;
 
 /** Strategy: Mathematics. Time complexity is O(1) */
+@Category(FastTest.class)
 public class P001_MultiplesOf3And5 {
 	public int multiplesOf3And5(int upperLimit) {
 		int MultiplesSum = 0;		
@@ -31,16 +33,15 @@ public class P001_MultiplesOf3And5 {
 
 	@Test
 	public void SumOfMultiplesOf3And5Below1000() {
-		int sumOfMultiples = multiplesOf3And5(1000);
+		int sumOfMultiples = multiplesOf3And5(1_000);
 		System.out.printf("multiplesOf3And5(1000) = %s%n", sumOfMultiples);
-		assertEquals( "Incorrect sum of multiples of 3 or 5 below 1000", 233168, sumOfMultiples );
+		assertEquals( "Incorrect sum of multiples of 3 or 5 below 1,000", 233168, sumOfMultiples );
 	}
 	
 	@Test(timeout=100)
-	@Ignore
 	public void SumOfMultiplesOf3And5Below10_000() {
 		int sumOfMultiples = multiplesOf3And5(10_000);
 		System.out.printf("multiplesOf3And5(10_000) = %s%n", sumOfMultiples);
-		assertEquals( "Incorrect sum of multiples of 3 or 5 below 10_000", 23331668, sumOfMultiples );
+		assertEquals( "Incorrect sum of multiples of 3 or 5 below 10,000", 23331668, sumOfMultiples );
 	}
 }

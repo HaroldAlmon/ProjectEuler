@@ -1,80 +1,99 @@
 package G03;
+/** Strategy: Brute Force */
+import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
+import common.FastTest;
+
+@Category(FastTest.class)
 public class P021_AmicableNumbers {
 	Set<Integer> friends = new HashSet<>();
+	
+	@Test
+	public void AmicableNumbers() {
+		int friendsSum = amicableNumbers(10_000);
+		System.out.printf("AmicableNumbers(10_000) = %s%n", friendsSum);
+		assertEquals(31626, friendsSum);
+	}
 
 	public int amicableNumbers(int upperLimmit) {
 		int sum = 0;
 		int friend = 0;
 
 		for (int number = 2; number < upperLimmit; number++) {
-			if (!friends.contains(number)) {
-				friend = getFriend(number);
+			if (friends.contains(number) == false) {
+				friend = friendOfNumber(number);
 				if (friend != 0 && friend != number) {
-					sum = addNumberAndFriendToSum(sum, friend, number);
+					sum = amicableNumbersSum(sum, friend, number);
 				}
 			}
 		}
 		return sum;
 	}
-	private int addNumberAndFriendToSum(int sumOfAmicableNumbers, int friend, int number) {
-		final boolean FALSE = false;
+
+	private int amicableNumbersSum(int amicableNumbersSum, int friend, int number) {
+		final boolean isDebug = false;
 		friends.add(friend);
-		sumOfAmicableNumbers += number + friend;
-		if (FALSE) 
+		amicableNumbersSum += number + friend;
+		if (isDebug) 
 			System.out.printf("friend=(%d,%d)%n", number, friend);
-		return sumOfAmicableNumbers;
+		return amicableNumbersSum;
 	}
-	private int getFriend(int number) {
+
+	private int friendOfNumber(int number) {
 		int friend = 0;
-		int sumOfFriendFactors = 0;
+		int friendFactorsSum = 0;
 		int potentialFriend;
 
-		potentialFriend = sumOFactors(number);
-		sumOfFriendFactors = sumOFactors(potentialFriend);
-		if (number == sumOfFriendFactors ){
+		potentialFriend = factorsSum(number);
+		friendFactorsSum = factorsSum(potentialFriend);
+		if (number == friendFactorsSum ){
 			friend = potentialFriend;
 		}
 		return friend;
 	}
 
-	private int sumOFactors(int number) {
+	private int factorsSum(int number) {
 		int sum = 0;
-		int[] factors = getProperDivisors(number);
+		int[] factors = new ProperDivisors().properDivisors(number);
 		for (int i = 0; i < factors.length; i++) {
 			sum += factors[i];
 		}
 		return sum;
 	}
-	private int[] getProperDivisors(int number) {
-		int [] factors = new int[5000];
-		int nextFreePosition = 1;
-		factors[0] = 1;
-		
-		int limit = (int) (number/2);
-		for (int divisor = 2; divisor <= limit; divisor++) {
-			if (number % divisor == 0) 
-			{
-				limit = (int) (number / divisor) - 1;
-				addTwoDivisorsToArray(number, factors, nextFreePosition, divisor);
-				nextFreePosition += 2;
+
+	class ProperDivisors {
+		int[] properDivisors(int number) {
+			int[] factors = new int[ number/2 + 1 ];
+			int nextFreePosition = 1;
+			factors[0] = 1;
+
+			int limit = (int) (number/2);
+			for (int divisor = 2; divisor <= limit; divisor++) {
+				boolean isDivisor;
+				
+				isDivisor = number % divisor == 0;
+				if ( isDivisor ) 
+				{
+					limit = (int) (number / divisor) - 1;
+					addTwoDivisorsToArray(number, factors, nextFreePosition, divisor);
+					nextFreePosition += 2;
+				}
 			}
+			return Arrays.copyOf(factors, nextFreePosition);
 		}
-		return Arrays.copyOf(factors, nextFreePosition);
-	}
-	private void addTwoDivisorsToArray(int number, int[] factors, int nextFreePosition, int divisor) {
-		factors[nextFreePosition] = divisor;
-		factors[nextFreePosition + 1] = number / divisor;
-	}
-	
-	@Test(timeout = 500)
-	public void amicableNumbers() {
-		System.out.printf("AmicableNumbers(10_000) = %s%n", amicableNumbers(10_000));
+
+		private void addTwoDivisorsToArray(int number, int[] factors, int nextFreePosition, int divisor) {
+			factors[nextFreePosition] = divisor;
+			factors[nextFreePosition + 1] = number / divisor;
+		}
 	}
 }
+
+

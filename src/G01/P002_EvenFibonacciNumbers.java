@@ -1,19 +1,28 @@
 package G01;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
+
+import common.FastTest;
 
 /** Strategy: Simple mathematics. */
+@Category(FastTest.class)
 public class P002_EvenFibonacciNumbers {
 	int EvenFiboNumbersSum(int upperLimit) {
 		int EvenFiboNumbersSum = 2;
 		int fibo1 = 1;
 		int fibo2 = 2;
 		int nextFibo = 3;
+
 		/* Use a loop since we do not know the term
 		 * of the Fibonacci number we are seeking. */
 		while (nextFibo < upperLimit) {
-			if( isEven(nextFibo) ) {
+			boolean isEven;
+			
+			isEven = (nextFibo % 2 == 0);
+			if( isEven ) {
 				EvenFiboNumbersSum += nextFibo;				
 			}
 			fibo1 = fibo2;
@@ -21,10 +30,6 @@ public class P002_EvenFibonacciNumbers {
 			nextFibo = fibo1 + fibo2;
 		}
 		return EvenFiboNumbersSum;
-	}
-	
-	private boolean isEven(int n) {
-		return n % 2 == 0;
 	}
 
 	@Test(timeout=500)

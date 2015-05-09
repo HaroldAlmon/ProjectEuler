@@ -1,11 +1,12 @@
+# This is a variation of the sum(1..n) formula.
+#
+# Sum(1...kn) = k * n * (n + 1)
+#                   -----------
+#                        2
+# Also the formula includes n, the problem does not.
+
 def calculate_sum_below_limit(upper_limit, k)
-  # This is a variation of the sum(1..n) formula.
-  #
-  # Sum(1...kn) = k * n * (n + 1)
-  #                   -----------
-  #                        2
-  # Also the formula includes n, the problem does not.
-  n = (upper_limit-1)/k
+  n = (upper_limit - 1)/k
   result = k * n * (n + 1) / 2
 end
 

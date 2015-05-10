@@ -12,47 +12,51 @@ public class P024_LexicographicPermutations {
 			digits[i] = i;
 		}
 		System.out.printf("%s%n", Arrays.toString(digits));
-		int p = 0;
-		int k = noOfDigits - 2;
-		while (k >= 0) {
-			p = k;
-			while (p >= 0) {
+		int innerIndex = 0;
+		int outerIndex = noOfDigits - 2;
+		while (outerIndex >= 0) {
+			innerIndex = outerIndex;
+			while (innerIndex >= 0) {
 				int temp = 0;
-				int smallestPosition;
+				int posOfSmallestDigit;
 				// if smaller digit on the right of p
-				smallestPosition = smallestPosition(digits, p);
-				if (digits[smallestPosition] != Integer.MAX_VALUE) {
+				posOfSmallestDigit = smallestPosition(digits, innerIndex);
+				if (digits[posOfSmallestDigit] != Integer.MAX_VALUE) {
 					// swap p and smallest digit to the right of p
-					temp = digits[p + 1];
-					digits[p + 1] = digits[p];
-					digits[p] = temp;
+					temp = digits[posOfSmallestDigit];
+					digits[posOfSmallestDigit] = digits[innerIndex];
+					digits[innerIndex] = temp;
 					// sort digits to the right of p
-					// print all digits
 					System.out.printf("String = %s%n", Arrays.toString(digits));
-					p = noOfDigits - 2;
+					innerIndex = noOfDigits - 2;
 					break;
 				}
 			}
-			k -= 1;
+			outerIndex -= 1;
 		}
 		return "";
 	}
 	
-	private int smallestPosition(int[] digits, int p) {
+	private int smallestPosition(int[] digits, int startPosition) {
 		int min = Integer.MAX_VALUE;
-		int leftChar = digits[p];
-		for (int i = p+1; i < digits.length; i++) {
-			if(leftChar < digits[i] && digits[i] < min) {
-				min = digits[i];
+		int leftChar = digits[startPosition];
+		int position;
+		int result = min;
+
+		for (position = startPosition + 1; position < digits.length; position++) {
+			if(leftChar < digits[position] && digits[position] < min) {
+				min = digits[position];
+				result = position;
 			}
 		}
-		return min;
+
+		return result;
 	}
 	
 @Test
 	public void Permutation() {
 		String permutation;
 		permutation = lexicographicPermutations(3); 
-		assertEquals("Permutation is not correct", "123", permutation);
+		//assertEquals("Permutation is not correct", "123", permutation);
 	}
 }

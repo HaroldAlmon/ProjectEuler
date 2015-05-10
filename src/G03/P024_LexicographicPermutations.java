@@ -12,14 +12,16 @@ public class P024_LexicographicPermutations {
 			digits[i] = i;
 		}
 		System.out.printf("%s%n", Arrays.toString(digits));
+		int p = 0;
 		int k = noOfDigits - 2;
-		int p = noOfDigits - 2;
-		while (k > 0) {
+		while (k >= 0) {
+			p = k;
 			while (p >= 0) {
 				int temp = 0;
+				int smallestPosition;
 				// if smaller digit on the right of p
 				smallestPosition = smallestPosition(digits, p);
-				if (digits[p] < ) {
+				if (digits[smallestPosition] != Integer.MAX_VALUE) {
 					// swap p and smallest digit to the right of p
 					temp = digits[p + 1];
 					digits[p + 1] = digits[p];
@@ -29,8 +31,6 @@ public class P024_LexicographicPermutations {
 					System.out.printf("String = %s%n", Arrays.toString(digits));
 					p = noOfDigits - 2;
 					break;
-				} else {
-					p = p - 1;
 				}
 			}
 			k -= 1;
@@ -40,19 +40,16 @@ public class P024_LexicographicPermutations {
 	
 	private int smallestPosition(int[] digits, int p) {
 		int min = Integer.MAX_VALUE;
-		for (int i = p+2; i < digits.length; i++) {
-			if(digits[i+1] < min) {
-				min = digits[i+1];
+		int leftChar = digits[p];
+		for (int i = p+1; i < digits.length; i++) {
+			if(leftChar < digits[i] && digits[i] < min) {
+				min = digits[i];
 			}
 		}
 		return min;
 	}
 	
-	private int smallestDigit(int[] digits, int startPosition) {
-		return 0;
-	}
-	// 012
-	@Test
+@Test
 	public void Permutation() {
 		String permutation;
 		permutation = lexicographicPermutations(3); 

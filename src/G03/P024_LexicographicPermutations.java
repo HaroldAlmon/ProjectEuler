@@ -5,8 +5,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 public class P024_LexicographicPermutations {
-
 	private String lexicographicPermutations(int noOfDigits) {
+		String result = "";
+		int permutationCounter = 1;
 		final int secondLastChar = noOfDigits - 2;
 		int[] digits = new int[noOfDigits];
 
@@ -14,7 +15,6 @@ public class P024_LexicographicPermutations {
 			digits[i] = i;
 		}
 
-		System.out.printf("%s%n", Arrays.toString(digits));
 		int innerIndex = 0;
 		int outerIndex = secondLastChar;
 
@@ -28,7 +28,6 @@ public class P024_LexicographicPermutations {
 				posOfSmallestDigit = smallestPosition(digits, innerIndex);
 
 				if ( posOfSmallestDigit != Integer.MAX_VALUE) {
-					// swap p and smallest digit to the right of p
 					temp = digits[posOfSmallestDigit];
 					digits[posOfSmallestDigit] = digits[innerIndex];
 					digits[innerIndex] = temp;
@@ -36,14 +35,20 @@ public class P024_LexicographicPermutations {
 					// sort digits to the right of innerIndex
 					sortDigitsOnRight(digits, innerIndex+1);
 					innerIndex = secondLastChar;
-					System.out.printf("String = %s%n", Arrays.toString(digits));
+					permutationCounter += 1;
+					if (permutationCounter == 1_000_000) {
+						result = Arrays.toString(digits);
+						result = result.replaceAll(", ", "");
+						result = result.substring(1, result.length() - 1);
+						System.out.printf("Permutation = %s%n", result);
+					}
 				}
 				else
-					innerIndex--;
+					innerIndex -= 1;
 			}
 			outerIndex -= 1;
 		}
-		return "";
+		return result;
 	}
 	
 	private void sortDigitsOnRight(int[] digits, int i) {
@@ -70,10 +75,10 @@ public class P024_LexicographicPermutations {
 		return result;
 	}
 	
-@Test
+	@Test
 	public void Permutation() {
 		String permutation;
-		permutation = lexicographicPermutations(4); 
-		//assertEquals("Permutation is not correct", "123", permutation);
+		permutation = lexicographicPermutations(10); 
+		assertEquals("Permutation is not correct", "2783915460", permutation);
 	}
 }

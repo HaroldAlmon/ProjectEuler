@@ -13,19 +13,13 @@ public class P024_LexicographicPermutations {
 		int digitIndex = 0;
 
 		createDigitsInArray(noOfDigits, digits);
-
 		digitIndex = secondLastChar;
+
 		while (digitIndex >= 0) {
-			int temp = 0;
-			int posOfSmallestDigit;
-
-			posOfSmallestDigit = smallestPosition(digits, digitIndex);
-
-			if (posOfSmallestDigit != Integer.MAX_VALUE) {
-				temp = digits[posOfSmallestDigit];
-				digits[posOfSmallestDigit] = digits[digitIndex];
-				digits[digitIndex] = temp;
-
+			int smallestDigitPosition;
+			smallestDigitPosition = smallestPosition(digits, digitIndex);
+			if (smallestDigitPosition != Integer.MAX_VALUE) {
+				swapDigits(digits, digitIndex, smallestDigitPosition);
 				sortDigitsOnRight(digits, digitIndex + 1);
 				digitIndex = secondLastChar;
 				permutationCounter += 1;
@@ -39,6 +33,13 @@ public class P024_LexicographicPermutations {
 		}
 
 		return permutation;
+	}
+
+	private void swapDigits(int[] digits, int digitIndex, int posOfSmallestDigit) {
+		int temp;
+		temp = digits[posOfSmallestDigit];
+		digits[posOfSmallestDigit] = digits[digitIndex];
+		digits[digitIndex] = temp;
 	}
 
 	private void createDigitsInArray(int noOfDigits, int[] digits) {

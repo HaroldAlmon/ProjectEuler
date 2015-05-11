@@ -1,10 +1,16 @@
 package G01;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.Arrays;
+
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
+
+import common.FastTest;
 
 /** Strategy: Brute Force. */
+@Category(FastTest.class)
 public class P003_LargestPrimeFactor {
 	public long largestPrimeFactor(long product) {
 		long[] factors = factors(product);
@@ -24,9 +30,8 @@ public class P003_LargestPrimeFactor {
 	    }
 	    
 	    candidateFactor = 3;
-
-	    // The largest possible factor of a number is the square root.
-	    while (candidateFactor <= Math.sqrt(product) + 1) {
+	    int largestPossibleFactor = (int) Math.sqrt(product) + 1;
+	    while ( candidateFactor <= largestPossibleFactor ) {
 	        if (product % candidateFactor == 0) {
 	        	factors[freePosition++] = candidateFactor;
 	            product = removeFactorFromProduct(candidateFactor, product);

@@ -6,49 +6,53 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 public class P024_LexicographicPermutations {
 	private String lexicographicPermutations(int noOfDigits) {
-		String result = "";
+		String permutation = "";
 		int permutationCounter = 1;
 		final int secondLastChar = noOfDigits - 2;
 		int[] digits = new int[noOfDigits];
+		int digitIndex = 0;
 
+		createDigitsInArray(noOfDigits, digits);
+
+		digitIndex = secondLastChar;
+		while (digitIndex >= 0) {
+			int temp = 0;
+			int posOfSmallestDigit;
+
+			posOfSmallestDigit = smallestPosition(digits, digitIndex);
+
+			if (posOfSmallestDigit != Integer.MAX_VALUE) {
+				temp = digits[posOfSmallestDigit];
+				digits[posOfSmallestDigit] = digits[digitIndex];
+				digits[digitIndex] = temp;
+
+				sortDigitsOnRight(digits, digitIndex + 1);
+				digitIndex = secondLastChar;
+				permutationCounter += 1;
+				if (permutationCounter == 1_000_000) {
+					permutation = digitsToPermutation(digits);
+					System.out.printf("Permutation = %s%n", permutation);
+					break;
+				}
+			} else
+				digitIndex -= 1;
+		}
+
+		return permutation;
+	}
+
+	private void createDigitsInArray(int noOfDigits, int[] digits) {
 		for (int i = 0; i < noOfDigits; i++) {
 			digits[i] = i;
 		}
+	}
 
-		int innerIndex = 0;
-		int outerIndex = secondLastChar;
-
-		while (outerIndex >= 0) {
-			innerIndex = secondLastChar;
-			while (innerIndex >= outerIndex) {
-				int temp = 0;
-				int posOfSmallestDigit;
-
-				// if smaller digit on the right of p
-				posOfSmallestDigit = smallestPosition(digits, innerIndex);
-
-				if ( posOfSmallestDigit != Integer.MAX_VALUE) {
-					temp = digits[posOfSmallestDigit];
-					digits[posOfSmallestDigit] = digits[innerIndex];
-					digits[innerIndex] = temp;
-
-					// sort digits to the right of innerIndex
-					sortDigitsOnRight(digits, innerIndex+1);
-					innerIndex = secondLastChar;
-					permutationCounter += 1;
-					if (permutationCounter == 1_000_000) {
-						result = Arrays.toString(digits);
-						result = result.replaceAll(", ", "");
-						result = result.substring(1, result.length() - 1);
-						System.out.printf("Permutation = %s%n", result);
-					}
-				}
-				else
-					innerIndex -= 1;
-			}
-			outerIndex -= 1;
-		}
-		return result;
+	private String digitsToPermutation(int[] digits) {
+		String permutation;
+		permutation = Arrays.toString(digits);
+		permutation = permutation.replaceAll(", ", "");
+		permutation = permutation.substring(1, permutation.length() - 1);
+		return permutation;
 	}
 	
 	private void sortDigitsOnRight(int[] digits, int i) {

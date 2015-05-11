@@ -33,8 +33,9 @@ public class P024_LexicographicPermutations {
 					digits[posOfSmallestDigit] = digits[innerIndex];
 					digits[innerIndex] = temp;
 
-					// sort digits to the right of p
-					sortSubArray(digits, innerIndex+1);
+					// sort digits to the right of innerIndex
+					sortDigitsOnRight(digits, innerIndex+1);
+					innerIndex = secondLastChar;
 					System.out.printf("String = %s%n", Arrays.toString(digits));
 				}
 				else
@@ -45,11 +46,12 @@ public class P024_LexicographicPermutations {
 		return "";
 	}
 	
-	private void sortSubArray(int[] digits, int i) {
+	private void sortDigitsOnRight(int[] digits, int i) {
 		int arrayLength = digits.length - i;
 		int[] subArray = new int[arrayLength];
 		System.arraycopy(digits, i, subArray, 0, arrayLength);
 		Arrays.sort(subArray);
+		System.arraycopy(subArray, 0, digits, i, arrayLength);
 	}
 
 	private int smallestPosition(int[] digits, int startPosition) {
@@ -71,7 +73,7 @@ public class P024_LexicographicPermutations {
 @Test
 	public void Permutation() {
 		String permutation;
-		permutation = lexicographicPermutations(3); 
+		permutation = lexicographicPermutations(4); 
 		//assertEquals("Permutation is not correct", "123", permutation);
 	}
 }

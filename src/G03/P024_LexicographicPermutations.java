@@ -5,9 +5,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 public class P024_LexicographicPermutations {
-	private String lexicographicPermutations(int noOfDigits) {
+	private String lexicographicPermutations(int noOfDigits, int targetPermNo) {
 		String permutation = "";
-		int permutationCounter = 1;
+		int permCounter = 1;
 		final int secondLastChar = noOfDigits - 2;
 		int[] digits = new int[noOfDigits];
 		int digitIndex = 0;
@@ -22,8 +22,8 @@ public class P024_LexicographicPermutations {
 				swapDigits(digits, digitIndex, smallestDigitPosition);
 				sortDigitsOnRight(digits, digitIndex + 1);
 				digitIndex = secondLastChar;
-				permutationCounter += 1;
-				if (permutationCounter == 1_000_000) {
+				permCounter += 1;
+				if (permCounter == targetPermNo) {
 					permutation = digitsToPermutation(digits);
 					System.out.printf("Permutation = %s%n", permutation);
 					break;
@@ -80,10 +80,10 @@ public class P024_LexicographicPermutations {
 		return result;
 	}
 	
-	@Test
+	@Test(timeout = 200)
 	public void Permutation() {
 		String permutation;
-		permutation = lexicographicPermutations(10); 
+		permutation = lexicographicPermutations(10, 1_000_000); 
 		assertEquals("Permutation is not correct", "2783915460", permutation);
 	}
 }

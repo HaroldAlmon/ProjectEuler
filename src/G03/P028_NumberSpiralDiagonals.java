@@ -11,20 +11,21 @@ public class P028_NumberSpiralDiagonals {
 	int[][] matrix;
 	int num = 2;
 
-	public int diagonalsSum(int matrixSize) {
-		dynamicallyCreateArray(matrixSize);
+	public int numberSpiralDiagonals(int matrixSize) {
+		matrix = dynamicallyCreateArray(matrixSize);
 		populateMatrix(matrix);
-		return calculateSum(matrix);
+		return diagonalsSum(matrix);
 	}
 
-	private void dynamicallyCreateArray(int matrixSize) {
-		matrix = new int[matrixSize][];
+	private int[][] dynamicallyCreateArray(int matrixSize) {
+		int[][] matrix = new int[matrixSize][];
 		for (int i = 0; i < matrix.length; i++) {
 			matrix[i] = new int[matrixSize];
 		}
+		return matrix;
 	}
 
-	private int calculateSum(int[][] matrix) {
+	private int diagonalsSum(int[][] matrix) {
 		int result = -1;
 
 		result += sumFallingDiagonal(matrix);
@@ -108,12 +109,11 @@ public class P028_NumberSpiralDiagonals {
 		for (int i = 0; i < matrix.length; i++) {
 			System.out.printf("%s%n",Arrays.toString(matrix[i]));
 		}
-		System.out.println("");
 	}
 
 	@Test(timeout = 500)
 	public void SumOfDiagonals() {
-		int sum = diagonalsSum(101);
+		int sum = numberSpiralDiagonals(101);
 		System.out.printf("sumOfDiagonals(101)=%d%n", sum);
 		assertEquals("Incorrect sum of diagonals", 692101, sum);
 	}

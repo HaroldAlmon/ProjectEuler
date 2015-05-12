@@ -1,5 +1,6 @@
 package G03;
 
+import static org.junit.Assert.assertEquals;
 import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.Set;
@@ -27,6 +28,8 @@ public class P029_DistinctPowers {
 
 	@Test
 	public void DistinctPowers() {
-		System.out.printf("%d%n", distinctPowers(100));
+		int countPowers = distinctPowers(100);
+		System.out.printf("%d%n", countPowers);
+		assertEquals(9183, countPowers);
 	}
 }

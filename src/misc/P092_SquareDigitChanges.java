@@ -1,8 +1,10 @@
 package misc;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.HashSet;
 import java.util.Set;
+
 import org.junit.Test;
 
 public class P092_SquareDigitChanges {
@@ -25,27 +27,23 @@ public class P092_SquareDigitChanges {
 		total = number;
 		while (total != 1 ) {
 			s = Integer.toString((total));
-			//System.out.printf("Number = %s\n", s);
 			total = 0;
 			for (int i = 0; i < s.length(); i++) {
-				//System.out.printf("char = %s\n", s.substring(i, i + 1));
-				//digit = Integer.parseInt(s.substring(i, i + 1)); // Slow, uses substring
-				//digit = Character.getNumericValue(s.charAt(i)); // Faster, uses wrapper class function
-				digit = (int) s.charAt(i) & 0x0000_000F; // Fastest, uses bitwise AND
+				//digit = Integer.parseInt(s.substring(i, i + 1)); // Slow, extracts a String
+				//digit = Character.getNumericValue(s.charAt(i)); // Faster, extracts a character and uses wrapper class function
+				digit = (int) s.charAt(i) & 0x0000_000F; // Fastest, extracts a chracter and uses bitwise
 				total += digit * digit;
 			}
 			if (is89cycle(total))
 			{
-				//System.out.printf("%d, 89 loop\n",number);
 				return true;
 			}
 		}
-		//System.out.printf("%d, 1 loop\n",number);
 		return false;
 	}
 	
+	@SuppressWarnings("serial")
 	private static Set<Integer> loopNums = new HashSet<Integer>() {
-		private static final long serialVersionUID = 8510317940825586317L;
 		{
 			add(89);
 			add(145);
@@ -64,9 +62,8 @@ public class P092_SquareDigitChanges {
 	
 	@Test(timeout = 10_000)
 	public void SquareDigitChanges() {
-		//8581146
 		int result = squareDigitChanges( 10_000_000 );
-		System.out.printf("squareDigitChanges( 10_000_000 ) = %d%n",result);
+		System.out.printf("squareDigitChanges( 10_000_000 ) = %d%n", result);
 		assertEquals( result, 8581146 );
 	}
 }

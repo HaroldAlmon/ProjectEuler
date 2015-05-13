@@ -4,33 +4,30 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-/**
- * Strategy: Brute Force
- * @author Harold Almon
- * 1/29/2015
- *
- */
+/** Strategy: Brute Force */
 public class P036_DoubleBasePalindromes {
+	public long doubleBasePalindromes(int upperLimit) {
 
-	/**
-	 * @author Harold Almon
-	 * @param None
-	 */
-	long doubleBasePalindromes(int upperLimit) {
-		final boolean FALSE = false;
-		long result = 0;
+		long palindromesSum = 0;
 		int palindromeCandidate = 1;
 		while(palindromeCandidate < upperLimit) {
 			String intString = Integer.toString(palindromeCandidate);
 			String binaryString = Integer.toString(palindromeCandidate, 2);
-			if (isPalindrome( intString ) && isPalindrome( binaryString ) ) {
-				result += palindromeCandidate;
-				if(FALSE) 
-					System.out.printf("Match for: %s and %s%n", intString, binaryString);
-			}
+			palindromesSum = addToSumIfPalindrome(palindromesSum, palindromeCandidate, intString, binaryString);
 			palindromeCandidate += 1;
 		}
-		return result;
+		return palindromesSum;
+	}
+
+	private long addToSumIfPalindrome(long sumOfPalindromes, int palindromeCandidate, String intString,
+			String binaryString) {
+		final boolean isDebug = false;
+		if (isPalindrome( intString ) && isPalindrome( binaryString ) ) {
+			sumOfPalindromes += palindromeCandidate;
+			if(isDebug) 
+				System.out.printf("Match for: %s and %s%n", intString, binaryString);
+		}
+		return sumOfPalindromes;
 	}
 	
 	boolean isPalindrome(String s) {
@@ -50,5 +47,4 @@ public class P036_DoubleBasePalindromes {
 		System.out.printf("doubleBasePalindromes(1_000_000) = %d%n", sum);
 		assertEquals("Incorrect sum", 872187, sum);
 	}
-
 }

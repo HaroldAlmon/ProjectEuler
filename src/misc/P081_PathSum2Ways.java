@@ -23,7 +23,7 @@ public class P081_PathSum2Ways {
 	private int pathSum2Ways(final int[][] input) {
 		int[][] pyramidArray = createEmptyPyramidArray(input);
 		copyInputToPyramidArray(input, pyramidArray);
-		int result = maxPyramid(pyramidArray);
+		int result = maximumPyramidValue(pyramidArray);
 		return result;
 	}
 
@@ -59,20 +59,26 @@ public class P081_PathSum2Ways {
 		return new int[input.length*2-1][];
 	}
 	
-	// This comes from P018 except that we look for a min value
-	//  except when one arg is zero...
-	private int maxPyramid(final int[][] pyramid) {
+	private int maximumPyramidValue(final int[][] pyramid) {
 		for (int row = pyramid.length - 2; row >= 0; row--) {
 			for(int col = 0; col < pyramid[row].length; col++ ) {
-				if (pyramid[row+1][col] != 0 && pyramid[row+1][col+1] != 0)
-					// If both values are from the input array, take the min value...
-					pyramid[row][col] += Math.min( pyramid[row+1][col], pyramid[row+1][col+1] );
-				else
-					// If one value is not from the input array, i.e. zero, take the max value...
-					pyramid[row][col] += Math.max( pyramid[row+1][col], pyramid[row+1][col+1] );
+				pyramid[row][col] += minimumNonZeroValue(pyramid, row, col);
 			}
 		}
 		return pyramid[0][0];
+	}
+
+	private int minimumNonZeroValue(final int[][] pyramid, int row, int col) {
+		int nextRowLeftColumn;
+		int nextRowRightColumn;
+		
+		nextRowLeftColumn = pyramid[row+1][col];
+		nextRowRightColumn = pyramid[row+1][col+1];
+
+		if (nextRowLeftColumn != 0 && nextRowRightColumn != 0)
+			return Math.min( nextRowLeftColumn, nextRowRightColumn );
+		else
+			return Math.max( nextRowLeftColumn, nextRowRightColumn );
 	}
 	
 	@Test(timeout = 50)

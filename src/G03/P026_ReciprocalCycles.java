@@ -5,20 +5,9 @@ import static org.junit.Assert.assertEquals;
 import java.math.BigInteger;
 
 import org.junit.Test;
-/**
- * Strategy: Brute Force
- * Multiply the numerator by 2000 to get the division 
- * results on the left of the decimal point.
- * Use BigIntegers to hold the results of a division that has 2000
- * digits of precision.
- * Reverse the string result of the division so that the cycles are
- * on the left. Now the result reads like Arabic, right to left.
- * Look for cycles starting on the left for all numbers from 2 to 999.
- * @author Harold Almon
- *
- */
+/** Strategy: Brute Force. String Manipulation. */
 public class P026_ReciprocalCycles {
-	private final boolean FALSE = false;
+	private final boolean isDebug = false;
 	int maximumCycle = 0;
 
 	public int reciprocalCycles(int upperLimit) {
@@ -32,7 +21,7 @@ public class P026_ReciprocalCycles {
 		}
 
 		BigInteger numerator = new BigInteger(numeratorString.toString());
-		if (FALSE)
+		if (isDebug)
 			System.out.printf("No. of digits calculated = %d%n",precision);
 		
 		int cycle = enumerateDenominator(upperLimit, reverseQuotient, precision, numerator);
@@ -47,12 +36,15 @@ public class P026_ReciprocalCycles {
 
 		for (int denominator = 2; denominator < limit; denominator++) {
 			quotient = numerator.divide(new BigInteger(Integer.toString(denominator)) );
+
+			// Reverse the quotient so that it reads like Arabic, right to left.  
+			// Repeating numbers are now on the left.
 			reverseQuotient.append(quotient.toString()).reverse();
 			cycle = findDenominatorWIthMaximumCycleLength(reverseQuotient, precision, cycle, denominator);
 			reverseQuotient.setLength(0);
 		}
 
-		if(FALSE)
+		if(isDebug)
 			System.out.printf("Maximum cycle length found = %d%n", maximumCycle);
 		return cycle;
 	}

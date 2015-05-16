@@ -12,7 +12,7 @@ a problem set that is very challenging.
 
 You may find one or more solutions for a problem because I sometimes
 try an array or hashmap solution to the same problem.  Most solutions
-are written in Java although I just started providing solutions in Ruby.
+are written in Java although I have a few solutions in Ruby.
 
 The Java code has extensive refactoring based on the principles 
 found in the books __Code Complete__ and __Clean Code__.  I also

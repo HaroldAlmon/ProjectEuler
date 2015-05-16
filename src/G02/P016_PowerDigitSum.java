@@ -1,8 +1,5 @@
 package G02;
-/**
- * @author Harold Almon
- * @return The sum of the digits of the number 2**1000
- */
+/** Strategy: Simple Mathematics. */
 import static org.junit.Assert.assertEquals;
 
 import java.math.BigInteger;

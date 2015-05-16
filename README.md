@@ -20,4 +20,6 @@ improved the initial JUnit tests with more advanced functionality and
 developed test suites for the entire problem set.
 
 You can find the probelms at [ProjectEuler.net](https://projecteuler.net/archives)
+
+My ProjectEuler friend key is: 748521_5598d3d5baf263f65ed60dc0197b4a1e
 #

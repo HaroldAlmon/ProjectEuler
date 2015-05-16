@@ -1,16 +1,12 @@
 package G02;
-/**
- * @author Harold Almon
- * @param pyramid - An array containing integers shaped like a pyramid.
- * @return The maximum total from top to bottom of a triangle array.
- */
+/** Strategy: Dynamic Programming. */
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class P018_MaximumPathSumI {
-	public int maximumPathSumI(int[][] pyramid) {
-		for (int row = pyramid.length - 2; row >= 0; row--) {
-			for(int col = 0; col < pyramid[row].length; col++ ) {
+	public int maximumPathSumI( int[][] pyramid ) {
+		for ( int row = pyramid.length - 2; row >= 0; row-- ) {
+			for( int col = 0; col < pyramid[row].length; col++  ) {
 				int rowBelowLeftColumnValue = pyramid[row+1][col];
 				int rowBelowRightColumnValue = pyramid[row+1][col+1];
 				pyramid[row][col] += Math.max( rowBelowLeftColumnValue, rowBelowRightColumnValue );
@@ -19,11 +15,11 @@ public class P018_MaximumPathSumI {
 		return pyramid[0][0];
 	}
 
-	@Test(timeout = 50)
+	@Test( timeout = 50 )
 	public void MaximumPathSum() {
-		int maximumSum = maximumPathSumI(pyramid);
-		System.out.printf("maximumPathSum() = %d%n", maximumSum);
-		assertEquals(1074, maximumSum);
+		int maximumSum = maximumPathSumI( pyramid );
+		System.out.printf( "maximumPathSum() = %d%n", maximumSum );
+		assertEquals( 1074, maximumSum );
 	}
 
 	private int[][] pyramid = { 

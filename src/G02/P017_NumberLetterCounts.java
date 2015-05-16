@@ -1,7 +1,5 @@
 package G02;
-/**
- * @author Harold Almon
- */
+/** Strategy: Simple Mathematics */
 import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
@@ -12,7 +10,7 @@ import org.junit.Test;
 public class P017_NumberLetterCounts {
 	int lengthOfand = "and".length();
 	
-	static List<Integer> digitLengths = Arrays.asList( new Integer[] {
+	static List<Integer> singleDigitLengths = Arrays.asList( new Integer[] {
 		"one".length(),
 		"two".length(),
 		"three".length(),
@@ -24,7 +22,7 @@ public class P017_NumberLetterCounts {
 		"nine".length()
 	});
 
-	static List<Integer> tens = Arrays.asList(new Integer[] {
+	static List<Integer> mutilpleOfTens = Arrays.asList(new Integer[] {
 		"twenty".length(),
 		"thirty".length(),
 		"forty".length(),
@@ -35,9 +33,9 @@ public class P017_NumberLetterCounts {
 		"ninety".length()
 	});
 
-	int lengthOf1to9 = sum1to9(digitLengths);
+	int lengthOf1to9 = sum1to9( singleDigitLengths );
 
-	private int sum1to9(List<Integer> digitLengths) {
+	private int sum1to9( List<Integer> digitLengths ) {
 		return digitLengths.get(0) +
 				digitLengths.get(1) +
 				digitLengths.get(2) +
@@ -79,8 +77,8 @@ public class P017_NumberLetterCounts {
 		lengthOfand1to99 = sumAnd1To99();
 
 		result = lengthOf1to99;
-		result += sumOf100to999(result);
-		result += lengthOf1000(result);
+		result += sumOf100to999( result );
+		result += lengthOf1000( result );
 		return result;
 	}
 	private int sumAnd1To99() {
@@ -90,17 +88,17 @@ public class P017_NumberLetterCounts {
 		return lengthOf1to19 + sum20to99();
 	}
 	private int lengthOf1000(int result) {
-		result += digitLengths.get(0) + lengthOfthousand;
+		result += singleDigitLengths.get( 0 ) + lengthOfthousand;
 		return result;
 	}
 	private int sumOf100to999(int result) {
-		for( int i : digitLengths)
+		for( int i : singleDigitLengths)
 			result += (i + lengthOfhundred) * 100 + lengthOfand1to99;
 		return result;
 	}
 	private int sum20to99() {
 		int L20to99 = 0;
-		for( int i : P017_NumberLetterCounts.tens)
+		for( int i : P017_NumberLetterCounts.mutilpleOfTens)
 			L20to99 += i * 10 + lengthOf1to9;
 		return L20to99;
 	}

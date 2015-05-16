@@ -18,4 +18,6 @@ The Java code has extensive refactoring based on the principles
 found in the books __Code Complete__ and __Clean Code__.  I also
 improved the initial JUnit tests with more advanced functionality and
 developed test suites for the entire problem set.
+
+You can find the probelms at [ProjectEuler.net](https://projecteuler.net/archives)
 #

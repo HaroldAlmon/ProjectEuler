@@ -1,6 +1,21 @@
 package G02;
-
+/** Strategy: Mathematics */
 import static org.junit.Assert.assertEquals;
+/**
+ * Strategy: Discrete Mathematics.
+ * Explanation: 
+ * In the problem a 2x2 matrix has 2 right moves
+ * and 2 down moves. So there are 4 moves that
+ * need to be made to get to the end.
+ * 
+ * The first solution on the web page shows the
+ * following sequence (R, R, D, D). See how the 2
+ * R's can go into 4 positions?
+ *
+ * So the problem is 4 choose 2 which
+ * is a combination.
+ * 
+ */
 import static org.junit.Assert.assertTrue;
 
 import java.math.BigInteger;
@@ -8,28 +23,13 @@ import java.math.BigInteger;
 import org.junit.Ignore;
 import org.junit.Test;
 public class P015_LatticePaths {
-	/**
-	 * Strategy: Discrete Mathematics
-	 * This problem can be reduced to a combination.
-	 * If you think of the solution as a sequence
-	 * of 2n slots and the directions as two choices
-	 * *(r and d) then you can place the r's in 
-	 *  2n slots and the d's in the remaining slots.
-	 *  After the r's are placed in the slots, there
-	 *  is only one way to place the d's in the remaining
-	 *  slots.  So, just count the number of ways to
-	 *  place the r's in 2n slots.
-	 * @author Harold Almon
-	 * @param latticeSize - The width and height of the lattice
-	 * @return The number of paths through the lattice.
-	 */
 	public String latticePaths(int latticeSize) {
 		String result;
 
 		BigInteger nx2Factorial = factorial(2*latticeSize);
 		BigInteger nFactorial = factorial(latticeSize);
 
-		// Here is the combination calculation where n=2n and r=n.
+		// Here is the combination calculation C(n,r) where n=2n and r=n and n=latticeSize.
 		//              (2n)!        (2n)!
 		//  C(n,r) = -----------  = ------- 
 		//           (2n-n)! * n!   n! * n!
@@ -47,9 +47,9 @@ public class P015_LatticePaths {
 
 	@Test(timeout = 500)
 	public void CountLattice20x20() {
-		long count = Long.parseLong( latticePaths(20) );
-		System.out.printf("CountLattice20x20(%s)%n", count);
-		assertEquals( Long.parseLong("137846528820"), count );
+		long pathCount = Long.parseLong( latticePaths(20) );
+		System.out.printf("CountLattice20x20(%s)%n", pathCount);
+		assertEquals( Long.parseLong("137846528820"), pathCount );
 
 	}
 	

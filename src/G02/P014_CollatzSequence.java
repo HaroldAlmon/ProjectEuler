@@ -1,9 +1,5 @@
 package G02;
-/**
- * Strategy: Simple Mathematics
- * @author Harold Almon
- *
- */
+/** Strategy: Simple Mathematics */
 import org.junit.Test;
 
 public class P014_CollatzSequence {

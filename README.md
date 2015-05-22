@@ -19,9 +19,9 @@ found in the books __Code Complete__ and __Clean Code__.  I also
 improved the initial JUnit tests with more advanced functionality and
 developed test suites for the entire problem set.
 
--You can find the problems at [ProjectEuler.net](https://projecteuler.net/archives)
--[Harold's Tweets](https://twitter.com/HaroldAlmon)
--[Harold's TopCoder Profile](http://community.topcoder.com/tc;jsessionid=FWAAl1ndYsqkGOsm4g02fg**.tomcat_tc01?module=MemberProfile&cr=40124359)
+*You can find the problems at [ProjectEuler.net](https://projecteuler.net/archives)
+*[Harold's Tweets](https://twitter.com/HaroldAlmon)
+*[Harold's TopCoder Profile](http://community.topcoder.com/tc;jsessionid=FWAAl1ndYsqkGOsm4g02fg**.tomcat_tc01?module=MemberProfile&cr=40124359)
 
 
 My ProjectEuler friend key is: 748521_5598d3d5baf263f65ed60dc0197b4a1e

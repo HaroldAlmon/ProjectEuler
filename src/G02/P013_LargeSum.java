@@ -5,28 +5,28 @@ import static org.junit.Assert.assertEquals;
 import java.math.BigInteger;
 
 import org.junit.Test;
-/**
- * @author Harold Almon
- *
- */
+/** Strategy: Simple Mathematics */
 
 public class P013_LargeSum {
-	@Test(timeout = 500)
+	@Test(timeout = 50)
 	public void Sum() {
 		String sum = largeSum().substring(0, 10);
 		System.out.printf("largeSum() = %s%n", sum);
 		assertEquals( sum, "5537376230" );
 	}
 
-	private String largeSum() {
+	/**
+	 * @return String The sum of the one-hundred 50-digit numbers.
+	 */
+	public String largeSum() {
 		BigInteger sum = new BigInteger("0");
-		for (int i = 0; i < nums.length; i++) {
-			sum = sum.add(new BigInteger(nums[i]));
+		for (int i = 0; i < fiftyLargeNumbers.length; i++) {
+			sum = sum.add(new BigInteger(fiftyLargeNumbers[i]));
 		}
 		return sum.toString();
 	}
 
-	static String[] nums = {
+	static String[] fiftyLargeNumbers = {
 		 "37107287533902102798797998220837590246510135740250",
 		 "46376937677490009712648124896970078050417018260538",
 		 "74324986199524741059474233309513058123726617309629",

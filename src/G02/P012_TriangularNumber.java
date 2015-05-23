@@ -1,15 +1,11 @@
 package G02;
-/*
- * Strategy: Simple Mathematics.
- * @author Harold Almon
- */
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
+/** Strategy: Simple Mathematics. */
 public class P012_TriangularNumber {
-	private final boolean FALSE = false;
 	long triangularNumber(int divisorLimit) {
-		final boolean FALSE = false;
+		final boolean isDebug = false;
 		int naturalNumber = 2;
 		int triangleNumber = 3;
 		int numberOfDivisors = 0;
@@ -20,7 +16,7 @@ public class P012_TriangularNumber {
 			naturalNumber = nextNaturalNumber(naturalNumber);
 			triangleNumber = nextTriangleNumber(triangleNumber, naturalNumber);
 		};
-		if(FALSE) 
+		if(isDebug) 
 			System.out.printf("no. of divisors = %d, Triangle seq no. = %d%n", numberOfDivisors , naturalNumber);
 		return triangleNumber;
 	}

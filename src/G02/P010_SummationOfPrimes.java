@@ -1,16 +1,17 @@
 package G02;
-/**
- * Strategy: Brute Force.
- * @author Harold Almon
- */
+/** Strategy: Brute Force. */
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
+
+import common.FastTest;
+import common.SlowTest;
 public class P010_SummationOfPrimes {
 	static int testNo = 1;
 
-	private long sumOfPrimes(int upperLimit) {
+	private long primesSum(int upperLimit) {
 		int primeCandidate;
 		int primeCount;
 		long primeSum = 2;
@@ -59,22 +60,25 @@ public class P010_SummationOfPrimes {
 	}
 	
 	@Test(timeout = 300_000)
+	@Category(SlowTest.class)
 	public void TwoMillionPrimes() {
 		// takes ~133 seconds on an i7 laptop
-		long primeSum = sumOfPrimes(2_000_000);
+		long primeSum = primesSum(2_000_000);
 		assertEquals( "Incorrect sum", 142913828922L, primeSum );
 
 	}
 	
 	@Test(timeout = 500)
+	@Category(FastTest.class)
 	public void SixPrimes() {
-		long primeSum = sumOfPrimes(6);
+		long primeSum = primesSum(6);
 		assertEquals( "Incorrect sum", 10, primeSum );
 	}
 	
 	@Test(timeout = 500)
+	@Category(FastTest.class)
 	public void TenPrimes() {
-		long primeSum = sumOfPrimes(10);
+		long primeSum = primesSum(10);
 		assertEquals("Incorrect sum", 17, primeSum);
 	}
 }

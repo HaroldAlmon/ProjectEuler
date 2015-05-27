@@ -1,22 +1,28 @@
 package G01;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
+
+import common.SlowTest;
 /** Strategy: Brute Force. */
+@Category(SlowTest.class)
 public class P007_10001PrimeLinkList {
 	static int testNo = 1;
 	private long primeNumber(int upperLimit) {
-		int oddNumber;
+		int oddPrimeCandidate;
 		List<Integer> primeNumberList = new LinkedList<>();
 		primeNumberList.add(2);
 		primeNumberList.add(3);
-		oddNumber = 5;
+		oddPrimeCandidate = 5;
 
 		while (primeNumberList.size() < upperLimit) {
 			boolean isPrime = true;
@@ -24,15 +30,15 @@ public class P007_10001PrimeLinkList {
 			// Boxing takes longer, use an array instead
 			Iterator<Integer> primeIter = primeNumberList.iterator();
 			while(primeIter.hasNext()) {
-				if ( (oddNumber % ( primeIter.next()) ) == 0 ) {
+				if ( (oddPrimeCandidate % ( primeIter.next()) ) == 0 ) {
 					isPrime = false;
 					break;
 				}
 			}
 			if (isPrime == true) {
-				primeNumberList.add(oddNumber);
+				primeNumberList.add(oddPrimeCandidate);
 			}
-			oddNumber = nextOddNumber(oddNumber);
+			oddPrimeCandidate = nextOddNumber(oddPrimeCandidate);
 		}
 
 		return primeNumberList.get(upperLimit - 1);

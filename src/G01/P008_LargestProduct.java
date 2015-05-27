@@ -1,46 +1,49 @@
 package G01;
-
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
+
+import common.FastTest;
 
 /** Strategy: Simple Mathematics. */
+@Category( FastTest.class )
 public class P008_LargestProduct {
-	 @Test(timeout = 500)
+	 @Test( timeout = 500 )
 	 public void MaximumProduct() {
-		long product = maximumProductOfDigits(veryLongNumber, 13);
-		System.out.printf("maximumProduct(13) = %d%n", product);
+		long product = maximumProductOfDigits( veryLongNumber, 13 );
+		System.out.printf( "maximumProduct( 13 ) = %d%n", product );
 		assertEquals( "Incorrect product", product, 23514624000L );
 	 }
 
-	public long maximumProductOfDigits(String veryLongNumber, int digitsLength) {
-		long maximumProduct = 0;
+	public long maximumProductOfDigits( String veryLongNumber, int digitsLength ) {
+		long productMaximum = 0;
 		long product = 0;
-		for (int posInLongNum = 0; posInLongNum < veryLongNumber.length() - digitsLength - 1; posInLongNum++) {
-			product = multiplyDigits( getDigits(veryLongNumber, posInLongNum, digitsLength) );
-			if (product > maximumProduct) {
-				maximumProduct = product;
+		for ( int posInLongNum = 0; posInLongNum < veryLongNumber.length() - digitsLength - 1; posInLongNum++ ) {
+			product = multiplyDigits(  getDigits( veryLongNumber, posInLongNum, digitsLength )  );
+			if ( product > productMaximum ) {
+				productMaximum = product;
 			}
 		}
-		return maximumProduct;
-	}
-	
-	private String getDigits(String veryLongNumber, int start, int digitsLength) {
-		return veryLongNumber.substring(start, start + digitsLength);
-	}
-	
-	private long multiplyDigits(String number) {
-		long result = 1;
-		for (int characterPosition = 0; characterPosition < number.length(); characterPosition++) {
-			result *= getCharacterInString(number, characterPosition);
-		}
-		return result;
+		return productMaximum;
 	}
 
-	private int getCharacterInString(String s, int characterPosition) {
-		return Integer.parseInt(s.substring(characterPosition,characterPosition+1));
+	private String getDigits( String veryLongNumber, int start, int digitsLength ) {
+		return veryLongNumber.substring( start, start + digitsLength );
 	}
-	
+
+	private long multiplyDigits( String number ) {
+		long digitsProduct = 1;
+		for ( int charPosition = 0; charPosition < number.length(); charPosition++ ) {
+			digitsProduct *= charInString( number, charPosition );
+		}
+		return digitsProduct;
+	}
+
+	private int charInString( String inputString, int charPosition ) {
+		return Integer.parseInt( inputString.substring( charPosition, charPosition+1 ) );
+	}
+
 	 static String veryLongNumber = 
 	 "73167176531330624919225119674426574742355349194934"+
 	 "96983520312774506326239578318016984801869478851843"+

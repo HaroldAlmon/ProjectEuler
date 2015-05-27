@@ -3,11 +3,11 @@ package G01;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-/**
- * Strategy: Brute Force.
- * Assume x + y + r = sum;
- * @author Harold Almon
- */
+import org.junit.experimental.categories.Category;
+
+import common.FastTest;
+/** Strategy: Brute Force. */
+@Category(FastTest.class)
 public class P009_PythagoreanTriplet {
 	public int pythagoreanTriplet(int tripletSum) {
 		int tripletProduct = enumerateAllXValues(tripletSum);
@@ -25,8 +25,9 @@ public class P009_PythagoreanTriplet {
 		return tripletProduct;
 		
 	}
+
 	private int enumerateAllYValues(int tripletSum, int x) {
-		final boolean FALSE = false;
+		final boolean isDebug = false;
 		int r;
 		int tripletProduct;
 
@@ -34,7 +35,7 @@ public class P009_PythagoreanTriplet {
 			r = tripletSum - x - y;
 			if ( isTriplet(x, r, y) ) {
 				tripletProduct = x*y*r;
-				if (FALSE)
+				if (isDebug)
 					System.out.printf("Triplet (x, y, r) = (%d,%d,%d)%n", x,y,r);
 				return tripletProduct;
 			}

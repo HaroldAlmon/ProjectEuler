@@ -7,8 +7,8 @@ but they produce the correct answers.
 
 This site is __not__ meant for getting solutions to problems that you
 have not solved.  __That is pointless__.  This site exists so I can 
-try languages and tools like Ruby, JavaScript, JUnit, and git with
-a problem set that is very challenging. 
+try languages and tools like Java, Ruby, JavaScript, Scala, JUnit, and git with
+a well known problem set. 
 
 You can find the problems at [ProjectEuler.net](https://projecteuler.net/archives)
 

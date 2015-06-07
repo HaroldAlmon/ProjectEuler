@@ -1,7 +1,6 @@
 # ProjectEuler
 This is a place where I can save my solutions to the ProjectEuler problems.
-I am making an effort to use meaning variable and function names 
-so that you can easily understand the code. Keep in mind that these are
+Keep in mind that these are
 my solutions and the may not be the most efficient or best solution
 but they produce the correct answers.
 

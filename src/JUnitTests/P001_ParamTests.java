@@ -1,4 +1,4 @@
-package unitTests;
+package JUnitTests;
 
 import static org.junit.Assert.assertEquals;
 

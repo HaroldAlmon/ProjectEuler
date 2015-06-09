@@ -6,21 +6,6 @@ import static org.junit.Assert.fail;
 import org.junit.Test;
 /** Strategy: Brute Force. */
 public class P004_PalindromeProduct {
-	@Test(timeout=500)
-	public void LargestPalindromeProductOfTwo3DigitNumbers() throws Exception {
-		int palindromeProduct = largestPalindromeProduct(3);
-		System.out.printf("largestPalindromeProduct(3) = %d%n", palindromeProduct);
-		assertEquals("Incorrect palindrome product of two 3-digit numbers", 906609, palindromeProduct);
-	}
-	
-	@Test(timeout=16_000)
-	public void LargestPalindromeProd4DigitNums() throws Exception {
-		int result = largestPalindromeProduct(4);
-		System.out.printf("largestPalindromeProduct(4) = %d%n", result);
-		assertEquals("Incorrect palindrome product of two 4-digit numbers", 99000099, result);
-	}
-	
-	
 	@Test(timeout=100, expected=Exception.class)
 	public void LengthLessThan1ThrowsException() throws Exception {
 		int result = largestPalindromeProduct(-1);

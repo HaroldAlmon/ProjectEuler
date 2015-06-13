@@ -13,7 +13,7 @@ import org.junit.runners.Parameterized.Parameters;
 import G01.P001_MultiplesOf3And5;
 
 @RunWith(Parameterized.class)
-public class P001_ParamTests {
+public class P001_MultiplesOf3And5Test {
 	private int input;
 	private int expectedResult;
 	private static P001_MultiplesOf3And5 multiplesOf3And5 = new P001_MultiplesOf3And5();
@@ -27,7 +27,7 @@ public class P001_ParamTests {
 		} );
 	}
 
-	public P001_ParamTests(int input, int expectedResult) {
+	public P001_MultiplesOf3And5Test(int input, int expectedResult) {
 		this.input = input;
 		this.expectedResult = expectedResult;
 	}

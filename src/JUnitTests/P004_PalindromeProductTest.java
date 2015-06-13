@@ -29,10 +29,10 @@ public class P004_PalindromeProductTest {
 	public P004_PalindromeProductTest(int input, int expectedResult) {
 		this.input = input;
 		this.expectedResult = expectedResult;
-	}
+	} 
 	
 	@Test (timeout = 10_000)
-	public void MultiplesOf3And5() throws Exception {
+	public void PalindromeProductTest() throws Exception {
 		int result;
 
 		result = palindromeProduct.largestPalindromeProduct(input);

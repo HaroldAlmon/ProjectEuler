@@ -11,7 +11,7 @@ import common.SlowTest;
 public class P010_SummationOfPrimes {
 	static int testNo = 1;
 
-	private long primesSum(int upperLimit) {
+	public long primesSum(int upperLimit) {
 		int primeCandidate;
 		int primeCount;
 		long primeSum = 2;

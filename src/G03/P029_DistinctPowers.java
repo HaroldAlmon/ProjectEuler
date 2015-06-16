@@ -26,10 +26,10 @@ public class P029_DistinctPowers {
 		return powers.size();
 	}
 
-	@Test
+	@Test (timeout = 500)
 	public void DistinctPowers() {
 		int countPowers = distinctPowers(100);
-		System.out.printf("%d%n", countPowers);
+		System.out.printf("Numbet of distinct powers is %d.%n", countPowers);
 		assertEquals(9183, countPowers);
 	}
 }

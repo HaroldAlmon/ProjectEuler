@@ -21,9 +21,9 @@ public class P001_MultiplesOf3And5Test {
 	@Parameters
 	public static List<Object []> data() {
 		return Arrays.asList( new Object [][] {
-			{100, 2_318},
-			{1_000, 233_168}, 
-			{10_000, 23_331_668}
+			{100,		2_318},
+			{1_000,		233_168}, 
+			{10_000,	23_331_668}
 		} );
 	}
 
@@ -37,7 +37,7 @@ public class P001_MultiplesOf3And5Test {
 		int result;
 
 		result = multiplesOf3And5.multiplesOf3And5(input);
-		System.out.printf("Result = %d%n", result);
 		assertEquals( expectedResult, result);
+		System.out.printf("multiplesOf3And5: %s%n", result);
 	}
 }

@@ -36,7 +36,7 @@ public class P004_PalindromeProductTest {
 		int result;
 
 		result = palindromeProduct.largestPalindromeProduct(input);
-		System.out.printf("Result = %d%n", result);
+		System.out.printf("PalindromeProductTest = %d%n", result);
 		assertEquals( expectedResult, result);
 	}
 }

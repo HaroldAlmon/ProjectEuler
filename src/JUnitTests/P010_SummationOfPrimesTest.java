@@ -29,8 +29,8 @@ public class P010_SummationOfPrimesTest {
 		return Arrays.asList( new Object[][] {
 			// takes ~133 seconds on an i7 laptop
 			{ 2_000_000, 142913828922L }, 
-			{ 6, 10L }, 
-			{ 10, 17L } 
+			{ 6,		 10L }, 
+			{ 10,		 17L } 
 		} );
 	}
 
@@ -41,8 +41,10 @@ public class P010_SummationOfPrimesTest {
 
 	private final int oneSecond = 1_000;
 	@Test( timeout = 500 * oneSecond )
-	public void summationOfPrimes() {
-		assertEquals( prime, summationOfPrimes.primesSum( limit ) );
+	public void SummationOfPrimes() {
+		long primeSum = summationOfPrimes.primesSum( limit );
+		assertEquals( prime, primeSum );
+		System.out.printf("P010_SummationOfPrimesTest %d%n", primeSum);
 	}
 	
 }

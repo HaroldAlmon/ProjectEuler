@@ -5,7 +5,7 @@ import org.junit.experimental.categories.Categories.IncludeCategory;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-import G01.P001_MultiplesOf3And5;
+import JUnitTests.P001_MultiplesOf3And5Test;
 import G01.P002_EvenFibonacciNumbers;
 import G01.P003_LargestPrimeFactor;
 import G01.P005_SmallestMultipleHashMap;
@@ -17,7 +17,6 @@ import G01.P009_PythagoreanTriplet;
 @RunWith(Categories.class)
 @IncludeCategory(FastTest.class)
 @Suite.SuiteClasses ( {
-	P001_MultiplesOf3And5.class, 
 	P002_EvenFibonacciNumbers.class,
 	P003_LargestPrimeFactor.class,
 	P005_SmallestMultipleHashMap.class,
@@ -25,7 +24,8 @@ import G01.P009_PythagoreanTriplet;
 	P007_10001PrimeLinkList.class,
 	P007_10001PrimeLinkList.class,
 	P008_LargestProduct.class,
-	P009_PythagoreanTriplet.class
+	P009_PythagoreanTriplet.class,
+	P001_MultiplesOf3And5Test.class
 	} )
 public class UnitTestCategoryFast {
 

@@ -26,10 +26,8 @@ public class P001_MultiplesOf3And5 {
 	//                        2
 	// The formula includes n, the problem does not.
 	private int calculateSumBelowLimit(int upperLimit, int divisor) {
-		int result = 0;
-		int n = (upperLimit-1)/divisor;
-		result = divisor * n * (n + 1) / 2  ;
-		return result;
+		int n = (upperLimit - 1)/divisor;
+		return divisor * n * ( n + 1 ) / 2 ;
 	}
 
 	@Test(timeout=50)

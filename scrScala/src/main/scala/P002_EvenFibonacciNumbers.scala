@@ -2,7 +2,7 @@
  * Created by Harold on 6/27/2015.
  */
 object P002_EvenFibonacciNumbers extends App {
-  println(EvenFiboNumbersSum(4000000 ))
+  println(EvenFiboNumbersSum(4000000))
 
  // public class P002_EvenFibonacciNumbers {
     def EvenFiboNumbersSum(upperLimit: Int) = {

@@ -51,13 +51,13 @@ public class P003_LargestPrimeFactor {
 	}
 
 	private long removeFactorFromProduct(int candidateFactor, long product) {
-		product /= candidateFactor;
-		return product;
+		return product / candidateFactor;
 	}
 
 	int[] factors(final int intNumber) {
 	    int[] factors = new int[100];
-	    int i = 0, candidateFactor;
+	    int i = 0;
+	    int candidateFactor;
 	    int product = intNumber;
 	    
 	    while (product % 2 == 0) {
@@ -85,8 +85,7 @@ public class P003_LargestPrimeFactor {
 	}
 
 	private int removeFactorFromProduct(int candidateFactor, int product) {
-		product /= candidateFactor;
-		return product;
+		return product /= candidateFactor;
 	}
 
 	@Test(timeout=100)

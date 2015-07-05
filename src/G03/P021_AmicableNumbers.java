@@ -68,7 +68,7 @@ public class P021_AmicableNumbers {
 		return sum;
 	}
 
-	class ProperDivisors {
+	static class ProperDivisors {
 		int[] properDivisors(int number) {
 			int[] factors = new int[ number/2 + 1 ];
 			int nextFreePosition = 1;
@@ -91,7 +91,8 @@ public class P021_AmicableNumbers {
 
 		private void addTwoDivisorsToArray(int number, int[] factors, int nextFreePosition, int divisor) {
 			factors[nextFreePosition] = divisor;
-			factors[nextFreePosition + 1] = number / divisor;
+			if ( divisor != number / divisor ) 
+				factors[nextFreePosition + 1] = number / divisor;
 		}
 	}
 }

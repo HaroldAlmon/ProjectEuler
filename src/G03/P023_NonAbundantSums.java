@@ -17,7 +17,7 @@ public class P023_NonAbundantSums {
 	public long nonAbundantSums() {
 		int[] divisors;
 		long grandTotal = 0;
-		int upperLimit = 100;
+		int upperLimit = 25; //28123;
 		
 		List<Integer> abundant = new ArrayList<>();
 		Set<Integer> abundantSums = new HashSet<>();
@@ -34,24 +34,30 @@ public class P023_NonAbundantSums {
 		// enumerate all numbers <= 28123
 		// if not in set add to answerSum
 		
-		for ( int i = 0; i < abundant.size(); i++ ) {
-			for ( int j = 0; j < abundant.size(); j++ )
-				abundantSums.add( abundant.get(i) + abundant.get(j) );
-		}
-		
-		for ( int i = 24; i < upperLimit; i++ ) {
-			if ( abundantSums.contains(1) == false ) {
-				grandTotal += i;
-			}
+		for ( int abNum1 = 0; abNum1 < abundant.size(); abNum1++ ) {
+			for ( int abNum2 = 0; abNum2 < abundant.size(); abNum2++ )
+				if ( abundant.get(abNum1) + abundant.get(abNum2) < upperLimit ) 
+					abundantSums.add( abundant.get(abNum1) + abundant.get(abNum2) );
+				else
+					break;
 		}
 
 		System.out.println( "Total no in set = " + abundant.size() );
 		System.out.println( "Total no in Sums set = " + abundantSums.size() );
 		System.out.println( abundant.toString() );
+		System.out.println( "Sums = " + abundantSums.toString() );
 		
 		// For debug...
 		Collections.reverse( abundant );
 		System.out.println(abundant.toString() );
+		
+		for ( int candidate = 1; candidate < upperLimit; candidate++ ) {
+			if ( abundantSums.contains(candidate) == false ) {
+				grandTotal += candidate;
+				System.out.println("Added: " + candidate);
+			}
+		}
+		
 		System.out.println("gTotal = " + grandTotal);
 		return grandTotal;
 	}

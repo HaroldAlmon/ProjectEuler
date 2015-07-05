@@ -17,12 +17,12 @@ public class P023_NonAbundantSums {
 	public long nonAbundantSums() {
 		int[] divisors;
 		long grandTotal = 0;
-		int upperLimit = 25; //28123;
+		int upperLimit = 28123;
 		
 		List<Integer> abundant = new ArrayList<>();
 		Set<Integer> abundantSums = new HashSet<>();
 		
-		for (int candidate = 12; candidate < upperLimit - 12; candidate ++) {
+		for (int candidate = 1; candidate < upperLimit - 12; candidate ++) {
 			divisors = properDivisors.properDivisors( candidate) ;
 			if( sum( divisors ) > candidate) {
 				abundant.add(candidate);
@@ -54,7 +54,7 @@ public class P023_NonAbundantSums {
 		for ( int candidate = 1; candidate < upperLimit; candidate++ ) {
 			if ( abundantSums.contains(candidate) == false ) {
 				grandTotal += candidate;
-				System.out.println("Added: " + candidate);
+				//System.out.println("Added: " + candidate);
 			}
 		}
 		

@@ -19,59 +19,58 @@ public class P023_NonAbundantSums {
 		long grandTotal = 0;
 		int upperLimit = 28123;
 		
-		List<Integer> abundant = new ArrayList<>();
+		List<Integer> abundantNums = new ArrayList<>();
 		Set<Integer> abundantSums = new HashSet<>();
 		
-		for (int candidate = 1; candidate < upperLimit - 12; candidate ++) {
-			divisors = properDivisors.properDivisors( candidate) ;
-			if( sum( divisors ) > candidate) {
-				abundant.add(candidate);
+		abundantNums = calculateAbundantNumbers( upperLimit, abundantNums );
+		abundantSums = calculateAbundantSums( upperLimit, abundantNums, abundantSums );
+		grandTotal = grandTotal( grandTotal, upperLimit, abundantSums );
+		
+		System.out.println( "Grand Total = " + grandTotal );
+		return grandTotal;
+	}
+
+	private long grandTotal( long grandTotal, int upperLimit, Set<Integer> abundantSums ) {
+		for ( int candidate = 1; candidate < upperLimit; candidate++ ) {
+			if ( abundantSums.contains( candidate ) == false ) {
+				grandTotal += candidate;
 			}
 		}
-		
-		// To do: enumerate all sums of 2 abundant numbers
-		// Add sums to set
-		// enumerate all numbers <= 28123
-		// if not in set add to answerSum
-		
+		return grandTotal;
+	}
+
+	private List<Integer> calculateAbundantNumbers( int upperLimit, List<Integer> abundant ) {
+		int[] divisors;
+		for ( int candidate = 1; candidate < upperLimit - 12; candidate++ ) {
+			divisors = properDivisors.properDivisors( candidate ) ;
+			if( sumDivisors( divisors ) > candidate) {
+				abundant.add( candidate );
+			}
+		}
+		return abundant;
+	}
+
+	private Set<Integer> calculateAbundantSums(int upperLimit, List<Integer> abundant, Set<Integer> abundantSums) {
 		for ( int abNum1 = 0; abNum1 < abundant.size(); abNum1++ ) {
 			for ( int abNum2 = 0; abNum2 < abundant.size(); abNum2++ )
-				if ( abundant.get(abNum1) + abundant.get(abNum2) < upperLimit ) 
-					abundantSums.add( abundant.get(abNum1) + abundant.get(abNum2) );
+				if ( abundant.get( abNum1 ) + abundant.get( abNum2 ) < upperLimit ) 
+					abundantSums.add( abundant.get( abNum1 ) + abundant.get( abNum2 ) );
 				else
 					break;
 		}
-
-		System.out.println( "Total no in set = " + abundant.size() );
-		System.out.println( "Total no in Sums set = " + abundantSums.size() );
-		System.out.println( abundant.toString() );
-		System.out.println( "Sums = " + abundantSums.toString() );
-		
-		// For debug...
-		Collections.reverse( abundant );
-		System.out.println(abundant.toString() );
-		
-		for ( int candidate = 1; candidate < upperLimit; candidate++ ) {
-			if ( abundantSums.contains(candidate) == false ) {
-				grandTotal += candidate;
-				//System.out.println("Added: " + candidate);
-			}
-		}
-		
-		System.out.println("gTotal = " + grandTotal);
-		return grandTotal;
+		return abundantSums;
 	}
 	
-	int sum(int [] array){
+	int sumDivisors( int [] array ){
 		int total = 0;
-		for(int element : array)
+		for( int element : array )
 			total += element;
 		return total;
 	}
-	
 
-	@Test
-	public void test1() {
-		assertEquals( 0, nonAbundantSums() );
+	@Test( timeout = 10_000 )
+	public void NonAbundantSums() {
+		long grandTotal = nonAbundantSums();
+		assertEquals( 4179871, grandTotal );
 	}
 }

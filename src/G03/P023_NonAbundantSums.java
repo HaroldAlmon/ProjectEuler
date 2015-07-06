@@ -43,7 +43,7 @@ public class P023_NonAbundantSums {
 		int[] divisors;
 		for ( int candidate = 1; candidate < upperLimit - 12; candidate++ ) {
 			divisors = properDivisors.properDivisors( candidate ) ;
-			if( sumDivisors( divisors ) > candidate) {
+			if( sumOfElements( divisors ) > candidate) {
 				abundant.add( candidate );
 			}
 		}
@@ -61,11 +61,11 @@ public class P023_NonAbundantSums {
 		return abundantSums;
 	}
 	
-	int sumDivisors( int [] array ){
-		int total = 0;
+	int sumOfElements( int [] array ){
+		int sum = 0;
 		for( int element : array )
-			total += element;
-		return total;
+			sum += element;
+		return sum;
 	}
 
 	@Test( timeout = 10_000 )

@@ -15,7 +15,6 @@ import G03.P021_AmicableNumbers.ProperDivisors;
 public class P023_NonAbundantSums {
 	ProperDivisors properDivisors = new ProperDivisors();
 	public long nonAbundantSums() {
-		int[] divisors;
 		long grandTotal = 0;
 		int upperLimit = 28123;
 		
@@ -26,7 +25,6 @@ public class P023_NonAbundantSums {
 		abundantSums = calculateAbundantSums( upperLimit, abundantNums, abundantSums );
 		grandTotal = grandTotal( grandTotal, upperLimit, abundantSums );
 		
-		System.out.println( "Grand Total = " + grandTotal );
 		return grandTotal;
 	}
 
@@ -71,6 +69,7 @@ public class P023_NonAbundantSums {
 	@Test( timeout = 10_000 )
 	public void NonAbundantSums() {
 		long grandTotal = nonAbundantSums();
+		System.out.println( "Sum of all the positive integers which cannot be written as the sum of two abundant numbers = " + grandTotal );
 		assertEquals( 4179871, grandTotal );
 	}
 }

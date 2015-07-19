@@ -3,7 +3,6 @@ package G03;
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -17,11 +16,12 @@ public class P023_NonAbundantSums {
 	public long nonAbundantSums() {
 		long grandTotal = 0;
 		int upperLimit = 28123;
+		int lowerLimit = 12;
 		
 		List<Integer> abundantNums = new ArrayList<>();
 		Set<Integer> abundantSums = new HashSet<>();
 		
-		abundantNums = calculateAbundantNumbers( upperLimit, abundantNums );
+		abundantNums = calculateAbundantNumbers( upperLimit, lowerLimit, abundantNums );
 		abundantSums = calculateAbundantSums( upperLimit, abundantNums, abundantSums );
 		grandTotal = grandTotal( grandTotal, upperLimit, abundantSums );
 		
@@ -37,9 +37,9 @@ public class P023_NonAbundantSums {
 		return grandTotal;
 	}
 
-	private List<Integer> calculateAbundantNumbers( int upperLimit, List<Integer> abundant ) {
+	private List<Integer> calculateAbundantNumbers( int upperLimit, int lowerLimit, List<Integer> abundant ) {
 		int[] divisors;
-		for ( int candidate = 1; candidate < upperLimit - 12; candidate++ ) {
+		for ( int candidate = 1; candidate < upperLimit - lowerLimit; candidate++ ) {
 			divisors = properDivisors.properDivisors( candidate ) ;
 			if( sumOfElements( divisors ) > candidate) {
 				abundant.add( candidate );

@@ -11,6 +11,7 @@ import G03.P021_AmicableNumbers.ProperDivisors;
 public class P243_Resilience {
 	ProperDivisors properDivisors = new ProperDivisors();
 	public int getResilience() { 
+		boolean debug = false;
 		int lowerLimit = 4;
 		int uppperLimit = 10;
 		int candidate = 11;
@@ -22,7 +23,7 @@ public class P243_Resilience {
 
 			Set<Integer> denominatorSet;
 			divisors = properDivisors.properDivisors( candidate );
-			System.out.printf("denominator set = %s%n", Arrays.toString(divisors));
+			if (debug) System.out.printf("denominator set = %s%n", Arrays.toString(divisors));
 			//denominatorSet = new HashSet<Integer>( Arrays.asList(divisors) );
 			denominatorSet = new HashSet<Integer>();
 			for(int i : divisors) {
@@ -31,9 +32,9 @@ public class P243_Resilience {
 
 			System.out.printf("Candidate denominator = %s%n", candidate);
 			for (int i=2; i < candidate; i++) {
-				System.out.printf("numerator = %s%n",i);
+				if (debug) System.out.printf("numerator = %s%n",i);
 				divisors = properDivisors.properDivisors(i);
-				System.out.printf("numerator set = %s%n", Arrays.toString(divisors));
+				if (debug) System.out.printf("numerator set = %s%n", Arrays.toString(divisors));
 				boolean proper = true;
 
 				if ( denominatorSet.contains( Integer.valueOf( i ) ) == true) {
@@ -50,7 +51,7 @@ public class P243_Resilience {
 				if ( proper == true )
 					total += 1;
 				
-				System.out.printf("total = %s%n",total);
+				if (debug) System.out.printf("total = %s%n",total);
 				// Too many
 				/*if (total >= lowerLimit) {
 					System.out.printf("Too many break %s%n");
@@ -61,7 +62,6 @@ public class P243_Resilience {
 				if (( (float )total/(candidate-1)) >= ((float)lowerLimit/uppperLimit)) {
 					break;
 				}
-				//break;
 			}
 
 			if ((float)total/(candidate-1) < (float)lowerLimit/uppperLimit) {

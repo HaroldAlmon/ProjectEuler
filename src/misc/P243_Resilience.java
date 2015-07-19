@@ -12,12 +12,19 @@ public class P243_Resilience {
 	ProperDivisors properDivisors = new ProperDivisors();
 	public int getResilience() { 
 		boolean debug = false;
-		int lowerLimit = 4;
-		int uppperLimit = 10;
-		int candidate = 11;
+		//int lowerLimit = 4;
+		//int uppperLimit = 10;
+		// int candidate = 11;
+		
+		//15499/94744
+		
+		int lowerLimit = 15499;
+		int uppperLimit = 94744;
+		int candidate = uppperLimit + 1;
+
 		int total = 0;
 
-		while ( candidate < 14 ) {
+		while ( candidate < 100_000 ) {
 			int[] divisors;
 
 

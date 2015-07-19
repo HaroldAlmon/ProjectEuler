@@ -59,12 +59,15 @@ public class P243_Resilience {
 				}*/
 				
 				// Check if ratio is too big...
-				if (( (float )total/(candidate-1)) >= ((float)lowerLimit/uppperLimit)) {
+				boolean checkRatioRequired;
+				checkRatioRequired = total >= lowerLimit;
+				
+				if ( checkRatioRequired  && ( (float )total/(candidate-1)) >= ((float)lowerLimit/uppperLimit)) {
 					break;
 				}
 			}
 
-			if ((float)total/(candidate-1) < (float)lowerLimit/uppperLimit) {
+			if ( ((float)total/(candidate-1) < (float)lowerLimit/uppperLimit)) {
 				break;
 			}
 

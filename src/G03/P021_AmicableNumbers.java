@@ -68,8 +68,8 @@ public class P021_AmicableNumbers {
 		return sum;
 	}
 
-	static class ProperDivisors {
-		int[] properDivisors(int number) {
+	public static class ProperDivisors {
+		public int[] properDivisors(int number) {
 			int[] factors = new int[ number/2 + 1 ];
 			int nextFreePosition = 1;
 			factors[0] = 1;
@@ -83,7 +83,7 @@ public class P021_AmicableNumbers {
 				{
 					limit = (int) (number / divisor) - 1;
 					addTwoDivisorsToArray(number, factors, nextFreePosition, divisor);
-					nextFreePosition += 2;
+					nextFreePosition += divisor != number / divisor ? 2 : 1;
 				}
 			}
 			return Arrays.copyOf(factors, nextFreePosition);

@@ -11,15 +11,15 @@ import G03.P021_AmicableNumbers.ProperDivisors;
 public class P243_Resilience {
 	ProperDivisors properDivisors = new ProperDivisors();
 	public int getResilience() { 
-		boolean debug = false;
-		//int lowerLimit = 4;
-		//int uppperLimit = 10;
+		boolean debug = true;
+		int lowerLimit = 4;
+		int uppperLimit = 10;
 		// int candidate = 11;
 		
 		//15499/94744
 		
-		int lowerLimit = 15499;
-		int uppperLimit = 94744;
+		//int lowerLimit = 15499;
+		//int uppperLimit = 94744;
 		int candidate = uppperLimit + 1;
 
 		int total = 0;

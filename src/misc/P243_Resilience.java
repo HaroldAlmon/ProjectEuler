@@ -8,18 +8,21 @@ import org.junit.Test;
 
 // Find the smallest denominator d, having a resilience R(d) < 15499/94744
 public class P243_Resilience {
-	static boolean debug = true;
+	static boolean debug = false;
 	ProperDivisors properDivisors = new ProperDivisors();
 	public int getResilience() { 
 
-		int lowerLimit = 4;
-		int uppperLimit = 10;
+		//int lowerLimit = 4;
+		//int uppperLimit = 10;
+		
+		int lowerLimit = 7;
+		int uppperLimit = 13;
 		
 		//15499/94744
 		
 		//int lowerLimit = 15499;
 		//int uppperLimit = 94744;
-		int denominator = uppperLimit + 1;
+		int denominator = uppperLimit;
 
 		int total = 1;
 
@@ -28,7 +31,7 @@ public class P243_Resilience {
 			Set<Integer> denominatorSet;
 
 			denominatorSet = properDivisors.properDivisors( denominator );
-			if (debug) System.out.printf("Denominator set = %s%n", denominatorSet);
+			if (debug) System.out.printf("-----> Denominator set = %s%n", denominatorSet);
 
 			if (denominator % 1_000 == 0) System.out.printf("Candidate denominator = %s%n", denominator);
 			for (int numerator=2; numerator < denominator; numerator++) {
@@ -64,6 +67,7 @@ public class P243_Resilience {
 			}
 
 			if ( ((float)total/(denominator-1) < (float)lowerLimit/uppperLimit)) {
+				System.out.printf("%d has %d factors%n", denominator, total);
 				break;
 			}
 

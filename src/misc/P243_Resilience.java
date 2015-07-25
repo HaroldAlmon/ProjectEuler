@@ -1,6 +1,5 @@
 package misc;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -9,14 +8,14 @@ import org.junit.Test;
 // Find the smallest denominator d, having a resilience R(d) < 15499/94744
 public class P243_Resilience {
 	static boolean debug = false;
-	ProperDivisors properDivisors = new ProperDivisors();
+	ProperDivisors properDivisors = ProperDivisors.INSTANCE;
 	public int getResilience() { 
 
-		//int lowerLimit = 4;
-		//int uppperLimit = 10;
-		
 		int lowerLimit = 7;
-		int uppperLimit = 13;
+		int uppperLimit = 20;
+		
+		//int lowerLimit = 7;
+		//int uppperLimit = 13;
 		
 		//15499/94744
 		
@@ -36,7 +35,7 @@ public class P243_Resilience {
 			if (denominator % 1_000 == 0) System.out.printf("Candidate denominator = %s%n", denominator);
 			for (int numerator=2; numerator < denominator; numerator++) {
 				if (debug) System.out.printf("numerator = %s%n",numerator);
-				divisors = ProperDivisorsMemoized.properDivisors(numerator);
+				divisors = properDivisors.properDivisorsMemo(numerator);
 				if (debug) System.out.printf("numerator set = %s%n", divisors);
 				boolean resilientFraction = true;
 
@@ -66,8 +65,9 @@ public class P243_Resilience {
 				}
 			}
 
-			if ( ((float)total/(denominator-1) < (float)lowerLimit/uppperLimit)) {
+			if ( ((float)total/(denominator-1) < (float)lowerLimit/uppperLimit) ) {
 				System.out.printf("%d has %d factors%n", denominator, total);
+				System.out.printf("%d / %d  < %d / %d%n", total, denominator - 1, lowerLimit, uppperLimit);
 				break;
 			}
 
@@ -82,45 +82,6 @@ public class P243_Resilience {
 		int result;
 		result = getResilience();
 		System.out.printf("Resilience = %s%n", result);
-	}
-	
-	public static class ProperDivisorsMemoized {
-		private static Map< Integer, Set<Integer>> divisors = new HashMap<Integer, Set<Integer>>();
-		public static Set<Integer> properDivisors(int number) {
-			if (!divisors.containsKey(number)) {
-				divisors.put( number, ProperDivisors.properDivisors(number));
-			}
-			else
-				if( debug) System.out.printf("Returned memo for %d%n", number);
-			return divisors.get(number);
-		}
-		
-	}
-	
-	public static class ProperDivisors {
-		public static Set<Integer> properDivisors(int number) {
-			Set<Integer> factors = new HashSet<>();
-			factors.add( Integer.valueOf(1) );
-
-			int limit = (int) (number/2);
-			for (int divisor = 2; divisor <= limit; divisor++) {
-				boolean isDivisor;
-				
-				isDivisor = number % divisor == 0;
-				if ( isDivisor ) 
-				{
-					limit = (int) (number / divisor) - 1;
-					addTwoDivisorsToSet(number, factors, divisor);
-				}
-			}
-			return factors;
-		}
-
-		private static void addTwoDivisorsToSet(int number, Set<Integer> factors, int divisor) {
-			factors.add( Integer.valueOf( divisor ) );
-			if ( divisor != number / divisor ) 
-				factors.add( Integer.valueOf( number / divisor ) );
-		}
 	}
 }
 

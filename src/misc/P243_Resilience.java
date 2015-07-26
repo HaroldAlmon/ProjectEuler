@@ -1,9 +1,18 @@
 package misc;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
-
 import org.junit.Test;
+
+/**
+ * @author Harold Almon
+ * Status of this problem:
+ * At this point the code solves the problem for R(11) < 4/10
+ * but for R(94744) no solution was found after running for 
+ * two hours and reaching R(271,000).
+ * 
+ * Strategy: Get the proper factors of the numerator and the denominator,
+ * Check to see if the factors of the numerator are in the denominator,
+ * if true, the fraction is not resilient.
+ */
 
 // Find the smallest denominator d, having a resilience R(d) < 15499/94744
 public class P243_Resilience {
@@ -11,16 +20,16 @@ public class P243_Resilience {
 	ProperDivisors properDivisors = ProperDivisors.INSTANCE;
 	public int getResilience() { 
 
-		int lowerLimit = 7;
-		int uppperLimit = 20;
+		//int lowerLimit = 7;
+		//int uppperLimit = 20;
 		
 		//int lowerLimit = 7;
 		//int uppperLimit = 13;
 		
 		//15499/94744
 		
-		//int lowerLimit = 15499;
-		//int uppperLimit = 94744;
+		int lowerLimit = 15499;
+		int uppperLimit = 94744;
 		int denominator = uppperLimit;
 
 		int total = 1;
@@ -60,7 +69,7 @@ public class P243_Resilience {
 				checkRatioRequired = total >= lowerLimit;
 				
 				if ( checkRatioRequired  && ( (float )total/(denominator-1)) >= ((float)lowerLimit/uppperLimit)) {
-					System.out.printf("Fail: %d/%d >= %d/%d%n", total, denominator-1, lowerLimit, uppperLimit);
+					if (debug) System.out.printf("Fail: %d/%d >= %d/%d%n", total, denominator-1, lowerLimit, uppperLimit);
 					break;
 				}
 			}
@@ -78,7 +87,7 @@ public class P243_Resilience {
 	}
 	
 	@Test
-	public void test1() {
+	public void ResilienceTest() {
 		int result;
 		result = getResilience();
 		System.out.printf("Resilience = %s%n", result);

@@ -8,7 +8,7 @@ import java.util.Set;
 public enum ProperDivisors {
 	INSTANCE;
 
-	public Set<Integer> properDivisors(int number) {
+	public Set<Integer> primeNumberSet(int number) {
 		Set<Integer> factors = new HashSet<>();
 		factors.add( Integer.valueOf(1) );
 
@@ -39,7 +39,7 @@ public enum ProperDivisors {
 	private Map< Integer, Set<Integer>> divisors = new HashMap<Integer, Set<Integer>>();
 	public Set<Integer> properDivisorsMemo(int number) {
 		if (!divisors.containsKey(number)) {
-			divisors.put( number, properDivisors(number));
+			divisors.put( number, primeNumberSet(number));
 		}
 //		else
 //			if( debug) System.out.printf("Returned memo for %d%n", number);

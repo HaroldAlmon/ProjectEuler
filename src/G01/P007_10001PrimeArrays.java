@@ -47,6 +47,8 @@ public class P007_10001PrimeArrays {
 
 	@Test
 	public void PrimeNumber() {
-		assertEquals( "Incorrect prime number", 104_743, primeNumber( 10_001 ) );
+		long prime = primeNumber( 10_001 );
+		assertEquals( "Incorrect prime number", 104_743, prime );
+		System.out.printf("Prime = %s%n", prime);
 	}
 }

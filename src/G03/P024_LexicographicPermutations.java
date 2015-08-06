@@ -5,16 +5,17 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 public class P024_LexicographicPermutations {
-	private String lexicographicPermutations(int noOfDigits, int targetPermNo) {
-		String permutation = "";
-		int permCounter = 1;
-		final int secondLastChar = noOfDigits - 2;
-		int[] digits = new int[noOfDigits];
-		int digitIndex = 0;
+	int[] digits;
 
+	public String lexicographicPermutations(int noOfDigits, int targetPermNo) {
+		digits = new int[noOfDigits];
 		createDigitsInArray(noOfDigits, digits);
-		digitIndex = secondLastChar;
 
+		String permutation = "";
+		final int secondLastChar = noOfDigits - 2;
+		int digitIndex = 0;
+		digitIndex = secondLastChar;
+		int permCounter = 1;
 		while (digitIndex >= 0) {
 			int smallestDigitPosition;
 			smallestDigitPosition = smallestPosition(digits, digitIndex);
@@ -80,7 +81,7 @@ public class P024_LexicographicPermutations {
 		return result;
 	}
 	
-	@Test(timeout = 200)
+	@Test
 	public void Permutation() {
 		String permutation;
 		permutation = lexicographicPermutations(10, 1_000_000); 

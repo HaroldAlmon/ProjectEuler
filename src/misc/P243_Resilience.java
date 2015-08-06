@@ -19,24 +19,45 @@ public class P243_Resilience {
 	static boolean debug = false;
 	ProperDivisors properDivisors = ProperDivisors.INSTANCE;
 	public int getResilience(int lowerLimit, int uppperLimit) { 
+
+		//15499/94744
 		int denominator = uppperLimit;
 		//int denominator = 2;
 		int total = 1;
+
 		// for (denominator = uppperLimit; denominator < 2_000_000; denominator++) {
+
+		PrimeNumbers primeNumbers = new PrimeNumbers();
+		Set<Integer> primeSet = primeNumbers.primeNumberSet(10_000);
+		System.out.printf("Generated primes...%n");
+
 		while ( true ) {
 			// **** IF denominator is PRIME then next denominator ****
 			Set<Integer> divisors;
 			Set<Integer> denominatorSet;
+
+			denominatorSet = properDivisors.primeNumberSet( denominator );
+			if (debug) System.out.printf("-----> Denominator set = %s%n", denominatorSet);
 			int numerator;
+			if ( denominator == 94770 ) { 
+				System.out.printf("%d%n", denominator);
+			}
+			if (denominator % 1_000 == 0) {
+				System.out.printf("Candidate denominator = %s%n", denominator);
+				System.exit(0);
+			}
+			for (numerator=2; numerator < denominator; numerator++) {
+				if ( numerator == 94769 ) { 
+					System.out.printf("num == %d %n", numerator); 
+				}
+				if ( primeSet.contains(numerator) ) {
+					total = 1;
+					continue;
+				}
 
-			denominatorSet = properDivisors.properDivisors( denominator );
-			if ( debug ) System.out.printf( "-----> Denominator set = %s%n", denominatorSet );
-
-			if ( denominator % 1_000 == 0 ) System.out.printf( "Candidate denominator = %s%n", denominator );
-			for ( numerator=2; numerator < denominator; numerator++ ) {
-				if ( debug ) System.out.printf( "numerator = %s%n",numerator );
-				divisors = properDivisors.properDivisorsMemo( numerator );
-				if ( debug ) System.out.printf( "numerator set = %s%n", divisors );
+				if (debug) System.out.printf("numerator = %s%n",numerator);
+				divisors = properDivisors.properDivisorsMemo(numerator);
+				//if (debug) System.out.printf("numerator set = %s%n", divisors);
 				boolean resilientFraction = true;
 
 				if ( denominatorSet.contains( Integer.valueOf( numerator ) ) == true ) {
@@ -62,18 +83,18 @@ public class P243_Resilience {
 				// Check if ratio is too big...
 				//boolean checkRatioRequired;
 				//checkRatioRequired = total >= lowerLimit;
-				
-				if ( ratioLessThanTargetFraction(total, denominator, lowerLimit, uppperLimit) == false) {
-					if ( debug ) System.out.printf("Fail: %d/%d >= %d/%d%n", total, denominator-1, lowerLimit, uppperLimit );
+				if ( ( (double )total/(denominator-1)) >= ((double)lowerLimit/uppperLimit)) {
+					//if (denominator == 94770 ) System.out.printf("Fail: %d/%d >= %d/%d%n", total, denominator - 1, lowerLimit, uppperLimit);
+					if (debug) System.out.printf("Fail: %d/%d >= %d/%d%n", total, denominator - 1, lowerLimit, uppperLimit);
 					break;
 				}
 			}
 
-			if ( allFractionsChecked(denominator, numerator) ) {
-				if ( ratioLessThanTargetFraction(total, denominator, lowerLimit, uppperLimit) == true ) {
-					if ( debug ) System.out.printf("Success: %d/%d < %d/%d%n", total, denominator-1, lowerLimit, uppperLimit );
-					break;
-				}
+			if ( ((double)total / (denominator-1)) < ((double)lowerLimit / uppperLimit )) {
+				System.out.printf("numerator = %s%n", numerator);
+				System.out.printf("%d has %d factors%n", denominator, total);
+				System.out.printf("%d / %d  < %d / %d%n", total, denominator - 1, lowerLimit, uppperLimit);
+				break;
 			}
 
 			if (debug) System.out.printf("======%n");

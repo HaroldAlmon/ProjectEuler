@@ -39,25 +39,8 @@ public class P243_Resilience {
 				if ( debug ) System.out.printf( "numerator set = %s%n", divisors );
 				boolean resilientFraction = true;
 
-				if ( denominatorSet.contains( Integer.valueOf( numerator ) ) == true ) {
-					resilientFraction = false;
-				} else {
-					for( Integer divisor : divisors) {
-	
-						if ( denominatorSet.contains( divisor ) && divisor != 1 ) {
-							resilientFraction = false;
-						}
-					}
-				}
-
-				if ( resilientFraction == true ) {
-					total += 1;
-					if ( debug ) System.out.printf("%d / %d is resilient%n", numerator, denominator);
-				}
-				else
-					if ( debug ) System.out.printf("%d / %d is not resilient%n", numerator, denominator);
-				
-				if ( debug ) System.out.printf( "total = %s%n", total );
+				resilientFraction = isResilientFraction(divisors, denominatorSet, numerator, resilientFraction);
+				total = logFractionEvaluation(denominator, total, numerator, resilientFraction);
 				
 				// Check if ratio is too big...
 				//boolean checkRatioRequired;
@@ -83,6 +66,35 @@ public class P243_Resilience {
 		return denominator;
 	}
 
+	private int logFractionEvaluation(int denominator, int total,
+			int numerator, boolean resilientFraction) {
+		if ( resilientFraction == true ) {
+			total += 1;
+			if ( debug ) System.out.printf("%d / %d is resilient%n", numerator, denominator);
+		}
+		else
+			if ( debug ) System.out.printf("%d / %d is not resilient%n", numerator, denominator);
+		
+		if ( debug ) System.out.printf( "total = %s%n", total );
+		return total;
+	}
+
+	private boolean isResilientFraction(Set<Integer> divisors,
+			Set<Integer> denominatorSet, int numerator,
+			boolean resilientFraction) {
+		if ( denominatorSet.contains( Integer.valueOf( numerator ) ) == true ) {
+			resilientFraction = false;
+		} else {
+			for( Integer divisor : divisors) {
+
+				if ( denominatorSet.contains( divisor ) && divisor != 1 ) {
+					resilientFraction = false;
+				}
+			}
+		}
+		return resilientFraction;
+	}
+
 	private boolean allFractionsChecked(int denominator, int numerator) {
 		return numerator == denominator;
 	}
@@ -94,11 +106,11 @@ public class P243_Resilience {
 	@Test
 	public void ResilienceTest() {
 		int result;
-		//int lowerLimit = 4;
-		//int uppperLimit = 10;
+		int lowerLimit = 4;
+		int uppperLimit = 10;
 
-		int lowerLimit = 15499;
-		int uppperLimit = 94744;
+		//int lowerLimit = 15499;
+		//int uppperLimit = 94744;
 		result = getResilience( lowerLimit, uppperLimit );
 		System.out.printf( "Resilience = %s%n", result );
 	}

@@ -11,19 +11,27 @@ public class P024_LexicographicPermutations {
 		digits = new int[noOfDigits];
 		createDigitsInArray(noOfDigits, digits);
 
-		String permutation = "";
-		final int secondLastChar = noOfDigits - 2;
+		String permutation = digitsToPermutation(digits);
+		System.out.printf("Permutation = %s%n", permutation);
+		
+		final int startOnRight = noOfDigits - 2;
 		int digitIndex = 0;
-		digitIndex = secondLastChar;
+		digitIndex = startOnRight;
 		int permCounter = 1;
-		while (digitIndex >= 0) {
-			int smallestDigitPosition;
-			smallestDigitPosition = smallestPosition(digits, digitIndex);
-			if (smallestDigitPosition != Integer.MAX_VALUE) {
-				swapDigits(digits, digitIndex, smallestDigitPosition);
+		int FIRST_ARRAY_POSITION = 0;
+		while (digitIndex >= FIRST_ARRAY_POSITION) {
+			int ceilingPosition;
+			ceilingPosition = digitCeilingPosition(digits, digitIndex);
+			if (ceilingPosition != Integer.MAX_VALUE) {
+				swapDigits(digits, digitIndex, ceilingPosition);
 				sortDigitsOnRight(digits, digitIndex + 1);
-				digitIndex = secondLastChar;
+
+				digitIndex = startOnRight;
 				permCounter += 1;
+				
+				permutation = digitsToPermutation(digits);
+				System.out.printf("Permutation = %s%n", permutation);
+				
 				if (permCounter == targetPermNo) {
 					permutation = digitsToPermutation(digits);
 					System.out.printf("Permutation = %s%n", permutation);
@@ -65,7 +73,7 @@ public class P024_LexicographicPermutations {
 		System.arraycopy(subArray, 0, digits, i, arrayLength);
 	}
 
-	private int smallestPosition(int[] digits, int startPosition) {
+	private int digitCeilingPosition(int[] digits, int startPosition) {
 		int min = Integer.MAX_VALUE;
 		int leftChar = digits[startPosition];
 		int position;
@@ -84,7 +92,7 @@ public class P024_LexicographicPermutations {
 	@Test
 	public void Permutation() {
 		String permutation;
-		permutation = lexicographicPermutations(10, 1_000_000); 
+		permutation = lexicographicPermutations(3, 1_000_000); 
 		assertEquals("Permutation is not correct", "2783915460", permutation);
 	}
 }

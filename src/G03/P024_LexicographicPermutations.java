@@ -8,11 +8,13 @@ public class P024_LexicographicPermutations {
 	int[] digits;
 
 	public String lexicographicPermutations(int noOfDigits, int targetPermNo) {
+		boolean debug = false;
 		digits = new int[noOfDigits];
 		createDigitsInArray(noOfDigits, digits);
 
-		String permutation = digitsToPermutation(digits);
-		System.out.printf("Permutation = %s%n", permutation);
+		String permutation = digitsToPermutation( digits );
+		if (debug)
+			System.out.printf("Permutation = %s%n", permutation);
 		
 		final int startOnRight = noOfDigits - 2;
 		int digitIndex = 0;
@@ -20,35 +22,44 @@ public class P024_LexicographicPermutations {
 		int permCounter = 1;
 		int FIRST_ARRAY_POSITION = 0;
 		while (digitIndex >= FIRST_ARRAY_POSITION) {
+			permutation = digitsToPermutation( digits );//DEBUG
 			int ceilingPosition;
-			ceilingPosition = digitCeilingPosition(digits, digitIndex);
-			if (ceilingPosition != Integer.MAX_VALUE) {
-				swapDigits(digits, digitIndex, ceilingPosition);
-				sortDigitsOnRight(digits, digitIndex + 1);
+			int pivot = findPivot( digits );
+			if ( pivot < 0 ) 
+				break;
+			ceilingPosition = digitCeilingPosition(digits, pivot);
+			swapDigits(digits, pivot, ceilingPosition);
+			reverseDigitsOnRight(digits, pivot + 1);
 
-				digitIndex = startOnRight;
-				permCounter += 1;
-				
+			permCounter += 1;
+			
+			if (debug) {
 				permutation = digitsToPermutation(digits);
 				System.out.printf("Permutation = %s%n", permutation);
-				
-				if (permCounter == targetPermNo) {
-					permutation = digitsToPermutation(digits);
-					System.out.printf("Permutation = %s%n", permutation);
-					break;
-				}
-			} else
-				digitIndex -= 1;
+			}
+			
+			if (permCounter == targetPermNo) {
+				permutation = digitsToPermutation(digits);
+				System.out.printf("Answer = %s%n", permutation);
+				break;
+			}
 		}
 
 		return permutation;
 	}
+	private int findPivot( int[] digits ) {
+		for (int i = digits.length - 2; i >= 0 ; i--) {
+			if (digits[ i ] < digits[ i + 1 ]) 
+				return i;
+		}
+		return -1;
+	}
 
-	private void swapDigits(int[] digits, int digitIndex, int posOfSmallestDigit) {
+	private void swapDigits(int[] digits, int leftIndex, int rightIndex) {
 		int temp;
-		temp = digits[posOfSmallestDigit];
-		digits[posOfSmallestDigit] = digits[digitIndex];
-		digits[digitIndex] = temp;
+		temp = digits[rightIndex];
+		digits[rightIndex] = digits[leftIndex];
+		digits[leftIndex] = temp;
 	}
 
 	private void createDigitsInArray(int noOfDigits, int[] digits) {
@@ -65,12 +76,11 @@ public class P024_LexicographicPermutations {
 		return permutation;
 	}
 	
-	private void sortDigitsOnRight(int[] digits, int i) {
-		int arrayLength = digits.length - i;
-		int[] subArray = new int[arrayLength];
-		System.arraycopy(digits, i, subArray, 0, arrayLength);
-		Arrays.sort(subArray);
-		System.arraycopy(subArray, 0, digits, i, arrayLength);
+	private void reverseDigitsOnRight(int[] digits, int leftPos) {
+		int rightPos = digits.length - 1;
+		for (; leftPos < rightPos; leftPos++, rightPos--) {
+			swapDigits(digits, leftPos, rightPos);
+		}
 	}
 
 	private int digitCeilingPosition(int[] digits, int startPosition) {
@@ -92,7 +102,7 @@ public class P024_LexicographicPermutations {
 	@Test
 	public void Permutation() {
 		String permutation;
-		permutation = lexicographicPermutations(3, 1_000_000); 
+		permutation = lexicographicPermutations(10, 1_000_000); 
 		assertEquals("Permutation is not correct", "2783915460", permutation);
 	}
 }

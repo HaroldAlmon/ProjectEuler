@@ -7,22 +7,18 @@ import static org.junit.Assert.assertEquals;
 public class P024_LexicographicPermutations {
 	int[] digits;
 
-	public String lexicographicPermutations(int noOfDigits, int targetPermNo) {
+	public String lexicographicPermutations(int noOfDigits, int targetPermNo, int startDigit) {
 		boolean debug = false;
 		digits = new int[noOfDigits];
-		createDigitsInArray(noOfDigits, digits);
+		createDigitsInArray(noOfDigits, digits, startDigit);
 
 		String permutation = digitsToPermutation( digits );
 		if (debug)
 			System.out.printf("Permutation = %s%n", permutation);
 		
-		final int startOnRight = noOfDigits - 2;
-		int digitIndex = 0;
-		digitIndex = startOnRight;
 		int permCounter = 1;
-		int FIRST_ARRAY_POSITION = 0;
-		while (digitIndex >= FIRST_ARRAY_POSITION) {
-			permutation = digitsToPermutation( digits );//DEBUG
+		while (true) {
+			//permutation = digitsToPermutation( digits );//DEBUG
 			int ceilingPosition;
 			int pivot = findPivot( digits );
 			if ( pivot < 0 ) 
@@ -62,9 +58,10 @@ public class P024_LexicographicPermutations {
 		digits[leftIndex] = temp;
 	}
 
-	private void createDigitsInArray(int noOfDigits, int[] digits) {
+	private void createDigitsInArray(int noOfDigits, int[] digits, int startDigit) {
 		for (int i = 0; i < noOfDigits; i++) {
-			digits[i] = i;
+			digits[i] = startDigit;
+			startDigit += 1;
 		}
 	}
 
@@ -102,7 +99,7 @@ public class P024_LexicographicPermutations {
 	@Test
 	public void Permutation() {
 		String permutation;
-		permutation = lexicographicPermutations(10, 1_000_000); 
+		permutation = lexicographicPermutations(10, 1_000_000, 0); 
 		assertEquals("Permutation is not correct", "2783915460", permutation);
 	}
 }

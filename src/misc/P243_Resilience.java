@@ -16,24 +16,29 @@ import org.junit.Test;
 
 // Find the smallest denominator d, having a resilience R(d) < 15499/94744
 public class P243_Resilience {
-	static boolean debug = false;
+	static boolean debug = true;
 	ProperDivisors properDivisors = ProperDivisors.INSTANCE;
 	public int getResilience(int lowerLimit, int uppperLimit) { 
 
 		//15499/94744
 		int denominator = uppperLimit;
+		
+		// 1/N is always resilient, so stat total at 1
 		int total = 1;
 
-		System.out.printf("Generated primes...%n");
+		System.out.printf("Generated 10,000 primes...%n");
 		
-		Set<Integer> primeSet = properDivisors.primeNumberSet(10_000);
+		// TODO:  Call a function to get the first 10,000 prime numbers.
+		// Create the new function in P007.
+		Set<Integer> primeSet = null;
+		//Set<Integer> primeSet = properDivisors.properDivisorsSet(10_000);
 
 		while ( true ) {
 			// **** IF denominator is PRIME then next denominator ****
 			Set<Integer> divisors;
 			Set<Integer> denominatorSet;
 
-			denominatorSet = properDivisors.primeNumberSet( denominator );
+			denominatorSet = properDivisors.properDivisorsSet( denominator );
 			if (debug) System.out.printf("-----> Denominator set = %s%n", denominatorSet);
 			int numerator;
 
@@ -51,8 +56,10 @@ public class P243_Resilience {
 					System.out.printf("num == %d %n", numerator); 
 				}
 
+				// If the numerator a prime number, the fraction cannot be cancelled so there is 
+				// no need to check if the fraction is resilient.
 				if ( primeSet.contains(numerator) ) {
-					total = 1;
+					total += 1;
 					continue;
 				}
 

@@ -19,13 +19,8 @@ public class P024_LexicographicPermutations {
 		int permCounter = 1;
 		while (true) {
 			//permutation = digitsToPermutation( digits );//DEBUG
-			int ceilingPosition;
-			int pivot = findPivot( digits );
-			if ( pivot < 0 ) 
+			if (nextPermutation(digits) == false)
 				break;
-			ceilingPosition = digitCeilingPosition(digits, pivot);
-			swapDigits(digits, pivot, ceilingPosition);
-			reverseDigitsOnRight(digits, pivot + 1);
 
 			permCounter += 1;
 			
@@ -43,6 +38,18 @@ public class P024_LexicographicPermutations {
 
 		return permutation;
 	}
+	
+	public boolean nextPermutation(int[] digits) {
+		int ceilingPosition;
+		int pivot = findPivot( digits );
+		if ( pivot < 0 ) 
+			return false;
+		ceilingPosition = digitCeilingPosition(digits, pivot);
+		swapDigits(digits, pivot, ceilingPosition);
+		reverseDigitsOnRight(digits, pivot + 1);
+		return true;
+	}
+	
 	private int findPivot( int[] digits ) {
 		for (int i = digits.length - 2; i >= 0 ; i--) {
 			if (digits[ i ] < digits[ i + 1 ]) 

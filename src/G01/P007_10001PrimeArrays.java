@@ -11,6 +11,11 @@ import common.SlowTest;
 public class P007_10001PrimeArrays {
 	static int testNo = 1;
 	
+	// TODO: To solve problem 243, I need to return a set of all the prime
+	// numbers generated. I need to:
+	// 1. Change this function to return an array of primes.
+	// 2. Create a wrapper function, with the original function name (primeNumber), to solve problem 7.
+	// 3. Create a wrapper function to return a set of primes.
 	private long primeNumber( int upperLimit ) {
 		int oddPrimeCandidate;
 		int primeCount;

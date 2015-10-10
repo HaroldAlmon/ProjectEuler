@@ -7,14 +7,14 @@ import org.junit.Test;
 public class P031_CoinSums {
 	int count = 0;
 	public int coinSums(int pence) {
-		count200p(pence);
+		sunDivideInto200Pence(pence);
 		return count;
 	}
 	
-	void count200p(int pence) {
+	void sunDivideInto200Pence(int pence) {
 		do {
 			if( pence > 0 ) {
-				count100p( pence );
+				subDivideInto100Pence( pence );
 			} else if ( pence == 0 ) {
 				count += 1;
 			}
@@ -22,10 +22,10 @@ public class P031_CoinSums {
 		} while ( pence >= 0 );
 	}
 	
-	void count100p(int pence) {
+	void subDivideInto100Pence(int pence) {
 		do {
 			if( pence > 0 ) {
-				count50p( pence );
+				subDivideInto50Pence( pence );
 			} else if ( pence == 0 ) {
 				count += 1;
 			}
@@ -33,10 +33,10 @@ public class P031_CoinSums {
 		} while ( pence >= 0 );
 	}
 	
-	void count50p(int pence) {
+	void subDivideInto50Pence(int pence) {
 		do {
 			if( pence > 0 ) {
-				count20p( pence );
+				subDivideInto20Pence( pence );
 			} else if ( pence == 0 ) {
 				count += 1;
 			}
@@ -44,10 +44,10 @@ public class P031_CoinSums {
 		} while ( pence >= 0 );
 	}
 	
-	void count20p(int pence) {
+	void subDivideInto20Pence(int pence) {
 		do {
 			if( pence > 0 ) {
-				count10p( pence );
+				subDivideInto10Pence( pence );
 			} else if ( pence == 0 ) {
 				count += 1;
 			}
@@ -55,10 +55,10 @@ public class P031_CoinSums {
 		} while ( pence >= 0 );
 	}
 	
-	void count10p(int pence) {
+	void subDivideInto10Pence(int pence) {
 		do {
 			if( pence > 0 ) {
-				count5p( pence );
+				subDivideInto5Pence( pence );
 			} else if ( pence == 0 ) {
 				count += 1;
 			}
@@ -66,10 +66,10 @@ public class P031_CoinSums {
 		} while ( pence >= 0 );
 	}
 	
-	void count5p(int pence) {
+	void subDivideInto5Pence(int pence) {
 		do {
 			if( pence > 0 ) {
-				count2p( pence );
+				subdivideInto2Pence( pence );
 			} else if ( pence == 0 ) {
 				count += 1;
 			}
@@ -77,11 +77,11 @@ public class P031_CoinSums {
 		} while ( pence >= 0 );
 	}
 	
-	void count2p(int pence) {
+	void subdivideInto2Pence(int pence) {
 		count += (pence / 2 + 1);
 	}
 	
-	@Test
+	@Test( timeout = 1_000)
 	public void CoinSums() {
 		int coinSums = coinSums(200);
 		System.out.printf("Coin Sums for 200p is %s", coinSums);

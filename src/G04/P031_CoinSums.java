@@ -7,11 +7,11 @@ import org.junit.Test;
 public class P031_CoinSums {
 	int count = 0;
 	public int coinSums(int pence) {
-		sunDivideInto200Pence(pence);
+		subDivideIntoPartitions(pence);
 		return count;
 	}
-	
-	void sunDivideInto200Pence(int pence) {
+
+	void subDivideIntoPartitions(int pence) {
 		do {
 			if( pence > 0 ) {
 				subDivideInto100Pence( pence );
@@ -21,7 +21,7 @@ public class P031_CoinSums {
 			pence -= 200;
 		} while ( pence >= 0 );
 	}
-	
+
 	void subDivideInto100Pence(int pence) {
 		do {
 			if( pence > 0 ) {
@@ -32,7 +32,7 @@ public class P031_CoinSums {
 			pence -= 100;
 		} while ( pence >= 0 );
 	}
-	
+
 	void subDivideInto50Pence(int pence) {
 		do {
 			if( pence > 0 ) {
@@ -43,7 +43,7 @@ public class P031_CoinSums {
 			pence -= 50;
 		} while ( pence >= 0 );
 	}
-	
+
 	void subDivideInto20Pence(int pence) {
 		do {
 			if( pence > 0 ) {
@@ -54,7 +54,7 @@ public class P031_CoinSums {
 			pence -= 20;
 		} while ( pence >= 0 );
 	}
-	
+
 	void subDivideInto10Pence(int pence) {
 		do {
 			if( pence > 0 ) {
@@ -81,10 +81,11 @@ public class P031_CoinSums {
 		count += (pence / 2 + 1);
 	}
 	
-	@Test( timeout = 1_000)
+	@Test
 	public void CoinSums() {
-		int coinSums = coinSums(200);
-		System.out.printf("Coin Sums for 200p is %s", coinSums);
+		final int pence = 200;
+		int coinSums = coinSums(pence);
+		System.out.printf("Coin Sums for %dp is %s", pence, coinSums);
 		assertEquals(coinSums,73682);
 	}
 }

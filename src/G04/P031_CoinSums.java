@@ -3,18 +3,18 @@ package G04;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
+/** Strategy: Divide and conquer. */
 public class P031_CoinSums {
 	int count = 0;
 	public int coinSums(int pence) {
-		subDivideIntoPartitions(pence);
+		subDivideWith200Pence(pence);
 		return count;
 	}
 
-	void subDivideIntoPartitions(int pence) {
+	void subDivideWith200Pence(int pence) {
 		do {
 			if( pence > 0 ) {
-				subDivideInto100Pence( pence );
+				subDivideWith100Pence( pence );
 			} else if ( pence == 0 ) {
 				count += 1;
 			}
@@ -22,10 +22,10 @@ public class P031_CoinSums {
 		} while ( pence >= 0 );
 	}
 
-	void subDivideInto100Pence(int pence) {
+	void subDivideWith100Pence(int pence) {
 		do {
 			if( pence > 0 ) {
-				subDivideInto50Pence( pence );
+				subDivideWith50Pence( pence );
 			} else if ( pence == 0 ) {
 				count += 1;
 			}
@@ -33,10 +33,10 @@ public class P031_CoinSums {
 		} while ( pence >= 0 );
 	}
 
-	void subDivideInto50Pence(int pence) {
+	void subDivideWith50Pence(int pence) {
 		do {
 			if( pence > 0 ) {
-				subDivideInto20Pence( pence );
+				subDivideWith20Pence( pence );
 			} else if ( pence == 0 ) {
 				count += 1;
 			}
@@ -44,10 +44,10 @@ public class P031_CoinSums {
 		} while ( pence >= 0 );
 	}
 
-	void subDivideInto20Pence(int pence) {
+	void subDivideWith20Pence(int pence) {
 		do {
 			if( pence > 0 ) {
-				subDivideInto10Pence( pence );
+				subDivideWith10Pence( pence );
 			} else if ( pence == 0 ) {
 				count += 1;
 			}
@@ -55,10 +55,10 @@ public class P031_CoinSums {
 		} while ( pence >= 0 );
 	}
 
-	void subDivideInto10Pence(int pence) {
+	void subDivideWith10Pence(int pence) {
 		do {
 			if( pence > 0 ) {
-				subDivideInto5Pence( pence );
+				subDivideWith5Pence( pence );
 			} else if ( pence == 0 ) {
 				count += 1;
 			}
@@ -66,10 +66,10 @@ public class P031_CoinSums {
 		} while ( pence >= 0 );
 	}
 	
-	void subDivideInto5Pence(int pence) {
+	void subDivideWith5Pence(int pence) {
 		do {
 			if( pence > 0 ) {
-				subdivideInto2Pence( pence );
+				subDivideWith2Pence( pence );
 			} else if ( pence == 0 ) {
 				count += 1;
 			}
@@ -77,7 +77,7 @@ public class P031_CoinSums {
 		} while ( pence >= 0 );
 	}
 	
-	void subdivideInto2Pence(int pence) {
+	void subDivideWith2Pence(int pence) {
 		count += (pence / 2 + 1);
 	}
 	

@@ -5,7 +5,7 @@ import org.junit.Test;
 /**
  * @author Harold Almon
  * Status of this problem:
- * At this point the code solves the problem for R(11) < 4/10
+ * At this point the code solves the problem for R(12) < 4/10
  * but for R(94744) no solution was found after running for 
  * two hours and reaching R(271,000).
  * 
@@ -23,7 +23,7 @@ public class P243_Resilience {
 		//15499/94744
 		int denominator = uppperLimit;
 		
-		// 1/N is always resilient, so stat total at 1
+		// 1/N is always resilient, so start total at 1
 		int total = 1;
 
 		System.out.printf("Generated 10,000 primes...%n");
@@ -56,12 +56,13 @@ public class P243_Resilience {
 					System.out.printf("num == %d %n", numerator); 
 				}
 
-				// If the numerator a prime number, the fraction cannot be cancelled so there is 
+				// If the numerator OR DENOMINATOR a prime number, the fraction cannot be cancelled so there is 
 				// no need to check if the fraction is resilient.
 				if ( primeSet.contains(numerator) ) {
 					total += 1;
 					continue;
 				}
+				// TODO: check denominator for prime number
 
 				if (debug) 
 					System.out.printf("numerator = %s%n",numerator);
@@ -82,7 +83,7 @@ public class P243_Resilience {
 				}
 			}
 
-			if ( ((double)total / (denominator-1)) < ((double)lowerLimit / uppperLimit )) {
+			if ( isRatioLessThanTargetFraction( total, denominator, lowerLimit, uppperLimit) ) {
 				System.out.printf("numerator = %s%n", numerator);
 				System.out.printf("%d has %d factors%n", denominator, total);
 				System.out.printf("%d / %d  < %d / %d%n", total, denominator - 1, lowerLimit, uppperLimit);
@@ -125,11 +126,11 @@ public class P243_Resilience {
 		return resilientFraction;
 	}
 
-	private boolean allFractionsChecked(int denominator, int numerator) {
+	private boolean isAllFractionsChecked(int denominator, int numerator) {
 		return numerator == denominator;
 	}
 
-	private boolean ratioLessThanTargetFraction( int total, int denominator, int lowerLimit, int uppperLimit ) {
+	private boolean isRatioLessThanTargetFraction( int total, int denominator, int lowerLimit, int uppperLimit ) {
 		return ( float ) total/(denominator-1) < ( float ) lowerLimit / uppperLimit;
 	}
 	

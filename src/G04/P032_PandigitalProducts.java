@@ -33,29 +33,27 @@ public class P032_PandigitalProducts {
 			multiplier = charArrayToInt(digits, 2, 4);
 			product = charArrayToInt(digits, 5, 8);
 			
-			if (multiplicand * multiplier == product) {
-				if( filter.add(product)) {
-					productSum += product;
-					System.out.printf("%d * %d = %d%n", multiplicand, multiplier, product);
-				} else {
-					System.out.printf("Duplicate product not added to sum: %d%n", product);
-				};;
-			}
+			productSum = ifPandigitalAddToSum(filter, productSum, multiplicand,	multiplier, product);
 			
 			multiplicand = charArrayToInt(digits, 0, 0);
 			multiplier = charArrayToInt(digits, 1, 4);
 			product = charArrayToInt(digits, 5, 8);
 			
-			if (multiplicand * multiplier == product) {
-				if( filter.add(product)) {
-					productSum += product;
-					System.out.printf("%d * %d = %d%n", multiplicand, multiplier, product);
-				} else {
-					System.out.printf("Duplicate product not added to sum: %d%n", product);
-				};
-			}
+			productSum = ifPandigitalAddToSum(filter, productSum, multiplicand,	multiplier, product);
 			
 			permutation.nextPermutation(digits);
+		}
+		return productSum;
+	}
+	private int ifPandigitalAddToSum(Set<Integer> filter, int productSum,
+			int multiplicand, int multiplier, int product) {
+		if (multiplicand * multiplier == product) {
+			if( filter.add(product)) {
+				productSum += product;
+				//System.out.printf("%d * %d = %d%n", multiplicand, multiplier, product);
+			} else {
+				//System.out.printf("Duplicate product not added to sum: %d%n", product);
+			};;
 		}
 		return productSum;
 	}
@@ -81,7 +79,7 @@ public class P032_PandigitalProducts {
 	@Test
 	public void SumOfProducts() {
 		int sum = sumOfProducts();
-		System.out.printf("sum = %d", sumOfProducts());
+		System.out.printf("Pandigital Sum = %d", sumOfProducts());
 		assertEquals(sum, 45228);
 	}
 }

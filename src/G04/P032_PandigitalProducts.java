@@ -1,5 +1,6 @@
 package G04;
 
+import static org.junit.Assert.assertEquals;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -19,7 +20,6 @@ public class P032_PandigitalProducts {
 		int[] digits = new int[noOfDigits];
 		int [] last = new int[] {9,8,7,6,5,4,3,2,1};
 		createDigitsInArray(noOfDigits, digits, startDigit);
-		System.out.printf("digits = %s%n", Arrays.toString(digits));
 		
 		while ( true ) {
 			if ( Arrays.equals( digits , last) ) {
@@ -34,10 +34,12 @@ public class P032_PandigitalProducts {
 			product = charArrayToInt(digits, 5, 8);
 			
 			if (multiplicand * multiplier == product) {
-				if( filter.add(product) ) {
+				if( filter.add(product)) {
 					productSum += product;
-				};
-				System.out.printf("%d * %d = %d%n", multiplicand, multiplier, product);
+					System.out.printf("%d * %d = %d%n", multiplicand, multiplier, product);
+				} else {
+					System.out.printf("Duplicate product not added to sum: %d%n", product);
+				};;
 			}
 			
 			multiplicand = charArrayToInt(digits, 0, 0);
@@ -45,11 +47,16 @@ public class P032_PandigitalProducts {
 			product = charArrayToInt(digits, 5, 8);
 			
 			if (multiplicand * multiplier == product) {
-				System.out.printf("%d * %d = %d%n", multiplicand, multiplier, product);
+				if( filter.add(product)) {
+					productSum += product;
+					System.out.printf("%d * %d = %d%n", multiplicand, multiplier, product);
+				} else {
+					System.out.printf("Duplicate product not added to sum: %d%n", product);
+				};
 			}
+			
 			permutation.nextPermutation(digits);
 		}
-		System.out.printf("digits = %s%n", Arrays.toString(digits));
 		return productSum;
 	}
 	private void createDigitsInArray(int noOfDigits, int[] digits, int startDigit) {
@@ -72,8 +79,9 @@ public class P032_PandigitalProducts {
 	}
 
 	@Test
-	public void test1() {
+	public void SumOfProducts() {
 		int sum = sumOfProducts();
 		System.out.printf("sum = %d", sumOfProducts());
+		assertEquals(sum, 45228);
 	}
 }

@@ -7,45 +7,68 @@ import static org.junit.Assert.assertEquals;
 public class P024_LexicographicPermutations {
 	int[] digits;
 
-	public String lexicographicPermutations(int noOfDigits, int targetPermNo) {
+	public String lexicographicPermutations(int noOfDigits, int targetPermNo, int startDigit) {
+		boolean debug = false;
 		digits = new int[noOfDigits];
-		createDigitsInArray(noOfDigits, digits);
+		createDigitsInArray(noOfDigits, digits, startDigit);
 
-		String permutation = "";
-		final int secondLastChar = noOfDigits - 2;
-		int digitIndex = 0;
-		digitIndex = secondLastChar;
+		String permutation = digitsToPermutation( digits );
+		if (debug)
+			System.out.printf("Permutation = %s%n", permutation);
+		
 		int permCounter = 1;
-		while (digitIndex >= 0) {
-			int smallestDigitPosition;
-			smallestDigitPosition = smallestPosition(digits, digitIndex);
-			if (smallestDigitPosition != Integer.MAX_VALUE) {
-				swapDigits(digits, digitIndex, smallestDigitPosition);
-				sortDigitsOnRight(digits, digitIndex + 1);
-				digitIndex = secondLastChar;
-				permCounter += 1;
-				if (permCounter == targetPermNo) {
-					permutation = digitsToPermutation(digits);
-					System.out.printf("Permutation = %s%n", permutation);
-					break;
-				}
-			} else
-				digitIndex -= 1;
+		while (true) {
+			//permutation = digitsToPermutation( digits );//DEBUG
+			if (nextPermutation(digits) == false)
+				break;
+
+			permCounter += 1;
+			
+			if (debug) {
+				permutation = digitsToPermutation(digits);
+				System.out.printf("Permutation = %s%n", permutation);
+			}
+			
+			if (permCounter == targetPermNo) {
+				permutation = digitsToPermutation(digits);
+				System.out.printf("Answer = %s%n", permutation);
+				break;
+			}
 		}
 
 		return permutation;
 	}
-
-	private void swapDigits(int[] digits, int digitIndex, int posOfSmallestDigit) {
-		int temp;
-		temp = digits[posOfSmallestDigit];
-		digits[posOfSmallestDigit] = digits[digitIndex];
-		digits[digitIndex] = temp;
+	
+	public boolean nextPermutation(int[] digits) {
+		int ceilingPosition;
+		int pivot = findPivot( digits );
+		if ( pivot < 0 ) 
+			return false;
+		ceilingPosition = digitCeilingPosition(digits, pivot);
+		swapDigits(digits, pivot, ceilingPosition);
+		reverseDigitsOnRight(digits, pivot + 1);
+		return true;
+	}
+	
+	private int findPivot( int[] digits ) {
+		for (int i = digits.length - 2; i >= 0 ; i--) {
+			if (digits[ i ] < digits[ i + 1 ]) 
+				return i;
+		}
+		return -1;
 	}
 
-	private void createDigitsInArray(int noOfDigits, int[] digits) {
+	private void swapDigits(int[] digits, int leftIndex, int rightIndex) {
+		int temp;
+		temp = digits[rightIndex];
+		digits[rightIndex] = digits[leftIndex];
+		digits[leftIndex] = temp;
+	}
+
+	private void createDigitsInArray(int noOfDigits, int[] digits, int startDigit) {
 		for (int i = 0; i < noOfDigits; i++) {
-			digits[i] = i;
+			digits[i] = startDigit;
+			startDigit += 1;
 		}
 	}
 
@@ -57,15 +80,14 @@ public class P024_LexicographicPermutations {
 		return permutation;
 	}
 	
-	private void sortDigitsOnRight(int[] digits, int i) {
-		int arrayLength = digits.length - i;
-		int[] subArray = new int[arrayLength];
-		System.arraycopy(digits, i, subArray, 0, arrayLength);
-		Arrays.sort(subArray);
-		System.arraycopy(subArray, 0, digits, i, arrayLength);
+	private void reverseDigitsOnRight(int[] digits, int leftPos) {
+		int rightPos = digits.length - 1;
+		for (; leftPos < rightPos; leftPos++, rightPos--) {
+			swapDigits(digits, leftPos, rightPos);
+		}
 	}
 
-	private int smallestPosition(int[] digits, int startPosition) {
+	private int digitCeilingPosition(int[] digits, int startPosition) {
 		int min = Integer.MAX_VALUE;
 		int leftChar = digits[startPosition];
 		int position;
@@ -84,7 +106,7 @@ public class P024_LexicographicPermutations {
 	@Test
 	public void Permutation() {
 		String permutation;
-		permutation = lexicographicPermutations(10, 1_000_000); 
+		permutation = lexicographicPermutations(10, 1_000_000, 0); 
 		assertEquals("Permutation is not correct", "2783915460", permutation);
 	}
 }

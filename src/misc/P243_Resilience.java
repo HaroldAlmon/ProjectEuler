@@ -5,7 +5,7 @@ import org.junit.Test;
 /**
  * @author Harold Almon
  * Status of this problem:
- * At this point the code solves the problem for R(11) < 4/10
+ * At this point the code solves the problem for R(12) < 4/10
  * but for R(94744) no solution was found after running for 
  * two hours and reaching R(271,000).
  * 
@@ -16,48 +16,58 @@ import org.junit.Test;
 
 // Find the smallest denominator d, having a resilience R(d) < 15499/94744
 public class P243_Resilience {
-	static boolean debug = false;
+	static boolean debug = true;
 	ProperDivisors properDivisors = ProperDivisors.INSTANCE;
 	public int getResilience(int lowerLimit, int uppperLimit) { 
 
 		//15499/94744
 		int denominator = uppperLimit;
-		//int denominator = 2;
+		
+		// 1/N is always resilient, so start total at 1
 		int total = 1;
 
-		// for (denominator = uppperLimit; denominator < 2_000_000; denominator++) {
-
-		PrimeNumbers primeNumbers = new PrimeNumbers();
-		Set<Integer> primeSet = primeNumbers.primeNumberSet(10_000);
-		System.out.printf("Generated primes...%n");
+		System.out.printf("Generated 10,000 primes...%n");
+		
+		// TODO:  Call a function to get the first 10,000 prime numbers.
+		// Create the new function in P007.
+		Set<Integer> primeSet = null;
+		//Set<Integer> primeSet = properDivisors.properDivisorsSet(10_000);
 
 		while ( true ) {
 			// **** IF denominator is PRIME then next denominator ****
 			Set<Integer> divisors;
 			Set<Integer> denominatorSet;
 
-			denominatorSet = properDivisors.primeNumberSet( denominator );
+			denominatorSet = properDivisors.properDivisorsSet( denominator );
 			if (debug) System.out.printf("-----> Denominator set = %s%n", denominatorSet);
 			int numerator;
-			if ( denominator == 94770 ) { 
+
+			if ( debug && denominator == 94770 ) { 
 				System.out.printf("%d%n", denominator);
 			}
+
 			if (denominator % 1_000 == 0) {
 				System.out.printf("Candidate denominator = %s%n", denominator);
 				System.exit(0);
 			}
+
 			for (numerator=2; numerator < denominator; numerator++) {
-				if ( numerator == 94769 ) { 
+				if ( debug && numerator == 94769 ) { 
 					System.out.printf("num == %d %n", numerator); 
 				}
+
+				// If the numerator OR DENOMINATOR a prime number, the fraction cannot be cancelled so there is 
+				// no need to check if the fraction is resilient.
 				if ( primeSet.contains(numerator) ) {
-					total = 1;
+					total += 1;
 					continue;
 				}
+				// TODO: check denominator for prime number
 
-				if (debug) System.out.printf("numerator = %s%n",numerator);
+				if (debug) 
+					System.out.printf("numerator = %s%n",numerator);
 				divisors = properDivisors.properDivisorsMemo(numerator);
-				//if (debug) System.out.printf("numerator set = %s%n", divisors);
+
 				boolean resilientFraction = true;
 
 				resilientFraction = isResilientFraction(divisors, denominatorSet, numerator, resilientFraction);
@@ -73,7 +83,7 @@ public class P243_Resilience {
 				}
 			}
 
-			if ( ((double)total / (denominator-1)) < ((double)lowerLimit / uppperLimit )) {
+			if ( isRatioLessThanTargetFraction( total, denominator, lowerLimit, uppperLimit) ) {
 				System.out.printf("numerator = %s%n", numerator);
 				System.out.printf("%d has %d factors%n", denominator, total);
 				System.out.printf("%d / %d  < %d / %d%n", total, denominator - 1, lowerLimit, uppperLimit);
@@ -116,11 +126,11 @@ public class P243_Resilience {
 		return resilientFraction;
 	}
 
-	private boolean allFractionsChecked(int denominator, int numerator) {
+	private boolean isAllFractionsChecked(int denominator, int numerator) {
 		return numerator == denominator;
 	}
 
-	private boolean ratioLessThanTargetFraction( int total, int denominator, int lowerLimit, int uppperLimit ) {
+	private boolean isRatioLessThanTargetFraction( int total, int denominator, int lowerLimit, int uppperLimit ) {
 		return ( float ) total/(denominator-1) < ( float ) lowerLimit / uppperLimit;
 	}
 	

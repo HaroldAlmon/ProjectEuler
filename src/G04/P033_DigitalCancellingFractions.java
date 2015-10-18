@@ -3,24 +3,41 @@ package G04;
 import org.junit.Test;
 
 public class P033_DigitalCancellingFractions {
+	private final int top = 0;
+	private final int bottom = 1;
+
 	public int sum() {
+		int[] fraction = null;
+		int[] product = new int[] {1,1};
 		for(int leftDigit = 1; leftDigit <= 9; leftDigit += 1){
 			for(int rightDigit = 1; rightDigit <= 9; rightDigit += 1) {
 				int numerator;
 				
 				numerator = leftDigit * 10 + rightDigit;
-				makeDenomiator( leftDigit, rightDigit, numerator );
+				fraction = testFraction( leftDigit, rightDigit, numerator );
+				if ( fraction[bottom] != 1 ) {
+					//System.out.printf("fraction = %d / %d%n", fraction[top], fraction[bottom]);
+					product[top] *= fraction[top];
+					product[bottom] *= fraction[bottom];
+					//System.out.printf("product = %d / %d%n", product[top], product[bottom]);
+				}
 			}
 		}
-		// TODO Reduce product
-		// TODO Return product
+
+		while (product[top] % 2 == 0 && product[bottom] % 2 == 0 ) {
+			product[top] /= 2;
+			product[bottom] /= 2;
+		}
 		
-		return 1;
+		return product[bottom];
 	}
 
-	private void makeDenomiator(int leftDigit, int rightDigit, int numerator) {
+	private int[] testFraction(int leftDigit, int rightDigit, int numerator) {
+		int[] fraction = new int[] {1,1};
+
 		for(int thirdDigit = 1; thirdDigit <= 9; thirdDigit += 1) {
 			int denominator;
+
 			
 /*			denominator = enumerateLeftDigit( leftDigit, thirdDigit );
 			if (numerator / denominator < 1 ) {
@@ -31,12 +48,18 @@ public class P033_DigitalCancellingFractions {
 			
 			denominator = enumerateRightDigit( rightDigit, thirdDigit );
 			if (numerator / denominator < 1 ) {
-				if ( (double) numerator / denominator == (double) leftDigit / thirdDigit ) {
+				if ( isDigitalCancellingFraction(leftDigit, numerator, thirdDigit, denominator) ) {
 					System.out.printf("Match %d / %d  = %d /  %d%n", numerator, denominator, leftDigit, thirdDigit);
+					fraction[top] *= leftDigit;
+					fraction[bottom] *= thirdDigit;
 				}
 			}
-			// TODO: Calculate and return product
 		}
+		return fraction;
+	}
+
+	private boolean isDigitalCancellingFraction(int leftDigit, int numerator, int thirdDigit, int denominator) {
+		return (double) numerator / denominator == (double) leftDigit / thirdDigit;
 	}
 
 
@@ -50,6 +73,7 @@ public class P033_DigitalCancellingFractions {
 	
 	@Test
 	public void DigitalCancellingFractions() {
-		sum();
+		int denominator = sum();
+		System.out.printf("prodcut = %d%n", denominator);
 	}
 }

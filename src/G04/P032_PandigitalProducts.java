@@ -22,12 +22,13 @@ public class P032_PandigitalProducts {
 		createDigitsInArray(noOfDigits, digits, startDigit);
 		
 		while ( true ) {
-			if ( Arrays.equals( digits , last) ) {
-				break;
-			};
 			int multiplicand ;
 			int multiplier ;
 			int product ;
+
+			if ( isLastPermutation(digits, last)) {
+				break;
+			};
 
 			multiplicand = charArrayToInt(digits, 0, 1);
 			multiplier = charArrayToInt(digits, 2, 4);
@@ -45,6 +46,11 @@ public class P032_PandigitalProducts {
 		}
 		return productSum;
 	}
+
+	private boolean isLastPermutation(int[] digits, int[] last) {
+		return Arrays.equals( digits , last);
+	}
+
 	private int ifPandigitalAddToSum(Set<Integer> filter, int productSum,
 			int multiplicand, int multiplier, int product) {
 		if (multiplicand * multiplier == product) {
@@ -57,6 +63,7 @@ public class P032_PandigitalProducts {
 		}
 		return productSum;
 	}
+
 	private void createDigitsInArray(int noOfDigits, int[] digits, int startDigit) {
 		for (int i = 0; i < noOfDigits; i++) {
 			digits[i] = startDigit;

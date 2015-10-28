@@ -6,7 +6,7 @@ public class SieveOfEratosthenes {
 	public int generatePrimes(int n) {
 		primes = new boolean[n + 1];
 
-		for (int position = 0; position <= n; position += 1) {
+		for (int position = 2; position <= n; position += 1) {
 			primes[position] = true;
 		}
 		
@@ -22,6 +22,7 @@ public class SieveOfEratosthenes {
 		int count = 0;
 		for( int position = 2; position <= n; position += 1) {
 			if(primes[position] == true) {
+				//System.out.printf("%d%n", position);
 				count += 1;
 			}
 		}

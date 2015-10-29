@@ -27,8 +27,7 @@ public class P034_DigitFactorials {
 		return totalFactorialSum;
 	}
 
-	private int factorialSum(List<Integer> factorial, int factorialSum,
-			String digits) {
+	private int factorialSum(List<Integer> factorial, int factorialSum,	String digits) {
 		for( int position = 0; position < digits.length(); position += 1 ) {
 			factorialSum += factorial.get( (int) digits.charAt(position) - 0x30 );
 		}

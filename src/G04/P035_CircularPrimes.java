@@ -7,11 +7,15 @@ import org.junit.Test;
 public class P035_CircularPrimes {
 	SieveOfEratosthenes sieve = new SieveOfEratosthenes();
 	public int countPrimes( int upperLimit ) {
-		int circularPrimeCount = 0;		
+		int circularPrimeCount = 0;	
 		sieve.generatePrimes(upperLimit);
-
-		for(int number = 2; number < upperLimit; number += 1) {
-			String candidatePrime = Integer.toString(number);
+		circularPrimeCount = enumeratePrimeCandidates( upperLimit );
+		return circularPrimeCount;
+	}
+	private int enumeratePrimeCandidates( int upperLimit ) {
+		int circularPrimeCount = 0;	
+		for(int candidate = 2; candidate < upperLimit; candidate += 1) {
+			String candidatePrime = Integer.toString(candidate);
 			
 			if ( isCircularPrime(candidatePrime) ) {
 				circularPrimeCount += 1;

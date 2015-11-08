@@ -26,7 +26,7 @@ public class SieveOfEratosthenes {
 				count += 1;
 			}
 		}
-		System.out.printf("Generated %d primes%n", count);
+		//System.out.printf("Generated %d primes%n", count);
 		return count;
 	}
 	

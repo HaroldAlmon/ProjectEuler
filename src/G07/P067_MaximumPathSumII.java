@@ -1,4 +1,4 @@
-package misc;
+package G07;
 /** Strategy: Dynamic Programming */
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;

@@ -3,26 +3,27 @@ package G04;
 import org.junit.Test;
 
 import misc.SieveOfEratosthenes;
-
+/** Strategy: Brute Force. */
 public class P037_TruncatablePrimes {
 	SieveOfEratosthenes sieve = new SieveOfEratosthenes();
 	
 	public int truncatablePrimesSum( int upperLimit ) {
-		int count = 0;
+		int truncatablePrimeCount = 0;
 		int primeSum = 0;
+		boolean debug = false;
 		int primeCount = sieve.generatePrimes( upperLimit );
-		System.out.printf( "Primes created = %d%n", primeCount );
 
 		for( int number = 11; number < upperLimit; number += 1 ) {
 			String candidatePrime = Integer.toString( number );
 
 			if( isRightTtruncatable(candidatePrime) && isLeftTruncatable(candidatePrime) ) { 
-				count += 1;
+				truncatablePrimeCount += 1;
 				primeSum += number;
-				System.out.printf( "Truncatable Prime: %d%n", number );
+				if (debug == true) {
+					System.out.printf( "Truncatable Prime: %d%n", number );
+				}
 			}
 		}
-		System.out.printf( "Found %d truncatable primes.%n", count );
 		return primeSum;
 	}
 
@@ -55,7 +56,6 @@ public class P037_TruncatablePrimes {
 	@Test 
 	public void runTest() {
 		int upperLimit = 750_000;
-
 		System.out.printf( "Truncatable Prime Sum = %d%n", truncatablePrimesSum( upperLimit ) );
 	}
 }

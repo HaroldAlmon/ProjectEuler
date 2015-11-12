@@ -8,32 +8,32 @@ import org.junit.Test;
 public class P046_GoldbachsOtherConjecture {
 	public int smallestNumber( int upperPrime, int upperRoot ) {
 		int result = 0;
-		int candidate;
-		BitSet resultSieve = new BitSet (upperPrime * 2 * upperRoot * upperRoot + 1 );
+		BitSet resultSieve = new BitSet ( upperPrime );
 		SieveOfEratosthenes primeSieve = new SieveOfEratosthenes( upperPrime );
 		
-		for (int prime = 2; prime < upperPrime; prime += 1) {
-			if ( primeSieve.isPrime(prime) == true ) {
-				for (int number=1; number <= upperRoot; number += 1 ) {
-					candidate = prime + 2 * (int)Math.pow( number, 2 );
-					resultSieve.set(candidate); 
+		for (int primeCandidate = 2; primeCandidate < upperPrime; primeCandidate += 1) {
+			if ( primeSieve.isPrime(primeCandidate) == true ) {
+				for (int root=1; root <= upperRoot; root += 1 ) {
+					int candidate;
+					candidate = primeCandidate + 2 * (int)Math.pow( root, 2 );
+					if( candidate < upperPrime ) 
+						resultSieve.set(candidate); 
 				}
 			}
 		}
-		for ( int i = 3; i < upperPrime; i += 2 ) {
-			if ( primeSieve.isPrime(i) == false ) {
-				if ( resultSieve.get(i) == true ) {
-					//System.out.printf("%d = true%n", i);
-				} else {
-					System.out.printf( "answer = %d%n", i );
-					return i;
+
+		for ( int compositeNumber = 9; compositeNumber < upperPrime; compositeNumber += 2 ) {
+			if ( primeSieve.isPrime( compositeNumber ) == false ) {
+				if ( resultSieve.get( compositeNumber ) == false ) {
+					System.out.printf( "answer = %d%n", compositeNumber );
+					return compositeNumber;
 				}
 			}
 		}
 		return result;
 	}
 	
-	@Test
+	@Test (timeout = 1_000)
 	public void GoldbachsOtherConjecture() {
 		smallestNumber( 6000, 50 );
 	}

@@ -29,6 +29,12 @@ public class SieveOfEratosthenes {
 		//System.out.printf("Generated %d primes%n", count);
 		return count;
 	}
+
+	public SieveOfEratosthenes() {
+	}
+	public SieveOfEratosthenes(int n) {
+		generatePrimes(n);
+	}
 	
 	public boolean isPrime(int n) {
 		return primes[n];

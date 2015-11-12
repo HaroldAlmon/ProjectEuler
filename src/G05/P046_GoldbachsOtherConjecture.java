@@ -2,43 +2,39 @@ package G05;
 
 import java.util.BitSet;
 
-import misc.SieveOfEratosthenesBitSet;
-
+import misc.SieveOfEratosthenes;
 import org.junit.Test;
 
 public class P046_GoldbachsOtherConjecture {
-/*
-generate 100 prime numbers
-create a sieve that adds the primes to 2(1..100)
-check the sieve for the first number that is not generated
- */
-
-	public int smallestNumber( int numberOfPrimes, int upperRoot ) {
+	public int smallestNumber( int upperPrime, int upperRoot ) {
 		int result = 0;
 		int candidate;
-		BitSet resultSieve = new BitSet(numberOfPrimes * upperRoot * upperRoot);
-		SieveOfEratosthenesBitSet primeSieve = new SieveOfEratosthenesBitSet( numberOfPrimes );
+		BitSet resultSieve = new BitSet (upperPrime * 2 * upperRoot * upperRoot + 1 );
+		SieveOfEratosthenes primeSieve = new SieveOfEratosthenes( upperPrime );
 		
-		for (int prime = 2; prime < numberOfPrimes; prime += 1) {
+		for (int prime = 2; prime < upperPrime; prime += 1) {
 			if ( primeSieve.isPrime(prime) == true ) {
-				for (int number=1; number <= upperRoot; number += 1) {
+				for (int number=1; number <= upperRoot; number += 1 ) {
 					candidate = prime + 2 * (int)Math.pow( number, 2 );
 					resultSieve.set(candidate); 
 				}
 			}
 		}
-		for (int i = 3; i < resultSieve.size(); i += 2) {
-			if (resultSieve.get(i) == true) {
-				System.out.printf("%d = true%n", i);
-			} else
-				if( primeSieve.isPrime(i) == false )
-					System.out.printf("%d = false%n", i);
+		for ( int i = 3; i < upperPrime; i += 2 ) {
+			if ( primeSieve.isPrime(i) == false ) {
+				if ( resultSieve.get(i) == true ) {
+					//System.out.printf("%d = true%n", i);
+				} else {
+					System.out.printf( "answer = %d%n", i );
+					return i;
+				}
+			}
 		}
 		return result;
 	}
 	
 	@Test
 	public void GoldbachsOtherConjecture() {
-		smallestNumber( 11, 5 );
+		smallestNumber( 6000, 50 );
 	}
 }

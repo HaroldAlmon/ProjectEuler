@@ -9,7 +9,6 @@ import G01.P005_SmallestMultipleArray;
 import G01.P006_SumSquareDifference;
 import G01.P008_LargestProduct;
 import G01.P009_PythagoreanTriplet;
-
 import G02.P011_LargestProduct;
 import G02.P012_TriangularNumber;
 import G02.P013_LargeSum;
@@ -19,7 +18,6 @@ import G02.P016_PowerDigitSum;
 import G02.P017_NumberLetterCounts;
 import G02.P018_MaximumPathSumI;
 import G02.P019_CountingSundays;
-
 import G03.P020_FactorialDigitSum;
 import G03.P021_AmicableNumbers;
 import G03.P022_NameScores;
@@ -27,10 +25,9 @@ import G03.P025_1000Fibonacci;
 import G03.P026_ReciprocalCycles;
 import G03.P027_QuadraticPrimes;
 import G03.P028_NumberSpiralDiagonals;
-
 import G04.P036_DoubleBasePalindromes;
-import misc.P067_MaximumPathSumII;
-import misc.P067_PyramidMax;
+import G07.P067_MaximumPathSumII;
+import G07.P067_PyramidMax;
 import misc.P081_PathSum2Ways;
 
 @RunWith(Suite.class)

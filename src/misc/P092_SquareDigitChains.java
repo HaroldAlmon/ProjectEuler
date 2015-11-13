@@ -7,7 +7,7 @@ import java.util.Set;
 
 import org.junit.Test;
 
-public class P092_SquareDigitChanges {
+public class P092_SquareDigitChains {
 	public int squareDigitChanges(int number) {
 		int result = 0;
 		

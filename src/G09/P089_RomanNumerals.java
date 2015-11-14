@@ -29,38 +29,39 @@ public class P089_RomanNumerals {
 	private int savings(String number) {
 		int result = 0;
 		
-		// 9 IX
-		if ( number.contains("VIIII") ) {
-			System.out.println(number);
+		result = minimise9and4(number, result);
+		result = minimise90and40(number, result);
+		result = minimise900and400(number, result);
+		
+		return result;
+	}
+	private int minimise900and400(String number, int result) {
+		if ( number.contains("DCCCC") ) {
 			result += 3;
 
-		// 4 IV
-		} else if (number.contains("IIII")) {
-			System.out.println(number);
-			result += 2; 
+		} else if(number.contains("CCCC"))  {
+			result += 2;			
 		}
-		
-		// 90 XC
+		return result;
+	}
+	private int minimise90and40(String number, int result) {
 		if ( number.contains("LXXXX") ) {
 			System.out.println(number);
 			result += 3;
 			
-		// 40 XL
 		} else if ( number.contains("XXXX") ) {
 			System.out.println(number);
 			result += 2;
 		}
-		
-		// 900 CM 
-		if ( number.contains("DCCCC") ) {
-			System.out.println(number);
+		return result;
+	}
+	private int minimise9and4(String number, int result) {
+		if ( number.contains("VIIII") ) {
 			result += 3;
-		// 400 CD
-		} else if(number.contains("CCCC"))  {
-			System.out.println(number);
-			result += 2;			
+
+		} else if (number.contains("IIII")) {
+			result += 2; 
 		}
-		
 		return result;
 	}
 /*

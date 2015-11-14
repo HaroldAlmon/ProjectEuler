@@ -28,13 +28,39 @@ public class P089_RomanNumerals {
 	}
 	private int savings(String number) {
 		int result = 0;
+		
+		// 9 IX
 		if ( number.contains("VIIII") ) {
 			System.out.println(number);
 			result += 3;
+
+		// 4 IV
 		} else if (number.contains("IIII")) {
 			System.out.println(number);
 			result += 2; 
 		}
+		
+		// 90 XC
+		if ( number.contains("LXXXX") ) {
+			System.out.println(number);
+			result += 3;
+			
+		// 40 XL
+		} else if ( number.contains("XXXX") ) {
+			System.out.println(number);
+			result += 2;
+		}
+		
+		// 900 CM 
+		if ( number.contains("DCCCC") ) {
+			System.out.println(number);
+			result += 3;
+		// 400 CD
+		} else if(number.contains("CCCC"))  {
+			System.out.println(number);
+			result += 2;			
+		}
+		
 		return result;
 	}
 /*

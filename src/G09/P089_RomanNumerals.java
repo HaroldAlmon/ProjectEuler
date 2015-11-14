@@ -1,9 +1,12 @@
 package G09;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
 import org.junit.Test;
 
 public class P089_RomanNumerals {
@@ -65,9 +68,11 @@ public class P089_RomanNumerals {
 		int charactersSaved = 0;
 		try {
 			charactersSaved = characterSaved(inputFile);
-			System.out.printf("Characters saved %d%n", charactersSaved);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		System.out.printf("Characters saved %d%n", charactersSaved);
+		assertEquals( charactersSaved, 743 );
 	}
 }

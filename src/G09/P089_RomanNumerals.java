@@ -15,7 +15,6 @@ public class P089_RomanNumerals {
 		String line = null;
 		
 		while((line = bufferedReader.readLine()) != null) {
-			//System.out.println(line);
 			total += savings( line );
 		}
 
@@ -60,7 +59,7 @@ public class P089_RomanNumerals {
 		return savedCharacters;
 	}
 
-	@Test
+	@Test (timeout = 1_000)
 	public void RomanNumerals() {
 		String inputFile = "src/g09/P089_roman.txt";
 		int charactersSaved = 0;

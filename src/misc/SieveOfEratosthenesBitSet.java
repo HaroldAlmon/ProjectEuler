@@ -33,6 +33,10 @@ public class SieveOfEratosthenesBitSet {
 		return count;
 	}
 	
+	public SieveOfEratosthenesBitSet(int n) {
+		generatePrimes(n);
+	}
+	
 	public boolean isPrime(int n) {
 		return primes.get(n);
 	}

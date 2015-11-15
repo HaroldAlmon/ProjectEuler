@@ -1,11 +1,11 @@
 package G09;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 import org.junit.Test;
 
@@ -18,7 +18,6 @@ public class P089_RomanNumerals {
 		String line = null;
 		
 		while((line = bufferedReader.readLine()) != null) {
-			//System.out.println(line);
 			total += savings( line );
 		}
 
@@ -27,35 +26,53 @@ public class P089_RomanNumerals {
 		return total;
 	}
 	private int savings(String number) {
-		int result = 0;
-		if ( number.contains("VIIII") ) {
-			System.out.println(number);
-			result += 3;
-		} else if (number.contains("IIII")) {
-			System.out.println(number);
-			result += 2; 
-		}
-		return result;
+		int savedCharacters = 0;
+		
+		savedCharacters = minimise9and4(number, savedCharacters);
+		savedCharacters = minimise90and40(number, savedCharacters);
+		savedCharacters = minimise900and400(number, savedCharacters);
+		
+		return savedCharacters;
 	}
-/*
- * IIII = IV saves 2
- * IIIII = V saves 4
- * IIIIII = VI saves 4
- * VIIII = IX saves 3
- * XXXX = XL saves 2
- * LXXXX = XC saves 2
- * XXXX = XL saves 2
- */
-	@Test
+	private int minimise900and400(String number, int savedCharacters) {
+		if ( number.contains("DCCCC") ) {
+			savedCharacters += 3;
+
+		} else if(number.contains("CCCC"))  {
+			savedCharacters += 2;			
+		}
+		return savedCharacters;
+	}
+	private int minimise90and40(String number, int savedCharacters) {
+		if ( number.contains("LXXXX") ) {
+			savedCharacters += 3;
+			
+		} else if ( number.contains("XXXX") ) {
+			savedCharacters += 2;
+		}
+		return savedCharacters;
+	}
+	private int minimise9and4(String number, int savedCharacters) {
+		if ( number.contains("VIIII") ) {
+			savedCharacters += 3;
+
+		} else if (number.contains("IIII")) {
+			savedCharacters += 2; 
+		}
+		return savedCharacters;
+	}
+
+	@Test (timeout = 1_000)
 	public void RomanNumerals() {
 		String inputFile = "src/g09/P089_roman.txt";
-		int total = 0;
+		int charactersSaved = 0;
 		try {
-			total = characterSaved(inputFile);
-			System.out.println(total);
+			charactersSaved = characterSaved(inputFile);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		System.out.printf("Characters saved %d%n", charactersSaved);
+		assertEquals( charactersSaved, 743 );
 	}
 }

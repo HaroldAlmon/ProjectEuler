@@ -6,13 +6,16 @@ import misc.SieveOfEratosthenes;
 import org.junit.Test;
 
 public class P046_GoldbachsOtherConjecture {
-	public int compositeNumber( int upperPrime, int upperRoot ) {
+	public int findFirstFailure( int upperPrime, int upperRoot ) {
 		int result = 0;
 		BitSet resultSieve = new BitSet ( upperPrime );
 		SieveOfEratosthenes primeSieve = new SieveOfEratosthenes( upperPrime );
-		
 		enumeratePrimes( upperPrime, upperRoot, primeSieve, resultSieve );
+		result = enumerateCompositeNumbers(upperPrime, primeSieve, resultSieve,	result);
+		return result;
+	}
 
+	private int enumerateCompositeNumbers(int upperPrime, SieveOfEratosthenes primeSieve, BitSet resultSieve, int result) {
 		for ( int compositeNumber = 9; numberInRange(compositeNumber, upperPrime); compositeNumber += 2 ) {
 			if ( primeSieve.isPrime( compositeNumber ) == false ) {
 				if ( resultSieve.get( compositeNumber ) == false ) {
@@ -50,7 +53,7 @@ public class P046_GoldbachsOtherConjecture {
 	
 	@Test (timeout = 1_000)
 	public void GoldbachsOtherConjecture() {
-		int compositeNumber = compositeNumber( 6000, 50 );
+		int compositeNumber = findFirstFailure( 6000, 50 );
 		System.out.printf( "Answer = %d%n", compositeNumber );
 		assertEquals( compositeNumber, 5777 );
 	}

@@ -1,5 +1,7 @@
 package G04;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,8 +20,6 @@ public class P038_PandigitalMultiples {
 	
 	private int checkRange(int maximum, int lower, int upper) {
 		for (int base = lower; base <= upper; base += 1) {
-			//if (areDigitsUnique(base) == false)
-				//continue;
 			String candidate = "";
 			for (int multiplier = 1; multiplier <= 9 && candidate.length() <= 9; multiplier += 1) {
 				candidate += Integer.toString(base * multiplier);
@@ -38,7 +38,7 @@ public class P038_PandigitalMultiples {
 	private boolean isPandigital(String digits) {
 		Set<Character> dupeFilter = new HashSet<>();
 		for (int i = 0; i < digits.length(); i += 1) {
-			if ( dupeFilter.add(digits.charAt(i)) == false ) {
+			if ( dupeFilter.add(digits.charAt(i)) == false || digits.charAt(i) == '0'  ) {
 				return false;
 			}
 		}
@@ -50,6 +50,7 @@ public class P038_PandigitalMultiples {
 		int pandigitalMaximum = 0;
 		pandigitalMaximum = pandigitalMaximum();
 		System.out.printf("max = %d%n", pandigitalMaximum);
+		assertEquals(pandigitalMaximum, 932718654);
 	}
 }
 

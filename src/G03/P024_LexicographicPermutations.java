@@ -12,7 +12,7 @@ public class P024_LexicographicPermutations {
 		digits = new int[noOfDigits];
 		createDigitsInArray(noOfDigits, digits, startDigit);
 
-		String permutation = digitsToPermutation( digits );
+		String permutation = digitsToString( digits );
 		if (debug)
 			System.out.printf("Permutation = %s%n", permutation);
 		
@@ -25,12 +25,12 @@ public class P024_LexicographicPermutations {
 			permCounter += 1;
 			
 			if (debug) {
-				permutation = digitsToPermutation(digits);
+				permutation = digitsToString(digits);
 				System.out.printf("Permutation = %s%n", permutation);
 			}
 			
 			if (permCounter == targetPermNo) {
-				permutation = digitsToPermutation(digits);
+				permutation = digitsToString(digits);
 				System.out.printf("Answer = %s%n", permutation);
 				break;
 			}
@@ -72,7 +72,7 @@ public class P024_LexicographicPermutations {
 		}
 	}
 
-	private String digitsToPermutation(int[] digits) {
+	private String digitsToString(int[] digits) {
 		String permutation;
 		permutation = Arrays.toString(digits);
 		permutation = permutation.replaceAll(", ", "");

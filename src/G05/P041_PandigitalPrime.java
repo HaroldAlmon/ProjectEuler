@@ -33,7 +33,7 @@ public class P041_PandigitalPrime {
 	    return result;
 	}
 	
-	long charArrayToLong( int[] data )
+	long intArrayToLong( int[] data )
 	{
 	    long result = 0;
 	    for ( int i = 0; i < data.length; i += 1 )

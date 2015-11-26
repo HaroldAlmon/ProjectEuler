@@ -36,7 +36,7 @@ public class P043_SubstringDvisibility {
 	long intArrayToLong(int[] data, int start, int end) {
 		long result = 0;
 		for ( int digitPosition = start; digitPosition <= end; digitPosition += 1 ) {
-			int digit = (int) data[digitPosition];
+			int digit = ( int ) data[ digitPosition ];
 			result *= 10;
 			result += digit;
 		}
@@ -45,8 +45,8 @@ public class P043_SubstringDvisibility {
 
 	@Test ( timeout = 5_000 )
 	public void substringDvisibility() {
-		long sum = getSum();
-		System.out.printf( "sum = %d%n", sum );
-		assertEquals( Long.toString(sum), "16695334890" );
+		long candidateSum = getSum();
+		System.out.printf( "Sum = %d%n", candidateSum );
+		assertEquals( Long.toString( candidateSum ), "16695334890" );
 	}
 }

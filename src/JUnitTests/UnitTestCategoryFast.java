@@ -1,12 +1,10 @@
-package common;
+package JUnitTests;
 
 import org.junit.experimental.categories.Categories;
 import org.junit.experimental.categories.Categories.IncludeCategory;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-import JUnitTests.FastTest;
-import JUnitTests.P001_MultiplesOf3And5Test;
 import G01.P002_EvenFibonacciNumbers;
 import G01.P003_LargestPrimeFactor;
 import G01.P005_SmallestMultipleHashMap;

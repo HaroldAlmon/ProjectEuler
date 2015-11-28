@@ -2,6 +2,7 @@ package misc;
 import org.junit.runners.Suite;
 import org.junit.runner.RunWith;
 
+import com.translationdata.g030.P036_DoubleBasePalindromes;
 import com.translationdata.p080.P081_PathSum2Ways;
 
 import G01.P001_MultiplesOf3And5;
@@ -27,7 +28,6 @@ import G03.P025_1000Fibonacci;
 import G03.P026_ReciprocalCycles;
 import G03.P027_QuadraticPrimes;
 import G03.P028_NumberSpiralDiagonals;
-import G04.P036_DoubleBasePalindromes;
 import G07.P067_MaximumPathSumII;
 import G07.P067_PyramidMax;
 

@@ -1,5 +1,8 @@
-package misc;
+package com.translationdata.g25;
 import java.util.Set;
+
+import misc.ProperDivisors;
+
 import org.junit.Test;
 
 /**

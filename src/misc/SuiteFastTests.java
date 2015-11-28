@@ -2,6 +2,8 @@ package misc;
 import org.junit.runners.Suite;
 import org.junit.runner.RunWith;
 
+import com.translationdata.g09.P081_PathSum2Ways;
+
 import G01.P001_MultiplesOf3And5;
 import G01.P002_EvenFibonacciNumbers;
 import G01.P003_LargestPrimeFactor;
@@ -28,7 +30,6 @@ import G03.P028_NumberSpiralDiagonals;
 import G04.P036_DoubleBasePalindromes;
 import G07.P067_MaximumPathSumII;
 import G07.P067_PyramidMax;
-import misc.P081_PathSum2Ways;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses ({

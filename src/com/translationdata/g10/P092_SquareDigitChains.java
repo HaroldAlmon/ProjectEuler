@@ -1,4 +1,4 @@
-package misc;
+package com.translationdata.g10;
 
 import static org.junit.Assert.assertEquals;
 

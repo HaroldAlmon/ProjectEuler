@@ -2,10 +2,11 @@ package misc;
 import org.junit.runners.Suite;
 import org.junit.runner.RunWith;
 
+import com.translationdata.g10.P092_SquareDigitChains;
+
 import G01.P004_PalindromeProduct;
 import G01.P007_10001PrimeArrays;
 import G02.P010_SummationOfPrimes;
-import misc.P092_SquareDigitChains;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses ({

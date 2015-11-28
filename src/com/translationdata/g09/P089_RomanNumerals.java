@@ -1,4 +1,4 @@
-package G09;
+package com.translationdata.g09;
 
 import static org.junit.Assert.assertEquals;
 

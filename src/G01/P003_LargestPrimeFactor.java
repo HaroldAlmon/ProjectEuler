@@ -7,7 +7,7 @@ import java.util.Arrays;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import common.FastTest;
+import JUnitTests.FastTest;
 
 /** Strategy: Brute Force. */
 @Category(FastTest.class)

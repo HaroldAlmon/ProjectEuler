@@ -9,7 +9,7 @@ import java.util.Set;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import common.FastTest;
+import JUnitTests.FastTest;
 
 @Category(FastTest.class)
 public class P021_AmicableNumbers {

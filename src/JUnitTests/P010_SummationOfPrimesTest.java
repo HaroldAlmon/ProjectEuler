@@ -14,8 +14,6 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 import G02.P010_SummationOfPrimes;
-import common.FastTest;
-import common.SlowTest;
 
 @RunWith(Parameterized.class)
 public class P010_SummationOfPrimesTest {

@@ -2,11 +2,12 @@ package G01;
 /** Strategy: Brute Force. */
 import java.util.HashMap;
 import java.util.Map;
+
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import static org.junit.Assert.assertEquals;
 
-import common.FastTest;
+import JUnitTests.FastTest;
+import static org.junit.Assert.assertEquals;
 @Category( FastTest.class )
 public class P005_SmallestMultipleHashMap {
 	long smallestMultiple( int maxDivisor ) {

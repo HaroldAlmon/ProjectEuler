@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import common.FastTest;
+import JUnitTests.FastTest;
 @Category(FastTest.class)
 public class P011_LargestProduct {
 	public int largestProduct() {

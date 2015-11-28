@@ -2,10 +2,10 @@ package G01;
 
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+
+import JUnitTests.FastTest;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
-
-import common.FastTest;
 
 /** Strategy: Mathematics. Time complexity is O(1) */
 @Category(FastTest.class)

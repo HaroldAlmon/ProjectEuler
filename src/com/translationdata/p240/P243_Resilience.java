@@ -1,4 +1,4 @@
-package com.translationdata.g25;
+package com.translationdata.p240;
 import java.util.Set;
 
 import misc.ProperDivisors;

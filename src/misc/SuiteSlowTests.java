@@ -2,7 +2,7 @@ package misc;
 import org.junit.runners.Suite;
 import org.junit.runner.RunWith;
 
-import com.translationdata.g10.P092_SquareDigitChains;
+import com.translationdata.p090.P092_SquareDigitChains;
 
 import G01.P004_PalindromeProduct;
 import G01.P007_10001PrimeArrays;

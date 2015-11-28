@@ -2,7 +2,7 @@ package misc;
 import org.junit.runners.Suite;
 import org.junit.runner.RunWith;
 
-import com.translationdata.g09.P081_PathSum2Ways;
+import com.translationdata.p080.P081_PathSum2Ways;
 
 import G01.P001_MultiplesOf3And5;
 import G01.P002_EvenFibonacciNumbers;

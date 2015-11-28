@@ -1,4 +1,4 @@
-package com.translationdata.g10;
+package com.translationdata.p090;
 
 public class P091_RightTriangles {
 

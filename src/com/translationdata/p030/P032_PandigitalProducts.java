@@ -1,13 +1,14 @@
 package com.translationdata.p030;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import G03.P024_LexicographicPermutations;
-
 import org.junit.Test;
+
+import com.translationdata.p020.P024_LexicographicPermutations;
 
 public class P032_PandigitalProducts {
 	public int sumOfProducts() {

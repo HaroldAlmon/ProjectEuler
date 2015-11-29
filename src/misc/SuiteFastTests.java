@@ -18,18 +18,17 @@ import com.translationdata.p010.P016_PowerDigitSum;
 import com.translationdata.p010.P017_NumberLetterCounts;
 import com.translationdata.p010.P018_MaximumPathSumI;
 import com.translationdata.p010.P019_CountingSundays;
+import com.translationdata.p020.P020_FactorialDigitSum;
+import com.translationdata.p020.P021_AmicableNumbers;
+import com.translationdata.p020.P022_NameScores;
+import com.translationdata.p020.P025_1000Fibonacci;
+import com.translationdata.p020.P026_ReciprocalCycles;
+import com.translationdata.p020.P027_QuadraticPrimes;
+import com.translationdata.p020.P028_NumberSpiralDiagonals;
 import com.translationdata.p030.P036_DoubleBasePalindromes;
+import com.translationdata.p060.P067_MaximumPathSumII;
+import com.translationdata.p060.P067_PyramidMax;
 import com.translationdata.p080.P081_PathSum2Ways;
-
-import G03.P020_FactorialDigitSum;
-import G03.P021_AmicableNumbers;
-import G03.P022_NameScores;
-import G03.P025_1000Fibonacci;
-import G03.P026_ReciprocalCycles;
-import G03.P027_QuadraticPrimes;
-import G03.P028_NumberSpiralDiagonals;
-import G07.P067_MaximumPathSumII;
-import G07.P067_PyramidMax;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses ({

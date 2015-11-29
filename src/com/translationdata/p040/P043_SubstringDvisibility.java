@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import G03.P024_LexicographicPermutations;
+import com.translationdata.p020.P024_LexicographicPermutations;
 
 public class P043_SubstringDvisibility {
 	public long getSum() {

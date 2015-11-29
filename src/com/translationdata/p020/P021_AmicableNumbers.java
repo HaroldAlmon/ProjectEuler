@@ -1,4 +1,4 @@
-package G03;
+package com.translationdata.p020;
 /** Strategy: Brute Force */
 import static org.junit.Assert.assertEquals;
 

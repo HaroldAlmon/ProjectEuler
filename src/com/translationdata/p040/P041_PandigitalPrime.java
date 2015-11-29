@@ -1,8 +1,11 @@
 package com.translationdata.p040;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
-import G03.P024_LexicographicPermutationsDesc;
+
+import com.translationdata.p020.P024_LexicographicPermutationsDesc;
+
 import misc.SieveOfEratosthenes;
 
 public class P041_PandigitalPrime {

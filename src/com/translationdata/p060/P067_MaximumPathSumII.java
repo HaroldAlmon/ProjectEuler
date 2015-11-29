@@ -1,4 +1,4 @@
-package G07;
+package com.translationdata.p060;
 /** Strategy: Dynamic Programming */
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package G03;
+package com.translationdata.p020;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,7 +9,7 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import G03.P021_AmicableNumbers.ProperDivisors;
+import com.translationdata.p020.P021_AmicableNumbers.ProperDivisors;
 
 public class P023_NonAbundantSums {
 	ProperDivisors properDivisors = new ProperDivisors();

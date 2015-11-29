@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import G02.P010_SummationOfPrimes;
+import com.translationdata.p010.P010_SummationOfPrimes;
 
 @RunWith(Parameterized.class)
 public class P010_SummationOfPrimesTest {

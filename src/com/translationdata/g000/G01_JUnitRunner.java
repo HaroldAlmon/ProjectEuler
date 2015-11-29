@@ -1,4 +1,4 @@
-package G01;
+package com.translationdata.g000;
 
 import org.junit.internal.TextListener;
 import org.junit.runner.JUnitCore;

@@ -2,16 +2,16 @@ package misc;
 import org.junit.runners.Suite;
 import org.junit.runner.RunWith;
 
+import com.translationdata.g000.P001_MultiplesOf3And5;
+import com.translationdata.g000.P002_EvenFibonacciNumbers;
+import com.translationdata.g000.P003_LargestPrimeFactor;
+import com.translationdata.g000.P005_SmallestMultipleArray;
+import com.translationdata.g000.P006_SumSquareDifference;
+import com.translationdata.g000.P008_LargestProduct;
+import com.translationdata.g000.P009_PythagoreanTriplet;
 import com.translationdata.g030.P036_DoubleBasePalindromes;
 import com.translationdata.p080.P081_PathSum2Ways;
 
-import G01.P001_MultiplesOf3And5;
-import G01.P002_EvenFibonacciNumbers;
-import G01.P003_LargestPrimeFactor;
-import G01.P005_SmallestMultipleArray;
-import G01.P006_SumSquareDifference;
-import G01.P008_LargestProduct;
-import G01.P009_PythagoreanTriplet;
 import G02.P011_LargestProduct;
 import G02.P012_TriangularNumber;
 import G02.P013_LargeSum;

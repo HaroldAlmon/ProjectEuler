@@ -1,4 +1,4 @@
-package G01;
+package com.translationdata.g000;
 
 import org.junit.Test;
 import org.junit.experimental.categories.Category;

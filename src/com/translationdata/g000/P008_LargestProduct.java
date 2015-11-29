@@ -1,4 +1,4 @@
-package G01;
+package com.translationdata.g000;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;

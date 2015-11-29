@@ -5,13 +5,13 @@ import org.junit.experimental.categories.Categories.IncludeCategory;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-import G01.P002_EvenFibonacciNumbers;
-import G01.P003_LargestPrimeFactor;
-import G01.P005_SmallestMultipleHashMap;
-import G01.P006_SumSquareDifference;
-import G01.P007_10001PrimeLinkList;
-import G01.P008_LargestProduct;
-import G01.P009_PythagoreanTriplet;
+import com.translationdata.g000.P002_EvenFibonacciNumbers;
+import com.translationdata.g000.P003_LargestPrimeFactor;
+import com.translationdata.g000.P005_SmallestMultipleHashMap;
+import com.translationdata.g000.P006_SumSquareDifference;
+import com.translationdata.g000.P007_10001PrimeLinkList;
+import com.translationdata.g000.P008_LargestProduct;
+import com.translationdata.g000.P009_PythagoreanTriplet;
 
 @RunWith(Categories.class)
 @IncludeCategory(FastTest.class)

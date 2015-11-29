@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import G01.P004_PalindromeProduct;
+import com.translationdata.g000.P004_PalindromeProduct;
 
 @RunWith(Parameterized.class)
 public class P004_PalindromeProductTest {

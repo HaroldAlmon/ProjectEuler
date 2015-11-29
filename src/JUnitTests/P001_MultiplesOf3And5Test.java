@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import G01.P001_MultiplesOf3And5;
+import com.translationdata.g000.P001_MultiplesOf3And5;
 
 @RunWith(Parameterized.class)
 public class P001_MultiplesOf3And5Test {

@@ -1,4 +1,4 @@
-package G01;
+package com.translationdata.g000;
 /** Strategy: Brute Force. */
 import java.util.HashMap;
 import java.util.Map;

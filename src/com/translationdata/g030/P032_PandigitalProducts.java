@@ -56,10 +56,7 @@ public class P032_PandigitalProducts {
 		if (multiplicand * multiplier == product) {
 			if( filter.add(product)) {
 				productSum += product;
-				//System.out.printf("%d * %d = %d%n", multiplicand, multiplier, product);
-			} else {
-				//System.out.printf("Duplicate product not added to sum: %d%n", product);
-			};;
+			}
 		}
 		return productSum;
 	}

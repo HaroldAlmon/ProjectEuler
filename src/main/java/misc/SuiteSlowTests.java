@@ -2,17 +2,22 @@ package misc;
 import org.junit.runners.Suite;
 import org.junit.runner.RunWith;
 
-import com.translationdata.p000.P004_PalindromeProduct;
-import com.translationdata.p000.P007_10001PrimeArrays;
 import com.translationdata.p010.P010_SummationOfPrimes;
+import com.translationdata.p010.P014_CollatzSequence;
+import com.translationdata.p020.P023_NonAbundantSums;
 import com.translationdata.p090.P092_SquareDigitChains;
+import com.translationdata.p120.P125_PalindromicSums;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses ({
-	P004_PalindromeProduct.class,
-	P007_10001PrimeArrays.class,
 	P010_SummationOfPrimes.class,
-	P092_SquareDigitChains.class
+	P014_CollatzSequence.class,
+	
+	P023_NonAbundantSums.class,
+
+	P092_SquareDigitChains.class,
+	
+	P125_PalindromicSums.class
 })
 public class SuiteSlowTests {
 }

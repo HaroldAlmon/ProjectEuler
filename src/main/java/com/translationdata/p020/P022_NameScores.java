@@ -52,7 +52,7 @@ public class P022_NameScores {
 
 	@Test(timeout = 500)
 	public void NameScores() throws IOException {
-		String inputFile = "src/g03/p022_names.txt";
+		String inputFile = "src/main/java/com/translationdata/p020/p022_names.txt";
 		int score = nameScores( inputFile );
 
 		System.out.printf("nameScores(%s) = %s%n",inputFile, score);

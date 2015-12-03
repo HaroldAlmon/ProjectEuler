@@ -62,13 +62,13 @@ public class P042_CodedTriangleNumbers {
 	}
 	
 	@Test
-	public void CodedTriangleNumbers() {
+	public void CodedTriangleNumbers() throws IOException {
 		int wordCount = 0;
 		try {
-			wordCount = codedTriangleNumbers("src/g05/P042_words.txt");
+			wordCount = codedTriangleNumbers("src/main/java/com/translationdata/p040/P042_words.txt");
 		} catch (IOException e) {
 			e.printStackTrace();
-			return;
+			throw e;
 		}
 		System.out.printf( "Triangle word count = %d%n", wordCount );
 		assertEquals(wordCount, 162);

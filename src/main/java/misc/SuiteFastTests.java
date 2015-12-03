@@ -9,6 +9,7 @@ import com.translationdata.p000.P005_SmallestMultipleArray;
 import com.translationdata.p000.P006_SumSquareDifference;
 import com.translationdata.p000.P008_LargestProduct;
 import com.translationdata.p000.P009_PythagoreanTriplet;
+
 import com.translationdata.p010.P011_LargestProduct;
 import com.translationdata.p010.P012_TriangularNumber;
 import com.translationdata.p010.P013_LargeSum;
@@ -18,6 +19,7 @@ import com.translationdata.p010.P016_PowerDigitSum;
 import com.translationdata.p010.P017_NumberLetterCounts;
 import com.translationdata.p010.P018_MaximumPathSumI;
 import com.translationdata.p010.P019_CountingSundays;
+
 import com.translationdata.p020.P020_FactorialDigitSum;
 import com.translationdata.p020.P021_AmicableNumbers;
 import com.translationdata.p020.P022_NameScores;
@@ -25,7 +27,17 @@ import com.translationdata.p020.P025_1000Fibonacci;
 import com.translationdata.p020.P026_ReciprocalCycles;
 import com.translationdata.p020.P027_QuadraticPrimes;
 import com.translationdata.p020.P028_NumberSpiralDiagonals;
+
 import com.translationdata.p030.P036_DoubleBasePalindromes;
+import com.translationdata.p030.P037_TruncatablePrimes;
+import com.translationdata.p030.P038_PandigitalMultiples;
+import com.translationdata.p030.P039_IntegerRightTriangles;
+
+import com.translationdata.p040.P041_PandigitalPrime;
+import com.translationdata.p040.P042_CodedTriangleNumbers;
+import com.translationdata.p040.P043_SubstringDvisibility;
+import com.translationdata.p040.P046_GoldbachsOtherConjecture;
+
 import com.translationdata.p060.P067_MaximumPathSumII;
 import com.translationdata.p060.P067_PyramidMax;
 import com.translationdata.p080.P081_PathSum2Ways;
@@ -59,6 +71,15 @@ import com.translationdata.p080.P081_PathSum2Ways;
 	P028_NumberSpiralDiagonals.class,
 	
 	P036_DoubleBasePalindromes.class,
+	P037_TruncatablePrimes.class,
+	P038_PandigitalMultiples.class,
+	P039_IntegerRightTriangles.class,
+	
+	P041_PandigitalPrime.class,
+	P042_CodedTriangleNumbers.class,
+	P043_SubstringDvisibility.class,
+	P046_GoldbachsOtherConjecture.class,
+	
 	P067_MaximumPathSumII.class,
 	P067_PyramidMax.class,
 	P081_PathSum2Ways.class

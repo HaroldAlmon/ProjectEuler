@@ -64,7 +64,7 @@ public class P089_RomanNumerals {
 
 	@Test (timeout = 1_000)
 	public void RomanNumerals() {
-		String inputFile = "src/g09/P089_roman.txt";
+		String inputFile = "src/main/java/com/translationdata/p080//P089_roman.txt";
 		int charactersSaved = 0;
 		try {
 			charactersSaved = characterSaved(inputFile);
@@ -72,7 +72,7 @@ public class P089_RomanNumerals {
 			e.printStackTrace();
 		}
 
-		System.out.printf("Characters saved %d%n", charactersSaved);
+		System.out.printf("P089: Characters saved %d%n", charactersSaved);
 		assertEquals( charactersSaved, 743 );
 	}
 }

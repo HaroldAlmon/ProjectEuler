@@ -52,8 +52,6 @@ import com.translationdata.p060.P067_MaximumPathSumII;
 import com.translationdata.p080.P081_PathSum2Ways;
 import com.translationdata.p080.P089_RomanNumerals;
 
-import com.translationdata.p090.P091_RightTriangles;
-
 @RunWith(Suite.class)
 @Suite.SuiteClasses ({
 	P001_MultiplesOf3And5.class,
@@ -105,8 +103,6 @@ import com.translationdata.p090.P091_RightTriangles;
 	
 	P081_PathSum2Ways.class,
 	P089_RomanNumerals.class,
-	
-	//P091_RightTriangles.class, NOT WRITTEN YET
 })
 
 public class SuiteFastTests {

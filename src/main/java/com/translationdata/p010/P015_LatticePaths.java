@@ -38,7 +38,7 @@ public class P015_LatticePaths {
 		return result;
 	}
 	
-	private BigInteger factorial(int n) {
+	private BigInteger factorial(final int n) {
 		BigInteger result = new BigInteger("1");
 		for (int i = 1; i <= n; i++)
 			result = result.multiply(BigInteger.valueOf(i));

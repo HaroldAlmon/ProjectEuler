@@ -7,7 +7,7 @@ import java.math.BigInteger;
 import org.junit.Test;
 
 public class P016_PowerDigitSum {
-	public int sumOfDigits(int power) {
+	public int sumOfDigits(final int power) {
 		BigInteger sumOfPowers = new BigInteger("2");
 		BigInteger two = new BigInteger("2");
 		int result = 0;	
@@ -19,17 +19,18 @@ public class P016_PowerDigitSum {
 		return result;
 	}
 
-	private int sumOfDigits(String s) {
+	private int sumOfDigits(final String s) {
 		int result = 0;
 		for (int index = 0; index < s.length(); index++)
 			result += Character.getNumericValue(s.charAt(index));
 		return result;
 	}
 
-	private BigInteger calculatePowerOfTwo(int power, BigInteger sum, BigInteger two) {
+	private BigInteger calculatePowerOfTwo(final int power, BigInteger sum, final BigInteger two) {
+		BigInteger powerSum = sum;
 		for(int i = 0; i < power - 1; i++)
-			sum = sum.multiply(two);
-		return sum;
+			powerSum = powerSum.multiply(two);
+		return powerSum;
 	}
 	
 	@Test(timeout = 500)

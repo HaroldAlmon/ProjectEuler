@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class P018_MaximumPathSumI {
-	public int maximumPathSumI( int[][] pyramid ) {
+	public int maximumPathSumI( final int[][] pyramid ) {
 		for ( int row = pyramid.length - 2; row >= 0; row-- ) {
 			for( int col = 0; col < pyramid[row].length; col++  ) {
 				int rowBelowLeftColumnValue = pyramid[row+1][col];

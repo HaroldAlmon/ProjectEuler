@@ -11,7 +11,7 @@ import JUnitTests.SlowTest;
 public class P010_SummationOfPrimes {
 	static int testNo = 1;
 
-	public long primesSum(int upperLimit) {
+	public long primesSum(final int upperLimit) {
 		int primeCandidate;
 		int primeCount;
 		long primeSum = 2;
@@ -46,10 +46,10 @@ public class P010_SummationOfPrimes {
 		return primeSum;
 	}
 
-	private int nextCandidate(int candidate) {
+	private int nextCandidate(final int candidate) {
 		return candidate + 2;
 	}
-	private boolean isRemainderOfDivisionZero (int numerator, long denominator) {
+	private boolean isRemainderOfDivisionZero (final int numerator, final long denominator) {
 		return numerator % denominator == 0;
 	}
 

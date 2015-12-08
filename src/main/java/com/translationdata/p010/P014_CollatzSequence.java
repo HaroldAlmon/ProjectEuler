@@ -9,7 +9,9 @@ public class P014_CollatzSequence {
 		numberProducingLongestChain = enumerateCandidates(upperLimit,numberProducingLongestChain);
 		return numberProducingLongestChain;
 	}
-	private long enumerateCandidates(int upperLimit, long numberProducingLongestChain) {
+	
+	private long enumerateCandidates(final int upperLimit, final long number) {
+		long numberProducingLongestChain = number;
 		for (long candidate = 2; candidate < upperLimit - 1; candidate++) {
 			long longestSequence = 0;
 			int sequenceLength = 1;
@@ -21,7 +23,9 @@ public class P014_CollatzSequence {
 		}
 		return numberProducingLongestChain;
 	}
-	private int calculateSequenceLength(int length, long candidate) {
+	
+	private int calculateSequenceLength(final int length, final long candidate) {
+		int sequenceLength = length;
 		// n is an alias for candidate...
 		long n = candidate;
 		while (n != 1) {
@@ -29,9 +33,9 @@ public class P014_CollatzSequence {
 				n /= 2;
 			else
 				n = 3 * n + 1;
-			length += 1;
+			sequenceLength += 1;
 		};
-		return length;
+		return sequenceLength;
 	}
 
 	@Test(timeout = 20_000)

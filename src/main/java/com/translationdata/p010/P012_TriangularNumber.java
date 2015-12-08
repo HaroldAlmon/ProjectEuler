@@ -4,32 +4,35 @@ import org.junit.Test;
 
 /** Strategy: Simple Mathematics. */
 public class P012_TriangularNumber {
-	long triangularNumber(int divisorLimit) {
+	long triangularNumber(final int divisorLimit) {
 		final boolean isDebug = false;
 		int naturalNumber = 2;
 		int triangleNumber = 3;
 		int numberOfDivisors = 0;
+		
 		while (true) {
 			numberOfDivisors = divisorCount(triangleNumber);
 			if (numberOfDivisors > divisorLimit) 
 				break;
 			naturalNumber = nextNaturalNumber(naturalNumber);
 			triangleNumber = nextTriangleNumber(triangleNumber, naturalNumber);
-		};
+		}
+		
 		if(isDebug) 
 			System.out.printf("no. of divisors = %d, Triangle seq no. = %d%n", numberOfDivisors , naturalNumber);
+		
 		return triangleNumber;
 	}
 	
-	private int nextNaturalNumber(int naturalNumber) {
+	private int nextNaturalNumber(final int naturalNumber) {
 		return naturalNumber + 1;
 	}
 	
-	private int nextTriangleNumber(int triangleNumber, int naturalNumber) {
+	private int nextTriangleNumber(final int triangleNumber, final int naturalNumber) {
 		return triangleNumber + naturalNumber;
 	}
 	
-	int divisorCount(int triangleNumber) {
+	int divisorCount(final int triangleNumber) {
 		int divisorTotal = 0;
 		int maxDivisor = (int) (triangleNumber/2);
 		for (int n = 2; n <= maxDivisor; n++) {
@@ -42,11 +45,11 @@ public class P012_TriangularNumber {
 		return divisorTotal + 2;
 	}
 	
-	private int newDivisorLimit(int n, int i) {
+	private int newDivisorLimit(final int n, final int i) {
 		return (n / i) - 1;
 	}
 	
-	private boolean isDivisorOfTriangleNumber(long triangleNumber, int i) {
+	private boolean isDivisorOfTriangleNumber(final long triangleNumber, final int i) {
 		return triangleNumber % i == 0;
 	}
 

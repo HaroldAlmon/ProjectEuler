@@ -9,7 +9,7 @@ import JUnitTests.FastTest;
 /** Strategy: Simple mathematics. */
 @Category( FastTest.class )
 public class P006_SumSquareDifference {
-	private long sumSquareDifference( int maxNum ) {
+	private long sumSquareDifference( final int maxNum ) {
 		long squareDifference = 0;
 		squareDifference = squareSum( maxNum ) - sumSquares( maxNum );
 		
@@ -17,7 +17,7 @@ public class P006_SumSquareDifference {
 		return squareDifference;
 	}
 	
-	private long sumSquares( int maxNum ) {
+	private long sumSquares( final int maxNum ) {
 		long result = 0;
 		for( int num = 1; num <= maxNum; num++ ) {
 			result += num*num;
@@ -25,7 +25,7 @@ public class P006_SumSquareDifference {
 		return result;
 	}
 	
-	private long squareSum( int maxNum ) {
+	private long squareSum( final int maxNum ) {
 		long result = 0;
 		for( int num= 1; num <= maxNum; num++ ) {
 			result += num;

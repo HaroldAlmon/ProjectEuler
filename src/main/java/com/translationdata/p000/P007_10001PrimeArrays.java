@@ -16,7 +16,7 @@ public class P007_10001PrimeArrays {
 	// 1. Change this function to return an array of primes.
 	// 2. Create a wrapper function, with the original function name (primeNumber), to solve problem 7.
 	// 3. Create a wrapper function to return a set of primes.
-	private long primeNumber( int upperLimit ) {
+	private long primeNumber( final int upperLimit ) {
 		int oddPrimeCandidate;
 		int primeCount;
 		
@@ -46,7 +46,7 @@ public class P007_10001PrimeArrays {
 		return primes[upperLimit - 1];
 	}
 
-	private int nextoddNumber( int oddNumber ) {
+	private int nextoddNumber( final int oddNumber ) {
 		return oddNumber + 2;
 	}
 

@@ -4,7 +4,7 @@ import java.util.Arrays;
 import org.junit.Test;
 /** Strategy: Simple Mathematics. */
 public class P005_SmallestMultipleArray {
-	public long smallestMultiple(int maxDivisor) {
+	public long smallestMultiple(final int maxDivisor) {
 		P003_LargestPrimeFactor p003_LargestPrimeFactor = new P003_LargestPrimeFactor();
 		
 		// If 2*3*3 are factors then factorCount[2] = 1, factorCount[3] = 2;
@@ -25,11 +25,11 @@ public class P005_SmallestMultipleArray {
 		return factorsProduct;
 	}
 
-	private void zeroFactorCountArray(int[] factorCount) {
+	private void zeroFactorCountArray(final int[] factorCount) {
 		Arrays.fill(factorCount, 0);
 	}
 
-	private void maximizeFactors(int maxDivisor, int[] factorCount, int[] finalFactorCount) {
+	private void maximizeFactors(final int maxDivisor, final int[] factorCount, final int[] finalFactorCount) {
 		for(int factIdx = 0; factIdx < maxDivisor; factIdx++) {
 			if(factorCount[factIdx] > finalFactorCount[factIdx]) {
 				finalFactorCount[factIdx] = factorCount[factIdx];
@@ -37,7 +37,7 @@ public class P005_SmallestMultipleArray {
 		}
 	}
 
-	private long multiplyFactors(int maxDivisor, int[] finalFactorCount ) {
+	private long multiplyFactors(final int maxDivisor, final int[] finalFactorCount ) {
 		long productOfFactors = 1;
 		
 		for(int factIdx = 0; factIdx < maxDivisor; factIdx++) {
@@ -48,7 +48,7 @@ public class P005_SmallestMultipleArray {
 		return productOfFactors;
 	}
 
-	private int[] countIdenticalFactors(int[] factorCount, int[] factors) {
+	private int[] countIdenticalFactors(final int[] factorCount, final int[] factors) {
 		for(int factIdx = 0; factIdx < factors.length; factIdx++) {
 			factorCount[ factors[factIdx] ] += 1;
 		}

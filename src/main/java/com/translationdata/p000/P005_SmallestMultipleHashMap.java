@@ -10,7 +10,7 @@ import JUnitTests.FastTest;
 import static org.junit.Assert.assertEquals;
 @Category( FastTest.class )
 public class P005_SmallestMultipleHashMap {
-	long smallestMultiple( int maxDivisor ) {
+	long smallestMultiple( final int maxDivisor ) {
 		P003_LargestPrimeFactor maxFactor = new P003_LargestPrimeFactor();
 		HashMap<Integer, Integer> factorCounts = new HashMap<>();
 
@@ -40,11 +40,9 @@ public class P005_SmallestMultipleHashMap {
 	}
 
 	private void maximizeFactorCount( 
-			HashMap<Integer, 
-			Integer> factorCounts,
-			Map<Integer, 
-			Integer> maximumFactorCount, 
-			Integer factor ) {
+			final HashMap<Integer, Integer> factorCounts,
+			final Map<Integer, Integer> maximumFactorCount, 
+			final Integer factor ) {
 		if( maximumFactorCount.containsKey( factor ) ) {
 			if( factorCounts.get( factor ) > maximumFactorCount.get( factor ) ) {
 				setNewMaximumFactorCount( factorCounts, maximumFactorCount, factor );
@@ -55,19 +53,20 @@ public class P005_SmallestMultipleHashMap {
 	}
 
 	private void setNewMaximumFactorCount( 
-			HashMap<Integer, Integer> factorCounts,
-			Map<Integer, Integer> maximumFactorCount, Integer factor ) {
+			final HashMap<Integer, Integer> factorCounts,
+			final Map<Integer, Integer> maximumFactorCount, Integer factor ) {
 		maximumFactorCount.put( factor, factorCounts.get( factor ) );
 	}
 
-	private long mutiplyFactors( Map<Integer, Integer> maximumFactorCount, long productOfFactors ) {
+	private long mutiplyFactors( final Map<Integer, Integer> maximumFactorCount, final long factors ) {
+		long productOfFactors = factors;
 		for ( Integer factor : maximumFactorCount.keySet(  ) ) {
 			productOfFactors *= ( long ) Math.pow( factor, maximumFactorCount.get( factor ) );
 		}
 		return productOfFactors;
 	}
 
-	private void countIdenticalFactors( Map<Integer, Integer> factorCounts, int[] factors ) {
+	private void countIdenticalFactors( final Map<Integer, Integer> factorCounts, final int[] factors ) {
 		for( int factorIdx = 0; factorIdx < factors.length; factorIdx++ ) {
 			if ( factorCounts.containsKey( factors[factorIdx] ) ) {
 				incrementFactorCount( factorCounts, factors, factorIdx );
@@ -77,11 +76,11 @@ public class P005_SmallestMultipleHashMap {
 		}
 	}
 
-	private void setFactorCoutToOne( Map<Integer, Integer> factorCounts, int[] factors, int factorIdx ) {
+	private void setFactorCoutToOne( final Map<Integer, Integer> factorCounts, final int[] factors, final int factorIdx ) {
 		factorCounts.put( factors[factorIdx], 1 );
 	}
 
-	private void incrementFactorCount( Map<Integer, Integer> DivisorFactorCount, int[] factors,	int factIdx ) {
+	private void incrementFactorCount( final Map<Integer, Integer> DivisorFactorCount, final int[] factors,	final int factIdx ) {
 		DivisorFactorCount.put( factors[factIdx], DivisorFactorCount.get( factors[factIdx] ) + 1 );
 	}
 	

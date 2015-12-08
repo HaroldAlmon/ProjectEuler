@@ -17,7 +17,7 @@ public class P003_LargestPrimeFactor {
 		return factors[factors.length-1];
 	}
 	
-	private long[] factors(long longNumber) {
+	private long[] factors(final long longNumber) {
 	    long[] factors = new long[100];
 	    int freePosition = 0, candidateFactor;
 	    long product = longNumber;
@@ -84,8 +84,8 @@ public class P003_LargestPrimeFactor {
 	    return trimmedCopy;
 	}
 
-	private int removeFactorFromProduct(int candidateFactor, int product) {
-		return product /= candidateFactor;
+	private int removeFactorFromProduct(final int candidateFactor, final int product) {
+		return product / candidateFactor;
 	}
 
 	@Test(timeout=100)

@@ -10,7 +10,7 @@ import JUnitTests.FastTest;
 /** Strategy: Simple mathematics. */
 @Category(FastTest.class)
 public class P002_EvenFibonacciNumbers {
-	int EvenFiboNumbersSum(int upperLimit) {
+	int EvenFiboNumbersSum(final int upperLimit) {
 		int EvenFiboNumbersSum = 2;
 		int fibo1 = 1;
 		int fibo2 = 2;

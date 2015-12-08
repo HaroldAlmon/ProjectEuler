@@ -17,7 +17,7 @@ import JUnitTests.SlowTest;
 @Category(SlowTest.class)
 public class P007_10001PrimeLinkList {
 	static int testNo = 1;
-	private long primeNumber(int upperLimit) {
+	private long primeNumber(final int upperLimit) {
 		int oddPrimeCandidate;
 		List<Integer> primeNumberList = new LinkedList<>();
 		primeNumberList.add(2);
@@ -44,7 +44,7 @@ public class P007_10001PrimeLinkList {
 		return primeNumberList.get(upperLimit - 1);
 	}
 
-	private int nextOddNumber(int oddNumber) {
+	private int nextOddNumber(final int oddNumber) {
 		return oddNumber + 2;
 	}
 

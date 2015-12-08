@@ -10,7 +10,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 /** Strategy: Mathematics. Time complexity is O(1) */
 @Category(FastTest.class)
 public class P001_MultiplesOf3And5 {
-	public int multiplesOf3And5(int upperLimit) {
+	public int multiplesOf3And5(final int upperLimit) {
 		int MultiplesSum = 0;		
 		
 		MultiplesSum += calculateSumBelowLimit(upperLimit, 3);
@@ -25,7 +25,7 @@ public class P001_MultiplesOf3And5 {
 	//                   -----------
 	//                        2
 	// The formula includes n, the problem does not.
-	private int calculateSumBelowLimit(int upperLimit, int divisor) {
+	private int calculateSumBelowLimit(final int upperLimit, final int divisor) {
 		int n = (upperLimit - 1)/divisor;
 		return divisor * n * ( n + 1 ) / 2 ;
 	}

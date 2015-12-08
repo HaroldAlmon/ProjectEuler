@@ -28,11 +28,11 @@ public class P008_LargestProduct {
 		return productMaximum;
 	}
 
-	private String getDigits( String veryLongNumber, int start, int digitsLength ) {
+	private String getDigits( final String veryLongNumber, final int start, final int digitsLength ) {
 		return veryLongNumber.substring( start, start + digitsLength );
 	}
 
-	private long multiplyDigits( String number ) {
+	private long multiplyDigits( final String number ) {
 		long digitsProduct = 1;
 		for ( int charPosition = 0; charPosition < number.length(); charPosition++ ) {
 			digitsProduct *= charInString( number, charPosition );
@@ -40,7 +40,7 @@ public class P008_LargestProduct {
 		return digitsProduct;
 	}
 
-	private int charInString( String inputString, int charPosition ) {
+	private int charInString( final String inputString, final int charPosition ) {
 		return Integer.parseInt( inputString.substring( charPosition, charPosition+1 ) );
 	}
 

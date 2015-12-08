@@ -9,12 +9,12 @@ import JUnitTests.FastTest;
 /** Strategy: Brute Force. */
 @Category(FastTest.class)
 public class P009_PythagoreanTriplet {
-	public int pythagoreanTriplet(int tripletSum) {
+	public int pythagoreanTriplet(final int tripletSum) {
 		int tripletProduct = enumerateAllXValues(tripletSum);
 		return tripletProduct;
 	}
 
-	private int enumerateAllXValues(int tripletSum) {
+	private int enumerateAllXValues(final int tripletSum) {
 		int tripletProduct = 0;
 		int x;
 		for (x = 3; x <= tripletSum - 2; x++) {
@@ -23,10 +23,9 @@ public class P009_PythagoreanTriplet {
 				break;
 		}
 		return tripletProduct;
-		
 	}
 
-	private int enumerateAllYValues(int tripletSum, int x) {
+	private int enumerateAllYValues(final int tripletSum, final int x) {
 		final boolean isDebug = false;
 		int r;
 		int tripletProduct;
@@ -43,7 +42,7 @@ public class P009_PythagoreanTriplet {
 		return 0;
 	}
 
-	private boolean isTriplet(int x, int r, int y) {
+	private boolean isTriplet(final int x, final int r, final int y) {
 		return x*x + y*y == r*r;
 	}
 

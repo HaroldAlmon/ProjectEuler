@@ -10,32 +10,26 @@ import JUnitTests.FastTest;
 /** Strategy: Simple mathematics. */
 @Category(FastTest.class)
 public class P002_EvenFibonacciNumbers {
-	int EvenFiboNumbersSum(final int upperLimit) {
-		int EvenFiboNumbersSum = 2;
-		int fibo1 = 1;
-		int fibo2 = 2;
-		int nextFibo = 3;
+	int fiboSum(int upperLimit) {
+		return fiboSumImpl(1, 2, 2, upperLimit);
+	}
 
-		/* Use a loop since we do not know the term
-		 * of the Fibonacci number we are seeking. */
-		while (nextFibo < upperLimit) {
-			boolean isEven;
-			
-			isEven = (nextFibo % 2 == 0);
-			if( isEven ) {
-				EvenFiboNumbersSum += nextFibo;				
-			}
-			fibo1 = fibo2;
-			fibo2 = nextFibo;
-			nextFibo = fibo1 + fibo2;
+	int fiboSumImpl(int fibo1, int fibo2, int total, int upperLimit) {
+		final int nextFibo = fibo1 + fibo2;
+		if ( nextFibo < upperLimit) {
+			if(nextFibo % 2 == 0)
+				return fiboSumImpl(fibo2, nextFibo, total + nextFibo, upperLimit);
+			else
+				return fiboSumImpl(fibo2, nextFibo, total, upperLimit);
 		}
-		return EvenFiboNumbersSum;
+		else
+			return total;
 	}
 
 	@Test(timeout=500)
 	public void SumOfEvenTermsLessThanFourMillion() {
-		int result = EvenFiboNumbersSum(4_000_000);
-		System.out.printf("EvenFiboNumbersSum(4_000_000)=%s%n", result);
+		int result = fiboSum(4_000_000);
+		System.out.printf("fiboSum(4_000_000) = %s%n", result);
 		assertEquals( "Incorrect sum of even Fibo numbers that do not exceed 4 million", 4613732, result );
 	}
 }

@@ -30,12 +30,7 @@ public class P007_10001PrimeArrays {
 			boolean isPrime = true;
 			// Check the candidate to see if it is divisible by 
 			// any of the known primes calculated so far.
-			for( int i = 0; i < primeCount; i++ ) {
-				if ( oddPrimeCandidate % primes[ i ] == 0 ) {
-					isPrime = false;
-					break;
-				}
-			}
+			isPrime = isPrime(oddPrimeCandidate, primes, primeCount);
 
 			if ( isPrime ) {
 				primes[ primeCount ] = oddPrimeCandidate;
@@ -44,6 +39,15 @@ public class P007_10001PrimeArrays {
 			oddPrimeCandidate = nextoddNumber(oddPrimeCandidate);
 		}
 		return primes[upperLimit - 1];
+	}
+
+	private boolean isPrime(int oddPrimeCandidate, long[] primes, int primeCount) {
+		for( int i = 0; i < primeCount; i++ ) {
+			if ( oddPrimeCandidate % primes[ i ] == 0 ) {
+				return(false);
+			}
+		}
+		return true;
 	}
 
 	private int nextoddNumber( final int oddNumber ) {

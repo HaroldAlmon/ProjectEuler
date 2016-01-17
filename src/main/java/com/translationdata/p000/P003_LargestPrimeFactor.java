@@ -22,7 +22,7 @@ public class P003_LargestPrimeFactor {
 	    int freePosition = 0, candidateFactor;
 	    long product = longNumber;
 	    
-	    // Find all the factors of 2.
+	    // Find all the factors that are 2.
 	    while (product % 2 == 0) {
 	        factors[freePosition] = 2;
 	        freePosition += 1;

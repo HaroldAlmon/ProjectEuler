@@ -7,13 +7,13 @@ import JUnitTests.FastTest;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-/** Strategy: Mathematics. Time complexity is O(1) */
+/** Strategy: Simple Mathematics. Time complexity is O(1) */
 @Category(FastTest.class)
 public class P001_MultiplesOf3And5 {
 	public int multiplesOf3And5(final int upperLimit) {
 		return calculateSumBelowLimit(upperLimit, 3)
-				+ calculateSumBelowLimit(upperLimit, 5)
-				- calculateSumBelowLimit(upperLimit, 15);
+			+ calculateSumBelowLimit(upperLimit, 5)
+			- calculateSumBelowLimit(upperLimit, 15);
 	}
 
 	// This is a variation of the sum(1..n) formula.

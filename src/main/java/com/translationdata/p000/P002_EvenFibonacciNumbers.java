@@ -14,7 +14,7 @@ public class P002_EvenFibonacciNumbers {
 		return fiboSumImpl(1, 2, 2, upperLimit);
 	}
 
-	int fiboSumImpl(int fibo1, int fibo2, int total, int upperLimit) {
+	int fiboSumImpl(final int fibo1, final int fibo2, final int total, final int upperLimit) {
 		final int nextFibo = fibo1 + fibo2;
 		if ( nextFibo < upperLimit) {
 			if(nextFibo % 2 == 0)

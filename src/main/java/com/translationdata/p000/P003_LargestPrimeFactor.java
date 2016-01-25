@@ -17,17 +17,20 @@ public class P003_LargestPrimeFactor {
 		return factors[factors.length-1];
 	}
 	
+	private long[] addFactorsOf2(long[] factors, int freePosition, long product) {
+		if (product % 2 == 0) {
+		        factors[freePosition] = 2;
+		        addFactorsOf2( factors, freePosition + 1, product/2);
+		}
+		return factors;
+	}
+
 	private long[] factors(final long longNumber) {
 	    long[] factors = new long[100];
 	    int freePosition = 0, candidateFactor;
 	    long product = longNumber;
 	    
-	    // Find all the factors that are 2.
-	    while (product % 2 == 0) {
-	        factors[freePosition] = 2;
-	        freePosition += 1;
-	        product /= 2;
-	    }
+	    addFactorsOf2(factors, freePosition, product);
 	    
 	    candidateFactor = 3;
 	    int largestPossibleFactor = (int) Math.sqrt(product) + 1;

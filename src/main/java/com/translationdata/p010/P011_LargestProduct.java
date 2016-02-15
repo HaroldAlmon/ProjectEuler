@@ -1,5 +1,5 @@
 package com.translationdata.p010;
-/** Strategy: Brute Force, Single Abstract Method Interface */
+/** Strategy: Brute Force, Single Abstract Method Interfaces instead of Lambda expressions */
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
@@ -44,7 +44,7 @@ public class P011_LargestProduct {
 		}
 	};
 	
-	MatrixProduct risingDiagonalMatrixProduct = new MatrixProduct() {
+	MatrixProduct risingDiagonalProduct = new MatrixProduct() {
 		@Override
 		public int product(int[][] matrix, int row, int col) {
 			return    matrix[row+3][col] 
@@ -56,35 +56,15 @@ public class P011_LargestProduct {
 	
 	public int largestProduct() {
 		final int maximumProduct = 
-			max(rowsMaximum(matrix, columnProduct), 
-				max(columnsMaximum(matrix, rowProduct),
-					max(fallingDiagonalsMaximum(matrix, fallingDiagonalProduct),
-						risingDiagonalsMaximum(matrix, risingDiagonalMatrixProduct))));
+			max(columnProduct(matrix, columnProduct, matrix.length), 
+				max(columnProduct(matrix, fallingDiagonalProduct, matrix.length - 4),
+					max(columnProduct(matrix, risingDiagonalProduct, matrix.length - 4),
+						rowProduct(matrix, rowProduct) )));
 		
 		return maximumProduct;
 	}
-
-	private int rowsMaximum(final int[][] matrix, MatrixProduct matrixProduct) {
-		int product = 0;
-		for (int row = 0; row < matrix.length; row++) {
-			for (int col = 0; col < matrix[0].length - 4; col++) {
-				product =  max(product, matrixProduct.product(matrix, row, col));
-			}
-		}
-		return product;
-	}
 	
-	private int fallingDiagonalsMaximum(final int[][] matrix, MatrixProduct matrixProduct) {
-		int product = 0;
-		for (int row = 0; row < matrix.length - 4; row++) {
-			for (int col = 0; col < matrix[0].length - 4; col++) {
-				product = max(product, matrixProduct.product(matrix, row, col));
-			}
-		}
-		return product;
-	}
-	
-	private int columnsMaximum(final int[][] matrix, MatrixProduct matrixProduct) {
+	private int rowProduct(final int[][] matrix, MatrixProduct matrixProduct) {
 		int product = 0;
 		for (int col = 0; col < matrix[0].length; col++) {
 			for (int row = 0; row < matrix.length - 4; row++) {
@@ -94,10 +74,10 @@ public class P011_LargestProduct {
 		return product;
 	}
 	
-	private int risingDiagonalsMaximum(final int[][] matrix, MatrixProduct matrixProduct) {
+	private int columnProduct(final int[][] matrix, MatrixProduct matrixProduct, int upperLimit) {
 		int product = 0;
-		for (int col = 0; col < matrix[0].length - 4; col++) {
-			for (int row = 0; row < matrix.length - 4; row++) {
+		for (int row = 0; row < upperLimit; row++) {
+			for (int col = 0; col < matrix[0].length - 4; col++) {
 				product = max(product, matrixProduct.product(matrix, row, col));
 			}
 		}

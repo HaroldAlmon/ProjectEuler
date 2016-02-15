@@ -1,5 +1,5 @@
 package com.translationdata.p010;
-/** Strategy: Brute Force */
+/** Strategy: Brute Force, Single Abstract Method Interface */
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
@@ -8,31 +8,48 @@ import static java.lang.Math.max;
 
 import JUnitTests.FastTest;
 
-interface RowMatrixProduct {
-	public int product(int[][] matrix);
+interface MatrixProduct {
+	public int product(int[][] matrix, int row, int col);
 }
 
 @Category(FastTest.class)
 public class P011_LargestProduct {
-	private int rowMatrixProductImpl(RowMatrixProduct rowMatrixProduct) {
-		return -1;
-	}
+	MatrixProduct rowMatrixProduct = new MatrixProduct() {
+		@Override
+		public int product(int[][] matrix, int row, int col) {
+			return    matrix[row][col] 
+					* matrix[row][col+1] 
+					* matrix[row][col+2] 
+					* matrix[row][col+3];
+		}
+	};
+	
+	MatrixProduct fallingDiagonalMatrixProduct = new MatrixProduct() {
+		@Override
+		public int product(int[][] matrix, int row, int col) {
+			return    matrix[row][col] 
+					* matrix[row+1][col+1] 
+					* matrix[row+2][col+2] 
+					* matrix[row+3][col+3];
+		}
+	};
 	
 	public int largestProduct() {
 		int maximumProduct = 0;
-	
-		maximumProduct = max(rowsMaximum(matrix), maximumProduct);
+	 
+		maximumProduct = max(rowsMaximum(matrix, rowMatrixProduct), maximumProduct);
+		
 		maximumProduct = max(columnsMaximum(matrix), maximumProduct);
 		maximumProduct = max(fallingDiagonalsMaximum(matrix), maximumProduct);
 		maximumProduct = max(risingDiagonalsMaximum(matrix), maximumProduct);
 		return maximumProduct;
 	}
 
-	private int rowsMaximum(final int[][] matrix) {
+	private int rowsMaximum(final int[][] matrix, MatrixProduct matrixProduct) {
 		int product = 0;
 		for (int row = 0; row < matrix.length; row++) {
 			for (int col = 0; col < matrix[0].length - 4; col++) {
-				product =  max(product, matrix[row][col] * matrix[row][col+1] * matrix[row][col+2] * matrix[row][col+3]);
+				product =  max(product, matrixProduct.product(matrix, row, col));
 			}
 		}
 		return product;

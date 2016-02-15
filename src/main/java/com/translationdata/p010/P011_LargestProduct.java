@@ -44,15 +44,24 @@ public class P011_LargestProduct {
 		}
 	};
 	
+	MatrixProduct risingDiagonalMatrixProduct = new MatrixProduct() {
+		@Override
+		public int product(int[][] matrix, int row, int col) {
+			return    matrix[row+3][col] 
+					* matrix[row+2][col+1] 
+					* matrix[row+1][col+2] 
+					* matrix[row][col+3];
+		}
+	};
+	
 	public int largestProduct() {
 		int maximumProduct = 0;
 	 
 		maximumProduct = max(rowsMaximum(matrix, rowMatrixProduct), maximumProduct);
 		maximumProduct = max(columnsMaximum(matrix, colMatrixProduct), maximumProduct);
-		
 		maximumProduct = max(fallingDiagonalsMaximum(matrix, fallingDiagonalMatrixProduct), maximumProduct);
+		maximumProduct = max(risingDiagonalsMaximum(matrix, risingDiagonalMatrixProduct), maximumProduct);
 		
-		maximumProduct = max(risingDiagonalsMaximum(matrix), maximumProduct);
 		return maximumProduct;
 	}
 
@@ -86,11 +95,11 @@ public class P011_LargestProduct {
 		return product;
 	}
 	
-	private int risingDiagonalsMaximum(final int[][] matrix) {
+	private int risingDiagonalsMaximum(final int[][] matrix, MatrixProduct matrixProduct) {
 		int product = 0;
 		for (int col = 0; col < matrix[0].length - 4; col++) {
 			for (int row = 0; row < matrix.length - 4; row++) {
-				product = max(product, matrix[row+3][col] * matrix[row+2][col+1] * matrix[row+1][col+2] * matrix[row][col+3]);
+				product = max(product, matrixProduct.product(matrix, row, col));
 			}
 		}
 		return product;

@@ -14,7 +14,7 @@ interface MatrixProduct {
 
 @Category(FastTest.class)
 public class P011_LargestProduct {
-	MatrixProduct rowMatrixProduct = new MatrixProduct() {
+	MatrixProduct columnProduct = new MatrixProduct() {
 		@Override
 		public int product(int[][] matrix, int row, int col) {
 			return    matrix[row][col] 
@@ -24,7 +24,7 @@ public class P011_LargestProduct {
 		}
 	};
 	
-	MatrixProduct fallingDiagonalMatrixProduct = new MatrixProduct() {
+	MatrixProduct fallingDiagonalProduct = new MatrixProduct() {
 		@Override
 		public int product(int[][] matrix, int row, int col) {
 			return    matrix[row][col] 
@@ -34,7 +34,7 @@ public class P011_LargestProduct {
 		}
 	};
 	
-	MatrixProduct colMatrixProduct = new MatrixProduct() {
+	MatrixProduct rowProduct = new MatrixProduct() {
 		@Override
 		public int product(int[][] matrix, int row, int col) {
 			return    matrix[row][col] 
@@ -55,12 +55,10 @@ public class P011_LargestProduct {
 	};
 	
 	public int largestProduct() {
-		int maximumProduct = 0;
-	 
-		maximumProduct = 
-			max(rowsMaximum(matrix, rowMatrixProduct), 
-				max(columnsMaximum(matrix, colMatrixProduct),
-					max(fallingDiagonalsMaximum(matrix, fallingDiagonalMatrixProduct),
+		final int maximumProduct = 
+			max(rowsMaximum(matrix, columnProduct), 
+				max(columnsMaximum(matrix, rowProduct),
+					max(fallingDiagonalsMaximum(matrix, fallingDiagonalProduct),
 						risingDiagonalsMaximum(matrix, risingDiagonalMatrixProduct))));
 		
 		return maximumProduct;

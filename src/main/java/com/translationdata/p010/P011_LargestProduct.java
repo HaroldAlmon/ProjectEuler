@@ -57,10 +57,11 @@ public class P011_LargestProduct {
 	public int largestProduct() {
 		int maximumProduct = 0;
 	 
-		maximumProduct = max(rowsMaximum(matrix, rowMatrixProduct), maximumProduct);
-		maximumProduct = max(columnsMaximum(matrix, colMatrixProduct), maximumProduct);
-		maximumProduct = max(fallingDiagonalsMaximum(matrix, fallingDiagonalMatrixProduct), maximumProduct);
-		maximumProduct = max(risingDiagonalsMaximum(matrix, risingDiagonalMatrixProduct), maximumProduct);
+		maximumProduct = 
+			max(rowsMaximum(matrix, rowMatrixProduct), 
+				max(columnsMaximum(matrix, colMatrixProduct),
+					max(fallingDiagonalsMaximum(matrix, fallingDiagonalMatrixProduct),
+						risingDiagonalsMaximum(matrix, risingDiagonalMatrixProduct))));
 		
 		return maximumProduct;
 	}

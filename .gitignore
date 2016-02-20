@@ -1,7 +1,7 @@
 /bin/
 doc
 build.sbt
-Euler*.jar
+*.jar
 RemoteSystemsTempFiles
 Servers
 srcScala/.idea
@@ -18,3 +18,4 @@ project/
 .metadata/
 .project
 .settings/
+*.jpage

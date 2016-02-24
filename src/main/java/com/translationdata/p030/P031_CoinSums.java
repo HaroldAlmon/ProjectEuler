@@ -69,7 +69,7 @@ public class P031_CoinSums {
 	void subDivideWith5Pence(int pence) {
 		do {
 			if( pence > 0 ) {
-				calculate2PencePartitions( pence );
+				subDivideWith2Pence( pence );
 			} else if ( pence == 0 ) {
 				count += 1;
 			}
@@ -77,8 +77,13 @@ public class P031_CoinSums {
 		} while ( pence >= 0 );
 	}
 	
-	void calculate2PencePartitions(int pence) {
-		count += (pence / 2 + 1);
+	void subDivideWith2Pence(int pence) {
+		count += pence / 2;
+		subDivideWith1Pence(pence);
+	}
+	
+	void subDivideWith1Pence(int pence) {
+		count += 1;
 	}
 	
 	@Test

@@ -1,7 +1,6 @@
 # ProjectEuler
 This is a place where I can save my solutions to the ProjectEuler problems.
-Keep in mind that these are
-my solutions and the may not be the most efficient or best solution
+Keep in mind that these are my solutions and they may not be the most efficient or best solution
 but they produce the correct answers.
 
 You can find the problems at [ProjectEuler.net](https://projecteuler.net/archives)

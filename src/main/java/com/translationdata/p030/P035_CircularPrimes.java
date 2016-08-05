@@ -1,8 +1,8 @@
 package com.translationdata.p030;
 
-import misc.SieveOfEratosthenes;
-
 import org.junit.Test;
+
+import com.translationdata.util.SieveOfEratosthenes;
 
 public class P035_CircularPrimes {
 	SieveOfEratosthenes sieve = new SieveOfEratosthenes();

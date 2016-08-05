@@ -12,7 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import JUnitTests.SlowTest;
+import com.translationdata.JUnitTests.SlowTest;
 /** Strategy: Brute Force. */
 @Category(SlowTest.class)
 public class P007_10001PrimeLinkList {

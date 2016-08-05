@@ -1,4 +1,4 @@
-package JUnitTests;
+package com.translationdata.JUnitTests;
 
 import org.junit.runner.JUnitCore;
 

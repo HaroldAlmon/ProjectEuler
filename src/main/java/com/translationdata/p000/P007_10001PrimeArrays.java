@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import JUnitTests.SlowTest;
+import com.translationdata.JUnitTests.SlowTest;
 
 /** Strategy: Brute Force. */
 @Category(SlowTest.class)

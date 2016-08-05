@@ -1,4 +1,4 @@
-package JUnitTests;
+package com.translationdata.JUnitTests;
 
 /** Strategy: Brute Force. */
 import static org.junit.Assert.assertEquals;

@@ -1,9 +1,9 @@
 package com.translationdata.p240;
 import java.util.Set;
 
-import misc.ProperDivisors;
-
 import org.junit.Test;
+
+import com.translationdata.util.ProperDivisors;
 
 /**
  * @author Harold Almon

@@ -3,7 +3,8 @@ package com.translationdata.p000;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import JUnitTests.FastTest;
+import com.translationdata.JUnitTests.FastTest;
+
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 

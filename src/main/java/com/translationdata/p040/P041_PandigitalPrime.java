@@ -5,8 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import com.translationdata.p020.P024_LexicographicPermutationsDesc;
-
-import misc.SieveOfEratosthenes;
+import com.translationdata.util.SieveOfEratosthenes;
 
 public class P041_PandigitalPrime {
 	public long getNumber() {

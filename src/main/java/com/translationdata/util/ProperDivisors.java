@@ -1,4 +1,4 @@
-package misc;
+package com.translationdata.util;
 
 import java.util.HashMap;
 import java.util.HashSet;

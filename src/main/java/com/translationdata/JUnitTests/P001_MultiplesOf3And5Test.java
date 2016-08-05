@@ -1,4 +1,4 @@
-package JUnitTests;
+package com.translationdata.JUnitTests;
 
 import static org.junit.Assert.assertEquals;
 

@@ -6,8 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import JUnitTests.FastTest;
-import JUnitTests.SlowTest;
+import com.translationdata.JUnitTests.FastTest;
+import com.translationdata.JUnitTests.SlowTest;
 public class P010_SummationOfPrimes {
 	static int testNo = 1;
 

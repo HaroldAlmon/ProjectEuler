@@ -1,4 +1,4 @@
-package misc;
+package com.translationdata.util;
 import org.junit.runners.Suite;
 import org.junit.runner.RunWith;
 

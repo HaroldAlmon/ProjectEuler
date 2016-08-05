@@ -4,9 +4,10 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import static java.lang.Math.max;
 
-import JUnitTests.FastTest;
+import com.translationdata.JUnitTests.FastTest;
+
+import static java.lang.Math.max;
 
 interface MatrixProduct {
 	public int product(int[][] matrix, int row, int col);

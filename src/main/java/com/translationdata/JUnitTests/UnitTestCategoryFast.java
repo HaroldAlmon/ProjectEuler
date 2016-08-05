@@ -1,4 +1,4 @@
-package JUnitTests;
+package com.translationdata.JUnitTests;
 
 import org.junit.experimental.categories.Categories;
 import org.junit.experimental.categories.Categories.IncludeCategory;

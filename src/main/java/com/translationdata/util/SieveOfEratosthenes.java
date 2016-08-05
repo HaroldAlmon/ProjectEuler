@@ -1,4 +1,4 @@
-package misc;
+package com.translationdata.util;
 
 public class SieveOfEratosthenes {
 	private boolean[] primes;

@@ -2,7 +2,7 @@ package com.translationdata.p030;
 
 import org.junit.Test;
 
-import misc.SieveOfEratosthenes;
+import com.translationdata.util.SieveOfEratosthenes;
 /** Strategy: Brute Force. */
 public class P037_TruncatablePrimes {
 	SieveOfEratosthenes sieve = new SieveOfEratosthenes();

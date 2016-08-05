@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import JUnitTests.FastTest;
+import com.translationdata.JUnitTests.FastTest;
 
 /** Strategy: Simple mathematics. */
 @Category(FastTest.class)

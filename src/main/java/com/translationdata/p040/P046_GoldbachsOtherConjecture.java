@@ -2,8 +2,10 @@ package com.translationdata.p040;
 
 import static org.junit.Assert.assertEquals;
 import java.util.BitSet;
-import misc.SieveOfEratosthenes;
+
 import org.junit.Test;
+
+import com.translationdata.util.SieveOfEratosthenes;
 
 public class P046_GoldbachsOtherConjecture {
 	public int findFirstFailure( int upperPrime, int upperRoot ) {

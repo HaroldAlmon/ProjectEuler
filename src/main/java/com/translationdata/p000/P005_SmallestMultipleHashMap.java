@@ -6,7 +6,8 @@ import java.util.Map;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import JUnitTests.FastTest;
+import com.translationdata.JUnitTests.FastTest;
+
 import static org.junit.Assert.assertEquals;
 @Category( FastTest.class )
 public class P005_SmallestMultipleHashMap {

@@ -1,7 +1,5 @@
 package com.translationdata.JUnitTests;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,6 +7,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
+
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import com.translationdata.p000.P004_PalindromeProduct;
 
@@ -37,6 +38,6 @@ public class P004_PalindromeProductTest {
 
 		result = palindromeProduct.largestPalindromeProduct(input);
 		System.out.printf("PalindromeProductTest = %d%n", result);
-		assertEquals( expectedResult, result);
+		assertThat( "Not the largest palindrome product", result, is(expectedResult) );
 	}
 }

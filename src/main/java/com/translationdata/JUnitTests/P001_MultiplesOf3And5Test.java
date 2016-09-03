@@ -1,7 +1,5 @@
 package com.translationdata.JUnitTests;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,6 +7,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
+
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import com.translationdata.p000.P001_MultiplesOf3And5;
 
@@ -33,11 +34,11 @@ public class P001_MultiplesOf3And5Test {
 	}
 	
 	@Test
-	public void MultiplesOf3And5() {
+	public void isMultiplesOf3And5() {
 		int result;
 
 		result = multiplesOf3And5.multiplesOf3And5(input);
-		assertEquals( expectedResult, result);
+		assertThat("Incorrect sum of multiples of 3 or 5 below 1,000", result, is(expectedResult));
 		System.out.printf("multiplesOf3And5: %s%n", result);
 	}
 }

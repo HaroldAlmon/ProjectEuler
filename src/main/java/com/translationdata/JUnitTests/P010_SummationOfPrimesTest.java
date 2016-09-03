@@ -11,6 +11,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 import com.translationdata.p010.P010_SummationOfPrimes;
 
 @RunWith(Parameterized.class)
@@ -39,7 +42,7 @@ public class P010_SummationOfPrimesTest {
 	@Test( timeout = 500 * oneSecond )
 	public void SummationOfPrimes() {
 		long primeSum = summationOfPrimes.primesSum( limit );
-		assertEquals( prime, primeSum );
+		assertThat( primeSum, is(prime));
 		System.out.printf("P010_SummationOfPrimesTest %d%n", primeSum);
 	}
 	

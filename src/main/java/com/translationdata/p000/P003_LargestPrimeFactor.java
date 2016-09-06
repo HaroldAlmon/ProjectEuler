@@ -1,11 +1,12 @@
 package com.translationdata.p000;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.Arrays;
 
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import com.translationdata.JUnitTests.FastTest;
 
@@ -95,6 +96,6 @@ public class P003_LargestPrimeFactor {
 	public void GetLargestPrimeFactorOf600851475143() {
 		long result = largestPrimeFactor(600851475143L);
 		System.out.printf("largestFactor(600851475143) = %d%n", result);
-		assertEquals("Maximum prime factor of 600851475143", 6857, result);
+		assertThat("Maximum prime factor of 600851475143", result, is(6857L));
 	}
 }

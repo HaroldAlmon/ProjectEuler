@@ -5,6 +5,9 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 import com.translationdata.JUnitTests.FastTest;
 
 /** Strategy: Simple mathematics. */
@@ -30,6 +33,6 @@ public class P002_EvenFibonacciNumbers {
 	public void SumOfEvenTermsLessThanFourMillion() {
 		int result = fiboSum(4_000_000);
 		System.out.printf("fiboSum(4_000_000) = %s%n", result);
-		assertEquals( "Incorrect sum of even Fibo numbers that do not exceed 4 million", 4613732, result );
+		assertThat( "Incorrect sum of even Fibo numbers that do not exceed 4 million", result, is(4613732) );
 	}
 }

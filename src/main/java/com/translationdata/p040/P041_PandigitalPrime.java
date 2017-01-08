@@ -2,6 +2,9 @@ package com.translationdata.p040;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.PrintStream;
+import java.util.function.Function;
+
 import org.junit.Test;
 
 import com.translationdata.p020.P024_LexicographicPermutationsDesc;
@@ -47,8 +50,8 @@ public class P041_PandigitalPrime {
 	    return result;
 	}
 	
-	private boolean isPrime( int number ) {
-		return ( (( number - 1 ) % 6) == 0 ) || ( ( ( number + 1 ) % 6 ) == 0 );
+	private PrintStream printMessages( Function<Void, PrintStream> function ) {
+        return function.apply(null);
 	}
 
 	@Test
@@ -56,7 +59,17 @@ public class P041_PandigitalPrime {
 		long number;
 		P041_PandigitalPrime pandigitalPrime = new P041_PandigitalPrime();
 		number = pandigitalPrime.getNumber();
-		System.out.printf( "number = %d%n", number );
+		
+		// print messages
+		System.out.printf( "1. number = %d%n", number );
+		System.out.printf( "2. number = %d%n", number );
+		
+		
+		printMessages( (Void v) -> 
+		{ 
+		    System.out.printf( "3. number = %d%n", number );
+		    return System.out.printf( "4. number = %d%n", number);
+		} );
 		assertEquals( 7652413, number );
 	}
 }

@@ -50,8 +50,8 @@ public class P041_PandigitalPrime {
 	    return result;
 	}
 	
-	private PrintStream printMessages( Function<Void, PrintStream> function ) {
-        return function.apply(null);
+	private void printMessages( Runnable function ) {
+        function.run();
 	}
 
 	@Test
@@ -65,10 +65,10 @@ public class P041_PandigitalPrime {
 		System.out.printf( "2. number = %d%n", number );
 		
 		
-		printMessages( (Void v) -> 
+		printMessages( () -> 
 		{ 
 		    System.out.printf( "3. number = %d%n", number );
-		    return System.out.printf( "4. number = %d%n", number);
+		    System.out.printf( "4. number = %d%n", number);
 		} );
 		assertEquals( 7652413, number );
 	}

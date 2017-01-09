@@ -62,14 +62,8 @@ public class P041_PandigitalPrime {
 		
 		// print messages
 		System.out.printf( "1. number = %d%n", number );
-		System.out.printf( "2. number = %d%n", number );
 		
-		
-		printMessages( () -> 
-		{ 
-		    System.out.printf( "3. number = %d%n", number );
-		    System.out.printf( "4. number = %d%n", number);
-		} );
+		printMessages( () -> System.out.printf( "3. number = %d%n", number ) );
 		assertEquals( 7652413, number );
 	}
 }

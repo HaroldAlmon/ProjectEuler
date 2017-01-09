@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Supplier;
 
 import org.junit.Test;
 
@@ -44,12 +45,16 @@ public class P042_CodedTriangleNumbers {
 		return wordValue;
 	}
 	
+    Boolean bufferedReadIsNull(Supplier<Boolean> function) {
+        return function.get();
+    }
+    
 	public String[] getNames(String fileName) throws IOException {
 		FileInputStream fileInputStream = new FileInputStream(fileName);
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
-		String line = null;
+		String line = bufferedReader.readLine();
 		
-		if((line = bufferedReader.readLine()) == null) {
+		if(bufferedReadIsNull( () -> line == null) ) {
 			System.out.printf("%s: File read error! Cannot read %s%n", this.getClass().getName(), fileName);
 			System.exit(-1);
 		}

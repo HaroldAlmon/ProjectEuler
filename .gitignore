@@ -1,7 +1,6 @@
 /bin/
 doc
 build.sbt
-*.jar
 RemoteSystemsTempFiles
 Servers
 srcScala/.idea

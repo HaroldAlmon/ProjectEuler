@@ -10,6 +10,7 @@ import org.junit.Test;
 public class P125_PalindromicSums {
 	Set<Long> dupeFilter = new HashSet<>();
 	boolean debug = false;
+	
 	public long pailindromeSum( int upperLimit ) {
 		long palindromeSum = 0;
 		int upperLimitRoot = (int) Math.floor( Math.sqrt( upperLimit ) );

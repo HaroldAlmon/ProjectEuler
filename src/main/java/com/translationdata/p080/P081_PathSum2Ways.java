@@ -69,11 +69,8 @@ public class P081_PathSum2Ways {
 	}
 
 	private int minimumNonZeroValue(final int[][] pyramid, int row, int col) {
-		int nextRowLeftColumn;
-		int nextRowRightColumn;
-		
-		nextRowLeftColumn = pyramid[row+1][col];
-		nextRowRightColumn = pyramid[row+1][col+1];
+		final int nextRowLeftColumn = pyramid[row+1][col];
+		final int nextRowRightColumn = pyramid[row+1][col+1];
 
 		if (nextRowLeftColumn != 0 && nextRowRightColumn != 0)
 			return Math.min( nextRowLeftColumn, nextRowRightColumn );
@@ -165,6 +162,7 @@ public class P081_PathSum2Ways {
 				{2132,8992,8160,5782,4420,3371,3798,5054,552,5631,7546,4716,1332,6486,7892,7441,4370,6231,4579,2121,8615,1145,9391,1524,1385,2400,9437,2454,7896,7467,2928,8400,3299,4025,7458,4703,7206,6358,792,6200,725,4275,4136,7390,5984,4502,7929,5085,8176,4600,119,3568,76,9363,6943,2248,9077,9731,6213,5817,6729,4190,3092,6910,759,2682,8380,1254,9604,3011,9291,5329,9453,9746,2739,6522,3765,5634,1113,5789},
 				{5304,5499,564,2801,679,2653,1783,3608,7359,7797,3284,796,3222,437,7185,6135,8571,2778,7488,5746,678,6140,861,7750,803,9859,9918,2425,3734,2698,9005,4864,9818,6743,2475,132,9486,3825,5472,919,292,4411,7213,7699,6435,9019,6769,1388,802,2124,1345,8493,9487,8558,7061,8777,8833,2427,2238,5409,4957,8503,3171,7622,5779,6145,2417,5873,5563,5693,9574,9491,1937,7384,4563,6842,5432,2751,3406,7981}
 			};
+		
 		int pathSum = pathSum2Ways(input);
 		System.out.printf("pathSum2Ways() = %d%n", pathSum);
 		assertEquals(427337, pathSum);

@@ -31,7 +31,7 @@ public class P092_SquareDigitChains {
 			for (int i = 0; i < s.length(); i++) {
 				//digit = Integer.parseInt(s.substring(i, i + 1)); // Slow, extracts a String
 				//digit = Character.getNumericValue(s.charAt(i)); // Faster, extracts a character and uses wrapper class function
-				digit = (int) s.charAt(i) & 0x0000_000F; // Fastest, extracts a chracter and uses bitwise
+				digit = (int) s.charAt(i) & 0x0000_000F; // Fastest, extracts a character and uses bitwise AND
 				total += digit * digit;
 			}
 			if (is89cycle(total))

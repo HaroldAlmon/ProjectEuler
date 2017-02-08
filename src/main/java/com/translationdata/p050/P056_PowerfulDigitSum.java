@@ -4,7 +4,6 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,19 +15,15 @@ public class P056_PowerfulDigitSum {
   int powerfulDigitSum() {
     System.out.println("P056_PowerfulDigitSum");
     
-    final List<Integer> range1to99 = IntStream
-    		.rangeClosed(1, 99)
-    	    .boxed()
-    	    .collect(Collectors.toList());
-    
-    List<Integer> powers = new ArrayList<Integer>();
-    
-    for(int base : range1to99) {
-        for(int exponent : range1to99) {
-    		BigInteger bigBase = new BigInteger(Integer.toString(base));
-    		powers.add(stringSum( bigBase.pow(exponent).toString() ) );
-        }
-    }
+    List<Integer> powers = IntStream.range(1,100)
+        .flatMap( base -> IntStream.range(1,100)
+        .map( exponent -> 
+            {
+                BigInteger bigBase = new BigInteger(Integer.toString(base));
+                return stringSum( bigBase.pow(exponent).toString() );
+            } ))
+        .boxed()
+        .collect(Collectors.toList());
     
     return Collections.max(powers).intValue();
   }

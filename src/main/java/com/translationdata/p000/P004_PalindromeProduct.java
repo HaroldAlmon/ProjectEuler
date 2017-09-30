@@ -1,19 +1,8 @@
 package com.translationdata.p000;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
-import org.junit.Test;
 /** Strategy: Brute Force. */
+/* Note: Unit tests are in the JUnitTests package */
 public class P004_PalindromeProduct {
-	@Test(timeout=100, expected=Exception.class)
-	public void LengthLessThan1ThrowsException() throws Exception {
-		int result = largestPalindromeProduct(-1);
-		System.out.printf("largestPalindromeProduct = %d%n", result);
-		fail("Should not reach this position because the bad input should have caused an exception.");
-		assertEquals("Should not reach this position because the bad input should have caused an exception.", 0, result);
-	}
-
 	public int largestPalindromeProduct(final int numberLength) throws Exception {
 	if (numberLength < 1) 
 			throw new Exception("Number length must be greater than zero");
@@ -26,7 +15,7 @@ public class P004_PalindromeProduct {
 
 	private int reverseEnumerateNum1(final int upperLimit, final int largestProduct) {
 		int product = largestProduct;
-		for (int num1 = upperLimit; num1 > upperLimit/10  ; num1--) {
+		for (int num1 = upperLimit; num1 > upperLimit * 0.9  ; num1--) {
 			product = reverseEnumerateNum2(upperLimit, product, num1);
 		}
 		return product;
@@ -35,7 +24,7 @@ public class P004_PalindromeProduct {
 	private int reverseEnumerateNum2(final int upperLimit, final int inputProduct, final int num1) {
 		int largestProduct = inputProduct;
 		int product;
-		for (int num2 = upperLimit; num2 > upperLimit/10; num2--) {
+		for (int num2 = upperLimit; num2 > upperLimit * 0.9; num2--) {
 			product = num1 * num2;
 			if (isPalindrome(product) )
 			{

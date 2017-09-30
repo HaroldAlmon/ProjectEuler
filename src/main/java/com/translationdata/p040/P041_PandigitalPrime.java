@@ -2,7 +2,6 @@ package com.translationdata.p040;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.concurrent.Callable;
 import java.util.function.Supplier;
 
 import org.junit.Test;
@@ -54,6 +53,7 @@ public class P041_PandigitalPrime {
         function.run();
 	}
 	
+	// The Supplier returns a Long value...
 	private Long getNumber( Supplier<Long> function ) {
 		return function.get();
 	}
@@ -63,9 +63,6 @@ public class P041_PandigitalPrime {
 		long number;
 		P041_PandigitalPrime pandigitalPrime = new P041_PandigitalPrime();
 		number = getNumber( () -> pandigitalPrime.getNumber() );
-		
-		// print messages
-		//System.out.printf( "1. number = %d%n", number );
 		
 		printMessages( () -> System.out.printf( "3. number = %d%n", number ) );
 		assertEquals( 7652413, number );

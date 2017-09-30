@@ -4,10 +4,8 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Comparator;
+import java.util.Optional;
 import java.util.stream.IntStream;
 
 import org.junit.Test;
@@ -16,33 +14,19 @@ public class P056_PowerfulDigitSum {
   int powerfulDigitSum() {
     System.out.println("P056_PowerfulDigitSum");
     
-    final List<Integer> range1to99 = IntStream
-    		.rangeClosed(1, 99)
-    	    .boxed()
-    	    .collect(Collectors.toList());
+    Optional<Integer> maxDigitSum = 
+        IntStream.range(1,100).flatMap( base -> 
+        IntStream.range(1,100).map( exponent -> 
+            {
+                BigInteger bigBase = new BigInteger(Integer.toString(base));
+                return bigBase.pow(exponent).toString().chars().reduce(0,(a, b) -> a + b - '0');
+            }
+        ))
+        .boxed()
+        .max(Comparator.naturalOrder());
     
-    List<Integer> powers = new ArrayList<Integer>();
-    
-    for(int base : range1to99) {
-        for(int exponent : range1to99) {
-    		BigInteger bigBase = new BigInteger(Integer.toString(base));
-    		powers.add(stringSum( bigBase.pow(exponent).toString() ) );
-        }
-    }
-    
-    return Collections.max(powers).intValue();
+    return maxDigitSum.get();
   }
-
-  int stringSum(String numberString){
-    return stringSumImpl(numberString, 0);
-  }
-  
-  int stringSumImpl(String numberString, int sum) {
-      if ( numberString.isEmpty() )
-        return sum;
-      else
-        return stringSumImpl(numberString.substring(1), sum + numberString.charAt(0) - '0');
-    }
   
   @Test 
   public void testP056_PowerfulDigitSum() {

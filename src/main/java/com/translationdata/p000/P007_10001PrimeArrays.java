@@ -59,6 +59,6 @@ public class P007_10001PrimeArrays {
 	public void PrimeNumber() {
 		long prime = primeNumber( 10_001 );
 		assertEquals( "Incorrect prime number", 104_743, prime );
-		System.out.printf("Prime = %s%n", prime);
+		System.out.printf(this.getClass().getSimpleName() + ": Prime = %s%n", prime);
 	}
 }

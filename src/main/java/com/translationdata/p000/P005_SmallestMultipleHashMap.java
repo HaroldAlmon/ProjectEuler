@@ -5,6 +5,8 @@ import static org.junit.Assert.assertEquals;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.translationdata.JUnitTests.FastTest;
@@ -29,7 +31,7 @@ public class P005_SmallestMultipleHashMap {
 		long factorsProduct = 1;
 
 		factorsProduct = mutiplyFactors( maximumFactorCount, factorsProduct );
-		System.out.printf( "smallestMultiple( %d ) = %d%n", maxDivisor, factorsProduct );
+		System.out.printf( "\tsmallestMultiple( %d ) = %d%n", maxDivisor, factorsProduct );
 		return factorsProduct;
 	}
 
@@ -84,6 +86,13 @@ public class P005_SmallestMultipleHashMap {
 
 	private void incrementFactorCount( final Map<Integer, Integer> DivisorFactorCount, final int[] factors,	final int factIdx ) {
 		DivisorFactorCount.put( factors[factIdx], DivisorFactorCount.get( factors[factIdx] ) + 1 );
+	}
+	
+	@BeforeClass
+	public static void printClassName() {
+		final String name = P005_SmallestMultipleHashMap.class.getName();
+		final int lastDot = name.lastIndexOf('.');
+		System.out.println( name.substring(lastDot + 1) + ":" );
 	}
 	
 	@Test( timeout = 500 )

@@ -30,7 +30,7 @@ public class P002_EvenFibonacciNumbers {
 	@Test(timeout=500)
 	public void SumOfEvenTermsLessThanFourMillion() {
 		int result = fiboSum(4_000_000);
-		System.out.printf("fiboSum(4_000_000) = %s%n", result);
+		System.out.printf(this.getClass().getSimpleName()+ ": fiboSum(4_000_000) = %s%n", result);
 		assertThat( "Incorrect sum of even Fibo numbers that do not exceed 4 million", result, is(4613732) );
 	}
 }

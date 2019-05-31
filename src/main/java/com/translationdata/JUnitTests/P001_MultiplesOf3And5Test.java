@@ -39,6 +39,6 @@ public class P001_MultiplesOf3And5Test {
 
 		result = multiplesOf3And5.multiplesOf3And5(input);
 		assertThat("Incorrect sum of multiples of 3 or 5 below 1,000", result, is(expectedResult));
-		System.out.printf("multiplesOf3And5: %s%n", result);
+		System.out.printf(this.getClass().getSimpleName() + ": multiplesOf3And5: %s%n", result);
 	}
 }

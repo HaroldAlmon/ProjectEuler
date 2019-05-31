@@ -42,7 +42,7 @@ public class P006_SumSquareDifference {
 	@Test(timeout = 500)
 	public void SumSquareDifference() {
 		long sum = sumSquareDifference(100);
-		System.out.printf("sumSquareDifference(%d) = %d%n", 100, sum);
+		System.out.printf(this.getClass().getSimpleName() + ": sumSquareDifference(%d) = %d%n", 100, sum);
 		assertEquals("Incorrect sum", 25164150, sum);
 	}
 

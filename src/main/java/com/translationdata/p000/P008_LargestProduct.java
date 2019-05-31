@@ -13,7 +13,7 @@ public class P008_LargestProduct {
 	 @Test( timeout = 500 )
 	 public void MaximumProduct() {
 		long product = maximumProductOfDigits( veryLongNumber, 13 );
-		System.out.printf( "maximumProduct( 13 ) = %d%n", product );
+		System.out.printf( this.getClass().getSimpleName() + ": maximumProduct( 13 ) = %d%n", product );
 		assertEquals( "Incorrect product", product, 23514624000L );
 	 }
 

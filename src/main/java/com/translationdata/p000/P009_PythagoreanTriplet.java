@@ -50,7 +50,7 @@ public class P009_PythagoreanTriplet {
 	@Test(timeout = 500)
 	public void PythagoreanTriplet() {
 		int result = pythagoreanTriplet(1000);
-		System.out.printf("pythagoreanTriplet(1000) = %d%n", result);
+		System.out.printf(this.getClass().getSimpleName() + ": pythagoreanTriplet(1000) = %d%n", result);
 		assertEquals("Incorrect product", 31875000, result);
 	}
 }

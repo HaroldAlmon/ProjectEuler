@@ -96,7 +96,7 @@ public class P003_LargestPrimeFactor {
 	@Test(timeout=100)
 	public void GetLargestPrimeFactorOf600851475143() {
 		long result = largestPrimeFactor(600851475143L);
-		System.out.printf("largestFactor(600851475143) = %d%n", result);
+		System.out.printf(this.getClass().getSimpleName() + ": largestFactor(600851475143) = %d%n", result);
 		assertThat("Maximum prime factor of 600851475143", result, is(6857L));
 	}
 }

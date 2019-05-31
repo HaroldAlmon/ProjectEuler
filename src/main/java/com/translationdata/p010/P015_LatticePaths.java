@@ -20,8 +20,9 @@ import static org.junit.Assert.assertTrue;
 
 import java.math.BigInteger;
 
-import org.junit.Ignore;
 import org.junit.Test;
+
+//import jdk.nashorn.internal.ir.annotations.Ignore;
 public class P015_LatticePaths {
 	public String latticePaths(int latticeSize) {
 		String result;
@@ -54,7 +55,7 @@ public class P015_LatticePaths {
 	}
 	
 	@Test(timeout = 500)
-	@Ignore
+	//@Ignore
 	public void CountLattice6x6() {
 		assertTrue( latticePaths(2).equals("6") );
 	}

@@ -1,6 +1,7 @@
 package com.translationdata.p040;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.BitSet;
 
 import org.junit.Test;

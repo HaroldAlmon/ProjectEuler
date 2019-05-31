@@ -1,14 +1,15 @@
 package com.translationdata.p000;
+import static org.junit.Assert.assertEquals;
+
 /** Strategy: Brute Force. */
 import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 import com.translationdata.JUnitTests.FastTest;
+import org.junit.experimental.categories.Category;
 
-import static org.junit.Assert.assertEquals;
 @Category( FastTest.class )
 public class P005_SmallestMultipleHashMap {
 	long smallestMultiple( final int maxDivisor ) {

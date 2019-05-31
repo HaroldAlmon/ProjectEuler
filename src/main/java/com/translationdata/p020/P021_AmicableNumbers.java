@@ -7,9 +7,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 import com.translationdata.JUnitTests.FastTest;
+
+import org.junit.experimental.categories.Category;
 
 @Category(FastTest.class)
 public class P021_AmicableNumbers {

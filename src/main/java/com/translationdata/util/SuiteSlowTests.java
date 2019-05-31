@@ -1,6 +1,6 @@
 package com.translationdata.util;
-import org.junit.runners.Suite;
 import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
 import com.translationdata.p010.P010_SummationOfPrimes;
 import com.translationdata.p010.P014_CollatzSequence;

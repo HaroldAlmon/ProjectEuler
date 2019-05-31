@@ -2,9 +2,10 @@ package com.translationdata.p000;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 import com.translationdata.JUnitTests.FastTest;
+
+import org.junit.experimental.categories.Category;
 
 /** Strategy: Simple Mathematics. */
 @Category( FastTest.class )

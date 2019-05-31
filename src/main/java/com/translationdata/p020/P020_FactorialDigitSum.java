@@ -1,7 +1,9 @@
 package com.translationdata.p020;
 /** Strategy: Simple Mathematics */
 import static org.junit.Assert.assertEquals;
+
 import java.math.BigInteger;
+
 import org.junit.Test;
 
 public class P020_FactorialDigitSum {

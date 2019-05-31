@@ -4,10 +4,11 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 import com.translationdata.JUnitTests.FastTest;
 import com.translationdata.JUnitTests.SlowTest;
+
+import org.junit.experimental.categories.Category;
 public class P010_SummationOfPrimes {
 	static int testNo = 1;
 

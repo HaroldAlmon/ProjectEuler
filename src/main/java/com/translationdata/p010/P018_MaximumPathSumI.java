@@ -1,6 +1,7 @@
 package com.translationdata.p010;
 /** Strategy: Dynamic Programming. */
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 public class P018_MaximumPathSumI {

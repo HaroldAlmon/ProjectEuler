@@ -1,6 +1,8 @@
 package com.translationdata.p000;
 import static org.junit.Assert.assertEquals;
+
 import java.util.Arrays;
+
 import org.junit.Test;
 /** Strategy: Simple Mathematics. */
 public class P005_SmallestMultipleArray {

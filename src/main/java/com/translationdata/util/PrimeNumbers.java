@@ -5,9 +5,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 import com.translationdata.JUnitTests.SlowTest;
+
+import org.junit.experimental.categories.Category;
 
 /** Strategy: Brute Force. */
 @Category(SlowTest.class)

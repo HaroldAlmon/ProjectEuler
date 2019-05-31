@@ -10,9 +10,10 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 import com.translationdata.JUnitTests.SlowTest;
+
+import org.junit.experimental.categories.Category;
 /** Strategy: Brute Force. */
 @Category(SlowTest.class)
 public class P007_10001PrimeLinkList {

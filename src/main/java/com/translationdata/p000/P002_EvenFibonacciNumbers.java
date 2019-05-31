@@ -1,14 +1,12 @@
 package com.translationdata.p000;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
-
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+import org.junit.Test;
+
 import com.translationdata.JUnitTests.FastTest;
+import org.junit.experimental.categories.Category;
 
 /** Strategy: Simple mathematics. */
 @Category(FastTest.class)

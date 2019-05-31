@@ -1,13 +1,13 @@
 package com.translationdata.p010;
+import static java.lang.Math.max;
 /** Strategy: Brute Force, Single Abstract Method Interfaces instead of Lambda expressions */
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 import com.translationdata.JUnitTests.FastTest;
 
-import static java.lang.Math.max;
+import org.junit.experimental.categories.Category;
 
 interface MatrixProduct {
 	public int product(int[][] matrix, int row, int col);

@@ -35,4 +35,8 @@ public class P056_PowerfulDigitSum {
 	  assertThat("Incorrect sum.", result, is(972));
 	  System.out.println( "Maximum digital sum = " + result );
   }
+  
+  public static void main(String[] argv, int argc) {
+	  System.out.println("Hello");
+  };
 }

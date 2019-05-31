@@ -1,14 +1,15 @@
 package com.translationdata.p000;
 
-import java.util.Arrays;
-
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
-
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+import java.util.Arrays;
+
+import org.junit.Test;
+
 import com.translationdata.JUnitTests.FastTest;
+
+import org.junit.experimental.categories.Category;
 
 /** Strategy: Brute Force. */
 @Category(FastTest.class)

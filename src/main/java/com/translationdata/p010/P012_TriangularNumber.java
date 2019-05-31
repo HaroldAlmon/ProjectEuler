@@ -1,5 +1,6 @@
 package com.translationdata.p010;
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 /** Strategy: Simple Mathematics. */

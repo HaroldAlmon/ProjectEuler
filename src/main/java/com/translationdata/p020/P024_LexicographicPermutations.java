@@ -1,9 +1,9 @@
 package com.translationdata.p020;
+import static org.junit.Assert.assertEquals;
+
 import java.util.Arrays;
 
 import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
 public class P024_LexicographicPermutations {
 	int[] digits;
 

@@ -12,7 +12,7 @@ import com.translationdata.p000.P006_SumSquareDifference;
 import com.translationdata.p000.P007_10001PrimeLinkList;
 import com.translationdata.p000.P008_LargestProduct;
 import com.translationdata.p000.P009_PythagoreanTriplet;
-
+// Run this file as a JUnit test.
 @RunWith(Categories.class)
 @IncludeCategory(FastTest.class)
 @Suite.SuiteClasses ( {

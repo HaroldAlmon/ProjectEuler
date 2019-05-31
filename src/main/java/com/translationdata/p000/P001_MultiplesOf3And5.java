@@ -1,12 +1,13 @@
 package com.translationdata.p000;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 import com.translationdata.JUnitTests.FastTest;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.MatcherAssert.assertThat;
+import org.junit.experimental.categories.Category;
 
 /** Strategy: Simple Mathematics. Time complexity is O(1) */
 @Category(FastTest.class)

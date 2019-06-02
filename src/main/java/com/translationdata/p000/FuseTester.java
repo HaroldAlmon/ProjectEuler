@@ -7,6 +7,6 @@ import org.junit.Test;
 public class FuseTester {
 	@Test
 	public void overloader() {
-		fail(this.getClass().getSimpleName() + ": You have a blown use! Success!");
+		fail(this.getClass().getSimpleName() + ": You have a blown use! Success! This is not an error. Ignore the stack trace below.");
 	}
 }

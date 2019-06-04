@@ -1,5 +1,9 @@
 package com.translationdata.p030;
 
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
 public class P031_CoinSumsBruteForce {
 	/** Strategy: Brute Force. */
 	public static void main(String[] args) {
@@ -8,6 +12,7 @@ public class P031_CoinSumsBruteForce {
 		System.out.println(result);
 	}
 
+	/* Enumerate all the possible combinations of coins. If the total is 200 add 1 to the result */
 	private int coinSums() {
 		int sum = 0;
 		int result = 0;
@@ -24,8 +29,8 @@ public class P031_CoinSumsBruteForce {
 										}
 										sum += 1;
 									}
-									sum -= 200 + 1;
-									sum += 2;
+									sum -= 200 + 1; // Subtract the value of all the onePence plus one more coin.
+									sum += 2; // Add two pence.
 								}
 								sum -= 200 + 2;
 								sum += 5;
@@ -47,6 +52,13 @@ public class P031_CoinSumsBruteForce {
 		}
 		sum -= 200 + 200;
 		return result;
+	}
+
+	@Test
+	public void CoinSums() {
+		int coinSums = coinSums();
+		System.out.printf(this.getClass().getSimpleName() + ": Coin sum is %s", coinSums);
+		assertEquals(coinSums,73682);
 	}
 }
 

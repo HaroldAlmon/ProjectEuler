@@ -1,0 +1,52 @@
+package com.translationdata.p030;
+
+public class P031_CoinSumsBruteForce {
+	/** Strategy: Brute Force. */
+	public static void main(String[] args) {
+		P031_CoinSumsBruteForce coinSums = new P031_CoinSumsBruteForce();
+		int result = coinSums.coinSums();
+		System.out.println(result);
+	}
+
+	private int coinSums() {
+		int sum = 0;
+		int result = 0;
+		for(int twoPounds = 0; twoPounds <= 1; twoPounds++) {
+			for(int onePound = 0; onePound <= 2; onePound++) {
+				for(int fiftyPence = 0; fiftyPence <= 4; fiftyPence++) {
+					for(int twentyPence = 0; twentyPence <= 10; twentyPence++) {
+						for(int tenPence = 0; tenPence <= 20; tenPence++) {
+							for(int fivePence = 0; fivePence <= 40; fivePence++) {
+								for(int twoPence = 0; twoPence <= 100; twoPence++) {
+									for(int onePence = 0; onePence <= 200; onePence++) {
+										if(sum == 200) {
+											result++;
+										}
+										sum += 1;
+									}
+									sum -= 200 + 1;
+									sum += 2;
+								}
+								sum -= 200 + 2;
+								sum += 5;
+							}
+							sum -= 200 + 5;
+							sum += 10;
+						}
+						sum -= 200 + 10;
+						sum += 20;
+					}
+					sum -= 200 + 20;
+					sum += 50;
+				}
+				sum -= 200 + 50;
+				sum += 100;
+			}
+			sum -= 200 + 100;
+			sum += 200;
+		}
+		sum -= 200 + 200;
+		return result;
+	}
+}
+

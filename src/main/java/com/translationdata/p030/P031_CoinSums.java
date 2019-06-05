@@ -97,7 +97,7 @@ public class P031_CoinSums {
 	 * }
 	 */
 	
-	// When subdiving with one pence, it does not matter how much is left, there is only one way to divide, use all pence. 
+	// When subdividing with one pence, it does not matter how much is left, there is only one way to divide, use all pence. 
 	void subDivideWith1Pence(int pence) {
 		count += 1;
 	}

@@ -78,10 +78,26 @@ public class P031_CoinSums {
 	}
 	
 	void subDivideWith2Pence(int pence) {
-		count += pence / 2;
-		subDivideWith1Pence(pence);
+		do {
+			if( pence > 0 ) {
+				subDivideWith1Pence( pence );
+			} else if ( pence == 0 ) {
+				count += 1;
+			}
+			pence -= 2;
+		} while ( pence >= 0 );
 	}
 	
+	// With just two pence and once pence left this way is faster...
+	/* // when just two and one pence are left, there is only one way to subdivide with two pence.
+	 * // Just keep adding two pence. 1x2 + 1's, 2x2 + 1's, 3x2 + 1's.    
+	 * void subDivideWith2Pence(int pence) { 
+	 * 	count += pence / 2;
+	 * 	subDivideWith1Pence(pence); // All one pence always 1 way.
+	 * }
+	 */
+	
+	// When subdiving with one pence, it does not matter how much is left, there is only one way to divide, use all pence. 
 	void subDivideWith1Pence(int pence) {
 		count += 1;
 	}

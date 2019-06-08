@@ -3,7 +3,7 @@ package com.translationdata.p030;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-/** Strategy: Divide and conquer. */
+/** Strategy: Divide and conquer. Dynamic programming. See my other generic solution but this one runs must faster. */
 public class P031_CoinSums {
 	int count = 0;
 	public int coinSums(int pence) {

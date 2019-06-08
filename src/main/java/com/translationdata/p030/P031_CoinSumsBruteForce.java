@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class P031_CoinSumsBruteForce {
-	/** Strategy: Brute Force. */
+	/** Strategy: Brute Force. Enumerate every possible sum and check for 200.  Very slow but it works. */
 	public static void main(String[] args) {
 		P031_CoinSumsBruteForce coinSums = new P031_CoinSumsBruteForce();
 		int result = coinSums.coinSums();

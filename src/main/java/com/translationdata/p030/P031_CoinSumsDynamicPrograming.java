@@ -14,25 +14,26 @@ public class P031_CoinSumsDynamicPrograming {
 	private int[] coins = { 200, 100, 50, 20, 10, 5, 2, 1 };
 
 	private int coinSums() {
-		int result = 0;
-
-		result = coinSumsImpl(result, 200, 0);
-		return result;
+		return coinSumsImpl(0, 200, 0);
 	}
 	
 	private int coinSumsImpl(int result, int penceRemaining, int coinPosition) {
-		if (coinPosition > coins.length - 1 ) return result;
-		do {
-			if( penceRemaining > 0 ) {
-				result = coinSumsImpl( result, penceRemaining, coinPosition + 1 );
-			} else if ( penceRemaining == 0 ) {
-				result += 1;
-			}
-			penceRemaining -= coins[coinPosition];
-		} while ( penceRemaining >= 0 );
+		if (coinPosition > coins.length - 1 ) 
+			return result;
+		if( penceRemaining > 0 ) {
+			// Use the next smaller coin to partition the remaining pence...
+			result = coinSumsImpl( result, penceRemaining, coinPosition + 1 );
+			
+			// Use the same coin to decrease the pence remaining...
+			return coinSumsImpl( result, penceRemaining - coins[coinPosition], coinPosition );
+		} else if ( penceRemaining == 0 ) {
+			
+			// When the partition reaches zero pence partition by the same coin, the code returns here...
+			return result + 1;
+		}
 		return result;
 	}
-
+	
 	@Test
 	public void CoinSums() {
 		int coinSums = coinSums();

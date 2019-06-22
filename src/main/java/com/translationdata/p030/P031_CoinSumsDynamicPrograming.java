@@ -17,6 +17,8 @@ public class P031_CoinSumsDynamicPrograming {
 		return coinSumsImpl(0, 200, 0);
 	}
 	
+	// This is set up as tail recursion but does not need tail recursion elimination because the
+	// maximum depth is 200 when 200p is divided by 1p.
 	private int coinSumsImpl(int result, int penceRemaining, int coinPosition) {
 		if (coinPosition > coins.length - 1 ) 
 			return result;
@@ -28,7 +30,7 @@ public class P031_CoinSumsDynamicPrograming {
 			return coinSumsImpl( result, penceRemaining - coins[coinPosition], coinPosition );
 		} else if ( penceRemaining == 0 ) {
 			
-			// When the partition reaches zero pence partition by the same coin, the code returns here...
+			// When the partition reaches zero pence partitioned by the same coin, the code returns here...
 			return result + 1;
 		}
 		return result;

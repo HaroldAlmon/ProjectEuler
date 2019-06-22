@@ -3,7 +3,10 @@ package com.translationdata.p030;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-/** Strategy: Divide and conquer. Dynamic programming. See my other generic solution but this one runs must faster. */
+/** Strategy: Divide and conquer. Dynamic programming. See my other generic solution but this one runs must faster. 
+ * I thought this was sub-optimal because the hard coded functions but found out that it runs much faster than
+ * my generic solution that works with any coin set.  If I run this with JUnit, the elapsed time is zero so it's
+ * not that simple to compare times with the generic solution. */
 public class P031_CoinSums {
 	int count = 0;
 	public int coinSums(int pence) {

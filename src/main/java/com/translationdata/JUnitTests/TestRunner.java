@@ -2,6 +2,7 @@ package com.translationdata.JUnitTests;
 
 import org.junit.runner.JUnitCore;
 
+// This takes about 5 minutes to run on a dual core i5
 public class TestRunner {
 
 	public static void main(String[] args) {

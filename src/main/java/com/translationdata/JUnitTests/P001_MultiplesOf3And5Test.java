@@ -17,7 +17,7 @@ import com.translationdata.p000.P001_MultiplesOf3And5;
 public class P001_MultiplesOf3And5Test {
 	private int input;
 	private int expectedResult;
-	private static P001_MultiplesOf3And5 multiplesOf3And5 = new P001_MultiplesOf3And5();
+	private static P001_MultiplesOf3And5 solution = new P001_MultiplesOf3And5();
 
 	@Parameters
 	public static List<Object []> data() {
@@ -28,8 +28,9 @@ public class P001_MultiplesOf3And5Test {
 		} );
 	}
 
-	public P001_MultiplesOf3And5Test(int input, int expectedResult) {
-		this.input = input;
+	// Constructor
+	public P001_MultiplesOf3And5Test(int upperBound, int expectedResult) {
+		this.input = upperBound;
 		this.expectedResult = expectedResult;
 	}
 	
@@ -37,8 +38,8 @@ public class P001_MultiplesOf3And5Test {
 	public void isMultiplesOf3And5() {
 		int result;
 
-		result = multiplesOf3And5.multiplesOf3And5(input);
+		result = solution.multiplesOf3And5(input);
 		assertThat("Incorrect sum of multiples of 3 or 5 below 1,000", result, is(expectedResult));
-		System.out.printf(this.getClass().getSimpleName() + ": multiplesOf3And5: %s%n", result);
+		System.out.printf(this.getClass().getSimpleName() + ": The number of multiples of 3 or 5 below %d are: %s%n", input, result);
 	}
 }

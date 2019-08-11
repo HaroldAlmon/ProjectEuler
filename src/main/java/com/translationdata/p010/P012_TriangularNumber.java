@@ -2,8 +2,12 @@ package com.translationdata.p010;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
+
+import com.translationdata.JUnitTests.FastTest;
 
 /** Strategy: Simple Mathematics. */
+@Category(FastTest.class)
 public class P012_TriangularNumber {
 	long triangularNumber(final int divisorLimit) {
 		final boolean isDebug = false;
@@ -57,7 +61,7 @@ public class P012_TriangularNumber {
 	@Test(timeout = 3_000)
 	public void TriangularNumber() {
 		long triangleNumber = triangularNumber(500);
-		System.out.printf("triangularNumber(500) = %d%n", triangleNumber);
+		System.out.printf(this.getClass().getSimpleName() + ": triangularNumber(500) = %d%n", triangleNumber);
 		assertEquals( 76576500, triangleNumber );
 	}
 }

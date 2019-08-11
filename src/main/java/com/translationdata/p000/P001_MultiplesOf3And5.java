@@ -29,14 +29,14 @@ public class P001_MultiplesOf3And5 {
 		return divisor * n * ( n + 1 ) / 2 ;
 	}
 
-	@Test(timeout=50)
+	@Test(timeout=1000)
 	public void SumOfMultiplesOf3And5Below1000() {
 		final int sumOfMultiples = multiplesOf3And5(1_000);
 		System.out.printf(this.getClass().getSimpleName() + ": multiplesOf3And5(1000) = %s%n", sumOfMultiples);
 		assertThat( "Incorrect sum of multiples of 3 or 5 below 1,000", sumOfMultiples, is(233168) );
 	}
 	
-	@Test(timeout=100)
+	@Test(timeout=1000)
 	public void SumOfMultiplesOf3And5Below10_000() {
 		final int sumOfMultiples = multiplesOf3And5(10_000);
 		System.out.printf(this.getClass().getSimpleName() + ": multiplesOf3And5(10_000) = %s%n", sumOfMultiples);

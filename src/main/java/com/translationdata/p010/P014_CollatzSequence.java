@@ -1,7 +1,11 @@
 package com.translationdata.p010;
 /** Strategy: Simple Mathematics */
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
+import com.translationdata.JUnitTests.FastTest;
+
+@Category(FastTest.class)
 public class P014_CollatzSequence {
 	public long collatzSequence(int upperLimit) {
 		long numberProducingLongestChain = 0;
@@ -40,6 +44,6 @@ public class P014_CollatzSequence {
 
 	@Test(timeout = 20_000)
 	public void NumberProducingLongestChain() {
-		System.out.printf("numberProducingLongestChain(1_000_000) = %d%n",collatzSequence(1_000_000));
+		System.out.printf(this.getClass().getSimpleName() + "numberProducingLongestChain(1_000_000) = %d%n",collatzSequence(1_000_000));
 	}
 }

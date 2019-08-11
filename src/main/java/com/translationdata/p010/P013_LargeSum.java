@@ -5,13 +5,17 @@ import static org.junit.Assert.assertEquals;
 import java.math.BigInteger;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
+
+import com.translationdata.JUnitTests.FastTest;
 /** Strategy: Simple Mathematics */
 
+@Category(FastTest.class)
 public class P013_LargeSum {
 	@Test(timeout = 50)
 	public void Sum() {
 		String sum = largeSum().substring(0, 10);
-		System.out.printf("largeSum() = %s%n", sum);
+		System.out.printf(this.getClass().getSimpleName() + "largeSum() = %s%n", sum);
 		assertEquals( sum, "5537376230" );
 	}
 

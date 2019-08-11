@@ -5,15 +5,16 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class P031_CoinSumsDynamicPrograming {
-	/** Strategy: Dynamic Programming.  An improvement on my original solution.  */
+	/** Strategy:  Divide and conquer.  An improvement on my original solution. 
+	 * This works fast because there are no negative numbers and no duplicates. */
 	public static void main(String[] args) {
 		P031_CoinSumsDynamicPrograming coinSums = new P031_CoinSumsDynamicPrograming();
-		int result = coinSums.coinSums();
+		final int result = coinSums.run();
 		System.out.println(result);
 	}
 	private int[] coins = { 200, 100, 50, 20, 10, 5, 2, 1 };
 
-	private int coinSums() {
+	private int run() {
 		return coinSumsImpl(0, 200, 0);
 	}
 	
@@ -36,7 +37,7 @@ public class P031_CoinSumsDynamicPrograming {
 	
 	@Test
 	public void CoinSums() {
-		int coinSums = coinSums();
+		final int coinSums = run();
 		System.out.printf(this.getClass().getSimpleName() + ": Coin sum is %s", coinSums);
 		assertEquals(73682, coinSums);
 	}

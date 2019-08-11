@@ -21,8 +21,12 @@ import static org.junit.Assert.assertTrue;
 import java.math.BigInteger;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
+
+import com.translationdata.JUnitTests.FastTest;
 
 //import jdk.nashorn.internal.ir.annotations.Ignore;
+@Category(FastTest.class)
 public class P015_LatticePaths {
 	public String latticePaths(int latticeSize) {
 		String result;
@@ -35,7 +39,7 @@ public class P015_LatticePaths {
 		//  C(n,r) = -----------  = ------- 
 		//           (2n-n)! * n!   n! * n!
 		result = nx2Factorial.divide(nFactorial).divide(nFactorial).toString();
-		System.out.printf("Result = %s%n", result);
+		//System.out.printf("Result = %s%n", result);
 		return result;
 	}
 	
@@ -49,7 +53,7 @@ public class P015_LatticePaths {
 	@Test(timeout = 500)
 	public void CountLattice20x20() {
 		long pathCount = Long.parseLong( latticePaths(20) );
-		System.out.printf("CountLattice20x20(%s)%n", pathCount);
+		System.out.printf(this.getClass().getSimpleName() +  ": latticePaths(20) = %s%n", pathCount);
 		assertEquals( Long.parseLong("137846528820"), pathCount );
 
 	}

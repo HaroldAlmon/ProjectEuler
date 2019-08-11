@@ -88,7 +88,7 @@ public class P011_LargestProduct {
 	@Test(timeout = 500)
 	public void LargestProduct() {
 		int maximumProduct = largestProduct();
-		System.out.printf("largestProduct() = %d%n", maximumProduct);
+		System.out.printf(this.getClass().getSimpleName() + ": largestProduct() = %d%n", maximumProduct);
 		assertEquals("Incorrect product", 70600674, maximumProduct);
 	}
 	

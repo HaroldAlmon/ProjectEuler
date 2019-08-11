@@ -8,12 +8,12 @@ public class P031_CoinSumsBruteForce {
 	/** Strategy: Brute Force. Enumerate every possible sum and check for 200.  Very slow but it works. */
 	public static void main(String[] args) {
 		P031_CoinSumsBruteForce coinSums = new P031_CoinSumsBruteForce();
-		int result = coinSums.coinSums();
-		System.out.println(result);
+		int result = coinSums.run();
+		System.out.printf(coinSums.getClass().getSimpleName() + ": Coin sum is %s", result);
 	}
 
 	/* Enumerate all the possible combinations of coins. If the total is 200 add 1 to the result */
-	private int coinSums() {
+	private int run() {
 		int sum = 0;
 		int result = 0;
 		for(int twoPounds = 0; twoPounds <= 1; twoPounds++) {
@@ -56,7 +56,7 @@ public class P031_CoinSumsBruteForce {
 
 	@Test
 	public void CoinSums() {
-		int coinSums = coinSums();
+		int coinSums = run();
 		System.out.printf(this.getClass().getSimpleName() + ": Coin sum is %s", coinSums);
 		assertEquals(coinSums,73682);
 	}

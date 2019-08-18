@@ -3,9 +3,10 @@ package com.translationdata.p030;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-/** Strategy: Divide and conquer. See my other generic solution but this one runs must faster.
-This works fast because there are no negative numbers and no duplicates. 
-This is also the fastest solution that returns zero seconds when I run JNnit on a quad core i5 machine. */
+/** Strategy: Divide and conquer. Dynamic programming. See my other generic solution but this one runs must faster. 
+ * I thought this was sub-optimal because the hard coded functions but found out that it runs much faster than
+ * my generic solution that works with any coin set.  If I run this with JUnit, the elapsed time is zero so it's
+ * not that simple to compare times with the generic solution. */
 public class P031_CoinSums {
 	int count = 0;
 	public int coinSums(int pence) {

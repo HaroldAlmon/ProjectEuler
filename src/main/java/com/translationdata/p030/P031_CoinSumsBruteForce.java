@@ -12,7 +12,7 @@ public class P031_CoinSumsBruteForce {
 		System.out.printf(coinSums.getClass().getSimpleName() + ": Coin sum is %s", result);
 	}
 
-	/* Enumerate all the possible combinations of coins. If the total is 200 add 1 to the result */
+	/* Enumerate all the possible combinations of coins. If the coin total is 200, add 1 to the result */
 	private int run() {
 		int result = 0;
 		for(int twoPounds = 0; twoPounds <= 1; twoPounds++) {

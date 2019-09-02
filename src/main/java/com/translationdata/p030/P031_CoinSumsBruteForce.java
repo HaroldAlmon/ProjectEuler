@@ -14,7 +14,6 @@ public class P031_CoinSumsBruteForce {
 
 	/* Enumerate all the possible combinations of coins. If the total is 200 add 1 to the result */
 	private int run() {
-		int sum = 0;
 		int result = 0;
 		for(int twoPounds = 0; twoPounds <= 1; twoPounds++) {
 			for(int onePound = 0; onePound <= 2; onePound++) {
@@ -24,33 +23,17 @@ public class P031_CoinSumsBruteForce {
 							for(int fivePence = 0; fivePence <= 40; fivePence++) {
 								for(int twoPence = 0; twoPence <= 100; twoPence++) {
 									for(int onePence = 0; onePence <= 200; onePence++) {
-										if(sum == 200) {
+										if( onePence + twoPence * 2 + fivePence * 5 + tenPence * 10 + twentyPence * 20 + fiftyPence * 50 + onePound * 100 + twoPounds * 200 == 200) {
 											result++;
 										}
-										sum += 1;
 									}
-									sum -= 200 + 1; // Subtract the value of all the onePence plus one more coin.
-									sum += 2; // Add two pence.
 								}
-								sum -= 200 + 2;
-								sum += 5;
 							}
-							sum -= 200 + 5;
-							sum += 10;
 						}
-						sum -= 200 + 10;
-						sum += 20;
 					}
-					sum -= 200 + 20;
-					sum += 50;
 				}
-				sum -= 200 + 50;
-				sum += 100;
 			}
-			sum -= 200 + 100;
-			sum += 200;
 		}
-		sum -= 200 + 200;
 		return result;
 	}
 

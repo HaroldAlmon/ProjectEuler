@@ -1,5 +1,9 @@
 package com.translationdata.p000;
 
+// We need to configure the following jars:
+// hamcrest-core-1.3.jar
+// junit-4.13.2.jar
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 

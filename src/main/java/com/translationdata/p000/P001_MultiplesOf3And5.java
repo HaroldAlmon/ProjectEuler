@@ -34,6 +34,13 @@ public class P001_MultiplesOf3And5 {
 	}
 
 	@Test(timeout=1000)
+	public void SumOfMultiplesOf3And5Below100() {
+		final int sumOfMultiples = multiplesOf3And5(100);
+		System.out.printf(this.getClass().getSimpleName() + ": multiplesOf3And5(100) = %s%n", sumOfMultiples);
+		assertThat( "Incorrect sum of multiples of 3 or 5 below 100", sumOfMultiples, is(2318) );
+	}
+
+	@Test(timeout=1000)
 	public void SumOfMultiplesOf3And5Below1000() {
 		final int sumOfMultiples = multiplesOf3And5(1_000);
 		System.out.printf(this.getClass().getSimpleName() + ": multiplesOf3And5(1000) = %s%n", sumOfMultiples);
